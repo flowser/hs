@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Backend\Organisation\Superadmin;
 
-use App\User;
+
 use Illuminate\Http\Request;
+use App\Models\Standard\User;
+use App\Models\Standard\Country;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -15,11 +17,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        // dd('rat');
+        $countries = Country::with('counties', 'towns')->get();
+        // dd($countries);
         $users = User::with('roles', 'permissions')->get();
         // dd($users);
         return response()-> json([
-            'users'=>$users
+            'users'=>$users,
+            'countries' => $countries,
+            
         ], 200);
     }
 
