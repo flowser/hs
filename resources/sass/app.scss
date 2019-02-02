@@ -4,11 +4,41 @@
 
 // Variables
 @import 'variables';
+$fa-font-path:        "../webfonts";
+
+
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import "~admin-lte/dist/css/adminlte.css";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular.scss";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~@fortawesome/fontawesome-free/css/brands.css";
+@import "~@fortawesome/fontawesome-free/css/fontawesome.css";
+@import "~@fortawesome/fontawesome-free/css/regular.css";
+@import "~@fortawesome/fontawesome-free/css/solid.css";
 
+//for vue-datable towork enso
+// @import "~@fortawesome/fontawesome-free";
+// @import "~@fortawesome/fontawesome-svg-core";
+// @import "~@fortawesome/free-brands-svg-icons";
+// @import "~@fortawesome/free-regular-svg-icons";
+// @import "~@fortawesome/free-solid-svg-icons"; 
+// @import "~@fortawesome/vue-fontawesome";
+//end vue-datable towork enso
+
+//bootstrap-vue
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~bootstrap-vue/dist/bootstrap-vue.css';
+//end bootstrap-vue
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+.router-link-exact-active{
+  background-color: purple;
+  color: #fff !important;
 }

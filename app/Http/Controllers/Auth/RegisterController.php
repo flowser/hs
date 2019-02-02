@@ -48,10 +48,13 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // dd($data);
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'user_type' => ['required', 'string', 'min:6'],
         ]);
     }
 
@@ -63,10 +66,44 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+
+        $user = User::create([            
+            'first_name'        => $data['first_name'],
+            'last_name'         => $data['last_name'],
+            'email'             => $data['email'],
             'password' => Hash::make($data['password']),
+            'user_type'         => $data['user_type'],
+            'active'            => true,
+            'confirmed'         => true,
+            'confirmation_code' => md5(uniqid(mt_rand(), true)),
         ]);
+
+        // See if adding any additional permissions
+        // if (! isset($data['permissions']) || ! count($data['permissions'])) {
+        //     $data['permissions'] = [];
+        // }
+
+        if ($user) {
+            // User must have at least one role
+            // if (! count($data['roles'])) {
+            //     throw new GeneralException(__('This User Needs atleast One Role'));
+            // }
+
+            // Add selected roles/permissions
+            // $user->syncRoles($data['roles']);
+            // $user->syncPermissions($data['permissions']);
+            $user->assignRole('Superadmin');
+            $user ->givePermissionTo('view backend');
+
+            //Send confirmation email if requested and account approval is off
+            // if (isset($data['confirmation_email']) && $user->confirmed == 0 && ! config('access.users.requires_approval')) {
+            //     $user->notify(new UserNeedsConfirmation($user->confirmation_code));
+            // }
+
+            // event(new UserCreated($user));
+
+            return $user;
+        }
+
     }
 }
