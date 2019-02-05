@@ -164,7 +164,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                          {{ Auth::user()->user_type }}<br>
                          {{-- {{ Auth::user()->email }}<br>
                          {{ Auth::user()->created_at }}<br> --}}
-                        
+
                         </a>
                 </div>
             </div>
@@ -179,8 +179,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                          <i class="nav-icon green fas fa-cog"></i>
                              <p> Dashboard </p>
                     </router-link>
-                </li>      
-                       
+                </li>
+
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon  red fas fa-cog"></i>
@@ -196,22 +196,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </router-link>
                         </li>
                         <li class="nav-item">
-                              
+
                             <router-link to="/permissions" class="nav-link">
                                 <i class="fa fa-cog red nav-icon"></i>
-                                <p>Roles & Permissions</p>                                  
+                                <p>Roles & Permissions</p>
                             </router-link>
                         </li>
                         {{-- <li class="nav-item">
-                              
+
                               <router-link to="/permissions" class="nav-link">
                                   <i class="fa fa-cog red nav-icon"></i>
                                   <p>Permissions</p>
-                                  
+
                               </router-link>
-                          </li> --}} 
+                          </li> --}}
                     </ul>
-                </li>                   
+                </li>
+                <li class="nav-item">
+                    <router-link to="/settings" class="nav-link">
+                         <i class="nav-icon red fas fa-tools"></i>
+                             <p> Settings </p>
+                    </router-link>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -220,11 +226,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper" >  
+    <div class="content-wrapper" >
 
         <!-- Main content -->
         <div class="content">
-                
+
                 <admin-main></admin-main>
         </div>
         <!-- /.content -->
@@ -236,7 +242,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Control sidebar content goes here -->
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
-                 with font-awesome or any other icon font library -->                
+                 with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview ">
                 <a href="#" class="nav-link ">
                     <i class="nav-icon fas purple fa-user"></i>
@@ -252,7 +258,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <p>Settings</p>
                         </a>
                     </li>
-                    <li class="nav-item">                        
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                       document.getElementById('logout-form').submit();">
@@ -264,8 +270,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                      </form>
                     </li>
                 </ul>
-            </li>                   
-        </ul>                       
+            </li>
+        </ul>
     </aside>
     <!-- /.control-sidebar -->
 

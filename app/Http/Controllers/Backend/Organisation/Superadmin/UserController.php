@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Standard\User;
 use App\Models\Standard\Country;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -24,7 +25,7 @@ class UserController extends Controller
         return response()-> json([
             'users'=>$users,
             'countries' => $countries,
-            
+
         ], 200);
     }
 
@@ -46,8 +47,35 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password'=>'required|min:6',
+            'user_type' => 'required|min:3',
+            'permissions'=>'required',
+            'roles'=>'required',
+        ]);
+
+        $user= User::create([
+            'first_name'       => $request ['first_name'],
+            'last_name'        => $request ['last_name'],
+            'email'           => $request ['email'],
+            'password'        => Hash::make($request ['password']),
+            'user_type'        => $request ['user_type'],
+            'active'           => true,
+            'confirmed'        => true,
+            'confirmation_code' => md5(uniqid(mt_rand(), true)),
+        ]);
+
+        $user->assignRole($request ['roles']);
+        $user->syncPermissions($request ['permissions']);
+
+        return ['message' => 'User Created successfully'];
+
     }
+
+
 
     /**
      * Display the specified resource.
@@ -57,7 +85,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::with('roles', 'permissions')->find($id);
+        // dd($user);
+        return response()-> json([
+            'user'=>$user
+        ], 200);
     }
 
     /**
@@ -68,7 +100,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::with('roles', 'permissions')->find($id);
+        // dd($user);
+        return response()-> json([
+            'user'=>$user
+        ], 200);
     }
 
     /**
@@ -80,7 +116,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $this->validate($request,[
+            'first_name'=>'required|string|max:191',
+            'last_name'=>'required|string|max:191',
+            'email'=>'required|string|email|max:191|unique:users,email,'.$user->id,
+            'password'=>'sometimes|required|min:6',
+            'user_type' => 'sometimes|required|min:3',
+            'permissions'=>'sometimes|required',
+            'roles'=>'sometimes|required',
+        ]);
+        $user->update($request->all());
+        return ['message', 'update the user info'];
     }
 
     /**
@@ -91,6 +138,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return ['message'=>'User Deleted'];
     }
 }

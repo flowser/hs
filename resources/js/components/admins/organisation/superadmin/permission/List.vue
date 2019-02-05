@@ -8,19 +8,19 @@
             <div class="card-header">
               <h3 class="card-title">Permissions Table</h3>
               <div class="card-tools">
-                
+
                     <button class="btn btn-success"  @click.prevent="newPermissionModal()">Add New Permission
                          <i class="fas fa-plus fw"></i>
                      </button>
                   <!-- <router-link to="/add-permission" style="color:#ffff"> Add Permission</router-link> -->
-               
+
               </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
-                  <tr>                   
+                  <tr>
                     <th>S1</th>
                     <th>Permission</th>
                     <th>Date</th>
@@ -28,22 +28,22 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(permission, index) in Permissions" :key="permission.id" >              
+                  <tr v-for="(permission, index) in Permissions" :key="permission.id" >
                     <td>{{index+1}}</td>
-                    <td>{{permission.name}}</td>  
-                    <td>{{permission.created_at | dateformat}}</td>  
-                                      
+                    <td>{{permission.name}}</td>
+                    <td>{{permission.created_at | dateformat}}</td>
+
                     <td>
-                         <a href="" @click.prevent="editPermissionModal(permission.id)"> 
+                         <a href="" @click.prevent="editPermissionModal(permission.id)">
                              <i class="fa fa-edit blue"></i>
                          </a>
                          /
                          <a href="" @click.prevent="deletePermission(permission.id)">
                              <i class="fa fa-trash red"></i>
                          </a>
-                    </td>                  
-                  </tr>    
-                </tbody>               
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
             <!-- /.card-body -->
@@ -56,50 +56,50 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Roles Table</h3>
-              <div class="card-tools">                
+              <div class="card-tools">
                     <button class="btn btn-success"  @click.prevent="newRoleModal()">Add New Role
                          <i class="fas fa-plus fw"></i>
                      </button>
-               
+
               </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
-                  <tr>                   
+                  <tr>
                     <th>S1</th>
-                    <th>Roles</th>
+                    <th>Ros</th>
                     <th>Permissions</th>
                     <th>Date</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                    
-                  <tr v-for="(role, index) in Roles" :key="role.id">             
+
+                  <tr v-for="(role, index) in Roles" :key="role.id">
                     <td>{{index+1}}</td>
-                    <td>{{role.name}}</td>                    
-                    <td>         
+                    <td>{{role.name}}</td>
+                    <td>
                         <span v-for="permission in role.permissions" :key="permission.id" class="pl-2">
                             <div class="btn btn-primary btn-sm ml-1 mb-2 ">{{permission.name}} </div>
-                        </span> 
-                    </td> 
-                    <td>{{role.created_at | dateformat}}</td>                  
+                        </span>
+                    </td>
+                    <td>{{role.created_at | dateformat}}</td>
                     <td>
-                         <a href="" @click.prevent="editRoleModal(role.id)" > 
+                         <a href="" @click.prevent="editRoleModal(role.id)" >
                              <i class="fa fa-edit blue"></i>
                          </a>
-                         <router-link :to="`edit-role/${role.id}`" @click.prevent="editRoleModal(role.id)" > 
+                         <router-link :to="`edit-role/${role.id}`" @click.prevent="editRoleModal(role.id)" >
                              <i class="fa fa-edit yellow"></i>
                          </router-link>
                          /
                          <a href="" @click.prevent="deleteRole(role.id)">
                              <i class="fa fa-trash red"></i>
                          </a>
-                    </td>                  
-                  </tr>              
-                  <!-- <tr v-for="(course, index) in getallCourse" :key="course.id">              
+                    </td>
+                  </tr>
+                  <!-- <tr v-for="(course, index) in getallCourse" :key="course.id">
                     <td>{{index+1}}</td>
                     <td v-if="course.user">{{course.user.name}}</td>
                     <td v-if="course.category">{{course.category.name}}</td>
@@ -109,9 +109,9 @@
                     <td>
                          <router-link :to="`/edit-course/${course.id}`">Edit</router-link>
                          <a href="" @click.prevent="deleteCourse(course.id)">Delete</a>
-                    </td>                  
+                    </td>
                   </tr>               -->
-                </tbody>               
+                </tbody>
               </table>
             </div>
             <!-- /.card-body -->
@@ -119,7 +119,7 @@
           <!-- /.card -->
         </div>
       </div>
-    </section> 
+    </section>
 
         <!-- Permission Modal -->
      <div class="modal fade" id="PermissionModal" tabindex="-1" role="dialog" aria-labelledby="PermissionModalLabel" aria-hidden="true">
@@ -134,11 +134,11 @@
                 </div>
                 <form role="form" @submit.prevent="editmodePermission ? updatePermission(permissionform.id) : addPermission ()" >
                     <div class="modal-body">
-                        <div class="form-group">                        
+                        <div class="form-group">
                             <input v-model="permissionform.name" type="text" name="name" placeholder="Permission Name"
                                 class="form-control" :class="{ 'is-invalid': permissionform.errors.has('name') }">
                             <has-error :form="permissionform" field="name"></has-error>
-                        </div>                   
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -160,25 +160,22 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                    
+
                 <form role="form" @submit.prevent="editmodeRole ? updateRole(roleform.id) : addRole ()" >
                     <div class="modal-body">
-                        <div class="form-group">                        
+                        <div class="form-group">
                                 <input v-model="roleform.name" type="text" name="name" placeholder="Role Name"
                                     class="form-control" :class="{ 'is-invalid': roleform.errors.has('name') }">
                                 <has-error :form="roleform" field="name"></has-error>
                         </div>
-                        <div class="form-group"> 
-                            <b-form-group label="Select Permissions:">
-                                <b-form-checkbox-group v-model="checkedNames">
-                                    <b-form-checkbox v-for="permission in Permissions"
-                                          :value="permission.name" :key="permission.id" v-model="roleform.permission">{{permission.name}}
-                                    </b-form-checkbox>
-                                </b-form-checkbox-group>
-                            </b-form-group>
+                        <div class="form-group">
+                            <div v-for="permission in Permissions" :key="permission.id">
+                                <!-- <input type="checkbox" v-model="roleform.permission" :value="permission.name"/>{{ permission.name}} -->
+                                <input type="checkbox"  v-model="roleform.permission" :value="permission.name"/>{{ permission.name}}
+                            </div>
                             <hr>
-                            <div>Selected: <span class="btn btn-info btn-sm ml-2 mb-2">{{ roleform.permission }}</span></div>
-                        </div> 
+                            <div> <span class="btn btn-info btn-sm ml-2 mb-2">{{ roleform.permission }}</span></div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -198,7 +195,7 @@
 <script>
     export default {
         name:"List",
-        data(){            
+        data(){
             return{
                 editmodePermission: false,
                 permissionform: new Form({
@@ -217,26 +214,26 @@
         },
         mounted() {
             this.loadRoles();
-            this.loadPermissions();               
-            // this.editPermission();                         
+            this.loadPermissions();
+            // this.editPermission();
         },
         computed:{
-            Permissions(){ 
-                
-                return this.$store.getters.Permissions                
+            Permissions(){
+
+                return this.$store.getters.Permissions
             },
             Roles(){
-                return this.$store.getters.Roles            
+                return this.$store.getters.Roles
             },
             checkedComputed () {
             return this.checkedNames
             }
         },
-        methods:{ 
+        methods:{
             //permissions
             loadPermissions(){
-                return this.$store.dispatch("permissions")//get all from permision.index 
-            },   
+                return this.$store.dispatch("permissions")//get all from permision.index
+            },
             newPermissionModal(){
                  this.editmodePermission = false;
                  this.permissionform.reset()
@@ -244,7 +241,7 @@
              },
              editPermissionModal(id){
                  this.editmodePermission = true;
-                 
+
                 //  console.log('edit permiion', id)
                     this.$Progress.start();
                       axios.get('/permission/edit/'+id)
@@ -258,7 +255,7 @@
                         .catch(()=>{
                             this.$Progress.fail();
                         })
-             },                    
+             },
             addPermission() {
                 console.log('permision')
 
@@ -269,19 +266,19 @@
                         this.$store.dispatch( "roles")
                         this.$store.dispatch( "permissions")//like refresh
                          $('#PermissionModal').modal('hide') // <!--hide modael afterworks-->
-                       
+
                         this.$Progress.finish();
                     })
-                   
+
                     .catch((response)=>{
                             this.$Progress.fail()
                     })
-                    
+
             },
             updatePermission(id){
                   console.log('update perssion')
                   this.$Progress.start();
-                     this.permissionform.patch('/permission/update/'+id)  
+                     this.permissionform.patch('/permission/update/'+id)
                         .then((response)=>{
                              console.log(response.data)
                              this.permissionform.reset()
@@ -292,12 +289,12 @@
                         })
                         .catch(()=>{
                             this.$Progress.fail();
-                        }) 
-            },            
+                        })
+            },
             deletePermission(id){
                 console.log('delete perssion', id)
                 this.$Progress.start();
-                     axios.get('/permission/delete/'+id)  
+                     axios.get('/permission/delete/'+id)
                         .then(()=>{
                             this.$store.dispatch( "roles")
                             this.$store.dispatch( "permissions")//like refresh
@@ -305,12 +302,12 @@
                         })
                         .catch(()=>{
                             this.$Progress.fail();
-                        }) 
-            },            
+                        })
+            },
             //Roles
             loadRoles(){
-                return this.$store.dispatch( "roles")//get all from roles.index 
-            }, 
+                return this.$store.dispatch( "roles")//get all from roles.index
+            },
             newRoleModal(){
                  this.editmodeRole= false;
                  this.roleform.reset()
@@ -329,7 +326,7 @@
                         })
                         .catch(()=>{
                             this.$Progress.fail();
-                        })                          
+                        })
              },
             addRole() {
                 console.log('Role')
@@ -346,11 +343,11 @@
                     .catch(()=>{
                         this.$Progress.fail()
                     })
-            }, 
+            },
             updateRole(id){
-                  console.log('update role')                  
+                  console.log('update role')
                   this.$Progress.start();
-                     this.roleform.patch('/role/update/'+id)  
+                     this.roleform.patch('/role/update/'+id)
                         .then(()=>{
                             this.$store.dispatch( "roles")
                             this.$store.dispatch( "permissions")//like refresh
@@ -359,12 +356,12 @@
                         })
                         .catch(()=>{
                             this.$Progress.fail();
-                        }) 
-            },           
+                        })
+            },
             deleteRole(id){
                  console.log('delete role', id)
                  this.$Progress.start();
-                    axios.get('/role/delete/'+id)  
+                    axios.get('/role/delete/'+id)
                         .then(()=>{
                             this.$store.dispatch( "roles")
                             this.$store.dispatch( "permissions")//like refresh
@@ -372,9 +369,9 @@
                         })
                         .catch(()=>{
                             this.$Progress.fail();
-                        }) 
-            }, 
-        },        
-            
+                        })
+            },
+        },
+
     }
 </script>

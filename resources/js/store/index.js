@@ -28,7 +28,7 @@
 //         }
 //       }
 //     }
-// //roles module    
+// //roles module
 //     const roleModule = {
 //       state:{
 //         roles:[],
@@ -52,19 +52,19 @@
 //           return state.roles = data
 //         }
 //       }
-//     } 
+//     }
 
 
     // import Vue from 'vue';
     // import Vuex from 'vuex';// import Axios from "axios";
-    
+
     // import permission from './modules/permission';
     // import role from './modules/role';
     // import user from './modules/user';
     // // Vue.use(Vuex)
-    
-    
-    
+
+
+
     // export default ({
     //       modules: {
     //         permission:
@@ -72,22 +72,22 @@
     //               user:
     //       }
     //     })
-    
+
         // store.state.permission // -> `permModule`'s state
         // store.state.role // -> `roleModule`'s state
-    
-    
-    
+
+
+
         // import Vue from 'vue'
         // import Vuex from 'vuex'
-        import permission from './modules/permission'
-        import role from './modules/role'
-        import user from './modules/user'
-        
+        import permission from './modules/permission';
+        import role from './modules/role';
+        import user from './modules/user';
+
         // Vue.use(Vuex)
-        
+
         // const debug = process.env.NODE_ENV !== 'production'
-        
+
         export default {
           modules: {
             user,
@@ -96,5 +96,5 @@
           },
           // strict: debug,
           // plugins: debug ? [createLogger()] : []
-        }
+        };
 

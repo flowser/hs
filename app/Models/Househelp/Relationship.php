@@ -6,7 +6,7 @@ namespace App\Models\Househelp\Standard;
 use App\Models\Househelp\HousehelpKin;
 use Illuminate\Database\Eloquent\Model;
 
-class Tribe extends Model
+class Relationship extends Model
 {
     protected $fillable = [
         'name',

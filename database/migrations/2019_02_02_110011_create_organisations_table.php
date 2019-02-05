@@ -17,8 +17,6 @@ class CreateOrganisationsTable extends Migration
             $table->increments('id');
             $table->string('name', 120);
             $table->string('logo')->nullable();
-            $table->longText('about_us')->nullable();
-            $table->longText('what_we_do')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('landline')->nullable();
