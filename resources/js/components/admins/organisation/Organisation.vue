@@ -57,15 +57,18 @@
                     <!-- /.row -->
                 </div>
                 </div>
+
                 <!-- /.widget-user -->
                 <div class="card">
                     <div class="card-header p-2">
+
+
                         <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a href="#general_configuration" class="nav-link active show" data-toggle="tab"
-                                title="General Configuration" aria-expanded="true">
-                                <i class="fa fa-cogs red"> General Settings</i>
-                            </a>
+                            <li class="nav-item">
+                                <a href="#general_configuration" class="nav-link active show" data-toggle="tab"
+                                    title="General Configuration" aria-expanded="true">
+                                    <i class="fa fa-cogs red"> General Settings</i>
+                                </a>
                             </li>
                         <!-- <li class="nav-item">
                             <a href="#email_configuration" class="nav-link" data-toggle="tab"
@@ -114,6 +117,18 @@
                     <div class="card-body">
                             <div class="tab-content">
                                 <div class="tab-pane active show" id="general_configuration">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                             <a href="#general_configuration">General Settings</a>
+                                        </h3>
+                                        <div class="card-tools">
+                                                <button class="btn btn-success" @click.prevent="newOrganisationModal()" >Add Organisation
+                                                    <i class="fas fa-plus fw"></i>
+                                                </button>
+                                        </div>
+                                    </div>
+
+
                                         <!-- Setting -->
                                         <div class="row">
                                             <div class="col-md-3" >
@@ -279,86 +294,96 @@
                 <!-- /.nav-tabs-custom -->
         </div>
         <!-- Role Modal -->
-        <div class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="UserModalLabel" aria-hidden="true">
+        <div class="modal fade" id="OrganisationModal" tabindex="-1" role="dialog" aria-labelledby="OrganisationModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" v-show="editmodeUser" id="UserModalLabel">Update Organisation User</h5>
-                        <h5 class="modal-title" v-show="!editmodeUser" id="UserModalLabel">Add New Organisation User</h5>
+                        <h5 class="modal-title" v-show="editmodeOrganisation" id="OrganisationModalLabel">Update Organisation User</h5>
+                        <h5 class="modal-title" v-show="!editmodeOrganisation" id="OrganisationModalLabel">Add New Organisation User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
 
-                    <form role="form" @submit.prevent="editmodeUser ? updateUser(userform.id) : addUser ()" >
+                    <form role="form" @submit.prevent="editmodeOrganisation ? updateOrganisation(organisationform.id) : addOrganisation ()" >
                         <div class="modal-body">
                             <div class=" row">
                                 <div class="form-group col-md-6">
-                                    <label for="first_name" class="col-form-label"> First Name</label>
-                                    <input v-model="userform.first_name" type="text" name="first_name" placeholder="First Name"
-                                        class="form-control" :class="{ 'is-invalid': userform.errors.has('first_name') }" >
-                                    <has-error :form="userform" field="first_name"></has-error>
+                                    <label for="name" class="col-form-label"> Organisation Name</label>
+                                    <input v-model="organisationform.name" type="text" name="name" placeholder="Organisation Name"
+                                        class="form-control" :class="{ 'is-invalid': organisationform.errors.has('name') }" >
+                                    <has-error :form="organisationform" field="name"></has-error>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="last_name" class=" col-form-label">Last Name</label>
-                                    <input v-model="userform.last_name" type="text" name="last_name" placeholder="Last Name"
-                                        class="form-control" :class="{ 'is-invalid': userform.errors.has('last_name') }" >
-                                    <has-error :form="userform" field="last_name"></has-error>
+                                    <label for="email" class=" col-form-label">Email </label>
+                                    <input v-model="organisationform.email" type="email" name="email" placeholder="Email Address"
+                                        class="form-control" :class="{ 'is-invalid': organisationform.errors.has('email') }" >
+                                    <has-error :form="organisationform" field="email"></has-error>
                                 </div>
-                            </div>
-
-                            <div class=" row">
-                                    <div class="form-group col-md-12">
-                                        <label for="email" class="col-form-label">E-Mail Address</label>
-                                        <input v-model="userform.email" type="email" name="email" placeholder="E-Mail Address"
-                                        class="form-control" :class="{ 'is-invalid': userform.errors.has('email') }" >
-                                    <has-error :form="userform" field="email"></has-error>
-                                    </div>
                             </div>
                             <div class=" row">
                                 <div class="form-group col-md-6">
-                                    <select name="user_type" v-model="userform.user_type" id="user_type" class="form-control"
-                                    :class="{ 'is-invalid': userform.errors.has('user_type') }">
-                                        <option value="">Select User Role</option>
-                                        <option value="Director">Director</option>
-                                        <option value="Admin"> Admin</option>
-                                        <option value="Accounts"> Accounts</option>
-                                    </select>
-                                    <has-error :form="userform" field="user_type"></has-error>
+                                    <label for="phone" class="col-form-label"> Organisation Phone</label>
+                                    <input v-model="organisationform.phone" type="text" name="phone" placeholder="Organisation Phone"
+                                        class="form-control" :class="{ 'is-invalid': organisationform.errors.has('phone') }" >
+                                    <has-error :form="organisationform" field="phone"></has-error>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input v-model="userform.password" type="password" id="password" placeholder="Password"
-                                        class="form-control" :class="{ 'is-invalid': userform.errors.has('password') }">
-                                    <has-error :form="userform" field="password"></has-error>
+                                    <label for="landline" class=" col-form-label">Landline</label>
+                                    <input v-model="organisationform.landline" type="text" name="landline" placeholder="landline"
+                                        class="form-control" :class="{ 'is-invalid': organisationform.errors.has('landline') }" >
+                                    <has-error :form="organisationform" field="landline"></has-error>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <div class="form-group col-md-6">
+                                    <label for="website" class="col-form-label">Website</label>
+                                    <input v-model="organisationform.website" type="text" name="website" placeholder="Website"
+                                        class="form-control" :class="{ 'is-invalid': organisationform.errors.has('website') }" >
+                                    <has-error :form="organisationform" field="website"></has-error>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="address" class=" col-form-label">address</label>
+                                    <input v-model="organisationform.phone" type="text" name="Address" placeholder="Address"
+                                        class="form-control" :class="{ 'is-invalid': organisationform.errors.has('address') }" >
+                                    <has-error :form="organisationform" field="address"></has-error>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <div class="form-group col-md-6">
+                                    <label for="country" class=" col-form-label">Country</label>
+                                    <input v-model="organisationform.country" type="text" name="country" placeholder="Country"
+                                        class="form-control" :class="{ 'is-invalid': organisationform.errors.has('country') }" >
+                                    <has-error :form="organisationform" field="country"></has-error>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="county" class=" col-form-label">County</label>
+                                    <input v-model="organisationform.county" type="text" name="county" placeholder="County"
+                                        class="form-control" :class="{ 'is-invalid': organisationform.errors.has('county') }" >
+                                    <has-error :form="organisationform" field="county"></has-error>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <div class="form-group col-md-6">
+                                    <label for="town" class="col-form-label"> Town</label>
+                                    <input v-model="organisationform.town" type="text" name="town" placeholder="Town"
+                                        class="form-control" :class="{ 'is-invalid': organisationform.errors.has('town') }" >
+                                    <has-error :form="organisationform" field="town"></has-error>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="logo" class=" col-form-label">logo</label>
+                                    <input v-model="organisationform.logo" type="text" name="logo" placeholder="logo"
+                                        class="form-control" :class="{ 'is-invalid': organisationform.errors.has('logo') }" >
+                                    <has-error :form="organisationform" field="logo"></has-error>
                                 </div>
                             </div>
 
 
-                            <div class="form-group">
-                                <!-- Roles -->
-                                <label>Select Roles</label>
-                                <div v-for="role in Roles" :key="role.id">
-                                    <input type="checkbox" v-model="userform.roles" :value="role.name">{{ role.name}}
-                                </div>
-                                <hr>
-                                <div> <span class="btn btn-info btn-sm ml-2 mb-2">{{ userform.roles }}</span></div>
-
-                            </div>
-                            <div class="form-group">
-                                <!-- {{ Permissions }} -->
-                                <label>Select Permissions</label>
-                                <div v-for="permission in Permissions" :key="permission.id">
-                                    <input type="checkbox" v-model="userform.permissions" :value="permission.name"/>{{ permission.name}}
-                                </div>
-                                <hr>
-                                <div> <span class="btn btn-info btn-sm ml-2 mb-2">{{ userform.permissions }}</span></div>
-
-                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button v-show="editmodeUser" type="submit" class="btn btn-success">Update</button>
-                            <button v-show="!editmodeUser" type="submit" class="btn btn-primary">Create</button>
+                            <button v-show="editmodeOrganisation" type="submit" class="btn btn-success">Update</button>
+                            <button v-show="!editmodeOrganisation" type="submit" class="btn btn-primary">Create</button>
                         </div>
                     </form>
                 </div>
@@ -372,19 +397,21 @@
         name:"List",
         data(){
             return{
-                editmodeUser: false,
-                userform: new Form({
+                editmodeOrganisation: false,
+                organisationform: new Form({
                         id:'',
-                        first_name:'',
-                        last_name:'',
+                        name:'',
                         email:'',
-                        password:'',
-                        user_type:'',
-                        permissions:[],
-                        roles:[],
+                        phone:'',
+                        landline:'',
+                        website:'',
+                        address:'',
+                        country:'',
+                        county:'',
+                        town:'',
+                        logo:'',
                 }),
-                selected_permissions: [],
-                selected_roles: [],
+
             }
         },
         mounted() {
@@ -422,41 +449,41 @@
             loadRoles(){
                 return this.$store.dispatch( "roles")//get all from roles.index
             },
-            newUserModal(){
+            newOrganisationModal(){
                 console.log('new user modal')
-                 this.editmodeUser= false;
-                 this.userform.reset()
-                     $('#UserModal').modal('show')
+                 this.editmodeOrganisation= false;
+                 this.organisationform.reset()
+                     $('#OrganisationModal').modal('show')
              },
-             editUserModal(id){
-                 this.editmodeUser = true;
-                 this.userform.reset()
+             editOrganisationModal(id){
+                 this.editmodeOrganisation = true;
+                 this.organisationform.reset()
                    console.log('edit user', id)
                     this.$Progress.start();
                       axios.get('/user/edit/'+id)
                         .then((response)=>{
-                           $('#UserModal').modal('show')
+                           $('#OrganisationModal').modal('show')
                            toast({
                             type: 'success',
                             title: 'Fetched the User data successfully'
                             })
-                            this.userform.fill(response.data.user)
+                            this.organisationform.fill(response.data.user)
                                this.$Progress.finish();
                         })
                         .catch(()=>{
                             this.$Progress.fail();
                             //errors
-                            $('#UserModal').modal('show');
+                            $('#OrganisationModal').modal('show');
                             toast({
                             type: 'error',
                             title: 'There was something Wrong'
                             })
                         })
              },
-            addUser() {
+            addOrganisation() {
                 console.log('add user new')
                 this.$Progress.start();
-                this.userform.post('/user')
+                this.organisationform.post('/user')
                     .then((response)=>{
                         //  console.log(response.data)
                          toast({
@@ -464,26 +491,26 @@
                             title: 'User Created successfully'
                             })
                             this.$store.dispatch( "users")
-                            $('#UserModal').modal('hide')
+                            $('#OrganisationModal').modal('hide')
                               this.$Progress.finish()
                     })
                     .catch(()=>{
                         this.$Progress.fail()
                         //errors
-                            $('#UserModal').modal('show');
+                            $('#OrganisationModal').modal('show');
                             toast({
                                 type: 'error',
                                 title: 'There was something wrong.'
                                 })
                     })
             },
-            updateUser(id){
+            updateOrganisation(id){
                   console.log('update user')
                   this.$Progress.start();
-                     this.userform.patch('/user/update/'+id)
+                     this.organisationform.patch('/user/update/'+id)
                         .then(()=>{
                             this.$store.dispatch( "users")
-                         $('#UserModal').modal('hide')
+                         $('#OrganisationModal').modal('hide')
                          toast({
                             type: 'success',
                             title: 'User Created successfully'
@@ -512,7 +539,7 @@
                     if (result.value) {
                     //  console.log('delete user', id)
                         this.$Progress.start();
-                        this.userform.get('/user/delete/'+id)
+                        this.organisationform.get('/user/delete/'+id)
                             .then(()=>{
                             toast({
                             type: 'success',
