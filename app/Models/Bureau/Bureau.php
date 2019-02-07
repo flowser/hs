@@ -6,6 +6,7 @@ use App\Models\Standard\Town;
 use App\Models\Standard\County;
 use App\Models\Standard\Country;
 use App\Models\Househelp\Househelp;
+use App\Models\Bureau\BureauDirector;
 use App\Models\Bureau\BureauEmployee;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Organisation\Organisation;
@@ -60,6 +61,10 @@ class Bureau extends Model
 
     //has many
 
+    public function bureauedirectors()
+    {
+        return $this->hasMany()(BureauDirector::class);
+    }
     public function bureauemployees()
     {
         return $this->hasMany()(BureauEmployee::class);

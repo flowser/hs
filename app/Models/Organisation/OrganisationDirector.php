@@ -13,7 +13,7 @@ use App\Models\Househelp\Househelp;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Organisation\Organisation;
 
-class OrganisationEmployee extends Model
+class OrganisationDirector extends Model
 {
     protected $fillable = [
         'user_id',
@@ -69,6 +69,10 @@ class OrganisationEmployee extends Model
 
     //has many
 
+    public function organisationemployees()
+    {
+        return $this->hasManyThrough(OrganisationEmployee::class, Organisation::class);
+    }
     public function bureaus()
     {
         return $this->hasManyThrough(Bureau::class, Organisation::class);

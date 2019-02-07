@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Models\Organisation;
-
+namespace App\Models\Bureau;
 
 use App\Models\Bureau\Bureau;
 use App\Models\Standard\Town;
@@ -13,11 +12,11 @@ use App\Models\Househelp\Househelp;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Organisation\Organisation;
 
-class OrganisationEmployee extends Model
+class BureauEmployee extends Model
 {
     protected $fillable = [
         'user_id',
-        'organisation_id',
+        'bureau_id',
         'position_id',
         'photo',
         'active',
@@ -65,15 +64,19 @@ class OrganisationEmployee extends Model
     {
         return $this->belongsTo(Gender::class);
     }
+    public function bureau()
+    {
+        return $this->belongsTo(Bureau::class);
+    }
 
 
     //has many
 
-    public function bureaus()
-    {
-        return $this->hasManyThrough(Bureau::class, Organisation::class);
-    }
 
+    public function bureauemployees()
+    {
+        return $this->hasManyThrough(BureauEmployee::class, Bureau::class);
+    }
     public function househelps()
     {
         return $this->hasManyThrough(Househelp::class, Bureau::class);

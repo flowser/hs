@@ -2298,6 +2298,183 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "List",
   data: function data() {
@@ -2311,50 +2488,59 @@ __webpack_require__.r(__webpack_exports__);
         landline: '',
         website: '',
         address: '',
-        country: '',
-        county: '',
-        town: '',
+        country_id: '',
+        county_id: '',
+        town_id: '',
         logo: ''
       })
     };
   },
   mounted: function mounted() {
-    this.loadUsers();
-    this.loadRoles();
-    this.loadPermissions();
+    this.loadOrganisation();
+    this.loadAbout();
+    this.loadCountries();
+    this.loadCounties();
+    this.loadTowns(); ///linked to methods and actions store
   },
   computed: {
-    Users: function Users() {
-      //  console.log('edit permiion')
-      return this.$store.getters.Users;
+    Countries: function Countries() {
+      return this.$store.getters.Countries;
     },
-    Permissions: function Permissions() {
-      return this.$store.getters.Permissions;
+    Counties: function Counties() {
+      return this.$store.getters.CountryCounties;
     },
-    Roles: function Roles() {
-      return this.$store.getters.Roles;
+    Towns: function Towns() {
+      return this.$store.getters.CountyTowns;
     },
-    selectedRoles: function selectedRoles() {
-      return this.selected_roles;
+    Organisation: function Organisation() {
+      return this.$store.getters.Organisation;
     },
-    selectedPermissions: function selectedPermissions() {
-      return this.selected_permissions;
+    About: function About() {
+      return this.$store.getters.About;
     }
   },
   methods: {
-    loadUsers: function loadUsers() {
-      return this.$store.dispatch("users"); //get all from users.index
+    loadOrganisation: function loadOrganisation() {
+      return this.$store.dispatch("organisation"); //get all from organisation. organisation linked to user
     },
-    //Permissions
-    loadPermissions: function loadPermissions() {
-      return this.$store.dispatch("permissions"); //get all from roles.index
+    loadAbout: function loadAbout() {
+      return this.$store.dispatch("about"); //get all from organisation. organisation linked to user
     },
-    //Roles
-    loadRoles: function loadRoles() {
-      return this.$store.dispatch("roles"); //get all from roles.index
+    loadCountries: function loadCountries() {
+      return this.$store.dispatch("countries"); //get all from roles.index
     },
+    loadCounties: function loadCounties() {
+      return this.$store.dispatch("countrycounties"); //get all from counties.index
+    },
+    loadTowns: function loadTowns() {
+      return this.$store.dispatch("countytowns"); //get all from towns.index
+    },
+    newAboutModal: function newAboutModal() {},
+    newPicsModal: function newPicsModal() {},
+    newFilterModal: function newFilterModal() {},
+    newExtraModal: function newExtraModal() {},
+    newAdvertModal: function newAdvertModal() {},
     newOrganisationModal: function newOrganisationModal() {
-      console.log('new user modal');
       this.editmodeOrganisation = false;
       this.organisationform.reset();
       $('#OrganisationModal').modal('show');
@@ -2387,19 +2573,23 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
+    countryCounties: function countryCounties(country_id) {
+      this.$store.dispatch('countrycounties', country_id);
+    },
+    countyTowns: function countyTowns(county_id) {
+      this.$store.dispatch('countytowns', county_id); //send to store to the action with id
+    },
     addOrganisation: function addOrganisation() {
       var _this2 = this;
 
-      console.log('add user new');
+      console.log('add Organisation new');
       this.$Progress.start();
-      this.organisationform.post('/user').then(function (response) {
+      this.organisationform.post('/organisation').then(function (response) {
         //  console.log(response.data)
         toast({
           type: 'success',
-          title: 'User Created successfully'
-        });
-
-        _this2.$store.dispatch("users");
+          title: 'Organisation Created successfully'
+        }); // this.$store.dispatch( "organisation")
 
         $('#OrganisationModal').modal('hide');
 
@@ -80983,13 +81173,368 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(3)
-              ]
+                _vm._l(_vm.Organisation, function(organisation) {
+                  return _c("div", { key: organisation.id }, [
+                    _c("div", { staticClass: "card border-primary" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _vm._m(3, true),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-5 " }, [
+                          _c("div", { staticClass: "card-body text-primary" }, [
+                            _c("h5", { staticClass: "card-title" }, [
+                              _vm._v(_vm._s(organisation.name))
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "card-text" }, [
+                              _vm._v("Phone: " + _vm._s(organisation.phone))
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "card-text" }, [
+                              _vm._v(
+                                "Landline: " + _vm._s(organisation.landline)
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "card-text" }, [
+                              _vm._v(
+                                "P.O. Box " +
+                                  _vm._s(organisation.address) +
+                                  ",\n                                                              "
+                              ),
+                              _c("span", [
+                                _vm._v(_vm._s(organisation.town.name))
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(_vm._s(organisation.county.name))
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(_vm._s(organisation.country.name))
+                              ])
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-5" }, [
+                          _c("div", { staticClass: "card-body text-primary" }, [
+                            _c("p", { staticClass: "card-text" }, [
+                              _vm._v(
+                                "Email: " + _vm._s(organisation.email) + " "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "card-text" }, [
+                              _vm._v(
+                                "Website: " +
+                                  _vm._s(organisation.website) +
+                                  "  "
+                              )
+                            ])
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
+                        _vm._m(4, true),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "float-left" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "card-link",
+                              attrs: { href: "#about_us" }
+                            },
+                            [
+                              _vm._v(
+                                "Updated On: " +
+                                  _vm._s(
+                                    _vm._f("dateformat")(
+                                      organisation.created_at
+                                    )
+                                  )
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ])
+                  ])
+                })
+              ],
+              2
             ),
             _vm._v(" "),
-            _vm._m(4),
+            _c(
+              "div",
+              { staticClass: "tab-pane", attrs: { id: "about_us" } },
+              [
+                _c("div", { staticClass: "card-header" }, [
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-tools" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.newPicsModal()
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "Add New Pictures\n                                                  "
+                        ),
+                        _c("i", { staticClass: "fas fa-plus fw" })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.newAboutModal()
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "Add About Us\n                                                  "
+                        ),
+                        _c("i", { staticClass: "fas fa-plus fw" })
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.About, function(about) {
+                  return _c("div", { key: about.id }, [
+                    _c("div", { staticClass: "card" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _vm._m(6, true),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-8 " }, [
+                          _c(
+                            "div",
+                            { staticClass: "card text-white bg-danger" },
+                            [
+                              _c("div", { staticClass: "card-header" }, [
+                                _c(
+                                  "h5",
+                                  { staticClass: "card-title text-center" },
+                                  [_vm._v(_vm._s(about.title))]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "card-body" }, [
+                                _c(
+                                  "h6",
+                                  {
+                                    staticClass:
+                                      "card-subtitle mb-2 text-muted text-center"
+                                  },
+                                  [_vm._v(_vm._s(about.subtitle))]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "h5",
+                                  { staticClass: "card-title text-center" },
+                                  [_vm._v("Why Choose US")]
+                                ),
+                                _vm._v(" "),
+                                _c("p", { staticClass: "card-text" }, [
+                                  _vm._v(_vm._s(about.why_choose_us))
+                                ])
+                              ])
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card" }, [
+                        _vm._m(7, true),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body" }, [
+                          _vm._m(8, true),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "float-left" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "card-link",
+                                attrs: { href: "#about_us" }
+                              },
+                              [
+                                _vm._v(
+                                  "Updated BY: " + _vm._s(about.user.full_name)
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "card-link",
+                                attrs: { href: "#about_us" }
+                              },
+                              [
+                                _vm._v(
+                                  "Updated On: " +
+                                    _vm._s(
+                                      _vm._f("dateformat")(about.created_at)
+                                    )
+                                )
+                              ]
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c(
+                            "div",
+                            { staticClass: "card text-white bg-info" },
+                            [
+                              _vm._m(9, true),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "card-body" }, [
+                                _c("p", { staticClass: "card-text" }, [
+                                  _vm._v(_vm._s(about.why_choose_us))
+                                ])
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c(
+                            "div",
+                            { staticClass: "card text-white bg-success mb-3" },
+                            [
+                              _vm._m(10, true),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "card-body" }, [
+                                _c("p", { staticClass: "card-text" }, [
+                                  _vm._v(_vm._s(about.what_we_do))
+                                ])
+                              ])
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
+                        _vm._m(11, true),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "float-left" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "card-link",
+                              attrs: { href: "#about_us" }
+                            },
+                            [
+                              _vm._v(
+                                "Updated BY: " + _vm._s(about.user.full_name)
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "card-link",
+                              attrs: { href: "#about_us" }
+                            },
+                            [
+                              _vm._v(
+                                "Updated On: " +
+                                  _vm._s(_vm._f("dateformat")(about.created_at))
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ])
+                  ])
+                })
+              ],
+              2
+            ),
             _vm._v(" "),
-            _vm._m(5)
+            _c("div", { staticClass: "tab-pane", attrs: { id: "services" } }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._m(12),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.newFilterModal()
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "Add New Filter\n                                                  "
+                      ),
+                      _c("i", { staticClass: "fas fa-plus fw" })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.newExtraModal()
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "Add New Extra Services\n                                                  "
+                      ),
+                      _c("i", { staticClass: "fas fa-plus fw" })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.newAdvertModal()
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "Add new Advert\n                                                  "
+                      ),
+                      _c("i", { staticClass: "fas fa-plus fw" })
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(13)
+            ])
           ])
         ])
       ])
@@ -81051,7 +81596,7 @@ var render = function() {
                   [_vm._v("Add New Organisation User")]
                 ),
                 _vm._v(" "),
-                _vm._m(6)
+                _vm._m(14)
               ]),
               _vm._v(" "),
               _c(
@@ -81425,54 +81970,80 @@ var render = function() {
                         "div",
                         { staticClass: "form-group col-md-6" },
                         [
-                          _c(
-                            "label",
-                            {
-                              staticClass: " col-form-label",
-                              attrs: { for: "country" }
-                            },
-                            [_vm._v("Country")]
-                          ),
+                          _c("label", { attrs: { for: "country_id" } }, [
+                            _vm._v("Select Country")
+                          ]),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.organisationform.country,
-                                expression: "organisationform.country"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid": _vm.organisationform.errors.has(
-                                "country"
-                              )
-                            },
-                            attrs: {
-                              type: "text",
-                              name: "country",
-                              placeholder: "Country"
-                            },
-                            domProps: { value: _vm.organisationform.country },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.organisationform.country_id,
+                                  expression: "organisationform.country_id"
                                 }
-                                _vm.$set(
-                                  _vm.organisationform,
-                                  "country",
-                                  $event.target.value
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.organisationform.errors.has(
+                                  "country_id"
                                 )
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.organisationform,
+                                      "country_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    _vm.countryCounties(
+                                      _vm.organisationform.country_id
+                                    )
+                                  }
+                                ]
                               }
-                            }
-                          }),
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select Country")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Countries, function(country) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: country.id,
+                                    domProps: { value: country.id }
+                                  },
+                                  [_vm._v(_vm._s(country.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
                           _vm._v(" "),
                           _c("has-error", {
                             attrs: {
                               form: _vm.organisationform,
-                              field: "country"
+                              field: "country_id"
                             }
                           })
                         ],
@@ -81492,40 +82063,71 @@ var render = function() {
                             [_vm._v("County")]
                           ),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.organisationform.county,
-                                expression: "organisationform.county"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid": _vm.organisationform.errors.has(
-                                "county"
-                              )
-                            },
-                            attrs: {
-                              type: "text",
-                              name: "county",
-                              placeholder: "County"
-                            },
-                            domProps: { value: _vm.organisationform.county },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.organisationform.county_id,
+                                  expression: "organisationform.county_id"
                                 }
-                                _vm.$set(
-                                  _vm.organisationform,
-                                  "county",
-                                  $event.target.value
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.organisationform.errors.has(
+                                  "county_id"
                                 )
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.organisationform,
+                                      "county_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    _vm.countyTowns(
+                                      _vm.organisationform.county_id
+                                    )
+                                  }
+                                ]
                               }
-                            }
-                          }),
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select County")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Counties, function(county) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: county.id,
+                                    domProps: { value: county.id }
+                                  },
+                                  [_vm._v(_vm._s(county.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
                           _vm._v(" "),
                           _c("has-error", {
                             attrs: {
@@ -81552,40 +82154,64 @@ var render = function() {
                             [_vm._v(" Town")]
                           ),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.organisationform.town,
-                                expression: "organisationform.town"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid": _vm.organisationform.errors.has(
-                                "town"
-                              )
-                            },
-                            attrs: {
-                              type: "text",
-                              name: "town",
-                              placeholder: "Town"
-                            },
-                            domProps: { value: _vm.organisationform.town },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.organisationform.town_id,
+                                  expression: "organisationform.town_id"
                                 }
-                                _vm.$set(
-                                  _vm.organisationform,
-                                  "town",
-                                  $event.target.value
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.organisationform.errors.has(
+                                  "town_id"
                                 )
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.organisationform,
+                                    "town_id",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
                               }
-                            }
-                          }),
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select Town")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Towns, function(town) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: town.id,
+                                    domProps: { value: town.id }
+                                  },
+                                  [_vm._v(_vm._s(town.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
                           _vm._v(" "),
                           _c("has-error", {
                             attrs: { form: _vm.organisationform, field: "town" }
@@ -81878,303 +82504,461 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("img", {
+          staticClass: "card-img-top",
+          attrs: {
+            src: "http://teifinnovate.foundation/images/logo-249x249.png",
+            alt: ""
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "float-right" }, [
+      _c("a", { staticClass: "card-link", attrs: { href: "#about_us" } }, [
+        _c("i", { staticClass: "fa fa-edit blue" })
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "card-link", attrs: { href: "#about_us" } }, [
+        _c("i", { staticClass: "fa fa-trash red" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title" }, [
+      _c("a", { attrs: { href: "#general_configuration" } }, [
+        _vm._v("About Us Settings")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("img", {
+          staticClass: "card-img-top",
+          attrs: {
+            src: "http://teifinnovate.foundation/images/logo-249x249.png",
+            alt: ""
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("img", { attrs: { src: "", alt: "logo", width: "150px" } })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 " }, [
-        _c("p", [
-          _c("a", { attrs: { href: "#general_configuration" } }, [
-            _vm._v("Organisation:")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("a", { attrs: { href: "#general_configuration" } }, [
-            _vm._v("Email:")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("a", { attrs: { href: "#general_configuration" } }, [
-            _vm._v("Phone:")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("a", { attrs: { href: "#general_configuration" } }, [
-            _vm._v("Landline:")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("p", [
-          _c("a", { attrs: { href: "#general_configuration" } }, [
-            _vm._v("Website:")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("a", { attrs: { href: "#general_configuration" } }, [
-            _vm._v("Address:")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("a", { attrs: { href: "#general_configuration" } }, [
-            _vm._v("Country:")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("a", { attrs: { href: "#general_configuration" } }, [
-            _vm._v("County:")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("a", { attrs: { href: "#general_configuration" } }, [
-            _vm._v("Town:")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("p", [
-          _c("a", { attrs: { href: "#general_configuration" } }, [
-            _vm._v("Active:")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("a", { attrs: { href: "#general_configuration" } }, [
-            _vm._v("Created At:")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("a", { attrs: { href: "#general_configuration" } }, [
-            _vm._v("Updated At:")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "" } }, [
-          _c("i", { staticClass: "fa fa-edit blue" })
-        ]),
-        _vm._v(
-          "\n                                              /\n                                              "
-        ),
-        _c("a", { attrs: { href: "" } }, [
-          _c("i", { staticClass: "fa fa-trash red" })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tab-pane", attrs: { id: "about_us" } }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("img", { attrs: { src: "", alt: "front_image", width: "150px" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-8 " }, [
-          _c("p", [
-            _c("a", { attrs: { href: "#about_us" } }, [_vm._v("Title:")])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#about_us" } }, [_vm._v("Subtitle:")])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#about_us" } }, [_vm._v("Why choose us")])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#about_us" } }, [_vm._v("Updated BY:")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-2" }, [
-          _c("img", { attrs: { src: "", alt: "about_image1", width: "250px" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-2" }, [
-          _c("img", { attrs: { src: "", alt: "about_image2", width: "250px" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-2" }, [
-          _c("img", { attrs: { src: "", alt: "about_image3", width: "250px" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-2" }, [
-          _c("img", { attrs: { src: "", alt: "about_image4", width: "250px" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-2" }, [
-          _c("img", { attrs: { src: "", alt: "about_image5", width: "250px" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-2" }, [
-          _c("img", { attrs: { src: "", alt: "about_image6", width: "250px" } })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("p", [
-            _c("a", { attrs: { href: "#about_us" } }, [_vm._v("Who We are:")]),
-            _vm._v(
-              "Lepfffffffffffff\n                                              ffffffffffffffffffffffffffff;\n                                              ddddddddddddddddddd  bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("p", [
-            _c("a", { attrs: { href: "#about_us" } }, [_vm._v("What We do:")]),
-            _vm._v(
-              "Lepfffffffffffff\n                                              ffffffffffffffffffffffffffff;\n                                              ddddddddddddddddddd  bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb  "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "float-right" }, [
-            _c("p", [
-              _c("a", { attrs: { href: "#about_us" } }, [
-                _vm._v("Updated At:")
-              ]),
-              _vm._v(" 12.pm ")
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("a", { attrs: { href: "#about_us" } }, [
-                _vm._v("Updated by:")
-              ]),
-              _vm._v("felix nyachio  ")
-            ]),
-            _vm._v(" "),
-            _c("a", { attrs: { href: "" } }, [
-              _c("i", { staticClass: "fa fa-edit blue" })
-            ]),
-            _vm._v(
-              "\n                                                  /\n                                                  "
-            ),
-            _c("a", { attrs: { href: "" } }, [
-              _c("i", { staticClass: "fa fa-trash red" })
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tab-pane", attrs: { id: "services" } }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-12 " }, [
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v("Filter Title:")])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v("Details:")])
-          ]),
-          _vm._v(" "),
-          _c("p", [_c("a", { attrs: { href: "#services" } }, [_vm._v("Why")])]),
-          _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v("Updated BY:")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("img", { attrs: { src: "", alt: "advert_image", width: "250px" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v("advert Title:")])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [
-              _vm._v("advert Details:")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v("Updated BY:")])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v("created at:")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-4" }, [
+      _c("div", { staticClass: "col-md-2" }, [
+        _c("div", { staticClass: "card text-white bg-success mb-3" }, [
           _c("img", {
-            attrs: { src: "", alt: "teif advert_image", width: "250px" }
+            staticClass: "card-img-top",
+            attrs: {
+              src: "http://teifinnovate.foundation/images/logo-249x249.png",
+              alt: ""
+            }
           })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [
-              _vm._v("teif advert Title:")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2" }, [
+        _c("div", { staticClass: "card text-white bg-success mb-3" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: {
+              src: "http://teifinnovate.foundation/images/logo-249x249.png",
+              alt: ""
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2" }, [
+        _c("div", { staticClass: "card text-white bg-success mb-3" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: {
+              src: "http://teifinnovate.foundation/images/logo-249x249.png",
+              alt: ""
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2" }, [
+        _c("div", { staticClass: "card text-white bg-success mb-3" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: {
+              src: "http://teifinnovate.foundation/images/logo-249x249.png",
+              alt: ""
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2" }, [
+        _c("div", { staticClass: "card text-white bg-success mb-3" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: {
+              src: "http://teifinnovate.foundation/images/logo-249x249.png",
+              alt: ""
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2" }, [
+        _c("div", { staticClass: "card text-white bg-success mb-3" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: {
+              src: "http://teifinnovate.foundation/images/logo-249x249.png",
+              alt: ""
+            }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "float-right" }, [
+      _c("a", { staticClass: "card-link", attrs: { href: "#about_us" } }, [
+        _c("i", { staticClass: "fa fa-edit blue" })
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "card-link", attrs: { href: "#about_us" } }, [
+        _c("i", { staticClass: "fa fa-trash red" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h5", { staticClass: "card-title text-center" }, [
+        _vm._v("Who We Are")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h5", { staticClass: "card-title text-center" }, [
+        _vm._v("What We Do")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "float-right" }, [
+      _c("a", { staticClass: "card-link", attrs: { href: "#about_us" } }, [
+        _c("i", { staticClass: "fa fa-edit blue" })
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "card-link", attrs: { href: "#about_us" } }, [
+        _c("i", { staticClass: "fa fa-trash red" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title" }, [
+      _c("a", { attrs: { href: "#general_configuration" } }, [
+        _vm._v("About Us Settings")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card border-primary" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-3 " }, [
+          _c("div", { staticClass: "card text-white bg-success mb-3" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _c("h5", { staticClass: "card-title text-center" }, [
+                _vm._v(
+                  "hhh\n                                                              "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v(
+                  "hhh\n                                                              "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v(
+                  "hhhh\n                                                              "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "float-right" }, [
+                _c(
+                  "a",
+                  { staticClass: "card-link", attrs: { href: "#services" } },
+                  [_c("i", { staticClass: "fa fa-edit blue" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "card-link", attrs: { href: "#services" } },
+                  [_c("i", { staticClass: "fa fa-trash red" })]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "float-left" }, [
+                _c(
+                  "a",
+                  { staticClass: "card-link", attrs: { href: "#services" } },
+                  [
+                    _vm._v(
+                      "Up:hh\n                                                                   "
+                    )
+                  ]
+                )
+              ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v("subtitle:")])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v(" Details:")])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v("Updated BY:")])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v("created at:")])
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-2" }, [
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v("extra Title:")])
+      _c("div", { staticClass: "card border-danger" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-4" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("img", {
+                staticClass: "card-img-top",
+                attrs: {
+                  src: "http://teifinnovate.foundation/images/logo-249x249.png",
+                  alt: ""
+                }
+              })
+            ])
           ]),
           _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v(" Details:")])
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("h5", { staticClass: "card-title text-center" }, [
+              _vm._v(
+                "advert Title:\n                                                            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("p", { staticClass: "card-text text-center" }, [
+                _vm._v(
+                  "advert Details:\n                                                              "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v(
+                  "hhhh\n                                                              "
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "float-right" }, [
+            _c(
+              "a",
+              { staticClass: "card-link", attrs: { href: "#services" } },
+              [_c("i", { staticClass: "fa fa-edit blue" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              { staticClass: "card-link", attrs: { href: "#services" } },
+              [_c("i", { staticClass: "fa fa-trash red" })]
+            )
           ]),
           _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v(" Why:")])
+          _c("div", { staticClass: "float-left" }, [
+            _c(
+              "a",
+              { staticClass: "card-link", attrs: { href: "#services" } },
+              [
+                _vm._v(
+                  "Updated BY:\n                                                    "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              { staticClass: "card-link", attrs: { href: "#services" } },
+              [
+                _vm._v(
+                  "Created AT:\n                                                                   "
+                )
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card border-success" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-4" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("img", {
+                staticClass: "card-img-top",
+                attrs: {
+                  src: "http://teifinnovate.foundation/images/logo-249x249.png",
+                  alt: ""
+                }
+              })
+            ])
           ]),
           _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v("Updated BY:")])
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("h5", { staticClass: "card-title text-center" }, [
+              _vm._v(
+                "Teif advert Title:\n                                                            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("p", { staticClass: "card-text text-center" }, [
+                _vm._v(
+                  "advert Details:\n                                                              "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v(
+                  "hhhh\n                                                              "
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "float-right" }, [
+            _c(
+              "a",
+              { staticClass: "card-link", attrs: { href: "#services" } },
+              [_c("i", { staticClass: "fa fa-edit blue" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              { staticClass: "card-link", attrs: { href: "#services" } },
+              [_c("i", { staticClass: "fa fa-trash red" })]
+            )
           ]),
           _vm._v(" "),
-          _c("p", [
-            _c("a", { attrs: { href: "#services" } }, [_vm._v("created at:")])
+          _c("div", { staticClass: "float-left" }, [
+            _c(
+              "a",
+              { staticClass: "card-link", attrs: { href: "#services" } },
+              [
+                _vm._v(
+                  "Updated BY:\n                                                                   "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              { staticClass: "card-link", attrs: { href: "#services" } },
+              [
+                _vm._v(
+                  "Created AT:\n                                                                   "
+                )
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card border-warning" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("div", { staticClass: "card text-white bg-success mb-3" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("h5", { staticClass: "card-title text-center" }, [
+                  _vm._v(
+                    "Extra\n                                                                  "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v(
+                    "hhh\n                                                                  "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v(
+                    "hhhh\n                                                                  "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "float-right" }, [
+                  _c(
+                    "a",
+                    { staticClass: "card-link", attrs: { href: "#services" } },
+                    [_c("i", { staticClass: "fa fa-edit blue" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    { staticClass: "card-link", attrs: { href: "#services" } },
+                    [_c("i", { staticClass: "fa fa-trash red" })]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "float-left" }, [
+                  _c(
+                    "a",
+                    { staticClass: "card-link", attrs: { href: "#services" } },
+                    [
+                      _vm._v(
+                        "Up:hh\n                                                                      "
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ])
           ])
         ])
       ])
@@ -99384,6 +100168,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_permission__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/permission */ "./resources/js/store/modules/permission.js");
 /* harmony import */ var _modules_role__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/role */ "./resources/js/store/modules/role.js");
 /* harmony import */ var _modules_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/user */ "./resources/js/store/modules/user.js");
+/* harmony import */ var _modules_countries__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/countries */ "./resources/js/store/modules/countries.js");
+/* harmony import */ var _modules_counties__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/counties */ "./resources/js/store/modules/counties.js");
+/* harmony import */ var _modules_towns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/towns */ "./resources/js/store/modules/towns.js");
+/* harmony import */ var _modules_organisation_organisation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/organisation/organisation */ "./resources/js/store/modules/organisation/organisation.js");
+/* harmony import */ var _modules_organisation_webpages_about__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/organisation/webpages/about */ "./resources/js/store/modules/organisation/webpages/about.js");
+// import Axios from "axios";
 // import Axios from "axios";
 // // import Vue from 'vue'
 // // import Vuex from 'vuex'
@@ -99414,47 +100204,52 @@ __webpack_require__.r(__webpack_exports__);
 //       }
 //     }
 // //roles module
-//     const roleModule = {
-//       state:{
-//         roles:[],
-//       },
-//       getters:{
-//         Roles(state){
-//           return state.roles
-//         }
-//       },
-//       actions:{
-//         roles(context){//permission.index route laravel
-//           axios.get('/role-list')
-//           .then((response)=>{
-//             console.log(response.data.roles)
-//             context.commit('roles', response.data.roles)
-//           })
-//         }
-//       },
-//       mutations:{
-//         roles(state, data){
-//           return state.roles = data
-//         }
-//       }
-//     }
-// import Vue from 'vue';
-// import Vuex from 'vuex';// import Axios from "axios";
-// import permission from './modules/permission';
-// import role from './modules/role';
-// import user from './modules/user';
-// // Vue.use(Vuex)
-// export default ({
-//       modules: {
-//         permission:
-//               role:
-//               user:
-//       }
-//     })
-// store.state.permission // -> `permModule`'s state
-// store.state.role // -> `roleModule`'s state
-// import Vue from 'vue'
-// import Vuex from 'vuex'
+var country = {
+  state: {
+    countries: []
+  },
+  getters: {
+    Countries: function Countries(state) {
+      return state.countries;
+    }
+  },
+  actions: {
+    countries: function countries(context) {
+      //permission.index route laravel
+      axios.get('/country/get').then(function (response) {
+        console.log(response.data.countries);
+        context.commit('countries', response.data.countries);
+      });
+    }
+  },
+  mutations: {
+    countries: function countries(state, data) {
+      return state.countries = data;
+    }
+  } // import Vue from 'vue';
+  // import Vuex from 'vuex';// import Axios from "axios";
+  // import permission from './modules/permission';
+  // import role from './modules/role';
+  // import user from './modules/user';
+  // // Vue.use(Vuex)
+  // export default ({
+  //       modules: {
+  //         permission:
+  //               role:
+  //               user:
+  //       }
+  //     })
+  // store.state.permission // -> `permModule`'s state
+  // store.state.role // -> `roleModule`'s state
+  // import Vue from 'vue'
+  // import Vuex from 'vuex'
+
+};
+
+
+
+
+
 
 
  // Vue.use(Vuex)
@@ -99464,10 +100259,222 @@ __webpack_require__.r(__webpack_exports__);
   modules: {
     user: _modules_user__WEBPACK_IMPORTED_MODULE_2__["default"],
     permission: _modules_permission__WEBPACK_IMPORTED_MODULE_0__["default"],
-    role: _modules_role__WEBPACK_IMPORTED_MODULE_1__["default"]
+    role: _modules_role__WEBPACK_IMPORTED_MODULE_1__["default"],
+    countries: _modules_countries__WEBPACK_IMPORTED_MODULE_3__["default"],
+    counties: _modules_counties__WEBPACK_IMPORTED_MODULE_4__["default"],
+    towns: _modules_towns__WEBPACK_IMPORTED_MODULE_5__["default"],
+    organisation: _modules_organisation_organisation__WEBPACK_IMPORTED_MODULE_6__["default"],
+    about: _modules_organisation_webpages_about__WEBPACK_IMPORTED_MODULE_7__["default"]
   } // strict: debug,
   // plugins: debug ? [createLogger()] : []
 
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/counties.js":
+/*!************************************************!*\
+  !*** ./resources/js/store/modules/counties.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//permission
+var state = {
+  counties: [],
+  //general counties
+  countrycounties: [] //counties per coutrt id and general counies without link with countyid
+
+},
+    getters = {
+  Counties: function Counties(state) {
+    return state.counties;
+  },
+  CountryCounties: function CountryCounties(state) {
+    return state.countrycounties;
+  }
+};
+var actions = {
+  counties: function counties(context) {
+    axios.get('/country/get').then(function (response) {
+      console.log(response.data.counties);
+      context.commit('counties', response.data.counties);
+    });
+  },
+  countrycounties: function countrycounties(context, payload) {
+    axios.get('/county/get/list/' + payload) //counties by country id
+    .then(function (response) {
+      context.commit('countrycounties', response.data.counties);
+      console.log(response.data.counties);
+    });
+  }
+};
+var mutations = {
+  counties: function counties(state, data) {
+    return state.counties = data;
+  },
+  countrycounties: function countrycounties(state, payload) {
+    return state.countrycounties = payload;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/countries.js":
+/*!*************************************************!*\
+  !*** ./resources/js/store/modules/countries.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//permission
+var state = {
+  countries: []
+},
+    getters = {
+  Countries: function Countries(state) {
+    return state.countries;
+  }
+};
+var actions = {
+  countries: function countries(context) {
+    axios.get('/country/get').then(function (response) {
+      console.log(response.data.countries);
+      context.commit('countries', response.data.countries);
+    });
+  }
+};
+var mutations = {
+  countries: function countries(state, data) {
+    return state.countries = data;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/organisation/organisation.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/store/modules/organisation/organisation.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//permission
+var state = {
+  organisation: [],
+  organisations: []
+},
+    getters = {
+  Organisation: function Organisation(state) {
+    return state.organisation;
+  },
+  Organisations: function Organisations(state) {
+    return state.organisations;
+  }
+};
+var actions = {
+  organisation: function organisation(context) {
+    axios.get('/organisation/get').then(function (response) {
+      console.log(response.data.organisation);
+      context.commit('organisation', response.data.organisation);
+    });
+  },
+  organisations: function organisations(context) {
+    axios.get('/organisations/get').then(function (response) {
+      console.log(response.data.organisations);
+      context.commit('organisations', response.data.organisations);
+    });
+  }
+};
+var mutations = {
+  organisation: function organisation(state, data) {
+    return state.organisation = data;
+  },
+  organisations: function organisations(state, data) {
+    return state.organisations = data;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/organisation/webpages/about.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/store/modules/organisation/webpages/about.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//permission
+var state = {
+  about: [],
+  abouts: []
+},
+    getters = {
+  About: function About(state) {
+    return state.about;
+  },
+  Abouts: function Abouts(state) {
+    return state.abouts;
+  }
+};
+var actions = {
+  about: function about(context) {
+    axios.get('/about/get') //based on authethicated id
+    .then(function (response) {
+      console.log(response.data.about);
+      context.commit('about', response.data.about); //based on authethicated id
+    });
+  },
+  abouts: function abouts(context) {
+    axios.get('/abouts/get').then(function (response) {
+      console.log(response.data.abouts);
+      context.commit('abouts', response.data.abouts);
+    });
+  }
+};
+var mutations = {
+  about: function about(state, data) {
+    return state.about = data;
+  },
+  abouts: function abouts(state, data) {
+    return state.abouts = data;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
 });
 
 /***/ }),
@@ -99544,6 +100551,60 @@ var actions = {
 var mutations = {
   roles: function roles(state, data) {
     return state.roles = data;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/towns.js":
+/*!*********************************************!*\
+  !*** ./resources/js/store/modules/towns.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//permission
+var state = {
+  towns: [],
+  countytowns: []
+},
+    getters = {
+  Towns: function Towns(state) {
+    return state.towns;
+  },
+  CountyTowns: function CountyTowns(state) {
+    return state.countytowns;
+  }
+};
+var actions = {
+  towns: function towns(context) {
+    axios.get('/towns/get').then(function (response) {
+      context.commit('towns', response.data.towns);
+    });
+  },
+  countytowns: function countytowns(context, payload) {
+    axios.get('/town/get/list/' + payload) //towns by countytowns id
+    .then(function (response) {
+      context.commit('countytowns', response.data.towns);
+      console.log(response.data.towns);
+    });
+  }
+};
+var mutations = {
+  towns: function towns(state, data) {
+    return state.towns = data;
+  },
+  countytowns: function countytowns(state, payload) {
+    return state.countytowns = payload;
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({

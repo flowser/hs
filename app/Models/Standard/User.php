@@ -11,6 +11,7 @@ use App\Models\Househelp\HousehelpKin;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Organisation\Organisation;
+use App\Models\Standard\Webservices\About;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Organisation\OrganisationEmployee;
@@ -22,7 +23,7 @@ class User extends Authenticatable
         Notifiable,
         // SendUserPasswordReset,
         SoftDeletes;
-    
+
 
 
     /**
@@ -72,12 +73,12 @@ class User extends Authenticatable
         'active' => 'boolean',
         'confirmed' => 'boolean',
     ];
-    
+
       public function getFullNameAttribute()
       {
           return $this->last_name ? $this->first_name.' '.$this->last_name : $this->first_name;
       }
-  
+
       /**
        * @return string
        */
@@ -94,7 +95,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(OrganisationEmployee::class);
     }
-    
+
       public function bureau()
     {
         return $this->hasOne(Bureau::class);
@@ -116,8 +117,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Client::class);
     }
+    public function abouts()
+    {
+        return $this->hasMany(About::class);
+    }
 
 
-                                        
+
 
 }

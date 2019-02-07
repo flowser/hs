@@ -14,6 +14,7 @@ use App\Models\Standard\Webservices\About;
 use App\Models\Standard\Webservices\Advert;
 use App\Models\Standard\Webservices\Service;
 use App\Models\Standard\Webservices\AboutPic;
+use App\Models\Organisation\OrganisationDirector;
 use App\Models\Organisation\OrganisationEmployee;
 use App\Models\Standard\Webservices\ExtraService;
 use App\Models\Standard\Webservices\ServiceFilter;
@@ -51,8 +52,13 @@ class Organisation extends Model
     {
         return $this->belongsTo(Town::class);
     }
+    
 
     //has many
+    public function organisationdirectors()
+    {
+        return $this->hasMany(OrganisationDirector::class);
+    }
     public function organisationemployees()
     {
         return $this->hasMany(OrganisationEmployee::class);
@@ -96,5 +102,6 @@ class Organisation extends Model
     {
         return $this->hasMany(Advert::class);
     }
+
 
 }

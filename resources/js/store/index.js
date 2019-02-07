@@ -1,4 +1,5 @@
 // import Axios from "axios";
+// import Axios from "axios";
 
 // // import Vue from 'vue'
 // // import Vuex from 'vuex'
@@ -29,30 +30,30 @@
 //       }
 //     }
 // //roles module
-//     const roleModule = {
-//       state:{
-//         roles:[],
-//       },
-//       getters:{
-//         Roles(state){
-//           return state.roles
-//         }
-//       },
-//       actions:{
-//         roles(context){//permission.index route laravel
-//           axios.get('/role-list')
-//           .then((response)=>{
-//             console.log(response.data.roles)
-//             context.commit('roles', response.data.roles)
-//           })
-//         }
-//       },
-//       mutations:{
-//         roles(state, data){
-//           return state.roles = data
-//         }
-//       }
-//     }
+    const country = {
+      state:{
+        countries:[],
+      },
+      getters:{
+        Countries(state){
+          return state.countries
+        }
+      },
+      actions:{
+        countries(context){//permission.index route laravel
+          axios.get('/country/get')
+          .then((response)=>{
+            console.log(response.data.countries)
+            context.commit('countries', response.data.countries)
+          })
+        }
+      },
+      mutations:{
+        countries(state, data){
+          return state.countries = data
+        }
+      }
+    }
 
 
     // import Vue from 'vue';
@@ -83,6 +84,11 @@
         import permission from './modules/permission';
         import role from './modules/role';
         import user from './modules/user';
+        import countries from './modules/countries';
+        import counties from './modules/counties';
+        import towns from './modules/towns';
+        import organisation from './modules/organisation/organisation';
+        import about from './modules/organisation/webpages/about';
 
         // Vue.use(Vuex)
 
@@ -93,6 +99,11 @@
             user,
             permission,
             role,
+            countries,
+            counties,
+            towns,
+            organisation,
+            about,
           },
           // strict: debug,
           // plugins: debug ? [createLogger()] : []

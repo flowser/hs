@@ -23,7 +23,7 @@ const mutations = {
         return state.permissions = data
       }
     }
-  
+
   export default {
     // namespaced: true,
     state,

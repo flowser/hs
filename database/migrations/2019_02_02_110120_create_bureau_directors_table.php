@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrganisationEmployersTable extends Migration
+class CreateBureauDirectorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateOrganisationEmployersTable extends Migration
      */
     public function up()
     {
-        Schema::create('organisation_employers', function (Blueprint $table) {
+        Schema::create('bureau_directors', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('organisation_id');
+            $table->unsignedInteger('bureau_id');
             $table->unsignedInteger('position_id');
             $table->unsignedInteger('gender_id');
             $table->string('photo')->nullable();
@@ -36,7 +36,7 @@ class CreateOrganisationEmployersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('organisation_id')->references('id')->on('organisations')->onDelete('cascade');
+            $table->foreign('bureau_id')->references('id')->on('bureaus')->onDelete('cascade');
             $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->foreign('county_id')->references('id')->on('counties')->onDelete('cascade');
@@ -53,6 +53,6 @@ class CreateOrganisationEmployersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('organisation_employers');
+        Schema::dropIfExists('bureau_directors');
     }
 }
