@@ -3,6 +3,8 @@
 namespace App\Models\Standard;
 
 
+
+
 use App\Models\Bureau\Bureau;
 use App\Models\Client\Client;
 use App\Models\Househelp\Househelp;
@@ -14,6 +16,7 @@ use App\Models\Organisation\Organisation;
 use App\Models\Standard\Webservices\About;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Organisation\OrganisationDirector;
 use App\Models\Organisation\OrganisationEmployee;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -90,6 +93,10 @@ class User extends Authenticatable
       public function organisation()
     {
         return $this->hasOne(Organisation::class);
+    }
+    public function organisationdirector()
+    {
+        return $this->hasOne(OrganisationDirector::class);
     }
     public function organisationemployee()
     {

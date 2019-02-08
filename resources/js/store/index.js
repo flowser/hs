@@ -30,30 +30,30 @@
 //       }
 //     }
 // //roles module
-    const country = {
-      state:{
-        countries:[],
-      },
-      getters:{
-        Countries(state){
-          return state.countries
-        }
-      },
-      actions:{
-        countries(context){//permission.index route laravel
-          axios.get('/country/get')
-          .then((response)=>{
-            console.log(response.data.countries)
-            context.commit('countries', response.data.countries)
-          })
-        }
-      },
-      mutations:{
-        countries(state, data){
-          return state.countries = data
-        }
-      }
-    }
+    // const country = {
+    //   state:{
+    //     countries:[],
+    //   },
+    //   getters:{
+    //     Countries(state){
+    //       return state.countries
+    //     }
+    //   },
+    //   actions:{
+    //     countries(context){//permission.index route laravel
+    //       axios.get('/country/get')
+    //       .then((response)=>{
+    //         console.log(response.data.countries)
+    //         context.commit('countries', response.data.countries)
+    //       })
+    //     }
+    //   },
+    //   mutations:{
+    //     countries(state, data){
+    //       return state.countries = data
+    //     }
+    //   }
+    // }
 
 
     // import Vue from 'vue';
@@ -89,6 +89,7 @@
         import towns from './modules/towns';
         import organisation from './modules/organisation/organisation';
         import about from './modules/organisation/webpages/about';
+        import service from './modules/organisation/webpages/service';
 
         // Vue.use(Vuex)
 
@@ -104,6 +105,7 @@
             towns,
             organisation,
             about,
+            service,
           },
           // strict: debug,
           // plugins: debug ? [createLogger()] : []

@@ -5,6 +5,7 @@ namespace App\Models\Organisation;
 
 use App\Models\Bureau\Bureau;
 use App\Models\Standard\Town;
+use App\Models\Standard\User;
 use App\Models\Standard\County;
 use App\Models\Standard\Gender;
 use App\Models\Standard\Country;
@@ -64,6 +65,10 @@ class OrganisationEmployee extends Model
     public function gender()
     {
         return $this->belongsTo(Gender::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 

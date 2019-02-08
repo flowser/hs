@@ -9,10 +9,12 @@ use App\Models\Standard\Gender;
 use App\Models\Standard\Country;
 use App\Models\Standard\Position;
 use App\Models\Househelp\Househelp;
+use App\Models\Bureau\BureauEmployee;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Organisation\Organisation;
 
-class BureauEmployee extends Model
+
+class BureauDirector extends Model
 {
     protected $fillable = [
         'user_id',

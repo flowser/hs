@@ -57,10 +57,12 @@ Vue.component(AlertError.name, AlertError)
 window.Form = Form;
 
 //editor support
-import 'v-markdown-editor/dist/index.css';
-import Editor from 'v-markdown-editor';
-// global register
-Vue.use(Editor);
+// import 'v-markdown-editor/dist/index.css';
+// import Editor from 'v-markdown-editor';
+// // global register
+// Vue.use(Editor);
+
+
 
 //vrouter
 const router = new VueRouter({

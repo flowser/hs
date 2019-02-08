@@ -17,6 +17,8 @@ use App\Models\Standard\Webservices\AboutPic;
 use App\Models\Standard\Webservices\ExtraService;
 use App\Models\Standard\Webservices\ServiceFilter;
 
+
+
 class Bureau extends Model
 {
     protected $fillable = [
