@@ -14,6 +14,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Organisation\Organisation;
 use App\Models\Standard\Webservices\About;
+use App\Models\Standard\Webservices\AboutPic;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Organisation\OrganisationDirector;
@@ -127,6 +128,10 @@ class User extends Authenticatable
     public function abouts()
     {
         return $this->hasMany(About::class);
+    }
+    public function aboutpics()
+    {
+        return $this->hasManyThrough(AboutPic::class, About::class);
     }
 
 

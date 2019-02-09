@@ -175,8 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-        Spatie\Html\HtmlServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+        Propaganistas\LaravelPhone\PhoneServiceProvider::class,
 
     ],
 

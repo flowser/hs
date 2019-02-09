@@ -14,9 +14,9 @@ const store = new Vuex.Store(
 //support moemnt js
 import {filter} from './filter';
 
-// support boostrap-vue
-// import BootstrapVue from 'bootstrap-vue';
-// Vue.use(BootstrapVue);
+//suport Phone input vue-tel-input
+import VueTelInput from 'vue-tel-input'
+Vue.use(VueTelInput)
 
 //vue-router support
 import VueRouter from 'vue-router';

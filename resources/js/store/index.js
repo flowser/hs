@@ -89,6 +89,7 @@
         import towns from './modules/towns';
         import organisation from './modules/organisation/organisation';
         import about from './modules/organisation/webpages/about';
+        import aboutpic from './modules/organisation/webpages/aboutpic';
         import service from './modules/organisation/webpages/service';
 
         // Vue.use(Vuex)
@@ -105,6 +106,7 @@
             towns,
             organisation,
             about,
+            aboutpic,
             service,
           },
           // strict: debug,

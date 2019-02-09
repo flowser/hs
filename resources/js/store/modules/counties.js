@@ -15,7 +15,7 @@ const state = {
   };
 const actions = {
     counties(context){
-        axios.get('/country/get')
+        axios.get('/county/get')
         .then((response)=>{
           console.log(response.data.counties);
           context.commit('counties', response.data.counties);

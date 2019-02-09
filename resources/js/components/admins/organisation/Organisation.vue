@@ -162,11 +162,15 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="float-right">
-                                                    <a href="#about_us" class="card-link"> <i class="fa fa-edit blue"></i></a>
-                                                    <a href="#about_us" class="card-link"><i class="fa fa-trash red"></i></a>
+                                                    <a href="" class="card-link" @click.prevent="editOrganisationModal(organisation.id)">
+                                                         <i class="fa fa-edit blue"> Edit</i>
+                                                    </a>
+                                                    <!-- <a href="" class="card-link" @click.prevent="deleteOrganisation(organisation.id)">
+                                                        <i class="fa fa-trash red"></i>
+                                                    </a> -->
                                                 </div>
                                                 <div class="float-left">
-                                                    <a href="#about_us" class="card-link">Updated On: {{organisation.created_at | dateformat}}</a>
+                                                    <a href="#about_us" class="card-link">Updated On: {{organisation.updated_at | dateformat}}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,7 +217,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div v-for="aboutpic in about.aboutpics" :key="aboutpic.id">
+                                            <div v-for="aboutpic in AboutPic" :key="aboutpic.id">
                                                 <div class="card" >
                                                     <div class="row">
                                                         <div class="col-md-2">
@@ -231,43 +235,49 @@
                                                                     <!-- {{aboutpic.about_image1}} -->
                                                                 <!-- </div> -->
                                                                 <!-- {{about.aboutpics}} -->
-                                                                <img :src="aboutImage1(aboutpic.about_image1)" alt="" width="150" >
+                                                                <img :src="aboutLoadImage1(aboutpic.about_image1)" alt="" width="150" >
                                                             <!-- </div> -->
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="card text-white bg-success mb-3" >
-                                                                <img :src="aboutImage2(aboutpic.about_image2)" alt="" >
+                                                                <img :src="aboutLoadImage2(aboutpic.about_image2)" alt="" >
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="card text-white bg-success mb-3" >
-                                                                <img :src="aboutImage3(aboutpic.about_image3)" alt="" >
+                                                                <img :src="aboutLoadImage3(aboutpic.about_image3)" alt="" >
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="card text-white bg-success mb-3" >
-                                                                <img :src="aboutImage4(aboutpic.about_image4)" alt="" >
+                                                                <img :src="aboutLoadImage4(aboutpic.about_image4)" alt="" >
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="card text-white bg-success mb-3" >
-                                                                <img :src="aboutImage5(aboutpic.about_image5)" alt="" >
+                                                                <img :src="aboutLoadImage5(aboutpic.about_image5)" alt="" >
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="card text-white bg-success mb-3" >
-                                                                <img :src="aboutImage6(aboutpic.about_image6)" alt="" >
+                                                                <img :src="aboutLoadImage6(aboutpic.about_image6)" alt="" >
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="float-right">
-                                                            <a href="#about_us" class="card-link"> <i class="fa fa-edit blue"></i></a>
-                                                            <a href="#about_us" class="card-link"><i class="fa fa-trash red"></i></a>
+                                                            <a href="" class="card-link" @click.prevent="editAboutPicsModal(aboutpic.id)">
+                                                            <i class="fa fa-edit blue"> Edit</i>
+                                                            </a>
+                                                            <a href="" class="card-link" @click.prevent="deleteAboutPics(aboutpic.id)">
+                                                                <i class="fa fa-trash red"></i>
+                                                            </a>
                                                         </div>
                                                         <div class="float-left">
+                                                            <!-- {{AboutPic}} -->
                                                             <a href="#about_us" class="card-link">Updated BY: {{aboutpic.user.full_name}}</a>
                                                             <a href="#about_us" class="card-link">Updated On: {{aboutpic.created_at | dateformat}}</a>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -296,12 +306,16 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="float-right">
-                                                    <a href="#about_us" class="card-link"> <i class="fa fa-edit blue"></i></a>
-                                                    <a href="#about_us" class="card-link"><i class="fa fa-trash red"></i></a>
+                                                    <<a href="" class="card-link" @click.prevent="editAboutModal(about.id)">
+                                                         <i class="fa fa-edit blue"> Edit</i>
+                                                    </a>
+                                                    <!-- <a href="" class="card-link" @click.prevent="deleteOrganisation(organisation.id)">
+                                                        <i class="fa fa-trash red"></i>
+                                                    </a> -->
                                                 </div>
                                                 <div class="float-left">
                                                     <a href="#about_us" class="card-link">Updated BY: {{about.user.full_name}}</a>
-                                                    <a href="#about_us" class="card-link">Updated On: {{about.created_at | dateformat}}</a>
+                                                    <a href="#about_us" class="card-link">Updated On: {{about.updated_at | dateformat}}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -490,39 +504,53 @@
                                     <label for="name" class="col-form-label"> Organisation Name</label>
                                     <input v-model="organisationform.name" type="text" name="name" placeholder="Organisation Name"
                                         class="form-control" :class="{ 'is-invalid': organisationform.errors.has('name') }" >
-                                    <has-error :form="organisationform" field="name"></has-error>
+                                    <has-error style="color: #e83e8c" :form="organisationform" field="name"></has-error>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="email" class=" col-form-label">Email </label>
                                     <input v-model="organisationform.email" type="email" name="email" placeholder="Email Address"
                                         class="form-control" :class="{ 'is-invalid': organisationform.errors.has('email') }" >
-                                    <has-error :form="organisationform" field="email"></has-error>
+                                    <has-error style="color: #e83e8c" :form="organisationform" field="email"></has-error>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="phone" class="col-form-label"> Organisation Phone</label>
-                                    <input v-model="organisationform.phone" type="text" name="phone" placeholder="Organisation Phone"
-                                        class="form-control" :class="{ 'is-invalid': organisationform.errors.has('phone') }" >
-                                    <has-error :form="organisationform" field="phone"></has-error>
+                                        <div>
+                                            <vue-tel-input v-model="organisationform.phone" name="phone" @onInput="InputPhone"
+                                            class="form-control" :class="{ 'is-invalid': organisationform.errors.has('phone') }">
+                                            </vue-tel-input>
+                                            <has-error style="color: #e83e8c" :form="organisationform" field="phone"></has-error>
+                                        </div>
+                                        <div v-if="organisationform.phone" style="color: #e83e8c">
+                                            <span>Is valid: <strong>{{phone1.isValid}}</strong>,&nbsp;</span>
+                                            <span>Country: <strong>{{phone1.country}}</strong></span>
+                                       </div>
                                 </div>
                             </div>
                             <div class=" row">
                                 <div class="form-group col-md-4">
                                     <label for="landline" class=" col-form-label">Landline</label>
-                                    <input v-model="organisationform.landline" type="text" name="landline" placeholder="landline"
-                                        class="form-control" :class="{ 'is-invalid': organisationform.errors.has('landline') }" >
-                                    <has-error :form="organisationform" field="landline"></has-error>
+                                        <vue-tel-input v-model="organisationform.landline" name="landline" @onInput="InputLandline"
+                                             class="form-control" :class="{ 'is-invalid': organisationform.errors.has('landline') }">
+                                        </vue-tel-input>
+                                        <has-error style="color: #e83e8c" :form="organisationform" field="landline"></has-error>
+
+                                        <div v-if="organisationform.landline" style="color: #e83e8c">
+                                            <span>Is valid: <strong>{{landline1.isValid}}</strong>,&nbsp;</span>
+                                            <span>Country: <strong>{{landline1.country}}</strong></span>
+                                       </div>
+
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="website" class="col-form-label">Website</label>
                                     <input v-model="organisationform.website" type="text" name="website" placeholder="Website"
                                         class="form-control" :class="{ 'is-invalid': organisationform.errors.has('website') }" >
-                                    <has-error :form="organisationform" field="website"></has-error>
+                                    <has-error style="color: #e83e8c" :form="organisationform" field="website"></has-error>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="address" class=" col-form-label">address</label>
                                     <input v-model="organisationform.address" type="text" name="Address" placeholder="Address"
                                         class="form-control" :class="{ 'is-invalid': organisationform.errors.has('address') }" >
-                                    <has-error :form="organisationform" field="address"></has-error>
+                                    <has-error style="color: #e83e8c" :form="organisationform" field="address"></has-error>
                                 </div>
                             </div>
                             <div class=" row">
@@ -533,25 +561,25 @@
                                             <option disabled value="">Select Country</option>
                                             <option v-for="country in Countries" :value="country.id" :key="country.id">{{country.name}}</option>
                                     </select>
-                                        <has-error :form="organisationform" field="country_id"></has-error>
+                                        <has-error style="color: #e83e8c" :form="organisationform" field="country_id"></has-error>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="county" class=" col-form-label">County</label>
+                                    <label for="county_id" class=" col-form-label">County</label>
                                     <select class="form-control" @change="countyTowns(organisationform.county_id)"
                                     v-model="organisationform.county_id" :class="{ 'is-invalid': organisationform.errors.has('county_id') }">
                                             <option disabled value="">Select County</option>
                                             <option v-for="county in Counties" :value="county.id" :key="county.id">{{county.name}}</option>
                                     </select>
-                                    <has-error :form="organisationform" field="county"></has-error>
+                                    <has-error style="color: #e83e8c" :form="organisationform" field="county_id"></has-error>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="town" class="col-form-label"> Town</label>
+                                    <label for="town_id" class="col-form-label"> Town</label>
                                     <select class="form-control"
                                     v-model="organisationform.town_id" :class="{ 'is-invalid': organisationform.errors.has('town_id') }">
                                             <option disabled value="">Select Town</option>
                                             <option v-for="town in Towns" :value="town.id" :key="town.id">{{town.name}}</option>
                                     </select>
-                                    <has-error :form="organisationform" field="town"></has-error>
+                                    <has-error style="color: #e83e8c" :form="organisationform" field="town_id"></has-error>
                                 </div>
                             </div>
                             <div class=" row">
@@ -559,8 +587,9 @@
                                     <label for="logo" class=" col-form-label">Organisation Logo</label><br>
                                         <input @change="changePhoto($event)" type="file" name="logo"
                                             :class="{ 'is-invalid': organisationform.errors.has('logo') }">
-                                            <img :src="organisationform.logo" alt="" width="30%" >
-                                        <has-error :form="organisationform" field="logo"></has-error>
+                                            <img v-show="editmodeOrganisation" :src="updateOrganisationLogo(organisationform.logo)" alt="" width="30%" >
+                                            <img  v-show="!editmodeOrganisation" :src="organisationform.logo" alt="" width="30%" >
+                                        <has-error style="color: #e83e8c" :form="aboutform" field="logo"></has-error>
                                 </div>
                             </div>
 
@@ -594,14 +623,14 @@
                                         <input @change="aboutImage1($event)" type="file" name="about_image1"
                                             :class="{ 'is-invalid': aboutpicsform.errors.has('about_image1') }">
                                             <img :src="aboutpicsform.about_image1" alt="" width="30%" >
-                                        <has-error :form="aboutpicsform" field="about_image1"></has-error>
+                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="about_image1"></has-error>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="about_image2" class=" col-form-label">Organisation Image 2</label><br>
                                         <input @change="aboutImage2($event)" type="file" name="about_image2"
                                             :class="{ 'is-invalid': aboutpicsform.errors.has('about_image2') }">
                                             <img :src="aboutpicsform.about_image2" alt="" width="30%" >
-                                        <has-error :form="aboutpicsform" field="about_image2"></has-error>
+                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="about_image2"></has-error>
                                 </div>
 
                             </div>
@@ -611,14 +640,14 @@
                                         <input @change="aboutImage3($event)" type="file" name="about_image3"
                                             :class="{ 'is-invalid': aboutpicsform.errors.has('about_image3') }">
                                             <img :src="aboutpicsform.about_image3" alt="" width="30%" >
-                                        <has-error :form="aboutpicsform" field="about_image3"></has-error>
+                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="about_image3"></has-error>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="about_image4" class=" col-form-label">Organisation Image 4</label><br>
                                         <input @change="aboutImage4($event)" type="file" name="about_image4"
                                             :class="{ 'is-invalid': aboutpicsform.errors.has('about_image4') }">
                                             <img :src="aboutpicsform.about_image4" alt="" width="30%" >
-                                        <has-error :form="aboutpicsform" field="about_image4"></has-error>
+                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="about_image4"></has-error>
                                 </div>
 
                             </div>
@@ -628,14 +657,14 @@
                                         <input @change="aboutImage5($event)" type="file" name="about_image5"
                                             :class="{ 'is-invalid': aboutpicsform.errors.has('about_image5') }">
                                             <img :src="aboutpicsform.about_image5" alt="" width="30%" >
-                                        <has-error :form="aboutpicsform" field="about_image5"></has-error>
+                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="about_image5"></has-error>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="about_image6" class=" col-form-label">Organisation Image 6</label><br>
                                         <input @change="aboutImage6($event)" type="file" name="about_image6"
                                             :class="{ 'is-invalid': aboutpicsform.errors.has('about_image6') }">
                                             <img :src="aboutpicsform.about_image6" alt="" width="30%" >
-                                        <has-error :form="aboutpicsform" field="about_image6"></has-error>
+                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="about_image6"></has-error>
                                 </div>
                             </div>
 
@@ -668,13 +697,13 @@
                                     <label for="name" class="col-form-label"> User Name</label>
                                     <input v-model="aboutform.user_id" type="text" name="name" placeholder="User Name"
                                         class="form-control" :class="{ 'is-invalid': aboutform.errors.has('user_id') }" >
-                                    <has-error :form="aboutform" field="user_id"></has-error>
+                                    <has-error style="color: #e83e8c" :form="aboutform" field="user_id"></has-error>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="organisation_id" class="col-form-label">organisation Name</label>
                                     <input v-model="aboutform.organisation_id" type="text" name="organisation_id" placeholder="organisation Name"
                                         class="form-control" :class="{ 'is-invalid': aboutform.errors.has('organisation_id') }" >
-                                    <has-error :form="aboutform" field="organisation_id"></has-error>
+                                    <has-error style="color: #e83e8c" :form="aboutform" field="organisation_id"></has-error>
                                 </div>
                             </div>
                             <div class=" row">
@@ -682,13 +711,13 @@
                                     <label for="title" class="col-form-label">Title</label>
                                     <input v-model="aboutform.title" type="text" name="title" placeholder="Title"
                                         class="form-control" :class="{ 'is-invalid': aboutform.errors.has('title') }" >
-                                    <has-error :form="aboutform" field="title"></has-error>
+                                    <has-error style="color: #e83e8c" :form="aboutform" field="title"></has-error>
                                 </div>
                                  <div class="form-group col-md-6">
                                     <label for="subtitle" class="col-form-label">subtitle</label>
                                     <input v-model="aboutform.subtitle" type="text" name="subtitle" placeholder="subtitle"
                                         class="form-control" :class="{ 'is-invalid': aboutform.errors.has('subtitle') }" >
-                                    <has-error :form="aboutform" field="subtitle"></has-error>
+                                    <has-error style="color: #e83e8c" :form="aboutform" field="subtitle"></has-error>
                                 </div>
                             </div>
                             <div class=" row">
@@ -697,14 +726,14 @@
                                     <textarea v-model="aboutform.why_choose_us" type="text" name="why_choose_us" placeholder="why_choose_us"
                                         class="form-control" :class="{ 'is-invalid': aboutform.errors.has('why_choose_us') }" >
                                     </textarea>
-                                    <has-error :form="aboutform" field="why_choose_us"></has-error>
+                                    <has-error style="color: #e83e8c" :form="aboutform" field="why_choose_us"></has-error>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="who_we_are" class="col-form-label">who_we_are</label>
                                     <textarea v-model="aboutform.who_we_are" type="text" name="who_we_are" placeholder="who_we_are"
                                         class="form-control" :class="{ 'is-invalid': aboutform.errors.has('who_we_are') }" >
                                     </textarea>
-                                    <has-error :form="aboutform" field="who_we_are"></has-error>
+                                    <has-error style="color: #e83e8c" :form="aboutform" field="who_we_are"></has-error>
                                 </div>
                             </div>
                             <div class="row">
@@ -713,14 +742,16 @@
                                     <textarea v-model="aboutform.what_we_do" type="text" name="what_we_do" placeholder="what_we_do"
                                         class="form-control" :class="{ 'is-invalid': aboutform.errors.has('what_we_do') }" >
                                     </textarea>
-                                    <has-error :form="aboutform" field="what_we_do"></has-error>
+                                    <has-error style="color: #e83e8c" :form="aboutform" field="what_we_do"></has-error>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="front_image" class=" col-form-label">About Us Front Image 6</label><br>
                                         <input @change="FrontImage($event)" type="file" name="front_image"
                                             :class="{ 'is-invalid': aboutform.errors.has('front_image') }">
-                                            <img :src="aboutform.front_image" alt="" width="30%" >
-                                        <has-error :form="aboutform" field="front_image"></has-error>
+
+                                            <img v-show="editmodeAbout" :src="updateAboutFrontImage(aboutform.front_image)" alt="" width="30%" >
+                                            <img  v-show="!editmodeAbout" :src="aboutform.front_image" alt="" width="30%" >
+                                        <has-error style="color: #e83e8c" :form="aboutform" field="front_image"></has-error>
                                 </div>
 
                             </div>
@@ -740,6 +771,11 @@
 </template>
 
 <script>
+    // import intlTelInput from "intl-tel-input/build/js/intlTelInput.js";
+
+    // var input = document.querySelector("#phone");
+    // // window.intlTelInput(input);
+
     export default {
         name:"List",
         data(){
@@ -758,6 +794,14 @@
                         town_id:'',
                         logo:'',
                 }),
+                phone1:{
+                        isValid: false,
+                        country: undefined,
+                },
+                landline1:{
+                        isValid: false,
+                        country: undefined,
+                },
                  editmodeAbout: false,
                 aboutform: new Form({
                         id:'',
@@ -786,6 +830,7 @@
         mounted() {
             this.loadOrganisation();
             this.loadAbout();
+            this.loadAboutPic();
             this.loadService();
             this.loadCountries();
             this.loadCounties();
@@ -807,11 +852,26 @@
             About(){
                return this.$store.getters.About
             },
+            AboutPic(){
+               return this.$store.getters.AboutPic
+            },
             Service(){
                return this.$store.getters.Service
             },
         },
         methods:{
+            InputPhone({ number, isValid, country }) {
+            console.log(number, isValid, country);
+            this.organisationform.phone = number;
+            this.phone1.isValid = isValid;
+            this.phone1.country = country && country.name;
+            },
+            InputLandline({ number, isValid, country }) {
+            console.log(number, isValid, country);
+            this.organisationform.landline = number;
+            this.landline1.isValid = isValid;
+            this.landline1.country = country && country.name;
+            },
             changePhoto(event){
             let file = event.target.files[0];
                 if(file.size>1048576){
@@ -831,7 +891,16 @@
                 }
             },
             organisationLogo(logo_id){
-                return "/assets/organisation/img/logo/small/"+logo_id;
+                return "assets/organisation/img/logo/small/"+logo_id;
+            },
+            updateOrganisationLogo(organisationformlogo){
+                console.log(organisationformlogo)
+                let img = this.organisationform.logo;
+                      if(img.length>100){
+                            return this.organisationform.logo;
+                        }else{
+                            return "assets/organisation/img/logo/small/"+organisationformlogo;
+                        }
             },
             //front image about
             FrontImage(event){
@@ -854,6 +923,15 @@
             },
             aboutFrontImage(front_image_id){
                 return "/assets/organisation/img/website/frontimage/medium/"+front_image_id;
+            },
+             updateAboutFrontImage(aboutformfront_image){
+                console.log(aboutformfront_image)
+                let img = this.aboutform.front_image;
+                      if(img.length>100){
+                            return this.aboutform.front_image;
+                        }else{
+                            return "assets/organisation/img/website/frontimage/small/"+aboutformfront_image;
+                        }
             },
             //About Images
             aboutImage1(event){
@@ -964,7 +1042,7 @@
                         reader.readAsDataURL(file);
                 }
             },
-            aboutImage1(about_image_id){
+            aboutLoadImage1(about_image_id){
 
                 if(about_image_id !=null){
                     return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
@@ -973,35 +1051,35 @@
                 }
                 // return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
             },
-            aboutImage2(about_image_id){
+            aboutLoadImage2(about_image_id){
                 if(about_image_id !=null){
                     return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
                 }else{
                     return "/assets/organisation/img/website/empty.png";
                 }
             },
-            aboutImage3(about_image_id){
+            aboutLoadImage3(about_image_id){
                 if(about_image_id !=null){
                     return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
                 }else{
                     return "/assets/organisation/img/website/empty.png";
                 }
             },
-            aboutImage4(about_image_id){
+            aboutLoadImage4(about_image_id){
                 if(about_image_id !=null){
                     return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
                 }else{
                     return "/assets/organisation/img/website/empty.png";
                 }
             },
-            aboutImage5(about_image_id){
+            aboutLoadImage5(about_image_id){
                 if(about_image_id !=null){
                     return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
                 }else{
                     return "/assets/organisation/img/website/empty.png";
                 }
             },
-            aboutImage6(about_image_id){
+            aboutLoadImage6(about_image_id){
                 if(about_image_id !=null){
                     return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
                 }else{
@@ -1013,6 +1091,9 @@
             },
             loadAbout(){
                 return this.$store.dispatch( "about")//get all from organisation. organisation linked to user
+            },
+            loadAboutPic(){
+                return this.$store.dispatch( "aboutpic")//get all from organisation. organisation linked to user
             },
             loadService(){
                 return this.$store.dispatch( "service")//get all from organisation. organisation linked to user
@@ -1031,6 +1112,62 @@
                  this.aboutform.reset()
                      $('#AboutModal').modal('show')
             },
+            editAboutPicsModal(id){
+                 this.editmodeAboutPics = true;
+                 this.aboutpicsform.reset()
+                   console.log('edit about', id)
+                    this.$Progress.start();
+                      axios.get('/aboutpic/edit/'+id)
+
+                        .then((response)=>{
+                             console.log(response.data)
+                           $('#AboutPicsModal').modal('show')
+                           toast({
+                            type: 'success',
+                            title: 'Fetched the About data successfully'
+                            })
+                            this.aboutpicsform.fill(response.data.about)
+                               this.$Progress.finish();
+                        })
+                        .catch(()=>{
+
+                            //errors
+                            $('#AboutPicsModal').modal('show');
+                            toast({
+                            type: 'error',
+                            title: 'There was something Wrong'
+                            })
+                            this.$Progress.fail();
+                        })
+             },
+            editAboutModal(id){
+                 this.editmodeAbout = true;
+                 this.aboutform.reset()
+                   console.log('edit about', id)
+                    this.$Progress.start();
+                      axios.get('/about/edit/'+id)
+
+                        .then((response)=>{
+                             console.log(response.data)
+                           $('#AboutModal').modal('show')
+                           toast({
+                            type: 'success',
+                            title: 'Fetched the About data successfully'
+                            })
+                            this.aboutform.fill(response.data.about)
+                               this.$Progress.finish();
+                        })
+                        .catch(()=>{
+
+                            //errors
+                            $('#AboutModal').modal('show');
+                            toast({
+                            type: 'error',
+                            title: 'There was something Wrong'
+                            })
+                            this.$Progress.fail();
+                        })
+             },
             newAboutPicsModal(){
                 this.editmodeAboutPics = false;
                  this.aboutpicsform.reset()
@@ -1055,14 +1192,14 @@
                  this.organisationform.reset()
                    console.log('edit user', id)
                     this.$Progress.start();
-                      axios.get('/user/edit/'+id)
+                      axios.get('/organisation/edit/'+id)
                         .then((response)=>{
                            $('#OrganisationModal').modal('show')
                            toast({
                             type: 'success',
-                            title: 'Fetched the User data successfully'
+                            title: 'Fetched the Organisation data successfully'
                             })
-                            this.organisationform.fill(response.data.user)
+                            this.organisationform.fill(response.data.organisation)
                                this.$Progress.finish();
                         })
                         .catch(()=>{
@@ -1081,18 +1218,46 @@
             countyTowns(county_id){
                 this.$store.dispatch('countytowns', county_id); //send to store to the action with id
             },
+            addAboutPics() {
+                console.log('add About pics new')
+                this.$Progress.start();
+                this.aboutpicsform.post('/aboutpic')
+                    .then((response)=>{
+                        $('#AboutPicsModal').modal('hide')
+                         toast({
+                            type: 'success',
+                            title: 'aboutpics Created successfully'
+                            })
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                            this.aboutpicsform.reset()
+                              this.$Progress.finish()
+                    })
+                    .catch(()=>{
+                        //errors
+                            $('#AboutPicsModal').modal('show');
+                            toast({
+                                type: 'error',
+                                title: 'There was something wrong.'
+                            })
+                            this.$Progress.fail()
+                    })
+            },
             addOrganisation() {
                 console.log('add Organisation new')
                 this.$Progress.start();
                 this.organisationform.post('/organisation')
                     .then((response)=>{
-                        //  console.log(response.data)
                          toast({
                             type: 'success',
                             title: 'Organisation Created successfully'
                             })
-                            // this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
                             $('#OrganisationModal').modal('hide')
+                            this.organisationform.reset()
                               this.$Progress.finish()
                     })
                     .catch(()=>{
@@ -1115,8 +1280,11 @@
                             type: 'success',
                             title: 'About Info Created successfully'
                             })
-                            // this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
                             $('#AboutModal').modal('hide')
+                            this.aboutform.reset()
                               this.$Progress.finish()
                     })
                     .catch(()=>{
@@ -1129,12 +1297,62 @@
                                 })
                     })
             },
-            updateOrganisation(id){
-                  console.log('update user')
+            updateAboutPics(id){
+                  console.log('update about')
                   this.$Progress.start();
-                     this.organisationform.patch('/user/update/'+id)
+                     this.aboutform.patch('/aboutpic/update/'+id)
                         .then(()=>{
-                            this.$store.dispatch( "users")
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                         $('#AboutPicsModal').modal('hide')
+                         toast({
+                            type: 'success',
+                            title: 'About Updated successfully'
+                            })
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                             $('#AboutPicsModal').modal('show')
+                            this.$Progress.fail();
+                            toast({
+                            type: 'error',
+                            title: 'There was something wrong'
+                            })
+                        })
+            },
+            updateAbout(id){
+                  console.log('update about')
+                  this.$Progress.start();
+                     this.aboutform.patch('/about/update/'+id)
+                        .then(()=>{
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                         $('#AboutModal').modal('hide')
+                         toast({
+                            type: 'success',
+                            title: 'About Updated successfully'
+                            })
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                             $('#AboutModal').modal('show')
+                            toast({
+                            type: 'error',
+                            title: 'There was something wrong'
+                            })
+                        })
+            },
+            updateOrganisation(id){
+                  console.log('update organisaton')
+                  this.$Progress.start();
+                     this.organisationform.patch('/organisation/update/'+id)
+                        .then(()=>{
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
                          $('#OrganisationModal').modal('hide')
                          toast({
                             type: 'success',
@@ -1144,6 +1362,7 @@
                         })
                         .catch(()=>{
                             this.$Progress.fail();
+                            $('#OrganisationModal').modal('show')
                             toast({
                             type: 'error',
                             title: 'There was something wrong'
@@ -1164,13 +1383,15 @@
                     if (result.value) {
                     //  console.log('delete user', id)
                         this.$Progress.start();
-                        this.organisationform.get('/user/delete/'+id)
+                        this.organisationform.get('/organisation/delete/'+id)
                             .then(()=>{
                             toast({
                             type: 'success',
-                            title: 'User Deleted successfully'
+                            title: 'Organisation Deleted successfully'
                             })
-                            this.$store.dispatch( "users")
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
                             this.$Progress.finish();
                         })
                         .catch(()=>{

@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\Webpage\AboutController;
 use App\Http\Controllers\Backend\Standard\CountyController;
 use App\Http\Controllers\Backend\Webpage\ServiceController;
 use App\Http\Controllers\Backend\Standard\CountryController;
+use App\Http\Controllers\Backend\Webpage\AboutPicController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\RoleController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\UserController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\PermissionController;
@@ -213,10 +214,23 @@ Route::get('/home', 'HomeController@index')->name('home');
     //     /*
     //      * Specifics
     //      */
-        Route::get('about/show/{country}', [AboutController::class, 'show'])->name('about.show');
-        Route::get('about/edit/{country}', [AboutController::class, 'edit'])->name('about.edit');
-        Route::patch('about/update/{country}', [AboutController::class, 'update'])->name('about.update');
-        Route::get('about/delete/{country}/', [AboutController::class, 'destroy'])->name('about.destroy');
+        Route::get('about/show/{about}', [AboutController::class, 'show'])->name('about.show');
+        Route::get('about/edit/{about}', [AboutController::class, 'edit'])->name('about.edit');
+        Route::patch('about/update/{about}', [AboutController::class, 'update'])->name('about.update');
+        Route::get('about/delete/{about}/', [AboutController::class, 'destroy'])->name('about.destroy');
+
+        // aboutpics
+        Route::get('aboutpic/get', [AboutPicController::class, 'index'])->name('aboutpic.index');
+        Route::get('aboutpics/get', [AboutPicController::class, 'organisations'])->name('aboutpic.organisations');
+        Route::get('aboutpic/get/list', [AboutPicController::class, 'aboutList'])->name('aboutpic.list-index');
+        Route::post('aboutpic', [AboutPicController::class, 'store'])->name('aboutpic.store');
+    //     /*
+    //      * Specifics
+    //      */
+        Route::get('aboutpic/show/{aboutpic}', [AboutPicController::class, 'show'])->name('aboutpic.show');
+        Route::get('aboutpic/edit/{aboutpic}', [AboutPicController::class, 'edit'])->name('aboutpic.edit');
+        Route::patch('aboutpic/update/{aboutpic}', [AboutPicController::class, 'update'])->name('aboutpic.update');
+        Route::get('aboutpic/delete/{aboutpic}/', [AboutPicController::class, 'destroy'])->name('aboutpic.destroy');
 
         // service
         Route::get('service/get', [ServiceController::class, 'index'])->name('service.index');

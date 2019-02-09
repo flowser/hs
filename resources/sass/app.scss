@@ -11,6 +11,7 @@ $fa-font-path:        "../webfonts";
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import "~admin-lte/dist/css/adminlte.css";
+@import '~vue-tel-input/dist/vue-tel-input.css';
 
 
 
@@ -58,17 +59,6 @@ $fa-font-path:        "../webfonts";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "~@fortawesome/fontawesome-free/scss/v4-shims.scss";
 
-
-
-
-//for vue-datable towork enso
-// @import "~@fortawesome/fontawesome-free";
-// @import "~@fortawesome/fontawesome-svg-core";
-// @import "~@fortawesome/free-brands-svg-icons";
-// @import "~@fortawesome/free-regular-svg-icons";
-// @import "~@fortawesome/free-solid-svg-icons";
-// @import "~@fortawesome/vue-fontawesome";
-//end vue-datable towork enso
 
 //bootstrap-vue
 @import '~bootstrap/dist/css/bootstrap.css';
