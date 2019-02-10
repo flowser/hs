@@ -1,15 +1,20 @@
 <?php
 
-use App\Http\Controllers\Backend\Standard\TownController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\Standard\WardController;
 use App\Http\Controllers\Backend\Webpage\AboutController;
 use App\Http\Controllers\Backend\Standard\CountyController;
 use App\Http\Controllers\Backend\Webpage\ServiceController;
 use App\Http\Controllers\Backend\Standard\CountryController;
 use App\Http\Controllers\Backend\Webpage\AboutPicController;
+use App\Http\Controllers\Backend\Standard\ConstituencyController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\RoleController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\UserController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\PermissionController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\OrganisationController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -180,17 +185,29 @@ Route::get('/home', 'HomeController@index')->name('home');
         Route::patch('county/update/{county}', [CountyController::class, 'update'])->name('county.update');
         Route::get('county/delete/{county}/', [CountyController::class, 'destroy'])->name('county.destroy');
 
-//Town
-        Route::get('town/get', [TownController::class, 'index'])->name('town.index');
-        Route::get('town/get/list/{town}', [TownController::class, 'TownList'])->name('town.list-index');
-        Route::post('town', [TownController::class, 'store'])->name('town.store');
+        //constituency
+        Route::get('constituency/get', [ConstituencyController::class, 'index'])->name('constituency.index');
+        Route::post('constituency', [ConstituencyController::class, 'store'])->name('constituency.store');
     //     /*
     //      * Specifics
     //      */
-        Route::get('town/show/{town}', [TownController::class, 'show'])->name('town.show');
-        Route::get('town/edit/{town}', [TownController::class, 'edit'])->name('town.edit');
-        Route::patch('town/update/{town}', [TownController::class, 'update'])->name('town.update');
-        Route::get('town/delete/{town}/', [TownController::class, 'destroy'])->name('town.destroy');
+        Route::get('constituency/get/list/{constituency}', [ConstituencyController::class, 'ConstituencyList'])->name('constituency.list-index');//fetch county list bsedon country id
+        Route::get('constituency/show/{constituency}', [ConstituencyController::class, 'show'])->name('constituency.show');
+        Route::get('constituency/edit/{constituency}', [ConstituencyController::class, 'edit'])->name('constituency.edit');
+        Route::patch('constituency/update/{constituency}', [ConstituencyController::class, 'update'])->name('constituency.update');
+        Route::get('constituency/delete/{constituency}/', [ConstituencyController::class, 'destroy'])->name('constituency.destroy');
+
+//ward
+        Route::get('ward/get', [WardController::class, 'index'])->name('ward.index');
+        Route::get('ward/get/list/{ward}', [WardController::class, 'WardList'])->name('ward.list-index');
+        Route::post('ward', [WardController::class, 'store'])->name('ward.store');
+    //     /*
+    //      * Specifics
+    //      */
+        Route::get('ward/show/{ward}', [WardController::class, 'show'])->name('ward.show');
+        Route::get('ward/edit/{ward}', [WardController::class, 'edit'])->name('ward.edit');
+        Route::patch('ward/update/{ward}', [WardController::class, 'update'])->name('ward.update');
+        Route::get('ward/delete/{ward}/', [WardController::class, 'destroy'])->name('ward.destroy');
 
 
         // organisation

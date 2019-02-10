@@ -14,7 +14,7 @@ class PositionTableSeeder extends Seeder
     {
         Position::create(['name'  => 'Director',]);
         Position::create(['name'  => 'Assistant',]);
-        Position::create(['name'  => 'Admnin',]);
+        Position::create(['name'  => 'Admin',]);
         Position::create(['name'  => 'Accountant',]);
         Position::create(['name'  => 'ICT Engineer',]);
         Position::create(['name'  => 'Secretary',]);

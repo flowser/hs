@@ -10,12 +10,9 @@ use App\Models\Standard\Webservices\About;
 class AboutPic extends Model
 {
     protected $fillable = [
-        'about_image1',
-        'about_image2',
-        'about_image3',
-        'about_image4',
-        'about_image5',
-        'about_image6',
+        'title',
+        'description',
+        'image',
         'user_id',
         'about_id',
     ];

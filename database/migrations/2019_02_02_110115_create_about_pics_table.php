@@ -17,12 +17,9 @@ class CreateAboutPicsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');//edited or creted by
             $table->unsignedInteger('about_id');
-            $table->string('about_image1')->nullable();
-            $table->string('about_image2')->nullable();
-            $table->string('about_image3')->nullable();
-            $table->string('about_image4')->nullable();
-            $table->string('about_image5')->nullable();
-            $table->string('about_image6')->nullable();
+            $table->string('title')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->foreign('about_id')->references('id')->on('abouts')->onDelete('cascade');

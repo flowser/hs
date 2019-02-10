@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTownsTable extends Migration
+class CreateWardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateTownsTable extends Migration
      */
     public function up()
     {
-        Schema::create('towns', function (Blueprint $table) {
+        Schema::create('wards', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('county_id')->unsigned();
+            $table->integer('constituency_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('county_id')->references('id')->on('counties')->onDelete('cascade');
+            $table->foreign('constituency_id')->references('id')->on('constituencies')->onDelete('cascade');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateTownsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('towns');
+        Schema::dropIfExists('wards');
     }
 }

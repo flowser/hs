@@ -20,13 +20,14 @@ class OrganisationController extends Controller
     {
         // $orgadirector= Auth::user()-> organisationdirector()->first()->organisation()->first();
         $orgemployee= Auth::user()-> organisationemployee()->first()->organisation()->first();
-        // return $organisation;
 
-        $organisation = Organisation::with('country', 'county', 'town', 'organisationemployees','organisationdirectors')
+
+        $organisation = Organisation::
+        with('country', 'county', 'constituency', 'ward','organisationemployees','organisationdirectors')
                                     ->where('organisations.id', $orgemployee->id )
                                     // ->where('organisations.id', $orgadirector->id)
                                     ->get();
-        // dd($organisation);
+        // return $organisation;
         return response()-> json([
             'organisation' => $organisation,
         ], 200);
@@ -50,7 +51,7 @@ class OrganisationController extends Controller
      */
     public function store(Request $request)
     {
-
+        // return $request;
 // return $request ->phone;
         $this->validate($request,[
             'name'    => 'required|min:2|max:50',
@@ -61,7 +62,8 @@ class OrganisationController extends Controller
             'address'=> 'required|min:2|max:50',
             'country_id'=> 'required',
             'county_id'=> 'required',
-            'town_id'=> 'required',
+            'constituency_id'=> 'required',
+            'ward_id'=> 'required',
         ]);
 
 
@@ -75,7 +77,8 @@ class OrganisationController extends Controller
         $organisation->active = true;
         $organisation->country_id = $request ->country_id;
         $organisation->county_id = $request ->county_id;
-        $organisation->town_id = $request ->town_id;
+        $organisation->constituency_id = $request ->constituency_id;
+        $organisation->ward_id = $request ->ward_id;
 
         // $organisation->logo = $request ->logo;
         //processing logo nme and size
@@ -84,15 +87,10 @@ class OrganisationController extends Controller
         $ex = explode('/', $sub)[1];
         $name = time().".".$ex;
 
-        $file = $request->file('logo');
-        $S_Path = public_path()."/assets/organisation/img/logo/small";
-        $M_Path = public_path()."/assets/organisation/img/logo//medium";
-        $L_Path = public_path()."/assets/organisation/img/logo/large";
+
+        $Path = public_path()."/assets/organisation/img/logo";
             $img = Image::make($request->logo);
-//            $img->crop(300, 150, 25, 25);
-            $img ->resize(100, 100)->save($S_Path.'/'.$name);
-            $img ->resize(250, 250)->save($M_Path.'/'.$name);
-            $img ->resize(500, 500)->save($L_Path.'/'.$name);
+            $img ->save($Path.'/'.$name);
         $organisation->logo = $name;
         //end processing logo and size
         $organisation->save();
@@ -121,7 +119,7 @@ class OrganisationController extends Controller
         $orgemployee= Auth::user()-> organisationemployee()->first()->organisation()->first();
         // return $organisation;
 
-        $organisation = Organisation::with('country', 'county', 'town', 'organisationemployees','organisationdirectors')
+        $organisation = Organisation::with('country', 'county', 'constituency', 'ward','organisationemployees','organisationdirectors')
                                     // ->where('organisations.id', $orgemployee->id )
                                     // ->where('organisations.id', $orgadirector->id)
                                     ->find($id);
@@ -148,9 +146,10 @@ class OrganisationController extends Controller
             'landline'=> 'phone:AUTO,FIXED_LINE',
             'website'=> 'sometimes|required|min:2|max:50',
             'address'=> 'sometimes|required|min:2|max:50',
-            'country_id'=> 'sometimes|required',
-            'county_id'=> 'sometimes|required',
-            'town_id'=> 'sometimes|required',
+            'country_id'=> 'required',
+            'county_id'=> 'required',
+            'constituency_id'=> 'required',
+            'ward_id'=> 'required',
         ]);
 
 
@@ -163,7 +162,8 @@ class OrganisationController extends Controller
         $organisation->active = true;
         $organisation->country_id = $request ->country_id;
         $organisation->county_id = $request ->county_id;
-        $organisation->town_id = $request ->town_id;
+        $organisation->constituency_id = $request ->constituency_id;
+        $organisation->ward_id = $request ->ward_id;
 
         // $organisation->logo = $request ->logo;
         //getting previous logo
@@ -171,22 +171,12 @@ class OrganisationController extends Controller
 
          //processing logo nme and size
         if($request->logo != $currentLogo){
-            $S_Path = public_path()."/assets/organisation/img/logo/small";
-            $M_Path = public_path()."/assets/organisation/img/logo//medium";
-            $L_Path = public_path()."/assets/organisation/img/logo/large";
+            $Path = public_path()."/assets/organisation/img/logo";
 
-            $S_currentLogo = $S_Path. $currentLogo;
-            $M_currentLogo = $M_Path. $currentLogo;
-            $L_currentLogo = $L_Path. $currentLogo;
+            $S_currentLogo = $Path. $currentLogo;
             //deleting if exists
                 if(file_exists($S_currentLogo)){
                     @unlink($S_currentLogo);
-                }
-                if(file_exists($M_currentLogo)){
-                    @unlink($M_currentLogo);
-                }
-                if(file_exists($L_currentLogo)){
-                    @unlink($L_currentLogo);
                 }
                 $strpos = strpos($request->logo, ';'); //positionof image name semicolon
                 $sub = substr($request->logo, 0, $strpos);
@@ -194,10 +184,7 @@ class OrganisationController extends Controller
                 $name = time().".".$ex;
 
                $img = Image::make($request->logo);
-        //            $img->crop(300, 150, 25, 25);
-                    $img ->resize(100, 100)->save($S_Path.'/'.$name);
-                    $img ->resize(250, 250)->save($M_Path.'/'.$name);
-                    $img ->resize(500, 500)->save($L_Path.'/'.$name);
+                    $img ->save($Path.'/'.$name);
                 //end processing logo and size
 
         }else{//$request->logo = $currentLogo
@@ -217,22 +204,12 @@ class OrganisationController extends Controller
     {
         $organisation = Organisation::findOrFail($id);
         //image inline with this organisation
-        $S_Path = public_path()."/assets/organisation/img/logo/small";
-        $M_Path = public_path()."/assets/organisation/img/logo//medium";
-        $L_Path = public_path()."/assets/organisation/img/logo/large";
+        $Path = public_path()."/assets/organisation/img/logo";;
 
-        $S_image = $S_Path. $organisation->logo;
-        $M_image = $M_Path. $organisation->logo;
-        $L_image = $L_Path. $organisation->logo;
+        $S_image = $Path. $organisation->logo;
 
         if(file_exists($S_image)){
             @unlink($S_image);
-        }
-        if(file_exists($M_image)){
-            @unlink($M_image);
-        }
-        if(file_exists($L_image)){
-            @unlink($L_image);
         }
         $organisation->delete();
     }

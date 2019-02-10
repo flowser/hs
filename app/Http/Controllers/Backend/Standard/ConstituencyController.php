@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backend\Standard;
 
 use Illuminate\Http\Request;
-use App\Models\Standard\Town;
 use App\Http\Controllers\Controller;
+use App\Models\Standard\Constituency;
 
-class TownController extends Controller
+class ConstituencyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,14 +18,14 @@ class TownController extends Controller
         //
     }
 
-    public function TownList($id)
+    public function ConstituencyList($id)
     {
         // return $id;
-        $towns = Town::
+        $constituencies = Constituency::
                     where("county_id", $id)
                     ->get();
                     return response()-> json([
-                        'towns' => $towns,
+                        'constituencies' => $constituencies,
                     ], 200);
     }
 

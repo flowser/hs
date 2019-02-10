@@ -2608,74 +2608,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 // import intlTelInput from "intl-tel-input/build/js/intlTelInput.js";
 // var input = document.querySelector("#phone");
 // // window.intlTelInput(input);
@@ -2694,7 +2626,8 @@ __webpack_require__.r(__webpack_exports__);
         address: '',
         country_id: '',
         county_id: '',
-        town_id: '',
+        constituency_id: '',
+        ward_id: '',
         logo: ''
       }),
       phone1: {
@@ -2721,12 +2654,9 @@ __webpack_require__.r(__webpack_exports__);
       editmodeAboutPics: false,
       aboutpicsform: new Form({
         id: '',
-        about_image1: '',
-        about_image2: '',
-        about_image3: '',
-        about_image4: '',
-        about_image5: '',
-        about_image6: ''
+        title: '',
+        description: '',
+        image: ''
       })
     };
   },
@@ -2737,7 +2667,9 @@ __webpack_require__.r(__webpack_exports__);
     this.loadService();
     this.loadCountries();
     this.loadCounties();
-    this.loadTowns(); ///linked to methods and actions store
+    this.loadConstituencies(); ///linked to methods and actions store
+
+    this.loadWards(); ///linked to methods and actions store
   },
   computed: {
     Countries: function Countries() {
@@ -2746,8 +2678,11 @@ __webpack_require__.r(__webpack_exports__);
     Counties: function Counties() {
       return this.$store.getters.CountryCounties;
     },
-    Towns: function Towns() {
-      return this.$store.getters.CountyTowns;
+    Constituencies: function Constituencies() {
+      return this.$store.getters.CountyConstituencies;
+    },
+    Wards: function Wards() {
+      return this.$store.getters.ConstituencyWards;
     },
     Organisation: function Organisation() {
       return this.$store.getters.Organisation;
@@ -2804,7 +2739,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     organisationLogo: function organisationLogo(logo_id) {
-      return "assets/organisation/img/logo/small/" + logo_id;
+      return "assets/organisation/img/logo/" + logo_id;
     },
     updateOrganisationLogo: function updateOrganisationLogo(organisationformlogo) {
       console.log(organisationformlogo);
@@ -2813,7 +2748,7 @@ __webpack_require__.r(__webpack_exports__);
       if (img.length > 100) {
         return this.organisationform.logo;
       } else {
-        return "assets/organisation/img/logo/small/" + organisationformlogo;
+        return "assets/organisation/img/logo/" + organisationformlogo;
       }
     },
     //front image about
@@ -2840,7 +2775,12 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     aboutFrontImage: function aboutFrontImage(front_image_id) {
-      return "/assets/organisation/img/website/frontimage/medium/" + front_image_id;
+      if (front_image_id != null) {
+        return "/assets/organisation/img/website/frontimage/" + front_image_id;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      } // return "/assets/organisation/img/website/frontimage/"+front_image_id;
+
     },
     updateAboutFrontImage: function updateAboutFrontImage(aboutformfront_image) {
       console.log(aboutformfront_image);
@@ -2849,11 +2789,11 @@ __webpack_require__.r(__webpack_exports__);
       if (img.length > 100) {
         return this.aboutform.front_image;
       } else {
-        return "assets/organisation/img/website/frontimage/small/" + aboutformfront_image;
+        return "assets/organisation/img/website/frontimage/" + aboutformfront_image;
       }
     },
     //About Images
-    aboutImage1: function aboutImage1(event) {
+    aboutImage: function aboutImage(event) {
       var _this3 = this;
 
       var file = event.target.files[0];
@@ -2869,164 +2809,19 @@ __webpack_require__.r(__webpack_exports__);
         var reader = new FileReader();
 
         reader.onload = function (event) {
-          _this3.aboutpicsform.about_image1 = event.target.result; // console.log(event.target.result)
+          _this3.aboutpicsform.image = event.target.result; // console.log(event.target.result)
         };
 
         reader.readAsDataURL(file);
       }
     },
-    aboutImage2: function aboutImage2(event) {
-      var _this4 = this;
-
-      var file = event.target.files[0];
-
-      if (file.size > 1048576) {
-        Swal.fire({
-          type: 'error',
-          title: 'Oops...',
-          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-
-        });
-      } else {
-        var reader = new FileReader();
-
-        reader.onload = function (event) {
-          _this4.aboutpicsform.about_image2 = event.target.result; // console.log(event.target.result)
-        };
-
-        reader.readAsDataURL(file);
-      }
-    },
-    aboutImage3: function aboutImage3(event) {
-      var _this5 = this;
-
-      var file = event.target.files[0];
-
-      if (file.size > 1048576) {
-        Swal.fire({
-          type: 'error',
-          title: 'Oops...',
-          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-
-        });
-      } else {
-        var reader = new FileReader();
-
-        reader.onload = function (event) {
-          _this5.aboutpicsform.about_image3 = event.target.result; // console.log(event.target.result)
-        };
-
-        reader.readAsDataURL(file);
-      }
-    },
-    aboutImage4: function aboutImage4(event) {
-      var _this6 = this;
-
-      var file = event.target.files[0];
-
-      if (file.size > 1048576) {
-        Swal.fire({
-          type: 'error',
-          title: 'Oops...',
-          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-
-        });
-      } else {
-        var reader = new FileReader();
-
-        reader.onload = function (event) {
-          _this6.aboutpicsform.about_image4 = event.target.result; // console.log(event.target.result)
-        };
-
-        reader.readAsDataURL(file);
-      }
-    },
-    aboutImage5: function aboutImage5(event) {
-      var _this7 = this;
-
-      var file = event.target.files[0];
-
-      if (file.size > 1048576) {
-        Swal.fire({
-          type: 'error',
-          title: 'Oops...',
-          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-
-        });
-      } else {
-        var reader = new FileReader();
-
-        reader.onload = function (event) {
-          _this7.aboutpicsform.about_image5 = event.target.result; // console.log(event.target.result)
-        };
-
-        reader.readAsDataURL(file);
-      }
-    },
-    aboutImage6: function aboutImage6(event) {
-      var _this8 = this;
-
-      var file = event.target.files[0];
-
-      if (file.size > 1048576) {
-        Swal.fire({
-          type: 'error',
-          title: 'Oops...',
-          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-
-        });
-      } else {
-        var reader = new FileReader();
-
-        reader.onload = function (event) {
-          _this8.aboutpicsform.about_image6 = event.target.result; // console.log(event.target.result)
-        };
-
-        reader.readAsDataURL(file);
-      }
-    },
-    aboutLoadImage1: function aboutLoadImage1(about_image_id) {
+    aboutLoadImage: function aboutLoadImage(about_image_id) {
       if (about_image_id != null) {
-        return "/assets/organisation/img/website/aboutpics/medium/" + about_image_id;
+        return "/assets/organisation/img/website/aboutpics/" + about_image_id;
       } else {
         return "/assets/organisation/img/website/empty.png";
       } // return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
 
-    },
-    aboutLoadImage2: function aboutLoadImage2(about_image_id) {
-      if (about_image_id != null) {
-        return "/assets/organisation/img/website/aboutpics/medium/" + about_image_id;
-      } else {
-        return "/assets/organisation/img/website/empty.png";
-      }
-    },
-    aboutLoadImage3: function aboutLoadImage3(about_image_id) {
-      if (about_image_id != null) {
-        return "/assets/organisation/img/website/aboutpics/medium/" + about_image_id;
-      } else {
-        return "/assets/organisation/img/website/empty.png";
-      }
-    },
-    aboutLoadImage4: function aboutLoadImage4(about_image_id) {
-      if (about_image_id != null) {
-        return "/assets/organisation/img/website/aboutpics/medium/" + about_image_id;
-      } else {
-        return "/assets/organisation/img/website/empty.png";
-      }
-    },
-    aboutLoadImage5: function aboutLoadImage5(about_image_id) {
-      if (about_image_id != null) {
-        return "/assets/organisation/img/website/aboutpics/medium/" + about_image_id;
-      } else {
-        return "/assets/organisation/img/website/empty.png";
-      }
-    },
-    aboutLoadImage6: function aboutLoadImage6(about_image_id) {
-      if (about_image_id != null) {
-        return "/assets/organisation/img/website/aboutpics/medium/" + about_image_id;
-      } else {
-        return "/assets/organisation/img/website/empty.png";
-      }
     },
     loadOrganisation: function loadOrganisation() {
       return this.$store.dispatch("organisation"); //get all from organisation. organisation linked to user
@@ -3046,8 +2841,11 @@ __webpack_require__.r(__webpack_exports__);
     loadCounties: function loadCounties() {
       return this.$store.dispatch("countrycounties"); //get all from counties.index
     },
-    loadTowns: function loadTowns() {
-      return this.$store.dispatch("countytowns"); //get all from towns.index
+    loadConstituencies: function loadConstituencies() {
+      return this.$store.dispatch("countyconstituencies"); //get all from counties.index
+    },
+    loadWards: function loadWards() {
+      return this.$store.dispatch("constituencywards"); //get all from towns.index
     },
     newAboutModal: function newAboutModal() {
       this.editmodeAbout = false;
@@ -3055,7 +2853,7 @@ __webpack_require__.r(__webpack_exports__);
       $('#AboutModal').modal('show');
     },
     editAboutPicsModal: function editAboutPicsModal(id) {
-      var _this9 = this;
+      var _this4 = this;
 
       this.editmodeAboutPics = true;
       this.aboutpicsform.reset();
@@ -3069,9 +2867,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Fetched the About data successfully'
         });
 
-        _this9.aboutpicsform.fill(response.data.about);
+        _this4.aboutpicsform.fill(response.data.about);
 
-        _this9.$Progress.finish();
+        _this4.$Progress.finish();
       }).catch(function () {
         //errors
         $('#AboutPicsModal').modal('show');
@@ -3080,11 +2878,11 @@ __webpack_require__.r(__webpack_exports__);
           title: 'There was something Wrong'
         });
 
-        _this9.$Progress.fail();
+        _this4.$Progress.fail();
       });
     },
     editAboutModal: function editAboutModal(id) {
-      var _this10 = this;
+      var _this5 = this;
 
       this.editmodeAbout = true;
       this.aboutform.reset();
@@ -3098,9 +2896,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Fetched the About data successfully'
         });
 
-        _this10.aboutform.fill(response.data.about);
+        _this5.aboutform.fill(response.data.about);
 
-        _this10.$Progress.finish();
+        _this5.$Progress.finish();
       }).catch(function () {
         //errors
         $('#AboutModal').modal('show');
@@ -3109,7 +2907,7 @@ __webpack_require__.r(__webpack_exports__);
           title: 'There was something Wrong'
         });
 
-        _this10.$Progress.fail();
+        _this5.$Progress.fail();
       });
     },
     newAboutPicsModal: function newAboutPicsModal() {
@@ -3126,7 +2924,7 @@ __webpack_require__.r(__webpack_exports__);
       $('#OrganisationModal').modal('show');
     },
     editOrganisationModal: function editOrganisationModal(id) {
-      var _this11 = this;
+      var _this6 = this;
 
       this.editmodeOrganisation = true;
       this.organisationform.reset();
@@ -3139,11 +2937,11 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Fetched the Organisation data successfully'
         });
 
-        _this11.organisationform.fill(response.data.organisation);
+        _this6.organisationform.fill(response.data.organisation);
 
-        _this11.$Progress.finish();
+        _this6.$Progress.finish();
       }).catch(function () {
-        _this11.$Progress.fail(); //errors
+        _this6.$Progress.fail(); //errors
 
 
         $('#OrganisationModal').modal('show');
@@ -3154,13 +2952,19 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     countryCounties: function countryCounties(country_id) {
+      console.log(country_id);
       this.$store.dispatch('countrycounties', country_id);
     },
-    countyTowns: function countyTowns(county_id) {
-      this.$store.dispatch('countytowns', county_id); //send to store to the action with id
+    countyConstituencies: function countyConstituencies(county_id) {
+      console.log(county_id);
+      this.$store.dispatch('countyconstituencies', county_id);
+    },
+    constituencyWards: function constituencyWards(constituency_id) {
+      console.log(constituency_id);
+      this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
     },
     addAboutPics: function addAboutPics() {
-      var _this12 = this;
+      var _this7 = this;
 
       console.log('add About pics new');
       this.$Progress.start();
@@ -3171,15 +2975,15 @@ __webpack_require__.r(__webpack_exports__);
           title: 'aboutpics Created successfully'
         });
 
-        _this12.$store.dispatch("organisation");
+        _this7.$store.dispatch("organisation");
 
-        _this12.$store.dispatch("about");
+        _this7.$store.dispatch("about");
 
-        _this12.$store.dispatch("aboutpic");
+        _this7.$store.dispatch("aboutpic");
 
-        _this12.aboutpicsform.reset();
+        _this7.aboutpicsform.reset();
 
-        _this12.$Progress.finish();
+        _this7.$Progress.finish();
       }).catch(function () {
         //errors
         $('#AboutPicsModal').modal('show');
@@ -3188,11 +2992,11 @@ __webpack_require__.r(__webpack_exports__);
           title: 'There was something wrong.'
         });
 
-        _this12.$Progress.fail();
+        _this7.$Progress.fail();
       });
     },
     addOrganisation: function addOrganisation() {
-      var _this13 = this;
+      var _this8 = this;
 
       console.log('add Organisation new');
       this.$Progress.start();
@@ -3202,19 +3006,19 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Organisation Created successfully'
         });
 
-        _this13.$store.dispatch("organisation");
+        _this8.$store.dispatch("organisation");
 
-        _this13.$store.dispatch("about");
+        _this8.$store.dispatch("about");
 
-        _this13.$store.dispatch("aboutpic");
+        _this8.$store.dispatch("aboutpic");
 
         $('#OrganisationModal').modal('hide');
 
-        _this13.organisationform.reset();
+        _this8.organisationform.reset();
 
-        _this13.$Progress.finish();
+        _this8.$Progress.finish();
       }).catch(function () {
-        _this13.$Progress.fail(); //errors
+        _this8.$Progress.fail(); //errors
 
 
         $('#OrganisationModal').modal('show');
@@ -3225,7 +3029,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addAbout: function addAbout() {
-      var _this14 = this;
+      var _this9 = this;
 
       console.log('add About new');
       this.$Progress.start();
@@ -3236,19 +3040,19 @@ __webpack_require__.r(__webpack_exports__);
           title: 'About Info Created successfully'
         });
 
-        _this14.$store.dispatch("organisation");
+        _this9.$store.dispatch("organisation");
 
-        _this14.$store.dispatch("about");
+        _this9.$store.dispatch("about");
 
-        _this14.$store.dispatch("aboutpic");
+        _this9.$store.dispatch("aboutpic");
 
         $('#AboutModal').modal('hide');
 
-        _this14.aboutform.reset();
+        _this9.aboutform.reset();
 
-        _this14.$Progress.finish();
+        _this9.$Progress.finish();
       }).catch(function () {
-        _this14.$Progress.fail(); //errors
+        _this9.$Progress.fail(); //errors
 
 
         $('#AboutModal').modal('show');
@@ -3259,16 +3063,16 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updateAboutPics: function updateAboutPics(id) {
-      var _this15 = this;
+      var _this10 = this;
 
       console.log('update about');
       this.$Progress.start();
       this.aboutform.patch('/aboutpic/update/' + id).then(function () {
-        _this15.$store.dispatch("organisation");
+        _this10.$store.dispatch("organisation");
 
-        _this15.$store.dispatch("about");
+        _this10.$store.dispatch("about");
 
-        _this15.$store.dispatch("aboutpic");
+        _this10.$store.dispatch("aboutpic");
 
         $('#AboutPicsModal').modal('hide');
         toast({
@@ -3276,11 +3080,11 @@ __webpack_require__.r(__webpack_exports__);
           title: 'About Updated successfully'
         });
 
-        _this15.$Progress.finish();
+        _this10.$Progress.finish();
       }).catch(function () {
         $('#AboutPicsModal').modal('show');
 
-        _this15.$Progress.fail();
+        _this10.$Progress.fail();
 
         toast({
           type: 'error',
@@ -3289,16 +3093,16 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updateAbout: function updateAbout(id) {
-      var _this16 = this;
+      var _this11 = this;
 
       console.log('update about');
       this.$Progress.start();
       this.aboutform.patch('/about/update/' + id).then(function () {
-        _this16.$store.dispatch("organisation");
+        _this11.$store.dispatch("organisation");
 
-        _this16.$store.dispatch("about");
+        _this11.$store.dispatch("about");
 
-        _this16.$store.dispatch("aboutpic");
+        _this11.$store.dispatch("aboutpic");
 
         $('#AboutModal').modal('hide');
         toast({
@@ -3306,9 +3110,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'About Updated successfully'
         });
 
-        _this16.$Progress.finish();
+        _this11.$Progress.finish();
       }).catch(function () {
-        _this16.$Progress.fail();
+        _this11.$Progress.fail();
 
         $('#AboutModal').modal('show');
         toast({
@@ -3318,16 +3122,16 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updateOrganisation: function updateOrganisation(id) {
-      var _this17 = this;
+      var _this12 = this;
 
       console.log('update organisaton');
       this.$Progress.start();
       this.organisationform.patch('/organisation/update/' + id).then(function () {
-        _this17.$store.dispatch("organisation");
+        _this12.$store.dispatch("organisation");
 
-        _this17.$store.dispatch("about");
+        _this12.$store.dispatch("about");
 
-        _this17.$store.dispatch("aboutpic");
+        _this12.$store.dispatch("aboutpic");
 
         $('#OrganisationModal').modal('hide');
         toast({
@@ -3335,9 +3139,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'User Created successfully'
         });
 
-        _this17.$Progress.finish();
+        _this12.$Progress.finish();
       }).catch(function () {
-        _this17.$Progress.fail();
+        _this12.$Progress.fail();
 
         $('#OrganisationModal').modal('show');
         toast({
@@ -3347,7 +3151,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     deleteUser: function deleteUser(id) {
-      var _this18 = this;
+      var _this13 = this;
 
       Swal({
         title: 'Are you sure?',
@@ -3360,23 +3164,23 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           //  console.log('delete user', id)
-          _this18.$Progress.start();
+          _this13.$Progress.start();
 
-          _this18.organisationform.get('/organisation/delete/' + id).then(function () {
+          _this13.organisationform.get('/organisation/delete/' + id).then(function () {
             toast({
               type: 'success',
               title: 'Organisation Deleted successfully'
             });
 
-            _this18.$store.dispatch("organisation");
+            _this13.$store.dispatch("organisation");
 
-            _this18.$store.dispatch("about");
+            _this13.$store.dispatch("about");
 
-            _this18.$store.dispatch("aboutpic");
+            _this13.$store.dispatch("aboutpic");
 
-            _this18.$Progress.finish();
+            _this13.$Progress.finish();
           }).catch(function () {
-            _this18.$Progress.fail();
+            _this13.$Progress.fail();
 
             toast({
               type: 'error',
@@ -60642,7 +60446,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "Add Organisation\n                                                    "
+                          "Add Organisation\n                                                  "
                         ),
                         _c("i", { staticClass: "fas fa-plus fw" })
                       ]
@@ -60659,7 +60463,8 @@ var render = function() {
                             _c("img", {
                               attrs: {
                                 src: _vm.organisationLogo(organisation.logo),
-                                alt: ""
+                                alt: "",
+                                width: "150px"
                               }
                             })
                           ])
@@ -60685,16 +60490,33 @@ var render = function() {
                               _vm._v(
                                 "P.O. Box " +
                                   _vm._s(organisation.address) +
-                                  ",\n                                                                "
+                                  ", "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "card-text" }, [
+                              _vm._v(
+                                " " +
+                                  _vm._s(organisation.ward.name) +
+                                  " Ward,\n                                                              "
                               ),
                               _c("span", [
-                                _vm._v(_vm._s(organisation.town.name))
-                              ]),
-                              _vm._v(" "),
+                                _vm._v(
+                                  _vm._s(organisation.constituency.name) +
+                                    " Constituency"
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "card-text" }, [
                               _c("span", [
-                                _vm._v(_vm._s(organisation.county.name))
+                                _vm._v(
+                                  _vm._s(organisation.county.name) + " County"
+                                )
                               ]),
-                              _vm._v(" "),
+                              _vm._v(
+                                ",\n                                                              "
+                              ),
                               _c("span", [
                                 _vm._v(_vm._s(organisation.country.name))
                               ])
@@ -60793,7 +60615,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "Add New About US Pictures\n                                                    "
+                          "Add New About US Pictures\n                                                  "
                         ),
                         _c("i", { staticClass: "fas fa-plus fw" })
                       ]
@@ -60812,7 +60634,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "Add About Us\n                                                    "
+                          "Add About Us\n                                                  "
                         ),
                         _c("i", { staticClass: "fas fa-plus fw" })
                       ]
@@ -60822,357 +60644,294 @@ var render = function() {
                 _vm._v(" "),
                 _vm._l(_vm.About, function(about) {
                   return _c("div", { key: about.id }, [
-                    _c(
-                      "div",
-                      { staticClass: "card" },
-                      [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-md-4" }, [
-                            _c("div", { staticClass: "card-body" }, [
-                              _c("img", {
-                                attrs: {
-                                  src: _vm.aboutFrontImage(about.front_image),
-                                  alt: ""
-                                }
-                              })
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-md-8 " }, [
-                            _c(
-                              "div",
-                              { staticClass: "card text-white bg-danger" },
-                              [
-                                _c("div", { staticClass: "card-header" }, [
-                                  _c(
-                                    "h5",
-                                    { staticClass: "card-title text-center" },
-                                    [_vm._v(_vm._s(about.title))]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "card-body" }, [
-                                  _c(
-                                    "h6",
-                                    {
-                                      staticClass:
-                                        "card-subtitle mb-2 text-muted text-center"
-                                    },
-                                    [_vm._v(_vm._s(about.subtitle))]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "h5",
-                                    { staticClass: "card-title text-center" },
-                                    [_vm._v("Why Choose US")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "card-text" }, [
-                                    _vm._v(_vm._s(about.why_choose_us))
-                                  ])
-                                ])
-                              ]
-                            )
+                    _c("div", { staticClass: "card" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-4" }, [
+                          _c("div", { staticClass: "card-body" }, [
+                            _c("img", {
+                              attrs: {
+                                src: _vm.aboutFrontImage(about.front_image),
+                                alt: "",
+                                width: "250px"
+                              }
+                            })
                           ])
                         ]),
                         _vm._v(" "),
-                        _vm._l(_vm.AboutPic, function(aboutpic) {
-                          return _c("div", { key: aboutpic.id }, [
-                            _c("div", { staticClass: "card" }, [
-                              _c("div", { staticClass: "row" }, [
-                                _c("div", { staticClass: "col-md-2" }, [
-                                  _c("img", {
-                                    attrs: {
-                                      src: _vm.aboutLoadImage1(
-                                        aboutpic.about_image1
-                                      ),
-                                      alt: "",
-                                      width: "150"
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-2" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "card text-white bg-success mb-3"
-                                    },
-                                    [
-                                      _c("img", {
-                                        attrs: {
-                                          src: _vm.aboutLoadImage2(
-                                            aboutpic.about_image2
-                                          ),
-                                          alt: ""
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-2" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "card text-white bg-success mb-3"
-                                    },
-                                    [
-                                      _c("img", {
-                                        attrs: {
-                                          src: _vm.aboutLoadImage3(
-                                            aboutpic.about_image3
-                                          ),
-                                          alt: ""
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-2" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "card text-white bg-success mb-3"
-                                    },
-                                    [
-                                      _c("img", {
-                                        attrs: {
-                                          src: _vm.aboutLoadImage4(
-                                            aboutpic.about_image4
-                                          ),
-                                          alt: ""
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-2" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "card text-white bg-success mb-3"
-                                    },
-                                    [
-                                      _c("img", {
-                                        attrs: {
-                                          src: _vm.aboutLoadImage5(
-                                            aboutpic.about_image5
-                                          ),
-                                          alt: ""
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-2" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "card text-white bg-success mb-3"
-                                    },
-                                    [
-                                      _c("img", {
-                                        attrs: {
-                                          src: _vm.aboutLoadImage6(
-                                            aboutpic.about_image6
-                                          ),
-                                          alt: ""
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ])
+                        _c("div", { staticClass: "col-md-8 " }, [
+                          _c(
+                            "div",
+                            { staticClass: "card text-white bg-danger" },
+                            [
+                              _c("div", { staticClass: "card-header" }, [
+                                _c(
+                                  "h5",
+                                  { staticClass: "card-title text-center" },
+                                  [_vm._v(_vm._s(about.title))]
+                                )
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "card-body" }, [
-                                _c("div", { staticClass: "float-right" }, [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "card-link",
-                                      attrs: { href: "" },
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          return _vm.editAboutPicsModal(
-                                            aboutpic.id
-                                          )
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c(
-                                        "i",
-                                        { staticClass: "fa fa-edit blue" },
-                                        [_vm._v(" Edit")]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "card-link",
-                                      attrs: { href: "" },
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          return _vm.deleteAboutPics(
-                                            aboutpic.id
-                                          )
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("i", {
-                                        staticClass: "fa fa-trash red"
-                                      })
-                                    ]
-                                  )
-                                ]),
+                                _c(
+                                  "h6",
+                                  {
+                                    staticClass:
+                                      "card-subtitle mb-2 text-muted text-center"
+                                  },
+                                  [_vm._v(_vm._s(about.subtitle))]
+                                ),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "float-left" }, [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "card-link",
-                                      attrs: { href: "#about_us" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "Updated BY: " +
-                                          _vm._s(aboutpic.user.full_name)
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "card-link",
-                                      attrs: { href: "#about_us" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "Updated On: " +
-                                          _vm._s(
-                                            _vm._f("dateformat")(
-                                              aboutpic.created_at
-                                            )
-                                          )
-                                      )
-                                    ]
-                                  )
+                                _c(
+                                  "h5",
+                                  { staticClass: "card-title text-center" },
+                                  [_vm._v("Why Choose US")]
+                                ),
+                                _vm._v(" "),
+                                _c("p", { staticClass: "card-text" }, [
+                                  _vm._v(_vm._s(about.why_choose_us))
                                 ])
                               ])
-                            ])
-                          ])
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-md-6" }, [
-                            _c(
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "row " },
+                        [
+                          _vm._l(_vm.AboutPic, function(aboutpic) {
+                            return _c(
                               "div",
-                              { staticClass: "card text-white bg-info" },
+                              { key: aboutpic.id, staticClass: "col-md-3" },
                               [
-                                _vm._m(4, true),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "card-body" }, [
-                                  _c("p", { staticClass: "card-text" }, [
-                                    _vm._v(_vm._s(about.why_choose_us))
+                                _c("div", { staticClass: "card " }, [
+                                  _c("img", {
+                                    staticClass: "card-img-top ",
+                                    staticStyle: {
+                                      width: "100%",
+                                      height: "150px"
+                                    },
+                                    attrs: {
+                                      src: _vm.aboutLoadImage(aboutpic.image)
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "card-body" }, [
+                                    _c("h5", { staticClass: "card-title" }, [
+                                      _vm._v(_vm._s(aboutpic.title))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "p",
+                                      {
+                                        staticClass: "card-text",
+                                        staticStyle: {
+                                          "margin-bottom": "-0.5em"
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          _vm._s(
+                                            _vm._f("sortlength")(
+                                              aboutpic.description,
+                                              80,
+                                              "...."
+                                            )
+                                          )
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "p",
+                                      {
+                                        staticStyle: {
+                                          "margin-bottom": "-0.5em"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "small",
+                                          { staticClass: "text-muted" },
+                                          [
+                                            _vm._v(
+                                              "Last updated: " +
+                                                _vm._s(
+                                                  _vm._f("dateformat")(
+                                                    aboutpic.updated_at
+                                                  )
+                                                )
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "p",
+                                      {
+                                        staticStyle: {
+                                          "margin-bottom": "-0.5em"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "small",
+                                          { staticClass: "text-muted" },
+                                          [
+                                            _vm._v(
+                                              "Updated By: " +
+                                                _vm._s(aboutpic.user.full_name)
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "float-right" }, [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "card-link",
+                                          attrs: { href: "" },
+                                          on: {
+                                            click: function($event) {
+                                              $event.preventDefault()
+                                              return _vm.editAboutPicsModal(
+                                                aboutpic.id
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fa fa-edit blue"
+                                          })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "card-link",
+                                          attrs: { href: "" },
+                                          on: {
+                                            click: function($event) {
+                                              $event.preventDefault()
+                                              return _vm.deleteAboutPics(
+                                                aboutpic.id
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fa fa-trash red"
+                                          })
+                                        ]
+                                      )
+                                    ])
                                   ])
                                 ])
                               ]
                             )
-                          ]),
+                          }),
                           _vm._v(" "),
-                          _c("div", { staticClass: "col-md-6" }, [
-                            _c(
-                              "div",
-                              {
-                                staticClass: "card text-white bg-success mb-3"
-                              },
-                              [
-                                _vm._m(5, true),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "card-body" }, [
-                                  _c("p", { staticClass: "card-text" }, [
-                                    _vm._v(_vm._s(about.what_we_do))
-                                  ])
+                          _c("ul", {
+                            staticClass: "pagination",
+                            staticStyle: { padding: "0px", margin: "0px" }
+                          })
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c(
+                            "div",
+                            { staticClass: "card text-white bg-info" },
+                            [
+                              _vm._m(4, true),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "card-body" }, [
+                                _c("p", { staticClass: "card-text" }, [
+                                  _vm._v(_vm._s(about.why_choose_us))
                                 ])
-                              ]
-                            )
-                          ])
+                              ])
+                            ]
+                          )
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "card-body" }, [
-                          _c("div", { staticClass: "float-right" }, [
-                            _vm._v(
-                              "\n                                                    <"
-                            ),
-                            _c(
-                              "a",
-                              {
-                                staticClass: "card-link",
-                                attrs: { href: "" },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.editAboutModal(about.id)
-                                  }
-                                }
-                              },
-                              [
-                                _c("i", { staticClass: "fa fa-edit blue" }, [
-                                  _vm._v(" Edit")
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c(
+                            "div",
+                            { staticClass: "card text-white bg-success mb-3" },
+                            [
+                              _vm._m(5, true),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "card-body" }, [
+                                _c("p", { staticClass: "card-text" }, [
+                                  _vm._v(_vm._s(about.what_we_do))
                                 ])
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "float-left" }, [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "card-link",
-                                attrs: { href: "#about_us" }
-                              },
-                              [
-                                _vm._v(
-                                  "Updated BY: " + _vm._s(about.user.full_name)
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass: "card-link",
-                                attrs: { href: "#about_us" }
-                              },
-                              [
-                                _vm._v(
-                                  "Updated On: " +
-                                    _vm._s(
-                                      _vm._f("dateformat")(about.updated_at)
-                                    )
-                                )
-                              ]
-                            )
-                          ])
+                              ])
+                            ]
+                          )
                         ])
-                      ],
-                      2
-                    )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
+                        _c("div", { staticClass: "float-right" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "card-link",
+                              attrs: { href: "" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.editAboutModal(about.id)
+                                }
+                              }
+                            },
+                            [
+                              _c("i", { staticClass: "fa fa-edit blue" }, [
+                                _vm._v(" Edit")
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "float-left" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "card-link",
+                              attrs: { href: "#about_us" }
+                            },
+                            [
+                              _vm._v(
+                                "Updated BY: " + _vm._s(about.user.full_name)
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "card-link",
+                              attrs: { href: "#about_us" }
+                            },
+                            [
+                              _vm._v(
+                                "Updated On: " +
+                                  _vm._s(_vm._f("dateformat")(about.updated_at))
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ])
                   ])
                 })
               ],
@@ -61197,7 +60956,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "Add New Filter\n                                                    "
+                        "Add New Filter\n                                                  "
                       ),
                       _c("i", { staticClass: "fas fa-plus fw" })
                     ]
@@ -61216,7 +60975,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "Add New Extra Services\n                                                    "
+                        "Add New Extra Services\n                                                  "
                       ),
                       _c("i", { staticClass: "fas fa-plus fw" })
                     ]
@@ -61235,7 +60994,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "Add new Advert\n                                                    "
+                        "Add new Advert\n                                                  "
                       ),
                       _c("i", { staticClass: "fas fa-plus fw" })
                     ]
@@ -61523,7 +61282,7 @@ var render = function() {
                             staticClass: "col-form-label",
                             attrs: { for: "phone" }
                           },
-                          [_vm._v(" Organisation Phone")]
+                          [_vm._v(" Organisation Pxxhone")]
                         ),
                         _vm._v(" "),
                         _c(
@@ -61558,7 +61317,7 @@ var render = function() {
                           1
                         ),
                         _vm._v(" "),
-                        _vm.organisationform.phone
+                        _vm.organisationform.phorne
                           ? _c("div", { staticStyle: { color: "#e83e8c" } }, [
                               _c("span", [
                                 _vm._v("Is valid: "),
@@ -61763,7 +61522,7 @@ var render = function() {
                     _c("div", { staticClass: " row" }, [
                       _c(
                         "div",
-                        { staticClass: "form-group col-md-4" },
+                        { staticClass: "form-group col-md-3" },
                         [
                           _c("label", { attrs: { for: "country_id" } }, [
                             _vm._v("Select Country")
@@ -61848,7 +61607,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "form-group col-md-4" },
+                        { staticClass: "form-group col-md-3" },
                         [
                           _c(
                             "label",
@@ -61897,7 +61656,7 @@ var render = function() {
                                     )
                                   },
                                   function($event) {
-                                    return _vm.countyTowns(
+                                    return _vm.countyConstituencies(
                                       _vm.organisationform.county_id
                                     )
                                   }
@@ -61938,15 +61697,15 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "form-group col-md-4" },
+                        { staticClass: "form-group col-md-3" },
                         [
                           _c(
                             "label",
                             {
-                              staticClass: "col-form-label",
-                              attrs: { for: "town_id" }
+                              staticClass: " col-form-label",
+                              attrs: { for: "constituency_id" }
                             },
-                            [_vm._v(" Town")]
+                            [_vm._v("Constituency")]
                           ),
                           _vm._v(" "),
                           _c(
@@ -61956,14 +61715,106 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.organisationform.town_id,
-                                  expression: "organisationform.town_id"
+                                  value: _vm.organisationform.constituency_id,
+                                  expression: "organisationform.constituency_id"
                                 }
                               ],
                               staticClass: "form-control",
                               class: {
                                 "is-invalid": _vm.organisationform.errors.has(
-                                  "town_id"
+                                  "constituency_id"
+                                )
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.organisationform,
+                                      "constituency_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.constituencyWards(
+                                      _vm.organisationform.constituency_id
+                                    )
+                                  }
+                                ]
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select County")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Constituencies, function(
+                                constituency
+                              ) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: constituency.id,
+                                    domProps: { value: constituency.id }
+                                  },
+                                  [_vm._v(_vm._s(constituency.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.organisationform,
+                              field: "constituency_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "ward_id" }
+                            },
+                            [_vm._v(" Ward ")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.organisationform.ward_id,
+                                  expression: "organisationform.ward_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.organisationform.errors.has(
+                                  "ward_id"
                                 )
                               },
                               on: {
@@ -61979,7 +61830,7 @@ var render = function() {
                                     })
                                   _vm.$set(
                                     _vm.organisationform,
-                                    "town_id",
+                                    "ward_id",
                                     $event.target.multiple
                                       ? $$selectedVal
                                       : $$selectedVal[0]
@@ -61994,14 +61845,14 @@ var render = function() {
                                 [_vm._v("Select Town")]
                               ),
                               _vm._v(" "),
-                              _vm._l(_vm.Towns, function(town) {
+                              _vm._l(_vm.Wards, function(ward) {
                                 return _c(
                                   "option",
                                   {
-                                    key: town.id,
-                                    domProps: { value: town.id }
+                                    key: ward.id,
+                                    domProps: { value: ward.id }
                                   },
-                                  [_vm._v(_vm._s(town.name))]
+                                  [_vm._v(_vm._s(ward.name))]
                                 )
                               })
                             ],
@@ -62012,7 +61863,7 @@ var render = function() {
                             staticStyle: { color: "#e83e8c" },
                             attrs: {
                               form: _vm.organisationform,
-                              field: "town_id"
+                              field: "ward_id"
                             }
                           })
                         ],
@@ -62023,7 +61874,7 @@ var render = function() {
                     _c("div", { staticClass: " row" }, [
                       _c(
                         "div",
-                        { staticClass: "form-group col-md-12" },
+                        { staticClass: "form-group col-md-6" },
                         [
                           _c(
                             "label",
@@ -62063,7 +61914,7 @@ var render = function() {
                                 _vm.organisationform.logo
                               ),
                               alt: "",
-                              width: "30%"
+                              width: "100%"
                             }
                           }),
                           _vm._v(" "),
@@ -62079,7 +61930,7 @@ var render = function() {
                             attrs: {
                               src: _vm.organisationform.logo,
                               alt: "",
-                              width: "30%"
+                              width: "100%"
                             }
                           }),
                           _vm._v(" "),
@@ -62227,8 +62078,127 @@ var render = function() {
                           _c(
                             "label",
                             {
+                              staticClass: "col-form-label",
+                              attrs: { for: "title" }
+                            },
+                            [_vm._v("Title")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.aboutpicsform.title,
+                                expression: "aboutpicsform.title"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.aboutpicsform.errors.has(
+                                "title"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "title",
+                              placeholder: "Title"
+                            },
+                            domProps: { value: _vm.aboutpicsform.title },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.aboutpicsform,
+                                  "title",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.aboutpicsform, field: "title" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-12" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "description" }
+                            },
+                            [_vm._v("Description")]
+                          ),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.aboutpicsform.description,
+                                expression: "aboutpicsform.description"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.aboutpicsform.errors.has(
+                                "description"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "description",
+                              placeholder: "description"
+                            },
+                            domProps: { value: _vm.aboutpicsform.description },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.aboutpicsform,
+                                  "description",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.aboutpicsform,
+                              field: "description"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-12" },
+                        [
+                          _c(
+                            "label",
+                            {
                               staticClass: " col-form-label",
-                              attrs: { for: "about_image1" }
+                              attrs: { for: "image" }
                             },
                             [_vm._v("Organisation Image 1")]
                           ),
@@ -62237,270 +62207,28 @@ var render = function() {
                           _c("input", {
                             class: {
                               "is-invalid": _vm.aboutpicsform.errors.has(
-                                "about_image1"
+                                "image"
                               )
                             },
-                            attrs: { type: "file", name: "about_image1" },
+                            attrs: { type: "file", name: "image" },
                             on: {
                               change: function($event) {
-                                return _vm.aboutImage1($event)
+                                return _vm.aboutImage($event)
                               }
                             }
                           }),
                           _vm._v(" "),
                           _c("img", {
                             attrs: {
-                              src: _vm.aboutpicsform.about_image1,
+                              src: _vm.aboutpicsform.image,
                               alt: "",
-                              width: "30%"
+                              width: "100%"
                             }
                           }),
                           _vm._v(" "),
                           _c("has-error", {
                             staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.aboutpicsform,
-                              field: "about_image1"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-6" },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: " col-form-label",
-                              attrs: { for: "about_image2" }
-                            },
-                            [_vm._v("Organisation Image 2")]
-                          ),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("input", {
-                            class: {
-                              "is-invalid": _vm.aboutpicsform.errors.has(
-                                "about_image2"
-                              )
-                            },
-                            attrs: { type: "file", name: "about_image2" },
-                            on: {
-                              change: function($event) {
-                                return _vm.aboutImage2($event)
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("img", {
-                            attrs: {
-                              src: _vm.aboutpicsform.about_image2,
-                              alt: "",
-                              width: "30%"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.aboutpicsform,
-                              field: "about_image2"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: " row" }, [
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-6" },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: " col-form-label",
-                              attrs: { for: "about_image3" }
-                            },
-                            [_vm._v("Organisation Image 3")]
-                          ),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("input", {
-                            class: {
-                              "is-invalid": _vm.aboutpicsform.errors.has(
-                                "about_image3"
-                              )
-                            },
-                            attrs: { type: "file", name: "about_image3" },
-                            on: {
-                              change: function($event) {
-                                return _vm.aboutImage3($event)
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("img", {
-                            attrs: {
-                              src: _vm.aboutpicsform.about_image3,
-                              alt: "",
-                              width: "30%"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.aboutpicsform,
-                              field: "about_image3"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-6" },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: " col-form-label",
-                              attrs: { for: "about_image4" }
-                            },
-                            [_vm._v("Organisation Image 4")]
-                          ),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("input", {
-                            class: {
-                              "is-invalid": _vm.aboutpicsform.errors.has(
-                                "about_image4"
-                              )
-                            },
-                            attrs: { type: "file", name: "about_image4" },
-                            on: {
-                              change: function($event) {
-                                return _vm.aboutImage4($event)
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("img", {
-                            attrs: {
-                              src: _vm.aboutpicsform.about_image4,
-                              alt: "",
-                              width: "30%"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.aboutpicsform,
-                              field: "about_image4"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: " row" }, [
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-6" },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: " col-form-label",
-                              attrs: { for: "about_image5" }
-                            },
-                            [_vm._v("Organisation Image 5")]
-                          ),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("input", {
-                            class: {
-                              "is-invalid": _vm.aboutpicsform.errors.has(
-                                "about_image5"
-                              )
-                            },
-                            attrs: { type: "file", name: "about_image5" },
-                            on: {
-                              change: function($event) {
-                                return _vm.aboutImage5($event)
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("img", {
-                            attrs: {
-                              src: _vm.aboutpicsform.about_image5,
-                              alt: "",
-                              width: "30%"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.aboutpicsform,
-                              field: "about_image5"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-6" },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: " col-form-label",
-                              attrs: { for: "about_image6" }
-                            },
-                            [_vm._v("Organisation Image 6")]
-                          ),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("input", {
-                            class: {
-                              "is-invalid": _vm.aboutpicsform.errors.has(
-                                "about_image6"
-                              )
-                            },
-                            attrs: { type: "file", name: "about_image6" },
-                            on: {
-                              change: function($event) {
-                                return _vm.aboutImage6($event)
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("img", {
-                            attrs: {
-                              src: _vm.aboutpicsform.about_image6,
-                              alt: "",
-                              width: "30%"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.aboutpicsform,
-                              field: "about_image6"
-                            }
+                            attrs: { form: _vm.aboutpicsform, field: "image" }
                           })
                         ],
                         1
@@ -62634,121 +62362,6 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "modal-body" }, [
-                    _c("div", { staticClass: " row" }, [
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-6" },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "col-form-label",
-                              attrs: { for: "name" }
-                            },
-                            [_vm._v(" User Name")]
-                          ),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.aboutform.user_id,
-                                expression: "aboutform.user_id"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid": _vm.aboutform.errors.has("user_id")
-                            },
-                            attrs: {
-                              type: "text",
-                              name: "name",
-                              placeholder: "User Name"
-                            },
-                            domProps: { value: _vm.aboutform.user_id },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.aboutform,
-                                  "user_id",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: { form: _vm.aboutform, field: "user_id" }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-6" },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "col-form-label",
-                              attrs: { for: "organisation_id" }
-                            },
-                            [_vm._v("organisation Name")]
-                          ),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.aboutform.organisation_id,
-                                expression: "aboutform.organisation_id"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid": _vm.aboutform.errors.has(
-                                "organisation_id"
-                              )
-                            },
-                            attrs: {
-                              type: "text",
-                              name: "organisation_id",
-                              placeholder: "organisation Name"
-                            },
-                            domProps: { value: _vm.aboutform.organisation_id },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.aboutform,
-                                  "organisation_id",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.aboutform,
-                              field: "organisation_id"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
                     _c("div", { staticClass: " row" }, [
                       _c(
                         "div",
@@ -63075,7 +62688,7 @@ var render = function() {
                                 _vm.aboutform.front_image
                               ),
                               alt: "",
-                              width: "30%"
+                              width: "100%"
                             }
                           }),
                           _vm._v(" "),
@@ -63091,7 +62704,7 @@ var render = function() {
                             attrs: {
                               src: _vm.aboutform.front_image,
                               alt: "",
-                              width: "30%"
+                              width: "100%"
                             }
                           }),
                           _vm._v(" "),
@@ -63204,7 +62817,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("div", { staticClass: "card-tools" }, [
                 _c("button", { staticClass: "btn btn-info" }, [
-                  _vm._v("Follow us\n                                "),
+                  _vm._v("Follow us\n                              "),
                   _c("i", { staticClass: "fas fa-plus fw" })
                 ])
               ])
@@ -63223,7 +62836,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("div", { staticClass: "card-tools" }, [
                 _c("button", { staticClass: "btn btn-info" }, [
-                  _vm._v("Follow us\n                                "),
+                  _vm._v("Follow us\n                              "),
                   _c("i", { staticClass: "fas fa-plus fw" })
                 ])
               ])
@@ -63240,7 +62853,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("div", { staticClass: "card-tools" }, [
                 _c("button", { staticClass: "btn btn-info" }, [
-                  _vm._v("Follow us\n                                "),
+                  _vm._v("Follow us\n                              "),
                   _c("i", { staticClass: "fas fa-plus fw" })
                 ])
               ])
@@ -63395,20 +63008,20 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-md-6" }, [
           _c("h5", { staticClass: "card-title text-center" }, [
             _vm._v(
-              "advert Title:\n                                                              "
+              "advert Title:\n                                                            "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("p", { staticClass: "card-text text-center" }, [
               _vm._v(
-                "advert Details:\n                                                                "
+                "advert Details:\n                                                              "
               )
             ]),
             _vm._v(" "),
             _c("p", { staticClass: "card-text" }, [
               _vm._v(
-                "hhhh\n                                                                "
+                "hhhh\n                                                              "
               )
             ])
           ])
@@ -63429,13 +63042,13 @@ var staticRenderFns = [
         _c("div", { staticClass: "float-left" }, [
           _c("a", { staticClass: "card-link", attrs: { href: "#services" } }, [
             _vm._v(
-              "Updated BY:\n                                                      "
+              "Updated BY:\n                                                    "
             )
           ]),
           _vm._v(" "),
           _c("a", { staticClass: "card-link", attrs: { href: "#services" } }, [
             _vm._v(
-              "Created AT:\n                                                                     "
+              "Created AT:\n                                                                   "
             )
           ])
         ])
@@ -63463,20 +63076,20 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-md-6" }, [
           _c("h5", { staticClass: "card-title text-center" }, [
             _vm._v(
-              "Teif advert Title:\n                                                              "
+              "Teif advert Title:\n                                                            "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("p", { staticClass: "card-text text-center" }, [
               _vm._v(
-                "advert Details:\n                                                                "
+                "advert Details:\n                                                              "
               )
             ]),
             _vm._v(" "),
             _c("p", { staticClass: "card-text" }, [
               _vm._v(
-                "hhhh\n                                                                "
+                "hhhh\n                                                              "
               )
             ])
           ])
@@ -63497,13 +63110,13 @@ var staticRenderFns = [
         _c("div", { staticClass: "float-left" }, [
           _c("a", { staticClass: "card-link", attrs: { href: "#services" } }, [
             _vm._v(
-              "Updated BY:\n                                                                     "
+              "Updated BY:\n                                                                   "
             )
           ]),
           _vm._v(" "),
           _c("a", { staticClass: "card-link", attrs: { href: "#services" } }, [
             _vm._v(
-              "Created AT:\n                                                                     "
+              "Created AT:\n                                                                   "
             )
           ])
         ])
@@ -63521,7 +63134,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "card-header" }, [
               _c("h5", { staticClass: "card-title text-center" }, [
                 _vm._v(
-                  "Extra\n                                                                    "
+                  "Extra\n                                                                  "
                 )
               ])
             ]),
@@ -63529,13 +63142,13 @@ var staticRenderFns = [
             _c("div", { staticClass: "card-body" }, [
               _c("p", { staticClass: "card-text" }, [
                 _vm._v(
-                  "hhh\n                                                                    "
+                  "hhh\n                                                                  "
                 )
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "card-text" }, [
                 _vm._v(
-                  "hhhh\n                                                                    "
+                  "hhhh\n                                                                  "
                 )
               ])
             ]),
@@ -63561,7 +63174,7 @@ var staticRenderFns = [
                   { staticClass: "card-link", attrs: { href: "#services" } },
                   [
                     _vm._v(
-                      "Up:hh\n                                                                        "
+                      "Up:hh\n                                                                      "
                     )
                   ]
                 )
@@ -81535,11 +81148,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/user */ "./resources/js/store/modules/user.js");
 /* harmony import */ var _modules_countries__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/countries */ "./resources/js/store/modules/countries.js");
 /* harmony import */ var _modules_counties__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/counties */ "./resources/js/store/modules/counties.js");
-/* harmony import */ var _modules_towns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/towns */ "./resources/js/store/modules/towns.js");
-/* harmony import */ var _modules_organisation_organisation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/organisation/organisation */ "./resources/js/store/modules/organisation/organisation.js");
-/* harmony import */ var _modules_organisation_webpages_about__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/organisation/webpages/about */ "./resources/js/store/modules/organisation/webpages/about.js");
-/* harmony import */ var _modules_organisation_webpages_aboutpic__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/organisation/webpages/aboutpic */ "./resources/js/store/modules/organisation/webpages/aboutpic.js");
-/* harmony import */ var _modules_organisation_webpages_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/organisation/webpages/service */ "./resources/js/store/modules/organisation/webpages/service.js");
+/* harmony import */ var _modules_constituencies__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/constituencies */ "./resources/js/store/modules/constituencies.js");
+/* harmony import */ var _modules_wards__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/wards */ "./resources/js/store/modules/wards.js");
+/* harmony import */ var _modules_organisation_organisation__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/organisation/organisation */ "./resources/js/store/modules/organisation/organisation.js");
+/* harmony import */ var _modules_organisation_webpages_about__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/organisation/webpages/about */ "./resources/js/store/modules/organisation/webpages/about.js");
+/* harmony import */ var _modules_organisation_webpages_aboutpic__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/organisation/webpages/aboutpic */ "./resources/js/store/modules/organisation/webpages/aboutpic.js");
+/* harmony import */ var _modules_organisation_webpages_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/organisation/webpages/service */ "./resources/js/store/modules/organisation/webpages/service.js");
 // import Axios from "axios";
 // import Axios from "axios";
 // // import Vue from 'vue'
@@ -81621,6 +81235,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
  // Vue.use(Vuex)
 // const debug = process.env.NODE_ENV !== 'production'
 
@@ -81631,14 +81246,70 @@ __webpack_require__.r(__webpack_exports__);
     role: _modules_role__WEBPACK_IMPORTED_MODULE_1__["default"],
     countries: _modules_countries__WEBPACK_IMPORTED_MODULE_3__["default"],
     counties: _modules_counties__WEBPACK_IMPORTED_MODULE_4__["default"],
-    towns: _modules_towns__WEBPACK_IMPORTED_MODULE_5__["default"],
-    organisation: _modules_organisation_organisation__WEBPACK_IMPORTED_MODULE_6__["default"],
-    about: _modules_organisation_webpages_about__WEBPACK_IMPORTED_MODULE_7__["default"],
-    aboutpic: _modules_organisation_webpages_aboutpic__WEBPACK_IMPORTED_MODULE_8__["default"],
-    service: _modules_organisation_webpages_service__WEBPACK_IMPORTED_MODULE_9__["default"]
+    constituencies: _modules_constituencies__WEBPACK_IMPORTED_MODULE_5__["default"],
+    wards: _modules_wards__WEBPACK_IMPORTED_MODULE_6__["default"],
+    organisation: _modules_organisation_organisation__WEBPACK_IMPORTED_MODULE_7__["default"],
+    about: _modules_organisation_webpages_about__WEBPACK_IMPORTED_MODULE_8__["default"],
+    aboutpic: _modules_organisation_webpages_aboutpic__WEBPACK_IMPORTED_MODULE_9__["default"],
+    service: _modules_organisation_webpages_service__WEBPACK_IMPORTED_MODULE_10__["default"]
   } // strict: debug,
   // plugins: debug ? [createLogger()] : []
 
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/constituencies.js":
+/*!******************************************************!*\
+  !*** ./resources/js/store/modules/constituencies.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//permission
+var state = {
+  constituencies: [],
+  countyconstituencies: []
+},
+    getters = {
+  Constituencies: function Constituencies(state) {
+    return state.constituencies;
+  },
+  CountyConstituencies: function CountyConstituencies(state) {
+    return state.countyconstituencies;
+  }
+};
+var actions = {
+  constituencies: function constituencies(context) {
+    axios.get('/constituencies/get').then(function (response) {
+      context.commit('constituencies', response.data.constituencies);
+    });
+  },
+  countyconstituencies: function countyconstituencies(context, payload) {
+    axios.get('/constituency/get/list/' + payload) //constituencies by countyconstituencies id
+    .then(function (response) {
+      // console.log(response.data);
+      context.commit('countyconstituencies', response.data.constituencies);
+      console.log(response.data.constituencies);
+    });
+  }
+};
+var mutations = {
+  constituencies: function constituencies(state, data) {
+    return state.towns = data;
+  },
+  countyconstituencies: function countyconstituencies(state, payload) {
+    return state.countyconstituencies = payload;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
 });
 
 /***/ }),
@@ -81766,13 +81437,13 @@ var state = {
 var actions = {
   organisation: function organisation(context) {
     axios.get('/organisation/get').then(function (response) {
-      console.log(response.data.organisation);
+      //   console.log(response.data.organisation);
       context.commit('organisation', response.data.organisation);
     });
   },
   organisations: function organisations(context) {
     axios.get('/organisations/get').then(function (response) {
-      console.log(response.data.organisations);
+      //   console.log(response.data.organisations);
       context.commit('organisations', response.data.organisations);
     });
   }
@@ -81821,13 +81492,13 @@ var actions = {
   about: function about(context) {
     axios.get('/about/get') //based on authethicated id
     .then(function (response) {
-      console.log(response.data.about);
+      //   console.log(response.data.about);
       context.commit('about', response.data.about); //based on authethicated id
     });
   },
   abouts: function abouts(context) {
     axios.get('/abouts/get').then(function (response) {
-      console.log(response.data.abouts);
+      //   console.log(response.data.abouts);
       context.commit('abouts', response.data.abouts);
     });
   }
@@ -81876,13 +81547,13 @@ var actions = {
   aboutpic: function aboutpic(context) {
     axios.get('/aboutpic/get') //based on authethicated id
     .then(function (response) {
-      console.log(response.data.aboutpic);
+      console.log(response.data);
       context.commit('aboutpic', response.data.aboutpic); //based on authethicated id
     });
   },
   aboutpics: function aboutpics(context) {
     axios.get('/aboutpics/get').then(function (response) {
-      console.log(response.data.aboutpics);
+      //   console.log(response.data.aboutpics);
       context.commit('aboutpics', response.data.aboutpics);
     });
   }
@@ -81931,13 +81602,13 @@ var actions = {
   service: function service(context) {
     axios.get('/service/get') //based on authethicated id
     .then(function (response) {
-      console.log(response.data.service);
+      //   console.log(response.data.service);
       context.commit('service', response.data.service); //based on authethicated id
     });
   },
   services: function services(context) {
     axios.get('/services/get').then(function (response) {
-      console.log(response.data.services);
+      //   console.log(response.data.services);
       context.commit('services', response.data.services);
     });
   }
@@ -82044,60 +81715,6 @@ var mutations = {
 
 /***/ }),
 
-/***/ "./resources/js/store/modules/towns.js":
-/*!*********************************************!*\
-  !*** ./resources/js/store/modules/towns.js ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//permission
-var state = {
-  towns: [],
-  countytowns: []
-},
-    getters = {
-  Towns: function Towns(state) {
-    return state.towns;
-  },
-  CountyTowns: function CountyTowns(state) {
-    return state.countytowns;
-  }
-};
-var actions = {
-  towns: function towns(context) {
-    axios.get('/towns/get').then(function (response) {
-      context.commit('towns', response.data.towns);
-    });
-  },
-  countytowns: function countytowns(context, payload) {
-    axios.get('/town/get/list/' + payload) //towns by countytowns id
-    .then(function (response) {
-      context.commit('countytowns', response.data.towns);
-      console.log(response.data.towns);
-    });
-  }
-};
-var mutations = {
-  towns: function towns(state, data) {
-    return state.towns = data;
-  },
-  countytowns: function countytowns(state, payload) {
-    return state.countytowns = payload;
-  }
-};
-/* harmony default export */ __webpack_exports__["default"] = ({
-  // namespaced: true,
-  state: state,
-  getters: getters,
-  actions: actions,
-  mutations: mutations
-});
-
-/***/ }),
-
 /***/ "./resources/js/store/modules/user.js":
 /*!********************************************!*\
   !*** ./resources/js/store/modules/user.js ***!
@@ -82128,6 +81745,60 @@ var actions = {
 var mutations = {
   users: function users(state, data) {
     return state.users = data;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/wards.js":
+/*!*********************************************!*\
+  !*** ./resources/js/store/modules/wards.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//permission
+var state = {
+  wards: [],
+  constituencywards: []
+},
+    getters = {
+  Wards: function Wards(state) {
+    return state.wards;
+  },
+  ConstituencyWards: function ConstituencyWards(state) {
+    return state.constituencywards;
+  }
+};
+var actions = {
+  wards: function wards(context) {
+    axios.get('/wards/get').then(function (response) {
+      context.commit('wards', response.data.wards);
+    });
+  },
+  constituencywards: function constituencywards(context, payload) {
+    axios.get('/ward/get/list/' + payload) //wards by constituencyward id
+    .then(function (response) {
+      context.commit('constituencywards', response.data.wards);
+      console.log(response.data.wards);
+    });
+  }
+};
+var mutations = {
+  wards: function wards(state, data) {
+    return state.wards = data;
+  },
+  constituencywards: function constituencywards(state, payload) {
+    return state.constituencywards = payload;
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({

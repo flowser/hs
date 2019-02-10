@@ -98,15 +98,10 @@ class AboutController extends Controller
         $ex = explode('/', $sub)[1];
         $name = time().".".$ex;
 
-        $file = $request->file('front_image');
-        $S_Path = public_path()."/assets/organisation/img/website/frontimage/small";
-        $M_Path = public_path()."/assets/organisation/img/website/frontimage/medium";
-        $L_Path = public_path()."/assets/organisation/img/website/frontimage/large";
+        $Path = public_path()."/assets/organisation/img/website/frontimage";
             $img = Image::make($request->front_image);
 //            $img->crop(300, 150, 25, 25);
-            $img ->resize(100, 100)->save($S_Path.'/'.$name);
-            $img ->resize(250, 250)->save($M_Path.'/'.$name);
-            $img ->resize(500, 500)->save($L_Path.'/'.$name);
+            $img ->save($Path.'/'.$name);
         $about->front_image = $name;
         //end processing photo and size
         $about->save();
@@ -183,22 +178,12 @@ class AboutController extends Controller
 
          //processing logo nme and size
         if($request->front_image != $currentFront_image){
-            $S_Path = public_path()."/assets/organisation/img/website/frontimage/small";
-            $M_Path = public_path()."/assets/organisation/img/website/frontimage/medium";
-            $L_Path = public_path()."/assets/organisation/img/website/frontimage/large";
+            $Path = public_path()."/assets/organisation/img/website/frontimage/small";
 
-            $S_currentFront_image = $S_Path. $currentFront_image;
-            $M_currentFront_image = $M_Path. $currentFront_image;
-            $L_currentFront_image = $L_Path. $currentFront_image;
+            $S_currentFront_image = $Path. $currentFront_image;
             //deleting if exists
                 if(file_exists($S_currentFront_image)){
                     @unlink($S_currentFront_image);
-                }
-                if(file_exists($M_currentFront_image)){
-                    @unlink($M_currentFront_image);
-                }
-                if(file_exists($L_currentFront_image)){
-                    @unlink($L_currentFront_image);
                 }
 
                 $strpos = strpos($request->front_image, ';'); //positionof image name semicolon
@@ -207,10 +192,7 @@ class AboutController extends Controller
                 $name = time().".".$ex;
 
                 $img = Image::make($request->front_image);
-        //            $img->crop(300, 150, 25, 25);
-                    $img ->resize(100, 100)->save($S_Path.'/'.$name);
-                    $img ->resize(250, 250)->save($M_Path.'/'.$name);
-                    $img ->resize(500, 500)->save($L_Path.'/'.$name);
+                $img ->save($Path.'/'.$name);
 
         }else{
             $name = $about->front_image;
@@ -229,22 +211,12 @@ class AboutController extends Controller
     {
         $about = About::findOrFail($id);
         //image inline with this organisation
-        $S_Path = public_path()."/assets/organisation/img/website/frontimage/small";
-        $M_Path = public_path()."/assets/organisation/img/website/frontimage/medium";
-        $L_Path = public_path()."/assets/organisation/img/website/frontimage/large";
+        $Path = public_path()."/assets/organisation/img/website/frontimage";
 
-        $S_image = $S_Path. $about->logo;
-        $M_image = $M_Path. $about->logo;
-        $L_image = $L_Path. $about->logo;
+        $S_image = $Path. $about->logo;
 
         if(file_exists($S_image)){
             @unlink($S_image);
-        }
-        if(file_exists($M_image)){
-            @unlink($M_image);
-        }
-        if(file_exists($L_image)){
-            @unlink($L_image);
         }
         $about->delete();
     }

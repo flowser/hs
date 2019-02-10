@@ -28,20 +28,24 @@ class AuthTableSeeder extends Seeder
             config('permission.table_names.permissions'),
             config('permission.table_names.roles'),
             'users',
-                      
+
         ]);
 
         $this->call(UserTableSeeder::class);
         $this->call(PermissionRoleTableSeeder::class);
-        $this->call(UserRoleTableSeeder::class);        
+        $this->call(UserRoleTableSeeder::class);
         $this->call(CountryTableSeeder::class);
         $this->call(CountyTableSeeder::class);
-        $this->call(TownTableSeeder::class);
+        $this->call(ConstituencyTableSeeder::class);
+        $this->call(WardTableSeeder::class);
         $this->call(GenderTableSeeder::class);
         $this->call(PositionTableSeeder::class);
+        $this->call(OrganisationTableSeeder::class);
+        $this->call(OrganisationEmployeeTableSeeder::class);
+        $this->call(BureauTableSeeder::class);
+        $this->call(BureauEmployeeTableSeeder::class);
         $this->call(ReligionTableSeeder::class);
         $this->call(TribeTableSeeder::class);
-        $this->call(GenderTableSeeder::class);
         $this->call(EducationTableSeeder::class);
         $this->call(ExperienceTableSeeder::class);
         $this->call(MaritalstatusTableSeeder::class);
@@ -52,7 +56,11 @@ class AuthTableSeeder extends Seeder
         $this->call(HealthstatusTableSeeder::class);
         $this->call(IdstatusTableSeeder::class);
         $this->call(SkillTableSeeder::class);
-        $this->call(KidTableSeeder::class);        
+        $this->call(KidTableSeeder::class);
+        $this->call(RelationshipTableSeeder::class);
+        $this->call(HousehelpTableSeeder::class);
+        $this->call(HousehelpKinTableSeeder::class);
+        $this->call(ClientTableSeeder::class);
         $this->enableForeignKeys();
     }
 }

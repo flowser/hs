@@ -134,7 +134,7 @@
                                             <div class="row">
                                                 <div class="col-md-2" >
                                                     <div class="card-body">
-                                                        <img :src="organisationLogo(organisation.logo)" alt="" >
+                                                        <img :src="organisationLogo(organisation.logo)" alt="" width="150px">
                                                         <!-- <img src="http://teifinnovate.foundation/images/logo-249x249.png" class="card-img-top" alt=""> -->
 
                                                     <!-- <img :src="courseImage(course.photo)" alt="" width="150px"> -->
@@ -145,9 +145,10 @@
                                                             <h5 class="card-title">{{organisation.name}}</h5>
                                                             <p class="card-text">Phone: {{organisation.phone}}</p>
                                                             <p class="card-text">Landline: {{organisation.landline}}</p>
-                                                            <p class="card-text">P.O. Box {{organisation.address}},
-                                                                <span>{{organisation.town.name}}</span>
-                                                                <span>{{organisation.county.name}}</span>
+                                                            <p class="card-text">P.O. Box {{organisation.address}}, </p>
+                                                            <p class="card-text"> {{organisation.ward.name}} Ward,
+                                                                <span>{{organisation.constituency.name}} Constituency</span></p>
+                                                            <p class="card-text"> <span>{{organisation.county.name}} County</span>,
                                                                 <span>{{organisation.country.name}}</span>
                                                             </p>
                                                         </div>
@@ -199,7 +200,7 @@
                                             <div class="row">
                                                 <div class="col-md-4" >
                                                     <div class="card-body">
-                                                        <img :src="aboutFrontImage(about.front_image)" alt="" >
+                                                        <img :src="aboutFrontImage(about.front_image)" alt="" width="250px" >
                                                     </div>
                                                     <!-- front_image -->
                                                     <!-- <img :src="courseImage(course.photo)" alt="" width="150px"> -->
@@ -217,71 +218,33 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div v-for="aboutpic in AboutPic" :key="aboutpic.id">
-                                                <div class="card" >
-                                                    <div class="row">
-                                                        <div class="col-md-2">
-                                                            <!-- <div class="card-body text-white bg-success mb-3" > -->
-<!--
-                                                                <div v-if="aboutpic.id === empty">
-                                                                Now you see me
+                                            <div class="row ">
+
+                                                        <div  v-for="aboutpic in AboutPic" :key="aboutpic.id" class="col-md-3">
+                                                            <div class="card " >
+                                                                        <img class="card-img-top " :src="aboutLoadImage(aboutpic.image)" style="width:100%; height:150px"      >
+                                                                <div class="card-body" >
+                                                                        <h5 class="card-title">{{aboutpic.title}}</h5>
+                                                                         <p style="margin-bottom:-0.5em" class="card-text">{{aboutpic.description | sortlength(80, "....") }}</p>
+                                                                        <p style="margin-bottom:-0.5em"><small class="text-muted">Last updated: {{aboutpic.updated_at | dateformat}}</small></p>
+                                                                        <p style="margin-bottom:-0.5em" ><small class="text-muted">Updated By: {{aboutpic.user.full_name}}</small></p>
+                                                                        <div class="float-right">
+                                                                            <a href="" class="card-link" @click.prevent="editAboutPicsModal(aboutpic.id)">
+                                                                                <i class="fa fa-edit blue"></i>
+                                                                            </a>
+                                                                            <a href="" class="card-link" @click.prevent="deleteAboutPics(aboutpic.id)">
+                                                                                <i class="fa fa-trash red"></i>
+                                                                            </a>
+                                                                        </div>
                                                                 </div>
-                                                                <div v-else>
-                                                                Now you don't
-                                                                </div> -->
+                                                            </div>
+                                                        </div>
 
-                                                                <!-- <div v-if="aboutpic.id = null"> -->
-                                                                    <!-- <img src="" alt="" class="img-thumbnail"> -->
-                                                                    <!-- {{aboutpic.about_image1}} -->
-                                                                <!-- </div> -->
-                                                                <!-- {{about.aboutpics}} -->
-                                                                <img :src="aboutLoadImage1(aboutpic.about_image1)" alt="" width="150" >
-                                                            <!-- </div> -->
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="card text-white bg-success mb-3" >
-                                                                <img :src="aboutLoadImage2(aboutpic.about_image2)" alt="" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="card text-white bg-success mb-3" >
-                                                                <img :src="aboutLoadImage3(aboutpic.about_image3)" alt="" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="card text-white bg-success mb-3" >
-                                                                <img :src="aboutLoadImage4(aboutpic.about_image4)" alt="" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="card text-white bg-success mb-3" >
-                                                                <img :src="aboutLoadImage5(aboutpic.about_image5)" alt="" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="card text-white bg-success mb-3" >
-                                                                <img :src="aboutLoadImage6(aboutpic.about_image6)" alt="" >
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="float-right">
-                                                            <a href="" class="card-link" @click.prevent="editAboutPicsModal(aboutpic.id)">
-                                                            <i class="fa fa-edit blue"> Edit</i>
-                                                            </a>
-                                                            <a href="" class="card-link" @click.prevent="deleteAboutPics(aboutpic.id)">
-                                                                <i class="fa fa-trash red"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="float-left">
-                                                            <!-- {{AboutPic}} -->
-                                                            <a href="#about_us" class="card-link">Updated BY: {{aboutpic.user.full_name}}</a>
-                                                            <a href="#about_us" class="card-link">Updated On: {{aboutpic.created_at | dateformat}}</a>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    <ul class="pagination" style="padding: 0px;margin: 0px;">
+                                                        <!-- {{ $fulltime_courses->links()}} -->
+                                                    </ul>
                                             </div>
+
                                             <div class="row">
                                                 <div class="col-md-6" >
                                                     <div class="card text-white bg-info" >
@@ -306,7 +269,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="float-right">
-                                                    <<a href="" class="card-link" @click.prevent="editAboutModal(about.id)">
+                                                    <a href="" class="card-link" @click.prevent="editAboutModal(about.id)">
                                                          <i class="fa fa-edit blue"> Edit</i>
                                                     </a>
                                                     <!-- <a href="" class="card-link" @click.prevent="deleteOrganisation(organisation.id)">
@@ -513,14 +476,14 @@
                                     <has-error style="color: #e83e8c" :form="organisationform" field="email"></has-error>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="phone" class="col-form-label"> Organisation Phone</label>
+                                    <label for="phone" class="col-form-label"> Organisation Pxxhone</label>
                                         <div>
                                             <vue-tel-input v-model="organisationform.phone" name="phone" @onInput="InputPhone"
                                             class="form-control" :class="{ 'is-invalid': organisationform.errors.has('phone') }">
                                             </vue-tel-input>
                                             <has-error style="color: #e83e8c" :form="organisationform" field="phone"></has-error>
                                         </div>
-                                        <div v-if="organisationform.phone" style="color: #e83e8c">
+                                        <div v-if="organisationform.phorne" style="color: #e83e8c">
                                             <span>Is valid: <strong>{{phone1.isValid}}</strong>,&nbsp;</span>
                                             <span>Country: <strong>{{phone1.country}}</strong></span>
                                        </div>
@@ -554,7 +517,7 @@
                                 </div>
                             </div>
                             <div class=" row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                     <label for="country_id">Select Country</label>
                                     <select class="form-control" @change="countryCounties(organisationform.country_id)"
                                     v-model="organisationform.country_id" :class="{ 'is-invalid': organisationform.errors.has('country_id') }">
@@ -563,32 +526,41 @@
                                     </select>
                                         <has-error style="color: #e83e8c" :form="organisationform" field="country_id"></has-error>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                     <label for="county_id" class=" col-form-label">County</label>
-                                    <select class="form-control" @change="countyTowns(organisationform.county_id)"
+                                    <select class="form-control" @change="countyConstituencies(organisationform.county_id)"
                                     v-model="organisationform.county_id" :class="{ 'is-invalid': organisationform.errors.has('county_id') }">
                                             <option disabled value="">Select County</option>
                                             <option v-for="county in Counties" :value="county.id" :key="county.id">{{county.name}}</option>
                                     </select>
                                     <has-error style="color: #e83e8c" :form="organisationform" field="county_id"></has-error>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="town_id" class="col-form-label"> Town</label>
-                                    <select class="form-control"
-                                    v-model="organisationform.town_id" :class="{ 'is-invalid': organisationform.errors.has('town_id') }">
-                                            <option disabled value="">Select Town</option>
-                                            <option v-for="town in Towns" :value="town.id" :key="town.id">{{town.name}}</option>
+                                <div class="form-group col-md-3">
+                                    <label for="constituency_id" class=" col-form-label">Constituency</label>
+                                    <select class="form-control" @change="constituencyWards(organisationform.constituency_id)"
+                                    v-model="organisationform.constituency_id" :class="{ 'is-invalid': organisationform.errors.has('constituency_id') }">
+                                            <option disabled value="">Select County</option>
+                                            <option v-for="constituency in Constituencies" :value="constituency.id" :key="constituency.id">{{constituency.name}}</option>
                                     </select>
-                                    <has-error style="color: #e83e8c" :form="organisationform" field="town_id"></has-error>
+                                    <has-error style="color: #e83e8c" :form="organisationform" field="constituency_id"></has-error>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="ward_id" class="col-form-label"> Ward </label>
+                                    <select class="form-control"
+                                    v-model="organisationform.ward_id" :class="{ 'is-invalid': organisationform.errors.has('ward_id') }">
+                                            <option disabled value="">Select Town</option>
+                                            <option v-for="ward in Wards" :value="ward.id" :key="ward.id">{{ward.name}}</option>
+                                    </select>
+                                    <has-error style="color: #e83e8c" :form="organisationform" field="ward_id"></has-error>
                                 </div>
                             </div>
                             <div class=" row">
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-6">
                                     <label for="logo" class=" col-form-label">Organisation Logo</label><br>
                                         <input @change="changePhoto($event)" type="file" name="logo"
                                             :class="{ 'is-invalid': organisationform.errors.has('logo') }">
-                                            <img v-show="editmodeOrganisation" :src="updateOrganisationLogo(organisationform.logo)" alt="" width="30%" >
-                                            <img  v-show="!editmodeOrganisation" :src="organisationform.logo" alt="" width="30%" >
+                                            <img v-show="editmodeOrganisation" :src="updateOrganisationLogo(organisationform.logo)" alt="" width="100%" >
+                                            <img  v-show="!editmodeOrganisation" :src="organisationform.logo" alt="" width="100%" >
                                         <has-error style="color: #e83e8c" :form="aboutform" field="logo"></has-error>
                                 </div>
                             </div>
@@ -618,57 +590,31 @@
                     <form role="form" @submit.prevent="editmodeAboutPics ? updateAboutPics(aboutpicsform.id) : addAboutPics ()" >
                         <div class="modal-body">
                             <div class=" row">
-                                <div class="form-group col-md-6">
-                                    <label for="about_image1" class=" col-form-label">Organisation Image 1</label><br>
-                                        <input @change="aboutImage1($event)" type="file" name="about_image1"
-                                            :class="{ 'is-invalid': aboutpicsform.errors.has('about_image1') }">
-                                            <img :src="aboutpicsform.about_image1" alt="" width="30%" >
-                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="about_image1"></has-error>
+                                 <div class="form-group col-md-6">
+                                    <label for="title" class="col-form-label">Title</label>
+                                    <input v-model="aboutpicsform.title" type="text" name="title" placeholder="Title"
+                                        class="form-control" :class="{ 'is-invalid': aboutpicsform.errors.has('title') }" >
+                                    <has-error style="color: #e83e8c" :form="aboutpicsform" field="title"></has-error>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="about_image2" class=" col-form-label">Organisation Image 2</label><br>
-                                        <input @change="aboutImage2($event)" type="file" name="about_image2"
-                                            :class="{ 'is-invalid': aboutpicsform.errors.has('about_image2') }">
-                                            <img :src="aboutpicsform.about_image2" alt="" width="30%" >
-                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="about_image2"></has-error>
-                                </div>
-
                             </div>
                             <div class=" row">
-                                <div class="form-group col-md-6">
-                                    <label for="about_image3" class=" col-form-label">Organisation Image 3</label><br>
-                                        <input @change="aboutImage3($event)" type="file" name="about_image3"
-                                            :class="{ 'is-invalid': aboutpicsform.errors.has('about_image3') }">
-                                            <img :src="aboutpicsform.about_image3" alt="" width="30%" >
-                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="about_image3"></has-error>
+                                <div class="form-group col-md-12">
+                                    <label for="description" class="col-form-label">Description</label>
+                                   <textarea v-model="aboutpicsform.description" type="text" name="description" placeholder="description"
+                                        class="form-control" :class="{ 'is-invalid': aboutpicsform.errors.has('description') }" >
+                                    </textarea>
+                                    <has-error style="color: #e83e8c" :form="aboutpicsform" field="description"></has-error>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="about_image4" class=" col-form-label">Organisation Image 4</label><br>
-                                        <input @change="aboutImage4($event)" type="file" name="about_image4"
-                                            :class="{ 'is-invalid': aboutpicsform.errors.has('about_image4') }">
-                                            <img :src="aboutpicsform.about_image4" alt="" width="30%" >
-                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="about_image4"></has-error>
-                                </div>
-
                             </div>
                             <div class=" row">
-                                <div class="form-group col-md-6">
-                                    <label for="about_image5" class=" col-form-label">Organisation Image 5</label><br>
-                                        <input @change="aboutImage5($event)" type="file" name="about_image5"
-                                            :class="{ 'is-invalid': aboutpicsform.errors.has('about_image5') }">
-                                            <img :src="aboutpicsform.about_image5" alt="" width="30%" >
-                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="about_image5"></has-error>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="about_image6" class=" col-form-label">Organisation Image 6</label><br>
-                                        <input @change="aboutImage6($event)" type="file" name="about_image6"
-                                            :class="{ 'is-invalid': aboutpicsform.errors.has('about_image6') }">
-                                            <img :src="aboutpicsform.about_image6" alt="" width="30%" >
-                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="about_image6"></has-error>
+                                <div class="form-group col-md-12">
+                                    <label for="image" class=" col-form-label">Organisation Image 1</label><br>
+                                        <input @change="aboutImage($event)" type="file" name="image"
+                                            :class="{ 'is-invalid': aboutpicsform.errors.has('image') }">
+                                            <img :src="aboutpicsform.image" alt="" width="100%" >
+                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="image"></has-error>
                                 </div>
                             </div>
-
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -692,20 +638,6 @@
 
                     <form role="form" @submit.prevent="editmodeAbout ? updateAbout(aboutform.id) : addAbout()" >
                         <div class="modal-body">
-                            <div class=" row">
-                                <div class="form-group col-md-6">
-                                    <label for="name" class="col-form-label"> User Name</label>
-                                    <input v-model="aboutform.user_id" type="text" name="name" placeholder="User Name"
-                                        class="form-control" :class="{ 'is-invalid': aboutform.errors.has('user_id') }" >
-                                    <has-error style="color: #e83e8c" :form="aboutform" field="user_id"></has-error>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="organisation_id" class="col-form-label">organisation Name</label>
-                                    <input v-model="aboutform.organisation_id" type="text" name="organisation_id" placeholder="organisation Name"
-                                        class="form-control" :class="{ 'is-invalid': aboutform.errors.has('organisation_id') }" >
-                                    <has-error style="color: #e83e8c" :form="aboutform" field="organisation_id"></has-error>
-                                </div>
-                            </div>
                             <div class=" row">
                                  <div class="form-group col-md-6">
                                     <label for="title" class="col-form-label">Title</label>
@@ -749,8 +681,8 @@
                                         <input @change="FrontImage($event)" type="file" name="front_image"
                                             :class="{ 'is-invalid': aboutform.errors.has('front_image') }">
 
-                                            <img v-show="editmodeAbout" :src="updateAboutFrontImage(aboutform.front_image)" alt="" width="30%" >
-                                            <img  v-show="!editmodeAbout" :src="aboutform.front_image" alt="" width="30%" >
+                                            <img v-show="editmodeAbout" :src="updateAboutFrontImage(aboutform.front_image)" alt="" width="100%" >
+                                            <img  v-show="!editmodeAbout" :src="aboutform.front_image" alt="" width="100%" >
                                         <has-error style="color: #e83e8c" :form="aboutform" field="front_image"></has-error>
                                 </div>
 
@@ -791,7 +723,8 @@
                         address:'',
                         country_id:'',
                         county_id:'',
-                        town_id:'',
+                        constituency_id:'',
+                        ward_id:'',
                         logo:'',
                 }),
                 phone1:{
@@ -818,12 +751,9 @@
                 editmodeAboutPics: false,
                 aboutpicsform: new Form({
                         id:'',
-                        about_image1:'',
-                        about_image2:'',
-                        about_image3:'',
-                        about_image4:'',
-                        about_image5:'',
-                        about_image6:'',
+                        title:'',
+                        description:'',
+                        image:'',
                 }),
             }
         },
@@ -834,7 +764,8 @@
             this.loadService();
             this.loadCountries();
             this.loadCounties();
-            this.loadTowns();///linked to methods and actions store
+            this.loadConstituencies();///linked to methods and actions store
+            this.loadWards();///linked to methods and actions store
         },
         computed:{
             Countries(){
@@ -843,8 +774,11 @@
             Counties(){
                return this.$store.getters.CountryCounties
             },
-            Towns(){
-               return this.$store.getters.CountyTowns
+            Constituencies(){
+               return this.$store.getters.CountyConstituencies
+            },
+            Wards(){
+               return this.$store.getters.ConstituencyWards
             },
             Organisation(){
                return this.$store.getters.Organisation
@@ -891,7 +825,7 @@
                 }
             },
             organisationLogo(logo_id){
-                return "assets/organisation/img/logo/small/"+logo_id;
+                return "assets/organisation/img/logo/"+logo_id;
             },
             updateOrganisationLogo(organisationformlogo){
                 console.log(organisationformlogo)
@@ -899,7 +833,7 @@
                       if(img.length>100){
                             return this.organisationform.logo;
                         }else{
-                            return "assets/organisation/img/logo/small/"+organisationformlogo;
+                            return "assets/organisation/img/logo/"+organisationformlogo;
                         }
             },
             //front image about
@@ -922,7 +856,12 @@
                 }
             },
             aboutFrontImage(front_image_id){
-                return "/assets/organisation/img/website/frontimage/medium/"+front_image_id;
+                if(front_image_id !=null){
+                    return "/assets/organisation/img/website/frontimage/"+front_image_id;
+                }else{
+                    return "/assets/organisation/img/website/empty.png";
+                }
+                // return "/assets/organisation/img/website/frontimage/"+front_image_id;
             },
              updateAboutFrontImage(aboutformfront_image){
                 console.log(aboutformfront_image)
@@ -930,11 +869,11 @@
                       if(img.length>100){
                             return this.aboutform.front_image;
                         }else{
-                            return "assets/organisation/img/website/frontimage/small/"+aboutformfront_image;
+                            return "assets/organisation/img/website/frontimage/"+aboutformfront_image;
                         }
             },
             //About Images
-            aboutImage1(event){
+            aboutImage(event){
             let file = event.target.files[0];
                 if(file.size>1048576){
                     Swal.fire({
@@ -946,145 +885,21 @@
                 }else{
                     let reader = new FileReader();
                         reader.onload = event=> {
-                            this.aboutpicsform.about_image1 =event.target.result
+                            this.aboutpicsform.image =event.target.result
                                 // console.log(event.target.result)
                             };
                         reader.readAsDataURL(file);
                 }
             },
-            aboutImage2(event){
-            let file = event.target.files[0];
-                if(file.size>1048576){
-                    Swal.fire({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'The File you are uploading is larger than 2mbs!',
-                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-                        })
-                }else{
-                    let reader = new FileReader();
-                        reader.onload = event=> {
-                            this.aboutpicsform.about_image2 =event.target.result
-                                // console.log(event.target.result)
-                            };
-                        reader.readAsDataURL(file);
-                }
-            },
-            aboutImage3(event){
-            let file = event.target.files[0];
-                if(file.size>1048576){
-                    Swal.fire({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'The File you are uploading is larger than 2mbs!',
-                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-                        })
-                }else{
-                    let reader = new FileReader();
-                        reader.onload = event=> {
-                            this.aboutpicsform.about_image3 =event.target.result
-                                // console.log(event.target.result)
-                            };
-                        reader.readAsDataURL(file);
-                }
-            },
-            aboutImage4(event){
-            let file = event.target.files[0];
-                if(file.size>1048576){
-                    Swal.fire({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'The File you are uploading is larger than 2mbs!',
-                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-                        })
-                }else{
-                    let reader = new FileReader();
-                        reader.onload = event=> {
-                            this.aboutpicsform.about_image4 =event.target.result
-                                // console.log(event.target.result)
-                            };
-                        reader.readAsDataURL(file);
-                }
-            },
-            aboutImage5(event){
-            let file = event.target.files[0];
-                if(file.size>1048576){
-                    Swal.fire({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'The File you are uploading is larger than 2mbs!',
-                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-                        })
-                }else{
-                    let reader = new FileReader();
-                        reader.onload = event=> {
-                            this.aboutpicsform.about_image5 =event.target.result
-                                // console.log(event.target.result)
-                            };
-                        reader.readAsDataURL(file);
-                }
-            },
-            aboutImage6(event){
-            let file = event.target.files[0];
-                if(file.size>1048576){
-                    Swal.fire({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'The File you are uploading is larger than 2mbs!',
-                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-                        })
-                }else{
-                    let reader = new FileReader();
-                        reader.onload = event=> {
-                            this.aboutpicsform.about_image6 =event.target.result
-                                // console.log(event.target.result)
-                            };
-                        reader.readAsDataURL(file);
-                }
-            },
-            aboutLoadImage1(about_image_id){
+
+            aboutLoadImage(about_image_id){
 
                 if(about_image_id !=null){
-                    return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
+                    return "/assets/organisation/img/website/aboutpics/"+about_image_id;
                 }else{
                     return "/assets/organisation/img/website/empty.png";
                 }
                 // return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
-            },
-            aboutLoadImage2(about_image_id){
-                if(about_image_id !=null){
-                    return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
-                }else{
-                    return "/assets/organisation/img/website/empty.png";
-                }
-            },
-            aboutLoadImage3(about_image_id){
-                if(about_image_id !=null){
-                    return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
-                }else{
-                    return "/assets/organisation/img/website/empty.png";
-                }
-            },
-            aboutLoadImage4(about_image_id){
-                if(about_image_id !=null){
-                    return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
-                }else{
-                    return "/assets/organisation/img/website/empty.png";
-                }
-            },
-            aboutLoadImage5(about_image_id){
-                if(about_image_id !=null){
-                    return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
-                }else{
-                    return "/assets/organisation/img/website/empty.png";
-                }
-            },
-            aboutLoadImage6(about_image_id){
-                if(about_image_id !=null){
-                    return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
-                }else{
-                    return "/assets/organisation/img/website/empty.png";
-                }
             },
             loadOrganisation(){
                 return this.$store.dispatch( "organisation")//get all from organisation. organisation linked to user
@@ -1104,8 +919,11 @@
             loadCounties(){
                 return this.$store.dispatch( "countrycounties")//get all from counties.index
             },
-            loadTowns(){
-                return this.$store.dispatch( "countytowns")//get all from towns.index
+            loadConstituencies(){
+                return this.$store.dispatch( "countyconstituencies")//get all from counties.index
+            },
+            loadWards(){
+                return this.$store.dispatch( "constituencywards")//get all from towns.index
             },
             newAboutModal(){
                 this.editmodeAbout = false;
@@ -1213,10 +1031,16 @@
                         })
              },
             countryCounties(country_id){
+                console.log(country_id);
                 this.$store.dispatch('countrycounties', country_id);
             },
-            countyTowns(county_id){
-                this.$store.dispatch('countytowns', county_id); //send to store to the action with id
+            countyConstituencies(county_id){
+                console.log(county_id);
+                this.$store.dispatch('countyconstituencies', county_id);
+            },
+            constituencyWards(constituency_id){
+                console.log(constituency_id);
+                this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
             },
             addAboutPics() {
                 console.log('add About pics new')

@@ -28,7 +28,11 @@ class UserRoleTableSeeder extends Seeder
        User::find(5)->assignRole('Bureau Admin');
        User::find(6)->assignRole('Bureau Accountant');
        User::find(7)->assignRole('Househelp');
-       User::find(8)->assignRole('Client');
+       User::find(8)->assignRole('Househelp');
+       User::find(9)->assignRole('Client');
+       User::find(10)->assignRole('Client');
+       User::find(11)->assignRole('Househelp Kin');
+       User::find(12)->assignRole('Househelp Kin');
 
        User::find(1)->givePermissionTo('View Backend');
        User::find(2)->givePermissionTo('View Backend');
@@ -38,6 +42,10 @@ class UserRoleTableSeeder extends Seeder
        User::find(6)->givePermissionTo('View Backend');
        User::find(7)->givePermissionTo('View Frontend');
        User::find(8)->givePermissionTo('View Frontend');
+       User::find(9)->givePermissionTo('View Frontend');
+       User::find(10)->givePermissionTo('View Frontend');
+       User::find(11)->givePermissionTo('View Frontend');
+       User::find(12)->givePermissionTo('View Frontend');
 
         $this->enableForeignKeys();
     }

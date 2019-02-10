@@ -2,12 +2,14 @@
 
 namespace App\Models\Bureau;
 
-use App\Models\Standard\Town;
+
+use App\Models\Standard\Ward;
 use App\Models\Standard\County;
 use App\Models\Standard\Country;
 use App\Models\Househelp\Househelp;
 use App\Models\Bureau\BureauDirector;
 use App\Models\Bureau\BureauEmployee;
+use App\Models\Standard\Constituency;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Organisation\Organisation;
 use App\Models\Standard\Webservices\About;
@@ -35,7 +37,8 @@ class Bureau extends Model
         'active',
         'country_id',
         'county_id',
-        'town_id',
+        'constituency_id',
+        'ward_id',
     ];
 
     protected $casts = [
@@ -51,9 +54,13 @@ class Bureau extends Model
     {
         return $this->belongsTo(County::class);
     }
-    public function town()
+    public function constituency()
     {
-        return $this->belongsTo(Town::class);
+        return $this->belongsTo(Constituency::class);
+    }
+    public function ward()
+    {
+        return $this->belongsTo(Ward::class);
     }
     public function organisation()
     {

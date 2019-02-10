@@ -17,14 +17,14 @@ const actions = {
     organisation(context){
         axios.get('/organisation/get')
         .then((response)=>{
-          console.log(response.data.organisation);
+        //   console.log(response.data.organisation);
           context.commit('organisation', response.data.organisation);
         })
     },
     organisations(context){
         axios.get('/organisations/get')
         .then((response)=>{
-          console.log(response.data.organisations);
+        //   console.log(response.data.organisations);
           context.commit('organisations', response.data.organisations);
         })
     }

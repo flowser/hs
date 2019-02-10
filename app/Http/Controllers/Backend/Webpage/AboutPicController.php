@@ -18,11 +18,24 @@ class AboutPicController extends Controller
      */
     public function index()
     {
-        //
+        $aboutpic = AboutPic::with('user', 'about')
+                            ->where('about_pics.user_id', Auth::user()->id)
+                            ->get();
+            // dd($about);
+            return response()-> json([
+            'aboutpic' => $aboutpic,
+            ], 200);
     }
-    public function organisations()
+
+    public function aboutpics()
     {
-        //
+
+        $aboutpics = AboutPic::with('user', 'about')
+                        ->get();
+        // dd($about);
+        return response()-> json([
+        'aboutpics' => $aboutpics,
+        ], 200);
     }
 
     /**
@@ -46,16 +59,15 @@ class AboutPicController extends Controller
 
         // return $request;
         $this->validate($request,[
-            // 'about_image1' => 'required',
-            // 'about_image2' => 'required',
-            // 'about_image3' => 'required',
-            // 'about_image4' => 'required',
-            'about_image5' => 'required',
-            'about_image6' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required',
         ]);
 
         $aboutpic = new AboutPic();
         //getting Organisation $user, about_id
+        $aboutpic->title = $request ->title;
+        $aboutpic->description = $request ->description;
         $user = Auth::user();
         $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
         $about_id = $organisation->about()->first();
@@ -63,118 +75,19 @@ class AboutPicController extends Controller
         $aboutpic->about_id = $about_id ->id;
         $aboutpic->user_id = $user ->id;
 
-        //image 1
-//         $strpos1 = strpos($request->about_image1, ';'); //positionof image name semicolon
-//         $sub1 = substr($request->about_image1, 0, $strpos1);
-//         $ex1 = explode('/', $sub1)[1];
-//         $name1 = time().".".$ex1;
+        $strpos = strpos($request->image, ';'); //positionof image name semicolon
+        $sub = substr($request->image, 0, $strpos);
+        $ex = explode('/', $sub)[1];
+        $name = time().".".$ex;
 
-//         $S_Path1 = public_path()."/assets/organisation/img/website/aboutpics/small";
-//         $M_Path1 = public_path()."/assets/organisation/img/website/aboutpics/medium";
-//         $L_Path1 = public_path()."/assets/organisation/img/website/aboutpics/large";
-//             $img1 = Image::make($request->about_image1);
-// //            $img->crop(300, 150, 25, 25);
-//             $img1 ->resize(100, 100)->save($S_Path1.'/'.$name1);
-//             $img1 ->resize(250, 250)->save($M_Path1.'/'.$name1);
-//             $img1 ->resize(500, 500)->save($L_Path1.'/'.$name1);
+        $Path = public_path()."/assets/organisation/img/website/aboutpics";
+            $img = Image::make($request->image);
+            $img ->save($Path.'/'.$name);
+        $aboutpic->image = $name;
+        //end processing photo
 
-//         // return $r;
-//         //end processing photo and size
-
-//         //image 2
-//         $strpos2 = strpos($request->about_image2, ';'); //positionof image name semicolon
-//         $sub2 = substr($request->about_image2, 0, $strpos2);
-//         $ex2 = explode('/', $sub2)[1];
-//         $name2 = time().".".$ex2;
-
-//         $S_Path2 = public_path()."/assets/organisation/img/website/aboutpics/small";
-//         $M_Path2 = public_path()."/assets/organisation/img/website/aboutpics/medium";
-//         $L_Path2 = public_path()."/assets/organisation/img/website/aboutpics/large";
-//             $img2 = Image::make($request->about_image2);
-// //            $img->crop(300, 150, 25, 25);
-//             $img2 ->resize(100, 100)->save($S_Path2.'/'.$name2);
-//             $img2 ->resize(250, 250)->save($M_Path2.'/'.$name2);
-//             $img2 ->resize(500, 500)->save($L_Path2.'/'.$name2);
-
-
-//         //end processing photo and size
-
-//         //image 3
-//         $strpos3 = strpos($request->about_image3, ';'); //positionof image name semicolon
-//         $sub3 = substr($request->about_image3, 0, $strpos3);
-//         $ex3 = explode('/', $sub3)[1];
-//         $name3 = time().".".$ex3;
-
-//         $S_Path3 = public_path()."/assets/organisation/img/website/aboutpics/small";
-//         $M_Path3 = public_path()."/assets/organisation/img/website/aboutpics/medium";
-//         $L_Path3 = public_path()."/assets/organisation/img/website/aboutpics/large";
-//             $img3 = Image::make($request->about_image3);
-// //            $img->crop(300, 150, 25, 25);
-//             $img3 ->resize(100, 100)->save($S_Path3.'/'.$name3);
-//             $img3 ->resize(250, 250)->save($M_Path3.'/'.$name3);
-//             $img3 ->resize(500, 500)->save($L_Path3.'/'.$name3);
-//         // $aboutpic->about_image3 = $name3;
-//         //end processing photo and size
-
-//         //image 4
-//         $strpos4 = strpos($request->about_image4, ';'); //positionof image name semicolon
-//         $sub4 = substr($request->about_image4, 0, $strpos4);
-//         $ex4 = explode('/', $sub4)[1];
-//         $name4 = time().".".$ex4;
-
-//         $S_Path4 = public_path()."/assets/organisation/img/website/aboutpics/small";
-//         $M_Path4 = public_path()."/assets/organisation/img/website/aboutpics/medium";
-//         $L_Path4 = public_path()."/assets/organisation/img/website/aboutpics/large";
-//             $img4 = Image::make($request->about_image4);
-// //            $img->crop(300, 150, 25, 25);
-//             $img4 ->resize(100, 100)->save($S_Path4.'/'.$name4);
-//             $img4 ->resize(250, 250)->save($M_Path4.'/'.$name4);
-//             $img4 ->resize(500, 500)->save($L_Path4.'/'.$name4);
-//         // $aboutpic->about_image4 = $name;
-//         //end processing photo and size
-
-//         //image 5
-        $strpos5 = strpos($request->about_image5, ';'); //positionof image name semicolon
-        $sub5 = substr($request->about_image5, 0, $strpos5);
-        $ex5 = explode('/', $sub5)[1];
-        $name5 = time().".".$ex5;
-
-        $S_Path5 = public_path()."/assets/organisation/img/website/aboutpics/small";
-        $M_Path5 = public_path()."/assets/organisation/img/website/aboutpics/medium";
-        $L_Path5 = public_path()."/assets/organisation/img/website/aboutpics/large";
-            $img5 = Image::make($request->about_image5);
-//            $img->crop(300, 150, 25, 25);
-            $img5 ->resize(100, 100)->save($S_Path5.'/'.$name5);
-            $img5 ->resize(250, 250)->save($M_Path5.'/'.$name5);
-            $img5 ->resize(500, 500)->save($L_Path5.'/'.$name5);
-        // $aboutpic->about_image5 = $name5;
-        //end processing photo and size
-
-        //image 6
-        $strpos6 = strpos($request->about_image6, ';'); //positionof image name semicolon
-        $sub6 = substr($request->about_image6, 0, $strpos6);
-        $ex6 = explode('/', $sub6)[1];
-        $name6 = time().".".$ex6;
-
-        $S_Path6 = public_path()."/assets/organisation/img/website/aboutpics/small";
-        $M_Path6 = public_path()."/assets/organisation/img/website/aboutpics/medium";
-        $L_Path6 = public_path()."/assets/organisation/img/website/aboutpics/large";
-            $img6 = Image::make($request->about_image6);
-//            $img->crop(300, 150, 25, 25);
-            $img6 ->resize(100, 100)->save($S_Path6.'/'.$name6);
-            $img6 ->resize(250, 250)->save($M_Path6.'/'.$name6);
-            $img6 ->resize(500, 500)->save($L_Path6.'/'.$name6);
-
-        //end processing photo and size
-
-        $aboutpic->about_image6 = $name6;
-        $aboutpic->about_image5 = $name5;
-        // $aboutpic->about_image4 = $name4;
-        // $aboutpic->about_image4 = $name3;
-        // $aboutpic->about_image2 = $name2;
-        // $aboutpic->about_image1 = $name1;
         $aboutpic->save();
-        return $aboutpic;
+        // return $aboutpic;
     }
 
     /**
@@ -196,7 +109,12 @@ class AboutPicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $aboutpic = AboutPic::with('about')
+                                    ->find($id);
+        // dd($organisation);
+        return response()-> json([
+            'aboutpic' => $aboutpic,
+        ], 200);
     }
 
     /**
@@ -208,7 +126,47 @@ class AboutPicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $aboutpic = AboutPic::findOrFail($id);
+        $this->validate($request,[
+            'title' => 'required',
+            'description' => 'required',
+            // 'image' => 'required',
+        ]);
+
+        $aboutpic->title = $request ->title;
+        $aboutpic->description = $request ->description;
+        //getting Organisation $user, about_id
+        $user = Auth::user();
+        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $about_id = $organisation->about()->first();
+
+        $aboutpic->about_id = $about_id ->id;
+        $aboutpic->user_id = $user ->id;
+
+        $currentimage =  $aboutpic->image;
+
+         //processing logo nme and size
+        if($request->image != $currentimage){
+            $Path = public_path()."/assets/organisation/img/website/aboutpics";
+
+            $S_currentimage = $Path. $currentimage;
+            //deleting if exists
+                if(file_exists($S_currentimage)){
+                    @unlink($S_currentimage);
+                }
+                $strpos = strpos($request->image, ';'); //positionof image name semicolon
+                $sub = substr($request->image, 0, $strpos);
+                $ex = explode('/', $sub)[1];
+                $name = time().".".$ex;
+
+                $img = Image::make($request->image);
+                $img ->save($Path.'/'.$name);
+
+        }else{
+            $name = $aboutpic->image;
+        }
+        $aboutpic->image = $name;
+        $aboutpic->save();
     }
 
     /**
@@ -219,6 +177,15 @@ class AboutPicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $aboutpic = AboutPic::findOrFail($id);
+        //image inline with this organisation
+        $Path = public_path()."/assets/organisation/img/website/aboutpics";
+
+        $S_image = $Path. $aboutpic->logo;
+
+        if(file_exists($S_image)){
+            @unlink($S_image);
+        }
+        $aboutpic->delete();
     }
 }

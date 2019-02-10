@@ -3,13 +3,18 @@
 namespace App\Models\Organisation;
 
 
+
 use App\Models\Bureau\Bureau;
-use App\Models\Standard\Town;
+use App\Models\Standard\Ward;
 use App\Models\Standard\County;
+use App\Models\Standard\Gender;
 use App\Models\Standard\Country;
+use App\Models\Standard\Position;
 use App\Models\Househelp\Househelp;
 use App\Models\Bureau\BureauEmployee;
+use App\Models\Standard\Constituency;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Organisation\Organisation;
 use App\Models\Standard\Webservices\About;
 use App\Models\Standard\Webservices\Advert;
 use App\Models\Standard\Webservices\Service;
@@ -32,7 +37,8 @@ class Organisation extends Model
         'active',
         'country_id',
         'county_id',
-        'town_id',
+        'constituency_id',
+        'ward_id',
     ];
 
     protected $casts = [
@@ -48,11 +54,15 @@ class Organisation extends Model
     {
         return $this->belongsTo(County::class);
     }
-    public function town()
+    public function constituency()
     {
-        return $this->belongsTo(Town::class);
+        return $this->belongsTo(Constituency::class);
     }
-    
+    public function ward()
+    {
+        return $this->belongsTo(Ward::class);
+    }
+
 
     //has many
     public function organisationdirectors()

@@ -2,11 +2,8 @@
 
 namespace App\Models\Standard;
 
-
 use App\Models\Bureau\Bureau;
 use App\Models\Client\Client;
-use App\Models\Standard\Town;
-use App\Models\Standard\County;
 use App\Models\Househelp\Househelp;
 use App\Models\Bureau\BureauEmployee;
 use App\Models\Standard\Constituency;
@@ -15,21 +12,20 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Organisation\Organisation;
 use App\Models\Organisation\OrganisationEmployee;
 
-class Country extends Model
+class Ward extends Model
 {
+
     protected $fillable = [
         'name',
-        'sortname',
+        'constituency_id',
     ];
 
-    public function counties()
+    public function constituency()
     {
-        return $this->hasMany(County::class);
+        return $this->BelongsTo(Constituency::class);
     }
-    public function constituencies()
-    {
-        return $this->hasManyThrough(Constituency::class, County::class);
-    }
+
+
 
     public function organisations()
     {
@@ -59,5 +55,4 @@ class Country extends Model
     {
         return $this->hasMany(Client::class);
     }
-
 }

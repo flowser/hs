@@ -4,21 +4,22 @@ namespace App\Models\Househelp;
 
 
 use App\Models\Bureau\Bureau;
-use App\Models\Standard\Town;
+use App\Models\Standard\Ward;
 use App\Models\Standard\County;
 use App\Models\Standard\Gender;
 use App\Models\Standard\Country;
+use App\Models\Standard\Constituency;
 use Illuminate\Database\Eloquent\Model;
 
 class Househelp extends Model
 {
-    protected $fillable = [        
+    protected $fillable = [
         'user_id',
         'bureau_id',
         'photo',
         'age',
 
-        
+
 
         'id_no',
         'id_waiting_card_no',
@@ -27,7 +28,7 @@ class Househelp extends Model
         'search_fee',
         'about_me',
         'phone',
-        'address',  
+        'address',
         'active',
         'employmentstatus',
         'hired',
@@ -35,7 +36,8 @@ class Househelp extends Model
 
         'country_id',
         'county_id',
-        'town_id',
+        'constituency_id',
+        'ward_id',
 
         //filters
 
@@ -53,13 +55,13 @@ class Househelp extends Model
         'religion_id',
         'kid_id',
     ];
-    
+
     protected $casts = [
         'active' => 'boolean',
         'employmentstatus' => 'boolean',
         'hired'=> 'boolean',
     ];
-     
+
     //belongs to
     public function country()
     {
@@ -69,12 +71,16 @@ class Househelp extends Model
     {
         return $this->belongsTo(County::class);
     }
-    public function town()
+    public function constituency()
     {
-        return $this->belongsTo(Town::class);
+        return $this->belongsTo(Constituency::class);
+    }
+    public function ward()
+    {
+        return $this->belongsTo(Ward::class);
     }
 
-            
+
     public function gender()
     {
         return $this->belongsTo(Gender::class);
@@ -83,8 +89,8 @@ class Househelp extends Model
     {
         return $this->belongsTo(Bureau::class);
     }
-    
 
-    //has many  
+
+    //has many
 
 }

@@ -18,28 +18,31 @@ class CreateHousehelpKinsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('househelp_id');
             $table->unsignedInteger('relationship_id');
-            $table->unsignedInteger('gender_id');
+            $table->unsignedInteger('gender_id')->nullable();
             $table->string('photo')->nullable();
             $table->tinyInteger('active')->default(1)->unsigned();
 
-            $table->string('id_no', 120);
+            $table->string('id_no', 120)->nullable();
             $table->string('id_photo_front', 120)->nullable();
             $table->string('id_photo_back', 120)->nullable();
             $table->string('phone')->nullable();
-            $table->string('address', 120);
+            $table->string('address', 120)->nullable();
 
             $table->integer('country_id')->unsigned()->nullable();
             $table->integer('county_id')->unsigned()->nullable();
-            $table->integer('town_id')->unsigned()->nullable();
-            $table->timestamps();
+            $table->integer('constituency_id')->unsigned()->nullable();
+            $table->integer('ward_id')->unsigned()->nullable();
+
             $table->softDeletes();
+            $table->timestamps();
+
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->foreign('county_id')->references('id')->on('counties')->onDelete('cascade');
+            $table->foreign('constituency_id')->references('id')->on('constituencies')->onDelete('cascade');
+            $table->foreign('ward_id')->references('id')->on('wards')->onDelete('cascade');
 
             $table->foreign('househelp_id')->references('id')->on('househelps')->onDelete('cascade');
             $table->foreign('relationship_id')->references('id')->on('relationships')->onDelete('cascade');
-            
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
-            $table->foreign('county_id')->references('id')->on('counties')->onDelete('cascade');
-            $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade');
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

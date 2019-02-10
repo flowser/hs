@@ -17,14 +17,14 @@ const actions = {
     service(context){
         axios.get('/service/get')//based on authethicated id
         .then((response)=>{
-          console.log(response.data.service);
+        //   console.log(response.data.service);
           context.commit('service', response.data.service); //based on authethicated id
         })
     },
     services(context){
         axios.get('/services/get')
         .then((response)=>{
-          console.log(response.data.services);
+        //   console.log(response.data.services);
           context.commit('services', response.data.services);
         })
     }

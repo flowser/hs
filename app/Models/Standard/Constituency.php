@@ -13,9 +13,9 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Organisation\Organisation;
 use App\Models\Organisation\OrganisationEmployee;
 
-class Town extends Model
+class Constituency extends Model
 {
-    
+
     protected $fillable = [
         'name',
         'county_id',
@@ -24,6 +24,11 @@ class Town extends Model
     public function county()
     {
         return $this->BelongsTo(County::class);
+    }
+
+    public function wards()
+    {
+        return $this->hasMany(Ward::class);
     }
 
     public function organisations()

@@ -86,7 +86,8 @@
         import user from './modules/user';
         import countries from './modules/countries';
         import counties from './modules/counties';
-        import towns from './modules/towns';
+        import constituencies from './modules/constituencies';
+        import wards from './modules/wards';
         import organisation from './modules/organisation/organisation';
         import about from './modules/organisation/webpages/about';
         import aboutpic from './modules/organisation/webpages/aboutpic';
@@ -103,7 +104,8 @@
             role,
             countries,
             counties,
-            towns,
+            constituencies,
+            wards,
             organisation,
             about,
             aboutpic,

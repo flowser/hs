@@ -24,10 +24,10 @@ class CreateHousehelpsTable extends Migration
             $table->string('id_waiting_card_no', 120)->nullable();
             $table->string('id_photo_front', 120)->nullable();
             $table->string('id_photo_back', 120)->nullable();
-            $table->float('search_fee', 8, 2); 
+            $table->float('search_fee', 8, 2);
             $table->longText('about_me')->nullable();
             $table->string('phone')->nullable();
-            $table->string('address', 120);
+            $table->string('address', 120)->nullable();
             //statuses
             $table->tinyInteger('active')->default(1)->unsigned();
             $table->tinyInteger('employmentstatus')->default(0)->unsigned();
@@ -36,7 +36,8 @@ class CreateHousehelpsTable extends Migration
             //stand filters
             $table->integer('country_id')->unsigned()->nullable();
             $table->integer('county_id')->unsigned()->nullable();
-            $table->integer('town_id')->unsigned()->nullable();
+            $table->integer('constituency_id')->unsigned()->nullable();
+            $table->integer('ward_id')->unsigned()->nullable();
 
             //househelp filters
             $table->integer('education_id')->unsigned()->nullable();
@@ -54,17 +55,19 @@ class CreateHousehelpsTable extends Migration
             $table->integer('kid_id')->unsigned()->nullable();
 
 
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
 
-            
-            $table->foreign('bureau_id')->references('id')->on('bureaus')->onDelete('cascade');
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->foreign('county_id')->references('id')->on('counties')->onDelete('cascade');
-            $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade');
+            $table->foreign('constituency_id')->references('id')->on('constituencies')->onDelete('cascade');
+            $table->foreign('ward_id')->references('id')->on('wards')->onDelete('cascade');
+
+
+            $table->foreign('bureau_id')->references('id')->on('bureaus')->onDelete('cascade');
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-           
+
             $table->foreign('education_id')->references('id')->on('education')->onDelete('cascade');
             $table->foreign('experience_id')->references('id')->on('experiences')->onDelete('cascade');
             $table->foreign('maritalstatus_id')->references('id')->on('maritalstatuses')->onDelete('cascade');
