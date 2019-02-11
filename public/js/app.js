@@ -2608,6 +2608,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // import intlTelInput from "intl-tel-input/build/js/intlTelInput.js";
 // var input = document.querySelector("#phone");
 // // window.intlTelInput(input);
@@ -2748,7 +2759,11 @@ __webpack_require__.r(__webpack_exports__);
       if (img.length > 100) {
         return this.organisationform.logo;
       } else {
-        return "assets/organisation/img/logo/" + organisationformlogo;
+        if (organisationformlogo) {
+          return "assets/organisation/img/logo/" + organisationformlogo;
+        } else {
+          return "/assets/organisation/img/website/empty.png";
+        }
       }
     },
     //front image about
@@ -2779,17 +2794,21 @@ __webpack_require__.r(__webpack_exports__);
         return "/assets/organisation/img/website/frontimage/" + front_image_id;
       } else {
         return "/assets/organisation/img/website/empty.png";
-      } // return "/assets/organisation/img/website/frontimage/"+front_image_id;
-
+      }
     },
     updateAboutFrontImage: function updateAboutFrontImage(aboutformfront_image) {
-      console.log(aboutformfront_image);
+      // console.log(aboutformfront_image, 'mixcv')
       var img = this.aboutform.front_image;
 
       if (img.length > 100) {
+        console.log('bbbbmixcv');
         return this.aboutform.front_image;
       } else {
-        return "assets/organisation/img/website/frontimage/" + aboutformfront_image;
+        if (aboutformfront_image) {
+          return "assets/organisation/img/website/frontimage/" + aboutformfront_image;
+        } else {
+          return "/assets/organisation/img/website/empty.png";
+        }
       }
     },
     //About Images
@@ -2820,8 +2839,21 @@ __webpack_require__.r(__webpack_exports__);
         return "/assets/organisation/img/website/aboutpics/" + about_image_id;
       } else {
         return "/assets/organisation/img/website/empty.png";
-      } // return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
+      }
+    },
+    updateAboutImage: function updateAboutImage(about_image) {
+      // console.log(this.aboutpicsform.image)
+      var img = this.aboutpicsform.image;
 
+      if (img.length > 100) {
+        return this.aboutpicsform.image;
+      } else {
+        if (about_image) {
+          return "assets/organisation/img/website/aboutpics/" + about_image;
+        } else {
+          return "/assets/organisation/img/website/empty.png";
+        }
+      }
     },
     loadOrganisation: function loadOrganisation() {
       return this.$store.dispatch("organisation"); //get all from organisation. organisation linked to user
@@ -2857,7 +2889,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.editmodeAboutPics = true;
       this.aboutpicsform.reset();
-      console.log('edit about', id);
+      console.log('edit aboutpic', id);
       this.$Progress.start();
       axios.get('/aboutpic/edit/' + id).then(function (response) {
         console.log(response.data);
@@ -2867,7 +2899,7 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Fetched the About data successfully'
         });
 
-        _this4.aboutpicsform.fill(response.data.about);
+        _this4.aboutpicsform.fill(response.data.aboutpic);
 
         _this4.$Progress.finish();
       }).catch(function () {
@@ -3067,7 +3099,7 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log('update about');
       this.$Progress.start();
-      this.aboutform.patch('/aboutpic/update/' + id).then(function () {
+      this.aboutpicsform.patch('/aboutpic/update/' + id).then(function () {
         _this10.$store.dispatch("organisation");
 
         _this10.$store.dispatch("about");
@@ -3189,6 +3221,285 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       });
+    },
+    deleteAboutPics: function deleteAboutPics(id) {
+      var _this14 = this;
+
+      Swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        if (result.value) {
+          //  console.log('delete user', id)
+          _this14.$Progress.start();
+
+          _this14.aboutpicsform.get('/aboutpic/delete/' + id).then(function () {
+            toast({
+              type: 'success',
+              title: 'About Picture Deleted successfully'
+            });
+
+            _this14.$store.dispatch("organisation");
+
+            _this14.$store.dispatch("about");
+
+            _this14.$store.dispatch("aboutpic");
+
+            _this14.$Progress.finish();
+          }).catch(function () {
+            _this14.$Progress.fail();
+
+            toast({
+              type: 'error',
+              title: 'There was something wrong'
+            });
+          });
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/SingleAboutPic.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admins/organisation/SingleAboutPic.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// import BlogSidebar from "./BlogSidebar.vue"
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "SingleAbouPic",
+  data: function data() {
+    return {
+      editmodeAboutPics: false,
+      aboutpicsform: new Form({
+        id: '',
+        title: '',
+        description: '',
+        image: ''
+      })
+    };
+  },
+  computed: {
+    SingleAboutPic: function SingleAboutPic() {
+      return this.$store.getters.SingleAbouPic;
+    }
+  },
+  methods: {
+    singleaboutpic: function singleaboutpic() {
+      console.log(this.$route.params.id);
+      this.$store.dispatch('AboutPicById', this.$route.params.id); //action from index.js
+    },
+    //About Images
+    aboutImage: function aboutImage(event) {
+      var _this = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this.aboutpicsform.image = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    aboutLoadImage: function aboutLoadImage(about_image_id) {
+      if (about_image_id != null) {
+        return "/assets/organisation/img/website/aboutpics/" + about_image_id;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      }
+    },
+    updateAboutImage: function updateAboutImage(about_image) {
+      // console.log(this.aboutpicsform.image)
+      var img = this.aboutpicsform.image;
+
+      if (img.length > 100) {
+        return this.aboutpicsform.image;
+      } else {
+        if (about_image) {
+          return "assets/organisation/img/website/aboutpics/" + about_image;
+        } else {
+          return "/assets/organisation/img/website/empty.png";
+        }
+      }
+    },
+    editAboutPicsModal: function editAboutPicsModal(id) {
+      var _this2 = this;
+
+      this.editmodeAboutPics = true;
+      this.aboutpicsform.reset();
+      console.log('edit aboutpic', id);
+      this.$Progress.start();
+      axios.get('/aboutpic/edit/' + id).then(function (response) {
+        console.log(response.data);
+        $('#AboutPicsModal').modal('show');
+        toast({
+          type: 'success',
+          title: 'Fetched the About data successfully'
+        });
+
+        _this2.aboutpicsform.fill(response.data.aboutpic);
+
+        _this2.$Progress.finish();
+      }).catch(function () {
+        //errors
+        $('#AboutPicsModal').modal('show');
+        toast({
+          type: 'error',
+          title: 'There was something Wrong'
+        });
+
+        _this2.$Progress.fail();
+      });
+    },
+    deleteAboutPics: function deleteAboutPics(id) {
+      var _this3 = this;
+
+      Swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        if (result.value) {
+          //  console.log('delete user', id)
+          _this3.$Progress.start();
+
+          _this3.aboutpicsform.get('/aboutpic/delete/' + id).then(function () {
+            toast({
+              type: 'success',
+              title: 'About Picture Deleted successfully'
+            });
+
+            _this3.$store.dispatch("organisation");
+
+            _this3.$store.dispatch("about");
+
+            _this3.$store.dispatch("aboutpic");
+
+            _this3.$Progress.finish();
+          }).catch(function () {
+            _this3.$Progress.fail();
+
+            toast({
+              type: 'error',
+              title: 'There was something wrong'
+            });
+          });
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    //action
+    this.singleaboutpic(); //method
+  },
+  watch: {
+    $route: function $route(to, from) {
+      this.singleaboutpic(); //method
     }
   }
 });
@@ -60703,137 +61014,180 @@ var render = function() {
                           _vm._l(_vm.AboutPic, function(aboutpic) {
                             return _c(
                               "div",
-                              { key: aboutpic.id, staticClass: "col-md-3" },
+                              {
+                                key: aboutpic.id,
+                                staticClass: "col-md-3 d-flex"
+                              },
                               [
-                                _c("div", { staticClass: "card " }, [
-                                  _c("img", {
-                                    staticClass: "card-img-top ",
-                                    staticStyle: {
-                                      width: "100%",
-                                      height: "150px"
-                                    },
-                                    attrs: {
-                                      src: _vm.aboutLoadImage(aboutpic.image)
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "card-body" }, [
-                                    _c("h5", { staticClass: "card-title" }, [
-                                      _vm._v(_vm._s(aboutpic.title))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "p",
-                                      {
-                                        staticClass: "card-text",
-                                        staticStyle: {
-                                          "margin-bottom": "-0.5em"
-                                        }
+                                _c(
+                                  "div",
+                                  { staticClass: "card flex-fill" },
+                                  [
+                                    _c("img", {
+                                      staticClass: "card-img-top ",
+                                      staticStyle: {
+                                        width: "100%",
+                                        height: "150px"
                                       },
-                                      [
-                                        _vm._v(
-                                          _vm._s(
-                                            _vm._f("sortlength")(
-                                              aboutpic.description,
-                                              80,
-                                              "...."
-                                            )
-                                          )
-                                        )
-                                      ]
-                                    ),
+                                      attrs: {
+                                        src: _vm.aboutLoadImage(aboutpic.image)
+                                      }
+                                    }),
                                     _vm._v(" "),
-                                    _c(
-                                      "p",
-                                      {
-                                        staticStyle: {
-                                          "margin-bottom": "-0.5em"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "small",
-                                          { staticClass: "text-muted" },
-                                          [
-                                            _vm._v(
-                                              "Last updated: " +
-                                                _vm._s(
-                                                  _vm._f("dateformat")(
-                                                    aboutpic.updated_at
-                                                  )
-                                                )
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "p",
-                                      {
-                                        staticStyle: {
-                                          "margin-bottom": "-0.5em"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "small",
-                                          { staticClass: "text-muted" },
-                                          [
-                                            _vm._v(
-                                              "Updated By: " +
-                                                _vm._s(aboutpic.user.full_name)
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "float-right" }, [
+                                    _c("div", { staticClass: "card-body" }, [
+                                      _c("h5", { staticClass: "card-title" }, [
+                                        _vm._v(_vm._s(aboutpic.title))
+                                      ]),
+                                      _vm._v(" "),
                                       _c(
-                                        "a",
+                                        "p",
                                         {
-                                          staticClass: "card-link",
-                                          attrs: { href: "" },
-                                          on: {
-                                            click: function($event) {
-                                              $event.preventDefault()
-                                              return _vm.editAboutPicsModal(
-                                                aboutpic.id
-                                              )
-                                            }
+                                          staticClass: "card-text",
+                                          staticStyle: {
+                                            "margin-bottom": "-0.5em"
                                           }
                                         },
                                         [
-                                          _c("i", {
-                                            staticClass: "fa fa-edit blue"
-                                          })
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("sortlength")(
+                                                aboutpic.description,
+                                                80,
+                                                "..."
+                                              )
+                                            )
+                                          )
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "router-link",
+                                      {
+                                        staticClass: "pull-right",
+                                        attrs: {
+                                          to: "/aboutimage/" + aboutpic.id
+                                        }
+                                      },
+                                      [
+                                        _vm._v("Read More "),
+                                        _c("i", {
+                                          staticClass: "icon-angle-right"
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "clearfix" }, [
+                                      _c(
+                                        "span",
+                                        {
+                                          staticClass: "float-left",
+                                          staticStyle: {
+                                            "margin-bottom": "-0.5em"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "p",
+                                            {
+                                              staticStyle: {
+                                                "margin-bottom": "-0.5em"
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "small",
+                                                { staticClass: "text-muted" },
+                                                [
+                                                  _vm._v(
+                                                    "Updated By: " +
+                                                      _vm._s(
+                                                        aboutpic.user.full_name
+                                                      )
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "p",
+                                            {
+                                              staticStyle: {
+                                                "margin-bottom": "0.25em"
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "small",
+                                                { staticClass: "text-muted" },
+                                                [
+                                                  _vm._v(
+                                                    "On: " +
+                                                      _vm._s(
+                                                        _vm._f("dateformat")(
+                                                          aboutpic.updated_at
+                                                        )
+                                                      )
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
                                         ]
                                       ),
                                       _vm._v(" "),
                                       _c(
-                                        "a",
-                                        {
-                                          staticClass: "card-link",
-                                          attrs: { href: "" },
-                                          on: {
-                                            click: function($event) {
-                                              $event.preventDefault()
-                                              return _vm.deleteAboutPics(
-                                                aboutpic.id
-                                              )
-                                            }
-                                          }
-                                        },
+                                        "span",
+                                        { staticClass: "float-right" },
                                         [
-                                          _c("i", {
-                                            staticClass: "fa fa-trash red"
-                                          })
+                                          _c(
+                                            "a",
+                                            {
+                                              attrs: { href: "" },
+                                              on: {
+                                                click: function($event) {
+                                                  $event.preventDefault()
+                                                  return _vm.editAboutPicsModal(
+                                                    aboutpic.id
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fa fa-edit blue"
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(
+                                            "\n                                                              /\n                                                              "
+                                          ),
+                                          _c(
+                                            "a",
+                                            {
+                                              attrs: { href: "" },
+                                              on: {
+                                                click: function($event) {
+                                                  $event.preventDefault()
+                                                  return _vm.deleteAboutPics(
+                                                    aboutpic.id
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fa fa-trash red"
+                                              })
+                                            ]
+                                          )
                                         ]
                                       )
                                     ])
-                                  ])
-                                ])
+                                  ],
+                                  1
+                                )
                               ]
                             )
                           }),
@@ -62219,6 +62573,32 @@ var render = function() {
                           }),
                           _vm._v(" "),
                           _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeAboutPics,
+                                expression: "editmodeAboutPics"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateAboutImage(
+                                _vm.aboutpicsform.image
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeAboutPics,
+                                expression: "!editmodeAboutPics"
+                              }
+                            ],
                             attrs: {
                               src: _vm.aboutpicsform.image,
                               alt: "",
@@ -62782,7 +63162,10 @@ var staticRenderFns = [
         {
           staticClass: "widget-user-header text-white",
           staticStyle: {
-            background: "url('../dist/img/photo1.png') center center"
+            background:
+              "url('assets/organisation/img/background/background-1.jpg') center center",
+            width: "100%",
+            height: "500px"
           }
         },
         [
@@ -63219,6 +63602,445 @@ var staticRenderFns = [
       [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
   },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/SingleAboutPic.vue?vue&type=template&id=ed16cecc&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admins/organisation/SingleAboutPic.vue?vue&type=template&id=ed16cecc& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card flex-fill" }, [
+    _c("img", {
+      staticClass: "card-img-top ",
+      staticStyle: { width: "100%" },
+      attrs: { src: _vm.aboutLoadImage(_vm.SingleAboutPic.image) }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c("h5", { staticClass: "card-title" }, [
+        _vm._v(_vm._s(_vm.SingleAboutPic.title))
+      ]),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          staticClass: "card-text",
+          staticStyle: { "margin-bottom": "-0.5em" }
+        },
+        [_vm._v(_vm._s(_vm.SingleAboutPic.description))]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "clearfix" }, [
+      _c(
+        "span",
+        {
+          staticClass: "float-left",
+          staticStyle: { "margin-bottom": "-0.5em" }
+        },
+        [
+          _c("p", { staticStyle: { "margin-bottom": "-0.5em" } }, [
+            _vm.SingleAboutPic.user
+              ? _c("small", { staticClass: "text-muted" }, [
+                  _vm._v("Updated By: gggggggggg")
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("p", { staticStyle: { "margin-bottom": "0.25em" } }, [
+            _c("small", { staticClass: "text-muted" }, [
+              _vm._v(
+                "On: " +
+                  _vm._s(_vm._f("dateformat")(_vm.SingleAboutPic.updated_at))
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("span", { staticClass: "float-right" }, [
+        _c(
+          "a",
+          {
+            attrs: { href: "" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.editAboutPicsModal(_vm.SingleAboutPic.id)
+              }
+            }
+          },
+          [_c("i", { staticClass: "fa fa-edit blue" })]
+        ),
+        _vm._v("\n                /\n                "),
+        _c(
+          "a",
+          {
+            attrs: { href: "" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.deleteAboutPics(_vm.SingleAboutPic.id)
+              }
+            }
+          },
+          [_c("i", { staticClass: "fa fa-trash red" })]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade ",
+        attrs: {
+          id: "AboutPicsModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "AboutPicsModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered modal-lg",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.editmodeAboutPics,
+                        expression: "editmodeAboutPics"
+                      }
+                    ],
+                    staticClass: "modal-title",
+                    attrs: { id: "AboutPicsModalLabel" }
+                  },
+                  [_vm._v("Update About Us Pictures")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h5",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.editmodeAboutPics,
+                        expression: "!editmodeAboutPics"
+                      }
+                    ],
+                    staticClass: "modal-title",
+                    attrs: { id: "AboutPicsModalLabel" }
+                  },
+                  [_vm._v("Add New About Us Pics")]
+                ),
+                _vm._v(" "),
+                _vm._m(0)
+              ]),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  attrs: { role: "form" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      _vm.editmodeAboutPics
+                        ? _vm.updateAboutPics(_vm.aboutpicsform.id)
+                        : _vm.addAboutPics()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-6" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "title" }
+                            },
+                            [_vm._v("Title")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.aboutpicsform.title,
+                                expression: "aboutpicsform.title"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.aboutpicsform.errors.has(
+                                "title"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "title",
+                              placeholder: "Title"
+                            },
+                            domProps: { value: _vm.aboutpicsform.title },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.aboutpicsform,
+                                  "title",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.aboutpicsform, field: "title" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-12" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "description" }
+                            },
+                            [_vm._v("Description")]
+                          ),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.aboutpicsform.description,
+                                expression: "aboutpicsform.description"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.aboutpicsform.errors.has(
+                                "description"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "description",
+                              placeholder: "description"
+                            },
+                            domProps: { value: _vm.aboutpicsform.description },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.aboutpicsform,
+                                  "description",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.aboutpicsform,
+                              field: "description"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-12" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "image" }
+                            },
+                            [_vm._v("Organisation Image 1")]
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: {
+                              "is-invalid": _vm.aboutpicsform.errors.has(
+                                "image"
+                              )
+                            },
+                            attrs: { type: "file", name: "image" },
+                            on: {
+                              change: function($event) {
+                                return _vm.aboutImage($event)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeAboutPics,
+                                expression: "editmodeAboutPics"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateAboutImage(
+                                _vm.aboutpicsform.image
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeAboutPics,
+                                expression: "!editmodeAboutPics"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.aboutpicsform.image,
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.aboutpicsform, field: "image" }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.editmodeAboutPics,
+                            expression: "editmodeAboutPics"
+                          }
+                        ],
+                        staticClass: "btn btn-success",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Update")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.editmodeAboutPics,
+                            expression: "!editmodeAboutPics"
+                          }
+                        ],
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Create")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -80845,6 +81667,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/admins/organisation/SingleAboutPic.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/admins/organisation/SingleAboutPic.vue ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SingleAboutPic_vue_vue_type_template_id_ed16cecc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SingleAboutPic.vue?vue&type=template&id=ed16cecc& */ "./resources/js/components/admins/organisation/SingleAboutPic.vue?vue&type=template&id=ed16cecc&");
+/* harmony import */ var _SingleAboutPic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SingleAboutPic.vue?vue&type=script&lang=js& */ "./resources/js/components/admins/organisation/SingleAboutPic.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SingleAboutPic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SingleAboutPic_vue_vue_type_template_id_ed16cecc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SingleAboutPic_vue_vue_type_template_id_ed16cecc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/admins/organisation/SingleAboutPic.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/admins/organisation/SingleAboutPic.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/admins/organisation/SingleAboutPic.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleAboutPic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SingleAboutPic.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/SingleAboutPic.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleAboutPic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/admins/organisation/SingleAboutPic.vue?vue&type=template&id=ed16cecc&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/admins/organisation/SingleAboutPic.vue?vue&type=template&id=ed16cecc& ***!
+  \*******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleAboutPic_vue_vue_type_template_id_ed16cecc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SingleAboutPic.vue?vue&type=template&id=ed16cecc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/SingleAboutPic.vue?vue&type=template&id=ed16cecc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleAboutPic_vue_vue_type_template_id_ed16cecc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SingleAboutPic_vue_vue_type_template_id_ed16cecc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/admins/organisation/superadmin/permission/List.vue":
 /*!************************************************************************************!*\
   !*** ./resources/js/components/admins/organisation/superadmin/permission/List.vue ***!
@@ -81094,6 +81985,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_admins_organisation_superadmin_role_List_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/admins/organisation/superadmin/role/List.vue */ "./resources/js/components/admins/organisation/superadmin/role/List.vue");
 /* harmony import */ var _components_admins_organisation_superadmin_user_List_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/admins/organisation/superadmin/user/List.vue */ "./resources/js/components/admins/organisation/superadmin/user/List.vue");
 /* harmony import */ var _components_admins_organisation_Organisation_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/admins/organisation/Organisation.vue */ "./resources/js/components/admins/organisation/Organisation.vue");
+/* harmony import */ var _components_admins_organisation_SingleAboutPic_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/admins/organisation/SingleAboutPic.vue */ "./resources/js/components/admins/organisation/SingleAboutPic.vue");
  //Permission
 
  //role
@@ -81101,6 +81993,8 @@ __webpack_require__.r(__webpack_exports__);
  //user
 
  //Organisation settings
+
+ //single about image full more
 
  // // //course
 // // import CourseList  from './components/admin/course/List.vue'
@@ -81130,6 +82024,10 @@ var routes = [{
 {
   path: '/settings',
   component: _components_admins_organisation_Organisation_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+}, //about pic more
+{
+  path: '/aboutimage/:id',
+  component: _components_admins_organisation_SingleAboutPic_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
 }];
 
 /***/ }),
@@ -81533,7 +82431,10 @@ __webpack_require__.r(__webpack_exports__);
 //permission
 var state = {
   aboutpic: [],
-  aboutpics: []
+  //get one as super admin from one organisation
+  aboutpics: [],
+  //get all assuper admin fromallorganisations
+  singleaboutpic: []
 },
     getters = {
   AboutPic: function AboutPic(state) {
@@ -81541,6 +82442,9 @@ var state = {
   },
   AboutPics: function AboutPics(state) {
     return state.aboutpics;
+  },
+  SingleAbouPic: function SingleAbouPic(state) {
+    return state.singleaboutpic;
   }
 };
 var actions = {
@@ -81556,6 +82460,12 @@ var actions = {
       //   console.log(response.data.aboutpics);
       context.commit('aboutpics', response.data.aboutpics);
     });
+  },
+  AboutPicById: function AboutPicById(context, payload) {
+    axios.get('/aboutpic/show/' + payload).then(function (response) {
+      console.log(response.data);
+      context.commit('singleaboutpic', response.data.singleaboutpic);
+    });
   }
 };
 var mutations = {
@@ -81564,6 +82474,9 @@ var mutations = {
   },
   aboutpics: function aboutpics(state, data) {
     return state.aboutpics = data;
+  },
+  singleaboutpic: function singleaboutpic(state, data) {
+    return state.singleaboutpic = data;
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({

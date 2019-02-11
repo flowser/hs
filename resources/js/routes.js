@@ -7,6 +7,9 @@ import RoleList from './components/admins/organisation/superadmin/role/List.vue'
 import UserList from './components/admins/organisation/superadmin/user/List.vue';
 //Organisation settings
 import Orgsetting from './components/admins/organisation/Organisation.vue';
+
+//single about image full more
+import SingleAboutImage from './components/admins/organisation/SingleAboutPic.vue';
 // // //course
 // // import CourseList  from './components/admin/course/List.vue'
 // // import AddCourse  from './components/admin/course/New.vue'
@@ -16,6 +19,7 @@ import Orgsetting from './components/admins/organisation/Organisation.vue';
 // // import PublicHome from './components/public/PublicHome.vue'
 // // import BlogCourse from './components/public/blog/BlogCourse.vue'
 // // import SingleCourse from './components/public/blog/SingleBlog.vue'
+
 
 
 
@@ -47,7 +51,11 @@ export const routes = [
       path: '/settings',
       component:Orgsetting
     },
-
+//about pic more
+    {
+        path:'/aboutimage/:id',
+        component: SingleAboutImage
+      },
 //   //Course
 //     {
 //       path: '/course-list',

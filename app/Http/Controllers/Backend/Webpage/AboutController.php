@@ -178,7 +178,7 @@ class AboutController extends Controller
 
          //processing logo nme and size
         if($request->front_image != $currentFront_image){
-            $Path = public_path()."/assets/organisation/img/website/frontimage/small";
+            $Path = public_path()."/assets/organisation/img/website/frontimage";
 
             $S_currentFront_image = $Path. $currentFront_image;
             //deleting if exists

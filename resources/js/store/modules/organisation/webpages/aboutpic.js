@@ -2,8 +2,9 @@
 //permission
 
 const state = {
-    aboutpic:[],
-    aboutpics:[],
+    aboutpic:[],//get one as super admin from one organisation
+    aboutpics:[], //get all assuper admin fromallorganisations
+    singleaboutpic:[],
   },
   getters = {
     AboutPic(state){
@@ -11,7 +12,10 @@ const state = {
     },
     AboutPics(state){
       return state.aboutpics;
-    }
+    },
+    SingleAbouPic(state){
+        return state.singleaboutpic
+    },
   }
 const actions = {
     aboutpic(context){
@@ -27,7 +31,14 @@ const actions = {
         //   console.log(response.data.aboutpics);
           context.commit('aboutpics', response.data.aboutpics);
         })
-    }
+    },
+    AboutPicById(context, payload){
+        axios.get('/aboutpic/show/'+payload)
+              .then((response)=>{
+                  console.log(response.data)
+                  context.commit('singleaboutpic', response.data.singleaboutpic)
+              })
+    },
   }
 const mutations = {
     aboutpic(state, data){
@@ -35,7 +46,10 @@ const mutations = {
     },
     aboutpics(state, data){
       return state.aboutpics = data;
-    }
+    },
+    singleaboutpic(state, data){
+        return state.singleaboutpic = data
+    },
   }
 
 export default {

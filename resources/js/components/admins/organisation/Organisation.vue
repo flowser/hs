@@ -5,7 +5,7 @@
                 <!-- Widget: user widget style 1 -->
                 <div class="card card-widget widget-user">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
-                <div class="widget-user-header text-white" style="background: url('../dist/img/photo1.png') center center;">
+                <div class="widget-user-header text-white" style="background: url('assets/organisation/img/background/background-1.jpg') center center;width:100%;height:500px">
                     <h3 class="widget-user-username">Elizabeth Pierce</h3>
                     <h5 class="widget-user-desc">Web Designer</h5>
                 </div>
@@ -218,32 +218,42 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- about pic -->
                                             <div class="row ">
-
-                                                        <div  v-for="aboutpic in AboutPic" :key="aboutpic.id" class="col-md-3">
-                                                            <div class="card " >
-                                                                        <img class="card-img-top " :src="aboutLoadImage(aboutpic.image)" style="width:100%; height:150px"      >
-                                                                <div class="card-body" >
-                                                                        <h5 class="card-title">{{aboutpic.title}}</h5>
-                                                                         <p style="margin-bottom:-0.5em" class="card-text">{{aboutpic.description | sortlength(80, "....") }}</p>
-                                                                        <p style="margin-bottom:-0.5em"><small class="text-muted">Last updated: {{aboutpic.updated_at | dateformat}}</small></p>
-                                                                        <p style="margin-bottom:-0.5em" ><small class="text-muted">Updated By: {{aboutpic.user.full_name}}</small></p>
-                                                                        <div class="float-right">
-                                                                            <a href="" class="card-link" @click.prevent="editAboutPicsModal(aboutpic.id)">
-                                                                                <i class="fa fa-edit blue"></i>
-                                                                            </a>
-                                                                            <a href="" class="card-link" @click.prevent="deleteAboutPics(aboutpic.id)">
-                                                                                <i class="fa fa-trash red"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                </div>
-                                                            </div>
+                                                 <div  v-for="aboutpic in AboutPic" :key="aboutpic.id" class="col-md-3 d-flex">
+                                                    <div class="card flex-fill" >
+                                                            <img class="card-img-top " :src="aboutLoadImage(aboutpic.image)" style="width:100%;height:150px;">
+                                                        <div class="card-body" >
+                                                            <h5 class="card-title">{{aboutpic.title}}</h5>
+                                                            <p style="margin-bottom:-0.5em" class="card-text">{{aboutpic.description | sortlength(80, "...") }}</p>
                                                         </div>
-
-                                                    <ul class="pagination" style="padding: 0px;margin: 0px;">
+                                                            <router-link  :to="`/aboutimage/${aboutpic.id}`" class="pull-right">Read More <i class="icon-angle-right"></i></router-link>
+                                                        <div class="clearfix">
+                                                            <span class="float-left" style="margin-bottom:-0.5em" >
+                                                                <p style="margin-bottom:-0.5em">
+                                                                    <small class="text-muted">Updated By: {{aboutpic.user.full_name}}</small>
+                                                                </p>
+                                                                <p style="margin-bottom:0.25em">
+                                                                    <small class="text-muted">On: {{aboutpic.updated_at | dateformat}}</small>
+                                                                </p>
+                                                            </span>
+                                                            <span class="float-right">
+                                                                <a href=""  @click.prevent="editAboutPicsModal(aboutpic.id)">
+                                                                    <i class="fa fa-edit blue"></i>
+                                                                </a>
+                                                                /
+                                                                <a href=""  @click.prevent="deleteAboutPics(aboutpic.id)">
+                                                                    <i class="fa fa-trash red"></i>
+                                                                </a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul class="pagination" style="padding: 0px;margin: 0px;">
                                                         <!-- {{ $fulltime_courses->links()}} -->
-                                                    </ul>
+                                                </ul>
                                             </div>
+                                            <!--end about pic  -->
 
                                             <div class="row">
                                                 <div class="col-md-6" >
@@ -611,7 +621,8 @@
                                     <label for="image" class=" col-form-label">Organisation Image 1</label><br>
                                         <input @change="aboutImage($event)" type="file" name="image"
                                             :class="{ 'is-invalid': aboutpicsform.errors.has('image') }">
-                                            <img :src="aboutpicsform.image" alt="" width="100%" >
+                                            <img v-show="editmodeAboutPics" :src="updateAboutImage(aboutpicsform.image)" alt="" width="100%" >
+                                            <img  v-show="!editmodeAboutPics" :src="aboutpicsform.image" alt="" width="100%" >
                                         <has-error style="color: #e83e8c" :form="aboutpicsform" field="image"></has-error>
                                 </div>
                             </div>
@@ -833,7 +844,11 @@
                       if(img.length>100){
                             return this.organisationform.logo;
                         }else{
-                            return "assets/organisation/img/logo/"+organisationformlogo;
+                            if(organisationformlogo){
+                                return "assets/organisation/img/logo/"+organisationformlogo;
+                            }else{
+                                return "/assets/organisation/img/website/empty.png";
+                            }
                         }
             },
             //front image about
@@ -861,15 +876,19 @@
                 }else{
                     return "/assets/organisation/img/website/empty.png";
                 }
-                // return "/assets/organisation/img/website/frontimage/"+front_image_id;
             },
              updateAboutFrontImage(aboutformfront_image){
-                console.log(aboutformfront_image)
+                // console.log(aboutformfront_image, 'mixcv')
                 let img = this.aboutform.front_image;
                       if(img.length>100){
+                            console.log('bbbbmixcv')
                             return this.aboutform.front_image;
                         }else{
-                            return "assets/organisation/img/website/frontimage/"+aboutformfront_image;
+                            if(aboutformfront_image){
+                                return "assets/organisation/img/website/frontimage/"+aboutformfront_image;
+                            }else{
+                                return "/assets/organisation/img/website/empty.png";
+                            }
                         }
             },
             //About Images
@@ -891,15 +910,25 @@
                         reader.readAsDataURL(file);
                 }
             },
-
             aboutLoadImage(about_image_id){
-
                 if(about_image_id !=null){
                     return "/assets/organisation/img/website/aboutpics/"+about_image_id;
                 }else{
                     return "/assets/organisation/img/website/empty.png";
                 }
-                // return "/assets/organisation/img/website/aboutpics/medium/"+about_image_id;
+            },
+            updateAboutImage(about_image){
+                // console.log(this.aboutpicsform.image)
+                let img = this.aboutpicsform.image;
+                      if(img.length>100){
+                            return this.aboutpicsform.image;
+                        }else{
+                            if(about_image){
+                                return "assets/organisation/img/website/aboutpics/"+about_image;
+                            }else{
+                                return "/assets/organisation/img/website/empty.png";
+                            }
+                        }
             },
             loadOrganisation(){
                 return this.$store.dispatch( "organisation")//get all from organisation. organisation linked to user
@@ -933,10 +962,9 @@
             editAboutPicsModal(id){
                  this.editmodeAboutPics = true;
                  this.aboutpicsform.reset()
-                   console.log('edit about', id)
+                   console.log('edit aboutpic', id)
                     this.$Progress.start();
                       axios.get('/aboutpic/edit/'+id)
-
                         .then((response)=>{
                              console.log(response.data)
                            $('#AboutPicsModal').modal('show')
@@ -944,7 +972,7 @@
                             type: 'success',
                             title: 'Fetched the About data successfully'
                             })
-                            this.aboutpicsform.fill(response.data.about)
+                            this.aboutpicsform.fill(response.data.aboutpic)
                                this.$Progress.finish();
                         })
                         .catch(()=>{
@@ -1124,7 +1152,7 @@
             updateAboutPics(id){
                   console.log('update about')
                   this.$Progress.start();
-                     this.aboutform.patch('/aboutpic/update/'+id)
+                     this.aboutpicsform.patch('/aboutpic/update/'+id)
                         .then(()=>{
                             this.$store.dispatch( "organisation")
                             this.$store.dispatch( "about")
@@ -1212,6 +1240,41 @@
                             toast({
                             type: 'success',
                             title: 'Organisation Deleted successfully'
+                            })
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                            toast({
+                            type: 'error',
+                            title: 'There was something wrong'
+                            })
+                        })
+                     }
+                })
+             },
+            deleteAboutPics(id){
+                Swal({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                })
+                .then((result) => {
+                    if (result.value) {
+                    //  console.log('delete user', id)
+                        this.$Progress.start();
+                        this.aboutpicsform.get('/aboutpic/delete/'+id)
+                            .then(()=>{
+                            toast({
+                            type: 'success',
+                            title: 'About Picture Deleted successfully'
                             })
                             this.$store.dispatch( "organisation")
                             this.$store.dispatch( "about")

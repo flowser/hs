@@ -98,7 +98,12 @@ class AboutPicController extends Controller
      */
     public function show($id)
     {
-        //
+        $singleaboutpic = AboutPic::with('user','about')
+                                    ->find($id);
+        // dd($organisation);
+        return response()-> json([
+            'singleaboutpic' => $singleaboutpic,
+        ], 200);
     }
 
     /**
@@ -126,11 +131,11 @@ class AboutPicController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $aboutpic = AboutPic::findOrFail($id);
         $this->validate($request,[
             'title' => 'required',
             'description' => 'required',
-            // 'image' => 'required',
         ]);
 
         $aboutpic->title = $request ->title;
