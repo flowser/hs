@@ -95,9 +95,9 @@ class Organisation extends Model
         return $this->hasManyThrough(AboutPic::class, About::class);
     }
     //service page
-    public function service()
+    public function services()
     {
-        return $this->hasOne(Service::class);
+        return $this->hasMany(Service::class);
     }
     public function servicefilters()
     {

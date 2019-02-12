@@ -2,7 +2,10 @@
 
 namespace App\Models\Standard\Webservices;
 
+use App\Models\Bureau\Bureau;
+use App\Models\Standard\User;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Organisation\Organisation;
 
 class Advert extends Model
 {

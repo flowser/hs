@@ -19,9 +19,9 @@ class CreateServicesTable extends Migration
             $table->unsignedInteger('organisation_id')->nullable();
             $table->unsignedInteger('bureau_id')->nullable();
             $table->string('title', 120);
-            $table->string('advert_image')->nullable();
-            $table->string('advert_title', 120);
-            $table->longText('advert_details')->nullable();
+            $table->string('service_image')->nullable();
+            $table->string('service_title', 120);
+            $table->longText('service_details')->nullable();
 
 
             $table->timestamps();

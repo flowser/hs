@@ -6,30 +6,38 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
-use App\Models\Standard\Webservices\Service;
+use App\Models\Standard\Webservices\About;
+use App\Models\Standard\Webservices\Advert;
 
-class ServiceController extends Controller
+
+
+class AdvertController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
 
         // $about = $organisation->about()->get();
-        $service = Service::with('user', 'organisation')
-                        ->where('services.organisation_id', $organisation->id)
+        $advert = Advert::with('user', 'organisation')
+                        ->where('adverts.organisation_id', $organisation->id)
                         ->get();
             return response()-> json([
-                            'service' => $service,
+                            'advert' => $advert,
                             ], 200);
     }
-    public function organisations()//all services linked to organisation
+    public function organisations()//all adverts linked to organisation
     {
-        $services = Service::with('user', 'organisation')
+        $adverts = Advert::with('user', 'organisation')
                     // ->where('abouts.organisation_id', $organisation->id)
                     ->get();
         // dd($about);
         return response()-> json([
-        'services' => $services,
+        'adverts' => $adverts,
         ], 200);
     }
 
@@ -54,41 +62,43 @@ class ServiceController extends Controller
         // return $request;
         $this->validate($request,[
             'title' => 'required|min:2',
-            'service_title' => 'required|min:2',
-            'service_details' => 'required',
+            'subtitle' => 'required|min:2',
+            'details' => 'required',
             // 'organisation_id' => 'required',
             // 'bureau_id' => 'required',
         ]);
 
-        $service = new Service();
-        $service->title = $request ->title;
-        $service->service_title = $request ->service_title;
-        $service->service_details = $request ->service_details;
+        $advert = new Advert();
+        $advert->title = $request ->title;
+        $advert->subtitle = $request ->subtitle;
+        $advert->details = $request ->details;
+
 
         //getting Organisation $user
         $user = Auth::user();
         $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
 
-        $service->organisation_id = $organisation ->id;
-        $service->user_id = $user ->id;
+        $advert->organisation_id = $organisation ->id;
+        $advert->user_id = $user ->id;
         //bureau
         // $burueau= (Auth::user()-> bureauemployee()->first()->bureau()->first());
-        // $service->bureau_id = $bureau ->id;
-        // $service->user_id = $user ->id;
+        // $advert->bureau_id = $bureau ->id;
+        // $advert->user_id = $user ->id;
         //processing photo nme and size
 
-        $strpos = strpos($request->service_image, ';'); //positionof image name semicolon
-        $sub = substr($request->service_image, 0, $strpos);
+        $strpos = strpos($request->advert_image, ';'); //positionof image name semicolon
+        $sub = substr($request->advert_image, 0, $strpos);
         $ex = explode('/', $sub)[1];
         $name = time().".".$ex;
 
-        $Path = public_path()."/assets/organisation/img/website/services";
-            $img = Image::make($request->service_image);
+        $Path = public_path()."/assets/organisation/img/website/adverts";
+            $img = Image::make($request->advert_image);
 //            $img->crop(300, 150, 25, 25);
             $img ->save($Path.'/'.$name);
-        $service->service_image = $name;
+        $advert->advert_image = $name;
         //end processing photo and size
-        $service->save();
+        $advert->save();
+
 
     }
 
@@ -101,13 +111,14 @@ class ServiceController extends Controller
     public function show($id)
     {
         $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
-        $singleservice = Service::with('user', 'organisation')
-                                ->where('services.organisation_id', $organisation->id)
+        $singleadvert = Advert::with('user', 'organisation')
+                                ->where('adverts.organisation_id', $organisation->id)
                                 ->find($id);
         // dd($organisation);
         return response()-> json([
-            'singleservice' => $singleservice,
+            'singleadvert' => $singleadvert,
         ], 200);
+
 
     }
 
@@ -120,12 +131,12 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
-        $service = Service::with('user', 'organisation')
-                                ->where('services.organisation_id', $organisation->id)
+        $advert = Advert::with('user', 'organisation')
+                                ->where('adverts.organisation_id', $organisation->id)
                                 ->find($id);
         // dd($organisation);
         return response()-> json([
-            'service' => $service,
+            'advert' => $advert,
         ], 200);
     }
 
@@ -138,47 +149,47 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $service = Service::findOrFail($id);
+        $advert = Advert::findOrFail($id);
         $this->validate($request,[
             'title' => 'required|min:2',
-            'service_title' => 'required|min:2',
-            'service_details' => 'required',
+            'subtitle' => 'required|min:2',
+            'details' => 'required',
         ]);
 
-        $service->title = $request ->title;
-        $service->service_title = $request ->service_title;
-        $service->service_details = $request ->service_details;
+        $advert->title = $request ->title;
+        $advert->subtitle = $request ->subtitle;
+        $advert->details = $request ->details;
         //getting Organisation $user, about_id
         $user = Auth::user();
         $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
 
-        $service->organisation_id = $organisation ->id;
-        $service->user_id = $user ->id;
+        $advert->organisation_id = $organisation ->id;
+        $advert->user_id = $user ->id;
 
-        $currentservice_image =  $service->service_image;
+        $currentadvert_image =  $advert->advert_image;
 
-         //processing service_image nme and size
-        if($request->service_image != $currentservice_image){
-            $Path = public_path()."/assets/organisation/img/website/services";
+         //processing advert_image nme and size
+        if($request->advert_image != $currentadvert_image){
+            $Path = public_path()."/assets/organisation/img/website/adverts";
 
-            $currentService_image = $Path. $currentservice_image;
+            $currentAdvert_image = $Path. $currentadvert_image;
             //deleting if exists
-                if(file_exists($currentService_image)){
-                    @unlink($currentService_image);
+                if(file_exists($currentAdvert_image)){
+                    @unlink($currentAdvert_image);
                 }
-                $strpos = strpos($request->service_image, ';'); //positionof image name semicolon
-                $sub = substr($request->service_image, 0, $strpos);
+                $strpos = strpos($request->advert_image, ';'); //positionof image name semicolon
+                $sub = substr($request->advert_image, 0, $strpos);
                 $ex = explode('/', $sub)[1];
                 $name = time().".".$ex;
 
-                $img = Image::make($request->service_image);
+                $img = Image::make($request->advert_image);
                 $img ->save($Path.'/'.$name);
 
         }else{
-            $name = $service->service_image;
+            $name = $advert->advert_image;
         }
-        $service->service_image = $name;
-        $service->save();
+        $advert->advert_image = $name;
+        $advert->save();
     }
 
     /**
@@ -189,17 +200,15 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::findOrFail($id);
+        $advert = Advert::findOrFail($id);
         //image inline with this organisation
-        $Path = public_path()."/assets/organisation/img/website/services";
+        $Path = public_path()."/assets/organisation/img/website/adverts";
 
-        $Service_image = $Path. $service->service_image;
+        $Advert_image = $Path. $advert->advert_image;
 
-        if(file_exists($Service_image)){
-            @unlink($Service_image);
+        if(file_exists($Advert_image)){
+            @unlink($Advert_image);
         }
-        $service->delete();
+        $advert->delete();
     }
-
-
 }

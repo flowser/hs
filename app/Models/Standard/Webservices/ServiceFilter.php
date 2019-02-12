@@ -5,6 +5,7 @@ namespace App\Models\Standard\Webservices;
 use App\Models\Standard\User;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Standard\Webservices\About;
+use App\Models\Standard\Webservices\Service;
 
 class ServiceFilter extends Model
 {
@@ -24,5 +25,9 @@ class ServiceFilter extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
     }
 }

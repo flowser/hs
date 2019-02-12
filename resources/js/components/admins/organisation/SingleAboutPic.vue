@@ -8,7 +8,7 @@
                 <div class="clearfix">
                     <span class="float-left" style="margin-bottom:-0.5em" >
                         <p style="margin-bottom:-0.5em">
-                            <small class="text-muted" v-if="SingleAboutPic.user">Updated By: gggggggggg</small>
+                            <small class="text-muted" v-if="SingleAboutPic.user">Updated By: {{SingleAboutPic.user.full_name}}</small>
                         </p>
                         <p style="margin-bottom:0.25em">
                             <small class="text-muted">On: {{SingleAboutPic.updated_at | dateformat}}</small>

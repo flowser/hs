@@ -4,11 +4,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\Standard\WardController;
 use App\Http\Controllers\Backend\Webpage\AboutController;
+use App\Http\Controllers\Backend\Webpage\AdvertController;
 use App\Http\Controllers\Backend\Standard\CountyController;
 use App\Http\Controllers\Backend\Webpage\ServiceController;
 use App\Http\Controllers\Backend\Standard\CountryController;
 use App\Http\Controllers\Backend\Webpage\AboutPicController;
+use App\Http\Controllers\Backend\Webpage\ExtraServiceController;
 use App\Http\Controllers\Backend\Standard\ConstituencyController;
+use App\Http\Controllers\Backend\Webpage\ServiceFilterController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\RoleController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\UserController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\PermissionController;
@@ -251,15 +254,55 @@ Route::get('/home', 'HomeController@index')->name('home');
 
         // service
         Route::get('service/get', [ServiceController::class, 'index'])->name('service.index');
-        Route::get('service/get/list', [ServiceController::class, 'aboutList'])->name('service.list-index');
+        Route::get('service/get/list', [ServiceController::class, 'organisations'])->name('service.list-index');
         Route::post('service', [ServiceController::class, 'store'])->name('service.store');
     //     /*
     //      * Specifics
     //      */
-        Route::get('service/show/{country}', [ServiceController::class, 'show'])->name('service.show');
-        Route::get('service/edit/{country}', [ServiceController::class, 'edit'])->name('service.edit');
-        Route::patch('service/update/{country}', [ServiceController::class, 'update'])->name('service.update');
-        Route::get('service/delete/{country}/', [ServiceController::class, 'destroy'])->name('service.destroy');
+        Route::get('service/show/{service}', [ServiceController::class, 'show'])->name('service.show');
+        Route::get('service/edit/{service}', [ServiceController::class, 'edit'])->name('service.edit');
+        Route::patch('service/update/{service}', [ServiceController::class, 'update'])->name('service.update');
+        Route::get('service/delete/{service}/', [ServiceController::class, 'destroy'])->name('service.destroy');
+
+        // extraservice
+        Route::get('extraservice/get', [ExtraServiceController::class, 'index'])->name('extraservice.index');
+        Route::get('extraservice/get/list', [ExtraServiceController::class, 'organisations'])->name('extraservice.list-index');
+        Route::post('extraservice', [ExtraServiceController::class, 'store'])->name('extraservice.store');
+    //     /*
+    //      * Specifics
+    //      */
+        Route::get('extraservice/show/{extraservice}', [ExtraServiceController::class, 'show'])->name('extraservice.show');
+        Route::get('extraservice/edit/{extraservice}', [ExtraServiceController::class, 'edit'])->name('extraservice.edit');
+        Route::patch('extraservice/update/{extraservice}', [ExtraServiceController::class, 'update'])->name('extraservice.update');
+        Route::get('extraservice/delete/{extraservice}/', [ExtraServiceController::class, 'destroy'])->name('extraservice.destroy');
+
+                // servicefilter
+        Route::get('servicefilter/get', [ServiceFilterController::class, 'index'])->name('servicefilter.index');
+        Route::get('servicefilter/get/list', [ServiceFilterController::class, 'organisations'])->name('servicefilter.list-index');
+        Route::post('servicefilter', [ServiceFilterController::class, 'store'])->name('servicefilter.store');
+    //     /*
+    //      * Specifics
+    //      */
+        Route::get('servicefilter/show/{servicefilter}', [ServiceFilterController::class, 'show'])->name('servicefilter.show');
+        Route::get('servicefilter/edit/{servicefilter}', [ServiceFilterController::class, 'edit'])->name('servicefilter.edit');
+        Route::patch('servicefilter/update/{servicefilter}', [ServiceFilterController::class, 'update'])->name('servicefilter.update');
+        Route::get('servicefilter/delete/{servicefilter}/', [ServiceFilterController::class, 'destroy'])->name('servicefilter.destroy');
+
+
+
+
+        // adverts
+        Route::get('advert/get', [AdvertController::class, 'index'])->name('advert.index');
+        Route::get('adverts/get', [AdvertController::class, 'organisations'])->name('advert.organisations');
+        Route::get('advert/get/list', [AdvertController::class, 'aboutList'])->name('advert.list-index');
+        Route::post('advert', [AdvertController::class, 'store'])->name('advert.store');
+    //     /*
+    //      * Specifics
+    //      */
+        Route::get('advert/show/{advert}', [AdvertController::class, 'show'])->name('advert.show');
+        Route::get('advert/edit/{advert}', [AdvertController::class, 'edit'])->name('advert.edit');
+        Route::patch('advert/update/{advert}', [AdvertController::class, 'update'])->name('advert.update');
+        Route::get('advert/delete/{advert}/', [AdvertController::class, 'destroy'])->name('advert.destroy');
 
 
 

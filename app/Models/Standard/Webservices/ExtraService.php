@@ -2,6 +2,7 @@
 
 namespace App\Models\Standard\Webservices;
 
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Standard\Webservices\About;
 
@@ -23,5 +24,9 @@ class ExtraService extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
     }
 }

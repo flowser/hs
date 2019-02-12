@@ -22,11 +22,11 @@ class AboutController extends Controller
     public function index()
     {
 
-        // $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
 
         // $about = $organisation->about()->get();
         $about = About::with('user', 'aboutpics', 'organisation')
-                        ->where('abouts.user_id', Auth::user()->id)
+                        ->where('abouts.organisation_id', $organisation->id)
                         ->get();
         // dd($about);
         return response()-> json([

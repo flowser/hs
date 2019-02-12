@@ -91,7 +91,10 @@
         import organisation from './modules/organisation/organisation';
         import about from './modules/organisation/webpages/about';
         import aboutpic from './modules/organisation/webpages/aboutpic';
+        import advert from './modules/organisation/webpages/advert';
         import service from './modules/organisation/webpages/service';
+        import extraservice from './modules/organisation/webpages/extraservice';
+        import servicefilter from './modules/organisation/webpages/servicefilter';
 
         // Vue.use(Vuex)
 
@@ -109,7 +112,10 @@
             organisation,
             about,
             aboutpic,
+            advert,
             service,
+            extraservice,
+            servicefilter,
           },
           // strict: debug,
           // plugins: debug ? [createLogger()] : []

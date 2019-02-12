@@ -3,73 +3,103 @@
       <!-- Main content -->
         <div class="col-md-12">
                 <!-- Widget: user widget style 1 -->
-                <div class="card card-widget widget-user">
+                <div v-if="Organisation.length <1" class="card-tools">
+                    <button class="btn btn-success" @click.prevent="newOrganisationModal()" >Add Organisation
+                        <i class="fas fa-plus fw"></i>
+                    </button>
+                </div>
+                <div class="card card-widget widget-user" v-for="organisation in Organisation" :key="organisation.id">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
-                <div class="widget-user-header text-white" style="background: url('assets/organisation/img/background/background-1.jpg') center center;width:100%;height:500px">
-                    <h3 class="widget-user-username">Elizabeth Pierce</h3>
-                    <h5 class="widget-user-desc">Web Designer</h5>
+                    <div class="widget-user-header text-white" style="background: url('assets/organisation/img/background/background-1.jpg')
+                    center center;width:100%;height:300px">
+
+                            <div class="clearfix">
+                                <span class="float-left">
+                                    <h3 class="widget-user-username">{{organisation.name}}</h3>
+                                    <h5 class="widget-user-desc bg-green" style="margin-bottom:0">Phone: {{organisation.phone}}, <span>{{organisation.landline}}</span> </h5>
+                                    <h5 class="widget-user-desc" style="margin-bottom:0">P.O. Box {{organisation.address}},</h5>
+                                    <h5 class="widget-user-desc" style="margin-bottom:0">{{organisation.ward.name}} Ward,
+                                        <span>{{organisation.constituency.name}} Constituency,</span>
+                                    </h5>
+                                    <h5 class="widget-user-desc" style="margin-bottom:0">{{organisation.county.name}} County,
+                                         <span> {{organisation.country.name}}</span>
+                                    </h5>
+                                </span>
+                                <span class="float-right">
+                                    <h5 class="widget-user-desc" style="margin-bottom:0">{{organisation.email}}</h5>
+                                    <h5 class="widget-user-desc" style="margin-bottom:0">{{organisation.website}}</h5>
+                                    <!-- <p style="margin-bottom:-0.5em">
+                                        <small class="text-muted">Updated By: {{organisation.user.full_name}}</small>
+                                    </p> -->
+                                    <p style="margin-bottom:0.25em">
+                                        <small class="text-muted">Last updated On: {{organisation.updated_at | dateformat}}</small>
+                                    </p>
+                                    <a href=""  @click.prevent="editOrganisationModal(organisation.id)">
+                                            <i class="fa fa-edit red"> Edit</i>
+                                    </a>
+                                    <!-- / -->
+                                    <!-- <a href=""  @click.prevent="deleteOrgnisation(organisation.id)">
+                                        <i class="fa fa-trash red"></i>
+                                    </a> -->
+                                </span>
+                            </div>
+                        <div class="card-footer" style="padding-top:0px; margin-top: 60px;">
+                            <div class="row">
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">3,200</h5>
+                                        <span class="description-header green " >Twitter Followers</span>
+                                        <div class="card-tools">
+                                            <button class="btn btn-info" style="background-color: purple; color: #fff" >Follow us
+                                                <i class="fas fa-plus fw"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">13,000</h5>
+                                        <span class="description-header green">Facebook Followers</span>
+                                        <div class="card-tools">
+                                            <button class="btn btn-info " style="background-color: purple; color: #fff">Follow us
+                                                <i class="fas fa-plus fw"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4">
+                                    <div class="description-block">
+                                        <h5 class="description-header">3544</h5>
+                                        <span class="description-header green">Linkedin Followers</span>
+                                        <div class="card-tools">
+                                            <button class="btn btn-info" style="background-color: purple; color: #fff" >Follow us
+                                                <i class="fas fa-plus fw"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                <div class="widget-user-image" style="top:5px;">
+                     <img :src="organisationLoadLogo(organisation.logo)"  class="border-0" alt="" style="width:160px;">
+                     <h3 class="card-title text-center text-white">{{organisation.name}}</h3>
                 </div>
-                <div class="widget-user-image">
-                    <img class="img-circle" src="" alt="User Avatar">
-                </div>
-                <div class="card-footer">
-                    <div class="row">
-                    <div class="col-sm-4 border-right">
-                        <div class="description-block">
-                        <h5 class="description-header">3,200</h5>
-                        <span class="description-text">Twitter Followers</span>
-                        <div class="card-tools">
-                            <button class="btn btn-info"  >Follow us
-                                <i class="fas fa-plus fw"></i>
-                            </button>
-                        </div>
-                        </div>
-                        <!-- /.description-block -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-sm-4 border-right">
-                        <div class="description-block">
-                        <h5 class="description-header">13,000</h5>
-                        <span class="description-text">Facebook Followers</span>
-                        <div class="card-tools">
-                            <button class="btn btn-info"  >Follow us
-                                <i class="fas fa-plus fw"></i>
-                            </button>
-                        </div>
-                        </div>
-                        <!-- /.description-block -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-sm-4">
-                        <div class="description-block">
-                        <h5 class="description-header">3544</h5>
-                        <span class="description-text">Linkedin Followers</span>
-                        <div class="card-tools">
-                            <button class="btn btn-info"  >Follow us
-                                <i class="fas fa-plus fw"></i>
-                            </button>
-                        </div>
-                        </div>
-                        <!-- /.description-block -->
-                    </div>
-                    <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
+
                 </div>
 
                 <!-- /.widget-user -->
                 <div class="card">
                     <div class="card-header p-2">
 
-
                         <ul class="nav nav-pills">
-                            <li class="nav-item">
-                                <a href="#general_configuration" class="nav-link active show" data-toggle="tab"
-                                    title="General Configuration" aria-expanded="true">
-                                    <i class="fa fa-cogs red"> General Settings</i>
-                                </a>
-                            </li>
                         <!-- <li class="nav-item">
                             <a href="#email_configuration" class="nav-link" data-toggle="tab"
                                 title="Email Configuration" aria-expanded="true">
@@ -83,9 +113,33 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="#about_pics" class="nav-link" data-toggle="tab"
+                                title="About Pics" aria-expanded="true">
+                                <i class="fa fa-newspaper red">About Pics </i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#services" class="nav-link" data-toggle="tab"
                                 title="Services Pages" aria-expanded="true">
                                 <i class="fa fa-newspaper red">Services Page </i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#extraservices" class="nav-link" data-toggle="tab"
+                                title="Services Pages" aria-expanded="true">
+                                <i class="fa fa-newspaper red">Extra Services Page </i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#servicefilters" class="nav-link" data-toggle="tab"
+                                title="Services Pages" aria-expanded="true">
+                                <i class="fa fa-newspaper red">Service Filters Page </i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#adverts" class="nav-link" data-toggle="tab"
+                                title="Adverts Pages" aria-expanded="true">
+                                <i class="fa fa-newspaper red">AdvertsPage </i>
                             </a>
                         </li>
                         <!-- <li class="nav-item">
@@ -116,71 +170,8 @@
                     </div><!-- /.card-header -->
                     <div class="card-body">
                             <div class="tab-content">
-                                <div class="tab-pane active show" id="general_configuration">
-                                    <div class="card-header">
-                                        <h3 class="card-title">
-                                             <a href="#general_configuration">General Settings</a>
-                                        </h3>
-                                        <div class="card-tools">
-                                                <button class="btn btn-success" @click.prevent="newOrganisationModal()" >Add Organisation
-                                                    <i class="fas fa-plus fw"></i>
-                                                </button>
-                                        </div>
-                                    </div>
-
-                                    <div v-for="organisation in Organisation" :key="organisation.id">
-                                        <!-- Setting -->
-                                        <div class="card border-primary">
-                                            <div class="row">
-                                                <div class="col-md-2" >
-                                                    <div class="card-body">
-                                                        <img :src="organisationLogo(organisation.logo)" alt="" width="150px">
-                                                        <!-- <img src="http://teifinnovate.foundation/images/logo-249x249.png" class="card-img-top" alt=""> -->
-
-                                                    <!-- <img :src="courseImage(course.photo)" alt="" width="150px"> -->
-                                                    </div>
-                                                </div>
-                                                <div  class="col-md-5 ">
-                                                        <div class="card-body text-primary">
-                                                            <h5 class="card-title">{{organisation.name}}</h5>
-                                                            <p class="card-text">Phone: {{organisation.phone}}</p>
-                                                            <p class="card-text">Landline: {{organisation.landline}}</p>
-                                                            <p class="card-text">P.O. Box {{organisation.address}}, </p>
-                                                            <p class="card-text"> {{organisation.ward.name}} Ward,
-                                                                <span>{{organisation.constituency.name}} Constituency</span></p>
-                                                            <p class="card-text"> <span>{{organisation.county.name}} County</span>,
-                                                                <span>{{organisation.country.name}}</span>
-                                                            </p>
-                                                        </div>
-                                                    <!-- </div> -->
-                                                </div>
-                                                <div class="col-md-5" >
-                                                    <div class="card-body text-primary">
-                                                            <p class="card-text">Email: {{organisation.email}} </p>
-                                                            <p class="card-text">Website: {{organisation.website}}  </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="float-right">
-                                                    <a href="" class="card-link" @click.prevent="editOrganisationModal(organisation.id)">
-                                                         <i class="fa fa-edit blue"> Edit</i>
-                                                    </a>
-                                                    <!-- <a href="" class="card-link" @click.prevent="deleteOrganisation(organisation.id)">
-                                                        <i class="fa fa-trash red"></i>
-                                                    </a> -->
-                                                </div>
-                                                <div class="float-left">
-                                                    <a href="#about_us" class="card-link">Updated On: {{organisation.updated_at | dateformat}}</a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- /.setting -->
-                                    </div>
-                                </div>
                                 <!-- /.tab-pane -->
-                                <div class="tab-pane" id="about_us">
+                                <div class="tab-pane active show" id="about_us">
                                     <div class="card-header">
                                         <h3 class="card-title">
                                              <a href="#general_configuration">About Us Settings</a>
@@ -200,10 +191,8 @@
                                             <div class="row">
                                                 <div class="col-md-4" >
                                                     <div class="card-body">
-                                                        <img :src="aboutFrontImage(about.front_image)" alt="" width="250px" >
+                                                        <img :src="aboutLoadFrontImage(about.front_image)" alt="" width="250px" >
                                                     </div>
-                                                    <!-- front_image -->
-                                                    <!-- <img :src="courseImage(course.photo)" alt="" width="150px"> -->
                                                 </div>
                                                 <div class="col-md-8 " >
                                                     <div class="card text-white bg-danger" >
@@ -218,10 +207,62 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- about pic -->
-                                            <div class="row ">
-                                                 <div  v-for="aboutpic in AboutPic" :key="aboutpic.id" class="col-md-3 d-flex">
-                                                    <div class="card flex-fill" >
+                                            <div class="row">
+                                                <div class="col-md-6" >
+                                                    <div class="card text-white bg-info" >
+                                                        <div class="card-header">
+                                                        <h5 class="card-title text-center">Who We Are</h5>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p class="card-text">{{about.why_choose_us}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6" >
+                                                    <div class="card text-white bg-success mb-3" >
+                                                        <div class="card-header">
+                                                            <h5 class="card-title text-center">What We Do</h5>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p class="card-text">{{about.what_we_do}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="float-right">
+                                                    <a href="" class="card-link" @click.prevent="editAboutModal(about.id)">
+                                                         <i class="fa fa-edit blue"> Edit</i>
+                                                    </a>
+                                                    <!-- <a href="" class="card-link" @click.prevent="deleteAbout(about.id)">
+                                                        <i class="fa fa-trash red"></i>
+                                                    </a> -->
+                                                </div>
+                                                <div class="float-left">
+                                                    <a href="#about_us" class="card-link">Updated BY: {{about.user.full_name}}</a>
+                                                    <a href="#about_us" class="card-link">Updated On: {{about.updated_at | dateformat}}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                     </div>
+                                </div>
+                                <div class="tab-pane" id="about_pics">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                             <a href="#general_configuration">About Pics Settings</a>
+                                        </h3>
+                                        <div class="card-tools">
+                                                <button class="btn btn-success" @click.prevent="newAboutPicsModal()" >Add New About US Pictures
+                                                    <i class="fas fa-plus fw"></i>
+                                                </button>
+                                        </div>
+                                    </div>
+                                    <!-- about us -->
+                                    <div class="card" >
+                                        <!-- about pic -->
+                                        <div class="row ">
+                                            <div  v-for="aboutpic in AboutPic" :key="aboutpic.id" class="col-md-3 d-flex">
+                                                <div class="card flex-fill" >
                                                             <img class="card-img-top " :src="aboutLoadImage(aboutpic.image)" style="width:100%;height:150px;">
                                                         <div class="card-body" >
                                                             <h5 class="card-title">{{aboutpic.title}}</h5>
@@ -251,204 +292,209 @@
                                                 </div>
                                                 <ul class="pagination" style="padding: 0px;margin: 0px;">
                                                         <!-- {{ $fulltime_courses->links()}} -->
-                                                </ul>
-                                            </div>
-                                            <!--end about pic  -->
-
-                                            <div class="row">
-                                                <div class="col-md-6" >
-                                                    <div class="card text-white bg-info" >
-                                                        <div class="card-header">
-                                                        <h5 class="card-title text-center">Who We Are</h5>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <p class="card-text">{{about.why_choose_us}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6" >
-                                                    <div class="card text-white bg-success mb-3" >
-                                                        <div class="card-header">
-                                                            <h5 class="card-title text-center">What We Do</h5>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <p class="card-text">{{about.what_we_do}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="float-right">
-                                                    <a href="" class="card-link" @click.prevent="editAboutModal(about.id)">
-                                                         <i class="fa fa-edit blue"> Edit</i>
-                                                    </a>
-                                                    <!-- <a href="" class="card-link" @click.prevent="deleteOrganisation(organisation.id)">
-                                                        <i class="fa fa-trash red"></i>
-                                                    </a> -->
-                                                </div>
-                                                <div class="float-left">
-                                                    <a href="#about_us" class="card-link">Updated BY: {{about.user.full_name}}</a>
-                                                    <a href="#about_us" class="card-link">Updated On: {{about.updated_at | dateformat}}</a>
-                                                </div>
-                                            </div>
+                                            </ul>
                                         </div>
-                                     </div>
+                                    </div>
                                 </div>
                                 <div class="tab-pane" id="services">
-                                     <div class="card-header">
+                                    <div class="card-header">
                                         <h3 class="card-title">
-                                             <a href="#general_configuration">About Us Settings</a>
+                                             <a href="#advert">Service Settings</a>
                                         </h3>
                                         <div class="card-tools">
-                                                <button class="btn btn-success" @click.prevent="newFilterModal()" >Add New Filter
+                                                <button class="btn btn-success" @click.prevent="newServiceModal()" >Add new Service
                                                     <i class="fas fa-plus fw"></i>
                                                 </button>
-                                                <button class="btn btn-success" @click.prevent="newExtraModal()" >Add New Extra Services
+                                        </div>
+                                         <!-- service -->
+                                            <div class="row ">
+                                                 <div  v-for="service in Service" :key="service.id" class="col-md-3 d-flex">
+                                                    <div class="card flex-fill" >
+                                                            <img class="card-img-top " :src="serviceLoadImage(service.service_image)" style="width:100%;height:150px;">
+                                                        <div class="card-body" >
+                                                                <h5 class="card-title text-center">{{service.title}}</h5>
+                                                            <h6 class="card-title text-center">{{service.service_title}}</h6>
+                                                            <p style="margin-bottom:-0.5em" class="card-text">{{service.service_details | sortlength(80, "...") }}</p>
+                                                        </div>
+                                                            <router-link  :to="`/service/${service.id}`" class="pull-right blue">Read More <i class="icon-angle-right"></i></router-link>
+                                                        <div class="clearfix">
+                                                            <span class="float-left" style="margin-bottom:-0.5em" >
+                                                                <p style="margin-bottom:-0.5em">
+                                                                    <small class="text-muted">Updated By: {{service.user.full_name}}</small>
+                                                                </p>
+                                                                <p style="margin-bottom:0.25em">
+                                                                    <small class="text-muted">On: {{service.updated_at | dateformat}}</small>
+                                                                </p>
+                                                            </span>
+                                                            <span class="float-right">
+                                                                <a href=""  @click.prevent="editServiceModal(service.id)">
+                                                                    <i class="fa fa-edit blue"></i>
+                                                                </a>
+                                                                /
+                                                                <a href=""  @click.prevent="deleteService(service.id)">
+                                                                    <i class="fa fa-trash red"></i>
+                                                                </a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul class="pagination" style="padding: 0px;margin: 0px;">
+                                                        <!-- {{ $fulltime_courses->links()}} -->
+                                                </ul>
+                                            </div>
+                                            <!--end service  -->
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="extraservices">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                             <a href="#advert">Extra Service Settings</a>
+                                        </h3>
+                                        <div class="card-tools">
+                                                <button class="btn btn-success" @click.prevent="newExtraServiceModal()" >Add new Extra Services
                                                     <i class="fas fa-plus fw"></i>
                                                 </button>
+                                        </div>
+                                         <!-- extraservice -->
+                                            <div class="row ">
+                                                 <div  v-for="extraservice in ExtraService" :key="extraservice.id" class="col-md-3 d-flex">
+                                                    <div class="card flex-fill" >
+                                                            <!-- <img class="card-img-top " :src="extraserviceLoadImage(extraservice.extraservice_image)" style="width:100%;height:150px;"> -->
+                                                        <div class="card-body" >
+                                                                <h5 class="card-title text-center">{{extraservice.title}}</h5>
+                                                            <h6 class="card-title text-center">{{extraservice.title}}</h6>
+                                                            <p style="margin-bottom:-0.5em" class="card-text">{{extraservice.details | sortlength(80, "...") }}</p>
+                                                            <p style="margin-bottom:-0.5em" class="card-text">{{extraservice.why | sortlength(80, "...") }}</p>
+                                                        </div>
+                                                            <router-link  :to="`/extraservice/${extraservice.id}`" class="pull-right blue">Read More <i class="icon-angle-right"></i></router-link>
+                                                        <div class="clearfix">
+                                                            <span class="float-left" style="margin-bottom:-0.5em" >
+                                                                <p style="margin-bottom:-0.5em">
+                                                                    <small class="text-muted">Updated By: {{extraservice.user.full_name}}</small>
+                                                                </p>
+                                                                <p style="margin-bottom:0.25em">
+                                                                    <small class="text-muted">On: {{extraservice.updated_at | dateformat}}</small>
+                                                                </p>
+                                                            </span>
+                                                            <span class="float-right">
+                                                                <a href=""  @click.prevent="editExtraServiceModal(extraservice.id)">
+                                                                    <i class="fa fa-edit blue"></i>
+                                                                </a>
+                                                                /
+                                                                <a href=""  @click.prevent="deleteExtraService(extraservice.id)">
+                                                                    <i class="fa fa-trash red"></i>
+                                                                </a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul class="pagination" style="padding: 0px;margin: 0px;">
+                                                        <!-- {{ $fulltime_courses->links()}} -->
+                                                </ul>
+                                            </div>
+                                            <!--end extraservice  -->
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="servicefilters">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                             <a href="#advert">Service Filter Settings</a>
+                                        </h3>
+                                        <div class="card-tools">
+                                                <button class="btn btn-success" @click.prevent="newServiceFilterModal()" >Add new Service Filters
+                                                    <i class="fas fa-plus fw"></i>
+                                                </button>
+                                        </div>
+                                         <!-- servicefilter -->
+                                            <div class="row ">
+                                                 <div  v-for="servicefilter in ServiceFilter" :key="servicefilter.id" class="col-md-3 d-flex">
+                                                    <div class="card flex-fill" >
+                                                            <!-- <img class="card-img-top " :src="servicefilterLoadImage(servicefilter.servicefilter_image)" style="width:100%;height:150px;"> -->
+                                                        <div class="card-body" >
+                                                                <h5 class="card-title text-center">{{servicefilter.title}}</h5>
+                                                            <h6 class="card-title text-center">{{servicefilter.title}}</h6>
+                                                            <p style="margin-bottom:-0.5em" class="card-text">{{servicefilter.details | sortlength(80, "...") }}</p>
+                                                            <p style="margin-bottom:-0.5em" class="card-text">{{servicefilter.why | sortlength(80, "...") }}</p>
+                                                        </div>
+                                                            <router-link  :to="`/servicefilter/${servicefilter.id}`" class="pull-right blue">Read More <i class="icon-angle-right"></i></router-link>
+                                                        <div class="clearfix">
+                                                            <span class="float-left" style="margin-bottom:-0.5em" >
+                                                                <p style="margin-bottom:-0.5em">
+                                                                    <small class="text-muted">Updated By: {{servicefilter.user.full_name}}</small>
+                                                                </p>
+                                                                <p style="margin-bottom:0.25em">
+                                                                    <small class="text-muted">On: {{servicefilter.updated_at | dateformat}}</small>
+                                                                </p>
+                                                            </span>
+                                                            <span class="float-right">
+                                                                <a href=""  @click.prevent="editServiceFilterModal(servicefilter.id)">
+                                                                    <i class="fa fa-edit blue"></i>
+                                                                </a>
+                                                                /
+                                                                <a href=""  @click.prevent="deleteServiceFilter(servicefilter.id)">
+                                                                    <i class="fa fa-trash red"></i>
+                                                                </a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul class="pagination" style="padding: 0px;margin: 0px;">
+                                                        <!-- {{ $fulltime_courses->links()}} -->
+                                                </ul>
+                                            </div>
+                                            <!--end servicefilter  -->
+                                    </div>
+                                </div>
+
+
+                                <div class="tab-pane" id="adverts">
+                                     <div class="card-header">
+                                        <h3 class="card-title">
+                                             <a href="#advert">Advert Settings</a>
+                                        </h3>
+                                        <div class="card-tools">
                                                 <button class="btn btn-success" @click.prevent="newAdvertModal()" >Add new Advert
                                                     <i class="fas fa-plus fw"></i>
                                                 </button>
                                         </div>
-                                    </div>
-                                    <div class="card border-primary">
-                                    <!-- servies -->
-                                    <div v-for="service in Service" :key="service.id">
-                                        <div v-for="filter in service.servicefilters" :key="filter.id">
-                                            <div class="row">
-                                                <div class="col-md-3 " >
-                                                    <div class="card text-white bg-success mb-3" >
-                                                            <div class="card-header">
-                                                                <h5 class="card-title text-center">{{filter.title}}</h5>
-                                                            </div>
-                                                            <div class="card-body">
-                                                                <p class="card-text">{{filter.details}}</p>
-                                                                <p class="card-text">{{filter.why}}</p>
-                                                            </div>
-                                                            <div class="card-body">
-                                                                <div class="float-right">
-                                                                    <a href="#services" class="card-link"> <i class="fa fa-edit blue"></i></a>
-                                                                    <a href="#services" class="card-link"><i class="fa fa-trash red"></i></a>
-                                                                </div>
-                                                                <div class="float-left">
-                                                                    <a href="#services" class="card-link">Up:{{filter.created_at | dateformat}}</a>
-                                                                </div>
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                        <div class="card border-danger">
-                                            <div class="row">
-                                                <div class="col-md-4" >
-                                                    <div class="card text-white bg-success mb-3" >
-                                                        <!-- <img :src="aboutImage3(aboutpic.about_image3)" alt="" > -->
-                                                    </div>
-                                                    <!-- front_image -->
-                                                    <!-- <img :src="courseImage(course.photo)" alt="" width="150px"> -->
-                                                </div>
-                                                <div class="col-md-6" >
-                                                         <h5 class="card-title text-center">advert Title:
-                                                              <!-- {{filter.title}} -->
-                                                             </h5>
-                                                        <div class="card-body">
-                                                            <p class="card-text text-center">advert Details:
-                                                                <!-- {{filter.details}} -->
-                                                                </p>
-                                                            <p class="card-text">hhhh
-                                                                <!-- {{filter.why}} -->
-                                                             </p>
+                                         <!-- Advert -->
+                                            <div class="row ">
+                                                 <div  v-for="advert in Advert" :key="advert.id" class="col-md-3 d-flex">
+                                                    <div class="card flex-fill" >
+                                                            <img class="card-img-top " :src="advertLoadImage(advert.advert_image)" style="width:100%;height:150px;">
+                                                        <div class="card-body" >
+                                                            <h5 class="card-title text-center">{{advert.title}}</h5>
+                                                            <h6 class="card-title text-center">{{advert.subtitle}}</h6>
+                                                            <p style="margin-bottom:-0.5em" class="card-text">{{advert.details | sortlength(80, "...") }}</p>
                                                         </div>
-                                                </div>
-                                            </div>
-                                             <div class="card-body">
-                                                <div class="float-right">
-                                                    <a href="#services" class="card-link"> <i class="fa fa-edit blue"></i></a>
-                                                    <a href="#services" class="card-link"><i class="fa fa-trash red"></i></a>
-                                                </div>
-                                                <div class="float-left">
-                                                    <a href="#services" class="card-link">Updated BY:
-                                                      <!-- {{organisation.created_at | dateformat}} -->
-                                                    </a>
-                                                    <a href="#services" class="card-link">Created AT:
-                                                                     <!-- {{organisation.created_at | dateformat}} -->
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                         <div class="card border-success">
-                                            <div class="row">
-                                                <div class="col-md-4" >
-                                                   <div class="card" >
-                                                        <img src="http://teifinnovate.foundation/images/logo-249x249.png" class="card-img-top" alt="">
-                                                    </div>
-                                                    <!-- front_image -->
-                                                    <!-- <img :src="courseImage(course.photo)" alt="" width="150px"> -->
-                                                </div>
-                                                <div class="col-md-6" >
-                                                         <h5 class="card-title text-center">Teif advert Title:
-                                                              <!-- {{filter.title}} -->
-                                                             </h5>
-                                                        <div class="card-body">
-                                                            <p class="card-text text-center">advert Details:
-                                                                <!-- {{filter.details}} -->
+                                                            <router-link  :to="`/advert/${advert.id}`" class="pull-right blue">Read More <i class="icon-angle-right"></i></router-link>
+                                                        <div class="clearfix">
+                                                            <span class="float-left" style="margin-bottom:-0.5em" >
+                                                                <p style="margin-bottom:-0.5em">
+                                                                    <small class="text-muted">Updated By: {{advert.user.full_name}}</small>
                                                                 </p>
-                                                            <p class="card-text">hhhh
-                                                                <!-- {{filter.why}} -->
-                                                             </p>
+                                                                <p style="margin-bottom:0.25em">
+                                                                    <small class="text-muted">On: {{advert.updated_at | dateformat}}</small>
+                                                                </p>
+                                                            </span>
+                                                            <span class="float-right">
+                                                                <a href=""  @click.prevent="editAdvertModal(advert.id)">
+                                                                    <i class="fa fa-edit blue"></i>
+                                                                </a>
+                                                                /
+                                                                <a href=""  @click.prevent="deleteAdvert(advert.id)">
+                                                                    <i class="fa fa-trash red"></i>
+                                                                </a>
+                                                            </span>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                                <ul class="pagination" style="padding: 0px;margin: 0px;">
+                                                        <!-- {{ $fulltime_courses->links()}} -->
+                                                </ul>
+                                            </div>
+                                            <!--end Advert  -->
 
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                            <div class="float-right">
-                                                                <a href="#services" class="card-link"> <i class="fa fa-edit blue"></i></a>
-                                                                <a href="#services" class="card-link"><i class="fa fa-trash red"></i></a>
-                                                            </div>
-                                                            <div class="float-left">
-                                                                <a href="#services" class="card-link">Updated BY:
-                                                                     <!-- {{organisation.created_at | dateformat}} -->
-                                                                     </a>
-                                                                <a href="#services" class="card-link">Created AT:
-                                                                     <!-- {{organisation.created_at | dateformat}} -->
-                                                                     </a>
-                                                            </div>
-                                                        </div>
-                                         </div>
-                                        <div class="card border-warning">
-                                            <div class="row">
-                                                <!-- repeat extra services -->
-                                                <div class="col-md-3" >
-                                                    <div class="card text-white bg-success mb-3" >
-                                                            <div class="card-header">
-                                                                <h5 class="card-title text-center">Extra
-                                                                    <!-- {{filter.title}} -->
-                                                                    </h5>
-                                                            </div>
-                                                            <div class="card-body">
-                                                                <p class="card-text">hhh
-                                                                    <!-- {{filter.details}} -->
-                                                                    </p>
-                                                                <p class="card-text">hhhh
-                                                                    <!-- {{filter.why}} -->
-                                                                    </p>
-                                                            </div>
-                                                            <div class="card-body">
-                                                                <div class="float-right">
-                                                                    <a href="#services" class="card-link"> <i class="fa fa-edit blue"></i></a>
-                                                                    <a href="#services" class="card-link"><i class="fa fa-trash red"></i></a>
-                                                                </div>
-                                                                <div class="float-left">
-                                                                    <a href="#services" class="card-link">Up:hh
-                                                                        <!-- {{organisation.created_at | dateformat}} -->
-                                                                        </a>
-                                                                </div>
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                     </div>
                                 </div>
@@ -493,7 +539,7 @@
                                             </vue-tel-input>
                                             <has-error style="color: #e83e8c" :form="organisationform" field="phone"></has-error>
                                         </div>
-                                        <div v-if="organisationform.phorne" style="color: #e83e8c">
+                                        <div v-if="organisationform.phone" style="color: #e83e8c">
                                             <span>Is valid: <strong>{{phone1.isValid}}</strong>,&nbsp;</span>
                                             <span>Country: <strong>{{phone1.country}}</strong></span>
                                        </div>
@@ -567,7 +613,7 @@
                             <div class=" row">
                                 <div class="form-group col-md-6">
                                     <label for="logo" class=" col-form-label">Organisation Logo</label><br>
-                                        <input @change="changePhoto($event)" type="file" name="logo"
+                                        <input @change="organisationChangeLogo($event)" type="file" name="logo"
                                             :class="{ 'is-invalid': organisationform.errors.has('logo') }">
                                             <img v-show="editmodeOrganisation" :src="updateOrganisationLogo(organisationform.logo)" alt="" width="100%" >
                                             <img  v-show="!editmodeOrganisation" :src="organisationform.logo" alt="" width="100%" >
@@ -581,56 +627,6 @@
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             <button v-show="editmodeOrganisation" type="submit" class="btn btn-success">Update</button>
                             <button v-show="!editmodeOrganisation" type="submit" class="btn btn-primary">Create</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade " id="AboutPicsModal" tabindex="-1" role="dialog" aria-labelledby="AboutPicsModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" v-show="editmodeAboutPics" id="AboutPicsModalLabel">Update About Us Pictures</h5>
-                        <h5 class="modal-title" v-show="!editmodeAboutPics" id="AboutPicsModalLabel">Add New About Us Pics</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <form role="form" @submit.prevent="editmodeAboutPics ? updateAboutPics(aboutpicsform.id) : addAboutPics ()" >
-                        <div class="modal-body">
-                            <div class=" row">
-                                 <div class="form-group col-md-6">
-                                    <label for="title" class="col-form-label">Title</label>
-                                    <input v-model="aboutpicsform.title" type="text" name="title" placeholder="Title"
-                                        class="form-control" :class="{ 'is-invalid': aboutpicsform.errors.has('title') }" >
-                                    <has-error style="color: #e83e8c" :form="aboutpicsform" field="title"></has-error>
-                                </div>
-                            </div>
-                            <div class=" row">
-                                <div class="form-group col-md-12">
-                                    <label for="description" class="col-form-label">Description</label>
-                                   <textarea v-model="aboutpicsform.description" type="text" name="description" placeholder="description"
-                                        class="form-control" :class="{ 'is-invalid': aboutpicsform.errors.has('description') }" >
-                                    </textarea>
-                                    <has-error style="color: #e83e8c" :form="aboutpicsform" field="description"></has-error>
-                                </div>
-                            </div>
-                            <div class=" row">
-                                <div class="form-group col-md-12">
-                                    <label for="image" class=" col-form-label">Organisation Image 1</label><br>
-                                        <input @change="aboutImage($event)" type="file" name="image"
-                                            :class="{ 'is-invalid': aboutpicsform.errors.has('image') }">
-                                            <img v-show="editmodeAboutPics" :src="updateAboutImage(aboutpicsform.image)" alt="" width="100%" >
-                                            <img  v-show="!editmodeAboutPics" :src="aboutpicsform.image" alt="" width="100%" >
-                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="image"></has-error>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button v-show="editmodeAboutPics" type="submit" class="btn btn-success">Update</button>
-                            <button v-show="!editmodeAboutPics" type="submit" class="btn btn-primary">Create</button>
                         </div>
                     </form>
                 </div>
@@ -689,7 +685,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="front_image" class=" col-form-label">About Us Front Image 6</label><br>
-                                        <input @change="FrontImage($event)" type="file" name="front_image"
+                                        <input @change="aboutChangeFrontImage($event)" type="file" name="front_image"
                                             :class="{ 'is-invalid': aboutform.errors.has('front_image') }">
 
                                             <img v-show="editmodeAbout" :src="updateAboutFrontImage(aboutform.front_image)" alt="" width="100%" >
@@ -710,14 +706,277 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade " id="AboutPicsModal" tabindex="-1" role="dialog" aria-labelledby="AboutPicsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" v-show="editmodeAboutPics" id="AboutPicsModalLabel">Update About Us Pictures</h5>
+                        <h5 class="modal-title" v-show="!editmodeAboutPics" id="AboutPicsModalLabel">Add New About Us Pics</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <form role="form" @submit.prevent="editmodeAboutPics ? updateAboutPics(aboutpicsform.id) : addAboutPics ()" >
+                        <div class="modal-body">
+                            <div class=" row">
+                                 <div class="form-group col-md-6">
+                                    <label for="title" class="col-form-label">Title</label>
+                                    <input v-model="aboutpicsform.title" type="text" name="title" placeholder="Title"
+                                        class="form-control" :class="{ 'is-invalid': aboutpicsform.errors.has('title') }" >
+                                    <has-error style="color: #e83e8c" :form="aboutpicsform" field="title"></has-error>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <div class="form-group col-md-12">
+                                    <label for="description" class="col-form-label">Description</label>
+                                   <textarea v-model="aboutpicsform.description" type="text" name="description" placeholder="description"
+                                        class="form-control" :class="{ 'is-invalid': aboutpicsform.errors.has('description') }" >
+                                    </textarea>
+                                    <has-error style="color: #e83e8c" :form="aboutpicsform" field="description"></has-error>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <div class="form-group col-md-12">
+                                    <label for="image" class=" col-form-label">Organisation Image 1</label><br>
+                                        <input @change="aboutChangeImage($event)" type="file" name="image"
+                                            :class="{ 'is-invalid': aboutpicsform.errors.has('image') }">
+                                            <img v-show="editmodeAboutPics" :src="updateAboutImage(aboutpicsform.image)" alt="" width="100%" >
+                                            <img  v-show="!editmodeAboutPics" :src="aboutpicsform.image" alt="" width="100%" >
+                                        <has-error style="color: #e83e8c" :form="aboutpicsform" field="image"></has-error>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button v-show="editmodeAboutPics" type="submit" class="btn btn-success">Update</button>
+                            <button v-show="!editmodeAboutPics" type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Service -->
+        <div class="modal fade " id="ServiceModal" tabindex="-1" role="dialog" aria-labelledby="ServiceModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" v-show="editmodeService" id="ServiceModalLabel">Update Service Us</h5>
+                        <h5 class="modal-title" v-show="!editmodeService" id="ServiceModalLabel">Add New Service Us</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form role="form" @submit.prevent="editmodeService ? updateService(serviceform.id) : addService()" >
+                        <div class="modal-body">
+                            <div class=" row">
+                                 <div class="form-group col-md-6">
+                                    <label for="title" class="col-form-label">Title</label>
+                                    <input v-model="serviceform.title" type="text" name="title" placeholder="Title"
+                                        class="form-control" :class="{ 'is-invalid': serviceform.errors.has('title') }" >
+                                    <has-error style="color: #e83e8c" :form="serviceform" field="title"></has-error>
+                                </div>
+                                 <div class="form-group col-md-6">
+                                    <label for="service_title" class="col-form-label">Service Title</label>
+                                    <input v-model="serviceform.service_title" type="text" name="service_title" placeholder="Service Title"
+                                        class="form-control" :class="{ 'is-invalid': serviceform.errors.has('service_title') }" >
+                                    <has-error style="color: #e83e8c" :form="serviceform" field="service_title"></has-error>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <div class="form-group col-md-12">
+                                    <label for="service_details" class="col-form-label">Service Details</label>
+                                    <textarea v-model="serviceform.service_details" type="text" name="service_details" placeholder="Service details"
+                                        class="form-control" :class="{ 'is-invalid': serviceform.errors.has('service_details') }" >
+                                    </textarea>
+                                    <has-error style="color: #e83e8c" :form="serviceform" field="service_details"></has-error>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="service_image" class=" col-form-label">Service Us Front Image 6</label><br>
+                                        <input @change="serviceChangeImage($event)" type="file" name="service_image"
+                                            :class="{ 'is-invalid': serviceform.errors.has('service_image') }">
+
+                                            <img v-show="editmodeService" :src="updateServiceImage(serviceform.service_image)" alt="" width="100%" >
+                                            <img  v-show="!editmodeService" :src="serviceform.service_image" alt="" width="100%" >
+                                        <has-error style="color: #e83e8c" :form="serviceform" field="service_image"></has-error>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button v-show="editmodeService" type="submit" class="btn btn-success">Update</button>
+                            <button v-show="!editmodeService" type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Extraservice -->
+        <div class="modal fade " id="ExtraServiceModal" tabindex="-1" role="dialog" aria-labelledby="ExtraServiceModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" v-show="editmodeExtraService" id="ExtraServiceModalLabel">Update ExtraService Us</h5>
+                        <h5 class="modal-title" v-show="!editmodeExtraService" id="ExtraServiceModalLabel">Add New ExtraService Us</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form role="form" @submit.prevent="editmodeExtraService ? updateExtraService(extraserviceform.id) : addExtraService()" >
+                        <div class="modal-body">
+                            <div class=" row">
+                                 <div class="form-group col-md-6">
+                                    <label for="title" class="col-form-label">Title</label>
+                                    <input v-model="extraserviceform.title" type="text" name="title" placeholder="Title"
+                                        class="form-control" :class="{ 'is-invalid': extraserviceform.errors.has('title') }" >
+                                    <has-error style="color: #e83e8c" :form="extraserviceform" field="title"></has-error>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <div class="form-group col-md-12">
+                                    <label for="details" class="col-form-label">Details</label>
+                                    <textarea v-model="extraserviceform.details" type="text" name="details" placeholder="Details"
+                                        class="form-control" :class="{ 'is-invalid': extraserviceform.errors.has('details') }" >
+                                    </textarea>
+                                    <has-error style="color: #e83e8c" :form="extraserviceform" field="details"></has-error>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="why" class="col-form-label">Why</label>
+                                    <textarea v-model="extraserviceform.why" type="text" name="why" placeholder="Why"
+                                        class="form-control" :class="{ 'is-invalid': extraserviceform.errors.has('why') }" >
+                                    </textarea>
+                                    <has-error style="color: #e83e8c" :form="extraserviceform" field="why"></has-error>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button v-show="editmodeExtraService" type="submit" class="btn btn-success">Update</button>
+                            <button v-show="!editmodeExtraService" type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Servicefilter -->
+        <div class="modal fade " id="ServiceFilterModal" tabindex="-1" role="dialog" aria-labelledby="ServiceFilterModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" v-show="editmodeServiceFilter" id="ServiceFilterModalLabel">Update ServiceFilter Us</h5>
+                        <h5 class="modal-title" v-show="!editmodeServiceFilter" id="ServiceFilterModalLabel">Add New ServiceFilter Us</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form role="form" @submit.prevent="editmodeServiceFilter ? updateServiceFilter(servicefilterform.id) : addServiceFilter()" >
+                        <div class="modal-body">
+                            <div class=" row">
+                                 <div class="form-group col-md-6">
+                                    <label for="title" class="col-form-label">Title</label>
+                                    <input v-model="servicefilterform.title" type="text" name="title" placeholder="Title"
+                                        class="form-control" :class="{ 'is-invalid': servicefilterform.errors.has('title') }" >
+                                    <has-error style="color: #e83e8c" :form="servicefilterform" field="title"></has-error>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <div class="form-group col-md-12">
+                                    <label for="details" class="col-form-label">Details</label>
+                                    <textarea v-model="servicefilterform.details" type="text" name="details" placeholder="Details"
+                                        class="form-control" :class="{ 'is-invalid': servicefilterform.errors.has('details') }" >
+                                    </textarea>
+                                    <has-error style="color: #e83e8c" :form="servicefilterform" field="details"></has-error>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="why" class="col-form-label">Why</label>
+                                    <textarea v-model="servicefilterform.why" type="text" name="why" placeholder="Why"
+                                        class="form-control" :class="{ 'is-invalid': servicefilterform.errors.has('why') }" >
+                                    </textarea>
+                                    <has-error style="color: #e83e8c" :form="servicefilterform" field="why"></has-error>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button v-show="editmodeServiceFilter" type="submit" class="btn btn-success">Update</button>
+                            <button v-show="!editmodeServiceFilter" type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Advert -->
+        <div class="modal fade " id="AdvertModal" tabindex="-1" role="dialog" aria-labelledby="AdvertModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" v-show="editmodeAdvert" id="AdvertModalLabel">Update Advert Us</h5>
+                        <h5 class="modal-title" v-show="!editmodeAdvert" id="AdvertModalLabel">Add New Advert Us</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form role="form" @submit.prevent="editmodeAdvert ? updateAdvert(advertform.id) : addAdvert()" >
+                        <div class="modal-body">
+                            <div class=" row">
+                                 <div class="form-group col-md-6">
+                                    <label for="title" class="col-form-label">Title</label>
+                                    <input v-model="advertform.title" type="text" name="title" placeholder="Title"
+                                        class="form-control" :class="{ 'is-invalid': advertform.errors.has('title') }" >
+                                    <has-error style="color: #e83e8c" :form="advertform" field="title"></has-error>
+                                </div>
+                                 <div class="form-group col-md-6">
+                                    <label for="subtitle" class="col-form-label">subtitle</label>
+                                    <input v-model="advertform.subtitle" type="text" name="subtitle" placeholder="subtitle"
+                                        class="form-control" :class="{ 'is-invalid': advertform.errors.has('subtitle') }" >
+                                    <has-error style="color: #e83e8c" :form="advertform" field="subtitle"></has-error>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <div class="form-group col-md-12">
+                                    <label for="details" class="col-form-label">details</label>
+                                    <textarea v-model="advertform.details" type="text" name="details" placeholder="details"
+                                        class="form-control" :class="{ 'is-invalid': advertform.errors.has('details') }" >
+                                    </textarea>
+                                    <has-error style="color: #e83e8c" :form="advertform" field="details"></has-error>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="advert_image" class=" col-form-label">Advert Us Front Image 6</label><br>
+                                        <input @change="advertChangeImage($event)" type="file" name="advert_image"
+                                            :class="{ 'is-invalid': advertform.errors.has('advert_image') }">
+
+                                            <img v-show="editmodeAdvert" :src="updateAdvertImage(advertform.advert_image)" alt="" width="100%" >
+                                            <img  v-show="!editmodeAdvert" :src="advertform.advert_image" alt="" width="100%" >
+                                        <has-error style="color: #e83e8c" :form="advertform" field="advert_image"></has-error>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button v-show="editmodeAdvert" type="submit" class="btn btn-success">Update</button>
+                            <button v-show="!editmodeAdvert" type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
   </div>
 </template>
 
 <script>
-    // import intlTelInput from "intl-tel-input/build/js/intlTelInput.js";
-
-    // var input = document.querySelector("#phone");
-    // // window.intlTelInput(input);
 
     export default {
         name:"List",
@@ -766,17 +1025,51 @@
                         description:'',
                         image:'',
                 }),
+                editmodeService: false,
+                serviceform: new Form({
+                        id:'',
+                        title:'',
+                        service_title:'',
+                        service_details:'',
+                        service_image:'',
+                }),
+                editmodeAdvert: false,
+                advertform: new Form({
+                        id:'',
+                        title:'',
+                        subtitle:'',
+                        details:'',
+                        advert_image:'',
+                }),
+                editmodeExtraService: false,
+                extraserviceform: new Form({
+                        id:'',
+                        title:'',
+                        details:'',
+                        why:'',
+                }),
+                editmodeServiceFilter: false,
+                servicefilterform: new Form({
+                        id:'',
+                        title:'',
+                        details:'',
+                        why:'',
+                }),
             }
         },
         mounted() {
-            this.loadOrganisation();
-            this.loadAbout();
-            this.loadAboutPic();
-            this.loadService();
             this.loadCountries();
             this.loadCounties();
             this.loadConstituencies();///linked to methods and actions store
             this.loadWards();///linked to methods and actions store
+            this.loadOrganisation();
+            this.loadAbout();
+            this.loadAboutPic();
+            this.loadService();
+            this.loadExtraService();
+            this.loadServiceFilter();
+            this.loadAdvert();
+
         },
         computed:{
             Countries(){
@@ -803,6 +1096,15 @@
             Service(){
                return this.$store.getters.Service
             },
+            ExtraService(){
+               return this.$store.getters.ExtraService
+            },
+            ServiceFilter(){
+               return this.$store.getters.ServiceFilter
+            },
+            Advert(){
+               return this.$store.getters.Advert
+            },
         },
         methods:{
             InputPhone({ number, isValid, country }) {
@@ -817,130 +1119,17 @@
             this.landline1.isValid = isValid;
             this.landline1.country = country && country.name;
             },
-            changePhoto(event){
-            let file = event.target.files[0];
-                if(file.size>1048576){
-                    Swal.fire({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'The File you are uploading is larger than 2mbs!',
-                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-                        })
-                }else{
-                    let reader = new FileReader();
-                        reader.onload = event=> {
-                            this.organisationform.logo =event.target.result
-                                // console.log(event.target.result)
-                            };
-                        reader.readAsDataURL(file);
-                }
+            countryCounties(country_id){
+                console.log(country_id);
+                this.$store.dispatch('countrycounties', country_id);
             },
-            organisationLogo(logo_id){
-                return "assets/organisation/img/logo/"+logo_id;
+            countyConstituencies(county_id){
+                console.log(county_id);
+                this.$store.dispatch('countyconstituencies', county_id);
             },
-            updateOrganisationLogo(organisationformlogo){
-                console.log(organisationformlogo)
-                let img = this.organisationform.logo;
-                      if(img.length>100){
-                            return this.organisationform.logo;
-                        }else{
-                            if(organisationformlogo){
-                                return "assets/organisation/img/logo/"+organisationformlogo;
-                            }else{
-                                return "/assets/organisation/img/website/empty.png";
-                            }
-                        }
-            },
-            //front image about
-            FrontImage(event){
-            let file = event.target.files[0];
-                if(file.size>1048576){
-                    Swal.fire({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'The File you are uploading is larger than 2mbs!',
-                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-                        })
-                }else{
-                    let reader = new FileReader();
-                        reader.onload = event=> {
-                            this.aboutform.front_image =event.target.result
-                                // console.log(event.target.result)
-                            };
-                        reader.readAsDataURL(file);
-                }
-            },
-            aboutFrontImage(front_image_id){
-                if(front_image_id !=null){
-                    return "/assets/organisation/img/website/frontimage/"+front_image_id;
-                }else{
-                    return "/assets/organisation/img/website/empty.png";
-                }
-            },
-             updateAboutFrontImage(aboutformfront_image){
-                // console.log(aboutformfront_image, 'mixcv')
-                let img = this.aboutform.front_image;
-                      if(img.length>100){
-                            console.log('bbbbmixcv')
-                            return this.aboutform.front_image;
-                        }else{
-                            if(aboutformfront_image){
-                                return "assets/organisation/img/website/frontimage/"+aboutformfront_image;
-                            }else{
-                                return "/assets/organisation/img/website/empty.png";
-                            }
-                        }
-            },
-            //About Images
-            aboutImage(event){
-            let file = event.target.files[0];
-                if(file.size>1048576){
-                    Swal.fire({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'The File you are uploading is larger than 2mbs!',
-                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-                        })
-                }else{
-                    let reader = new FileReader();
-                        reader.onload = event=> {
-                            this.aboutpicsform.image =event.target.result
-                                // console.log(event.target.result)
-                            };
-                        reader.readAsDataURL(file);
-                }
-            },
-            aboutLoadImage(about_image_id){
-                if(about_image_id !=null){
-                    return "/assets/organisation/img/website/aboutpics/"+about_image_id;
-                }else{
-                    return "/assets/organisation/img/website/empty.png";
-                }
-            },
-            updateAboutImage(about_image){
-                // console.log(this.aboutpicsform.image)
-                let img = this.aboutpicsform.image;
-                      if(img.length>100){
-                            return this.aboutpicsform.image;
-                        }else{
-                            if(about_image){
-                                return "assets/organisation/img/website/aboutpics/"+about_image;
-                            }else{
-                                return "/assets/organisation/img/website/empty.png";
-                            }
-                        }
-            },
-            loadOrganisation(){
-                return this.$store.dispatch( "organisation")//get all from organisation. organisation linked to user
-            },
-            loadAbout(){
-                return this.$store.dispatch( "about")//get all from organisation. organisation linked to user
-            },
-            loadAboutPic(){
-                return this.$store.dispatch( "aboutpic")//get all from organisation. organisation linked to user
-            },
-            loadService(){
-                return this.$store.dispatch( "service")//get all from organisation. organisation linked to user
+            constituencyWards(constituency_id){
+                console.log(constituency_id);
+                this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
             },
             loadCountries(){
                 return this.$store.dispatch( "countries")//get all from roles.index
@@ -954,86 +1143,35 @@
             loadWards(){
                 return this.$store.dispatch( "constituencywards")//get all from towns.index
             },
-            newAboutModal(){
-                this.editmodeAbout = false;
-                 this.aboutform.reset()
-                     $('#AboutModal').modal('show')
+            loadOrganisation(){
+                return this.$store.dispatch( "organisation")//get all from organisation. organisation linked to user
             },
-            editAboutPicsModal(id){
-                 this.editmodeAboutPics = true;
-                 this.aboutpicsform.reset()
-                   console.log('edit aboutpic', id)
-                    this.$Progress.start();
-                      axios.get('/aboutpic/edit/'+id)
-                        .then((response)=>{
-                             console.log(response.data)
-                           $('#AboutPicsModal').modal('show')
-                           toast({
-                            type: 'success',
-                            title: 'Fetched the About data successfully'
-                            })
-                            this.aboutpicsform.fill(response.data.aboutpic)
-                               this.$Progress.finish();
-                        })
-                        .catch(()=>{
-
-                            //errors
-                            $('#AboutPicsModal').modal('show');
-                            toast({
-                            type: 'error',
-                            title: 'There was something Wrong'
-                            })
-                            this.$Progress.fail();
-                        })
-             },
-            editAboutModal(id){
-                 this.editmodeAbout = true;
-                 this.aboutform.reset()
-                   console.log('edit about', id)
-                    this.$Progress.start();
-                      axios.get('/about/edit/'+id)
-
-                        .then((response)=>{
-                             console.log(response.data)
-                           $('#AboutModal').modal('show')
-                           toast({
-                            type: 'success',
-                            title: 'Fetched the About data successfully'
-                            })
-                            this.aboutform.fill(response.data.about)
-                               this.$Progress.finish();
-                        })
-                        .catch(()=>{
-
-                            //errors
-                            $('#AboutModal').modal('show');
-                            toast({
-                            type: 'error',
-                            title: 'There was something Wrong'
-                            })
-                            this.$Progress.fail();
-                        })
-             },
-            newAboutPicsModal(){
-                this.editmodeAboutPics = false;
-                 this.aboutpicsform.reset()
-                     $('#AboutPicsModal').modal('show')
+            loadAbout(){
+                return this.$store.dispatch( "about")
             },
-            newFilterModal(){
-
+            loadAboutPic(){
+                return this.$store.dispatch( "aboutpic")
             },
-            newExtraModal(){
-
+            loadAdvert(){
+                return this.$store.dispatch( "advert")
             },
-            newAdvertModal(){
-
+            loadService(){
+                return this.$store.dispatch( "service")
             },
+            loadExtraService(){
+                return this.$store.dispatch( "extraservice")
+            },
+            loadServiceFilter(){
+                return this.$store.dispatch( "servicefilter")
+            },
+
+            //Organisation
             newOrganisationModal(){
                  this.editmodeOrganisation= false;
                  this.organisationform.reset()
                      $('#OrganisationModal').modal('show')
-             },
-             editOrganisationModal(id){
+            },
+            editOrganisationModal(id){
                  this.editmodeOrganisation = true;
                  this.organisationform.reset()
                    console.log('edit user', id)
@@ -1057,46 +1195,46 @@
                             title: 'There was something Wrong'
                             })
                         })
-             },
-            countryCounties(country_id){
-                console.log(country_id);
-                this.$store.dispatch('countrycounties', country_id);
             },
-            countyConstituencies(county_id){
-                console.log(county_id);
-                this.$store.dispatch('countyconstituencies', county_id);
+            organisationChangeLogo(event){
+             let file = event.target.files[0];
+                if(file.size>1048576){
+                    Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'The File you are uploading is larger than 2mbs!',
+                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+                        })
+                }else{
+                    let reader = new FileReader();
+                        reader.onload = event=> {
+                            this.organisationform.logo =event.target.result
+                                // console.log(event.target.result)
+                            };
+                        reader.readAsDataURL(file);
+                }
             },
-            constituencyWards(constituency_id){
-                console.log(constituency_id);
-                this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
+            organisationLoadLogo(logo_id){
+                 if(logo_id){
+                    return "assets/organisation/img/logo/"+logo_id;
+                }else{
+                    return "/assets/organisation/img/website/empty.png";
+                }
             },
-            addAboutPics() {
-                console.log('add About pics new')
-                this.$Progress.start();
-                this.aboutpicsform.post('/aboutpic')
-                    .then((response)=>{
-                        $('#AboutPicsModal').modal('hide')
-                         toast({
-                            type: 'success',
-                            title: 'aboutpics Created successfully'
-                            })
-                            this.$store.dispatch( "organisation")
-                            this.$store.dispatch( "about")
-                            this.$store.dispatch( "aboutpic")
-                            this.aboutpicsform.reset()
-                              this.$Progress.finish()
-                    })
-                    .catch(()=>{
-                        //errors
-                            $('#AboutPicsModal').modal('show');
-                            toast({
-                                type: 'error',
-                                title: 'There was something wrong.'
-                            })
-                            this.$Progress.fail()
-                    })
+            updateOrganisationLogo(organisationformlogo){
+                console.log(organisationformlogo)
+                let img = this.organisationform.logo;
+                      if(img.length>100){
+                            return this.organisationform.logo;
+                        }else{
+                            if(organisationformlogo){
+                                return "assets/organisation/img/logo/"+organisationformlogo;
+                            }else{
+                                return "/assets/organisation/img/website/empty.png";
+                            }
+                        }
             },
-            addOrganisation() {
+            addOrganisation(){
                 console.log('add Organisation new')
                 this.$Progress.start();
                 this.organisationform.post('/organisation')
@@ -1122,81 +1260,6 @@
                                 })
                     })
             },
-            addAbout() {
-                console.log('add About new')
-                this.$Progress.start();
-                this.aboutform.post('/about')
-                    .then((response)=>{
-                        //  console.log(response.data)
-                         toast({
-                            type: 'success',
-                            title: 'About Info Created successfully'
-                            })
-                            this.$store.dispatch( "organisation")
-                            this.$store.dispatch( "about")
-                            this.$store.dispatch( "aboutpic")
-                            $('#AboutModal').modal('hide')
-                            this.aboutform.reset()
-                              this.$Progress.finish()
-                    })
-                    .catch(()=>{
-                        this.$Progress.fail()
-                        //errors
-                            $('#AboutModal').modal('show');
-                            toast({
-                                type: 'error',
-                                title: 'There was something wrong.'
-                                })
-                    })
-            },
-            updateAboutPics(id){
-                  console.log('update about')
-                  this.$Progress.start();
-                     this.aboutpicsform.patch('/aboutpic/update/'+id)
-                        .then(()=>{
-                            this.$store.dispatch( "organisation")
-                            this.$store.dispatch( "about")
-                            this.$store.dispatch( "aboutpic")
-                         $('#AboutPicsModal').modal('hide')
-                         toast({
-                            type: 'success',
-                            title: 'About Updated successfully'
-                            })
-                            this.$Progress.finish();
-                        })
-                        .catch(()=>{
-                             $('#AboutPicsModal').modal('show')
-                            this.$Progress.fail();
-                            toast({
-                            type: 'error',
-                            title: 'There was something wrong'
-                            })
-                        })
-            },
-            updateAbout(id){
-                  console.log('update about')
-                  this.$Progress.start();
-                     this.aboutform.patch('/about/update/'+id)
-                        .then(()=>{
-                            this.$store.dispatch( "organisation")
-                            this.$store.dispatch( "about")
-                            this.$store.dispatch( "aboutpic")
-                         $('#AboutModal').modal('hide')
-                         toast({
-                            type: 'success',
-                            title: 'About Updated successfully'
-                            })
-                            this.$Progress.finish();
-                        })
-                        .catch(()=>{
-                            this.$Progress.fail();
-                             $('#AboutModal').modal('show')
-                            toast({
-                            type: 'error',
-                            title: 'There was something wrong'
-                            })
-                        })
-            },
             updateOrganisation(id){
                   console.log('update organisaton')
                   this.$Progress.start();
@@ -1221,7 +1284,7 @@
                             })
                         })
             },
-            deleteUser(id){
+            deleteOrganisation(id){
                 Swal({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -1255,7 +1318,252 @@
                         })
                      }
                 })
-             },
+            },
+            //About
+            newAboutModal(){
+                this.editmodeAbout = false;
+                 this.aboutform.reset()
+                     $('#AboutModal').modal('show')
+            },
+            editAboutModal(id){
+                 this.editmodeAbout = true;
+                 this.aboutform.reset()
+                   console.log('edit about', id)
+                    this.$Progress.start();
+                      axios.get('/about/edit/'+id)
+
+                        .then((response)=>{
+                             console.log(response.data)
+                           $('#AboutModal').modal('show')
+                           toast({
+                            type: 'success',
+                            title: 'Fetched the About data successfully'
+                            })
+                            this.aboutform.fill(response.data.about)
+                               this.$Progress.finish();
+                        })
+                        .catch(()=>{
+
+                            //errors
+                            $('#AboutModal').modal('show');
+                            toast({
+                            type: 'error',
+                            title: 'There was something Wrong'
+                            })
+                            this.$Progress.fail();
+                        })
+            },
+            aboutChangeFrontImage(event){
+             let file = event.target.files[0];
+                if(file.size>1048576){
+                    Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'The File you are uploading is larger than 2mbs!',
+                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+                        })
+                }else{
+                    let reader = new FileReader();
+                        reader.onload = event=> {
+                            this.aboutform.front_image =event.target.result
+                                // console.log(event.target.result)
+                            };
+                        reader.readAsDataURL(file);
+                }
+            },
+            aboutLoadFrontImage(front_image_id){
+                if(front_image_id){
+                    return "/assets/organisation/img/website/frontimage/"+front_image_id;
+                }else{
+                    return "/assets/organisation/img/website/empty.png";
+                }
+            },
+            updateAboutFrontImage(aboutformfront_image){
+                // console.log(aboutformfront_image, 'mixcv')
+                let img = this.aboutform.front_image;
+                      if(img.length>100){
+                            console.log('bbbbmixcv')
+                            return this.aboutform.front_image;
+                        }else{
+                            if(aboutformfront_image){
+                                return "assets/organisation/img/website/frontimage/"+aboutformfront_image;
+                            }else{
+                                return "/assets/organisation/img/website/empty.png";
+                            }
+                        }
+            },
+            addAbout() {
+                console.log('add About new')
+                this.$Progress.start();
+                this.aboutform.post('/about')
+                    .then((response)=>{
+                        //  console.log(response.data)
+                         toast({
+                            type: 'success',
+                            title: 'About Info Created successfully'
+                            })
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                            $('#AboutModal').modal('hide')
+                            this.aboutform.reset()
+                              this.$Progress.finish()
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        //errors
+                            $('#AboutModal').modal('show');
+                            toast({
+                                type: 'error',
+                                title: 'There was something wrong.'
+                                })
+                    })
+            },
+            updateAbout(id){
+                  console.log('update about')
+                  this.$Progress.start();
+                     this.aboutform.patch('/about/update/'+id)
+                        .then(()=>{
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                         $('#AboutModal').modal('hide')
+                         toast({
+                            type: 'success',
+                            title: 'About Updated successfully'
+                            })
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                             $('#AboutModal').modal('show')
+                            toast({
+                            type: 'error',
+                            title: 'There was something wrong'
+                            })
+                        })
+            },
+            //About pics
+            newAboutPicsModal(){
+                this.editmodeAboutPics = false;
+                 this.aboutpicsform.reset()
+                     $('#AboutPicsModal').modal('show')
+            },
+            editAboutPicsModal(id){
+                 this.editmodeAboutPics = true;
+                 this.aboutpicsform.reset()
+                   console.log('edit aboutpic', id)
+                    this.$Progress.start();
+                      axios.get('/aboutpic/edit/'+id)
+                        .then((response)=>{
+                             console.log(response.data)
+                           $('#AboutPicsModal').modal('show')
+                           toast({
+                            type: 'success',
+                            title: 'Fetched the About data successfully'
+                            })
+                            this.aboutpicsform.fill(response.data.aboutpic)
+                               this.$Progress.finish();
+                        })
+                        .catch(()=>{
+
+                            //errors
+                            $('#AboutPicsModal').modal('show');
+                            toast({
+                            type: 'error',
+                            title: 'There was something Wrong'
+                            })
+                            this.$Progress.fail();
+                        })
+            },
+            aboutChangeImage(event){
+             let file = event.target.files[0];
+                if(file.size>1048576){
+                    Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'The File you are uploading is larger than 2mbs!',
+                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+                        })
+                }else{
+                    let reader = new FileReader();
+                        reader.onload = event=> {
+                            this.aboutpicsform.image =event.target.result
+                                // console.log(event.target.result)
+                            };
+                        reader.readAsDataURL(file);
+                }
+            },
+            aboutLoadImage(about_image_id){
+                if(about_image_id){
+                    return "/assets/organisation/img/website/aboutpics/"+about_image_id;
+                }else{
+                    return "/assets/organisation/img/website/empty.png";
+                }
+            },
+            updateAboutImage(about_image){
+                // console.log(this.aboutpicsform.image)
+                let img = this.aboutpicsform.image;
+                      if(img.length>100){
+                            return this.aboutpicsform.image;
+                        }else{
+                            if(about_image){
+                                return "assets/organisation/img/website/aboutpics/"+about_image;
+                            }else{
+                                return "/assets/organisation/img/website/empty.png";
+                            }
+                        }
+            },
+            addAboutPics(){
+                console.log('add About pics new')
+                this.$Progress.start();
+                this.aboutpicsform.post('/aboutpic')
+                    .then((response)=>{
+                        $('#AboutPicsModal').modal('hide')
+                         toast({
+                            type: 'success',
+                            title: 'aboutpics Created successfully'
+                            })
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                            this.aboutpicsform.reset()
+                              this.$Progress.finish()
+                    })
+                    .catch(()=>{
+                        //errors
+                            $('#AboutPicsModal').modal('show');
+                            toast({
+                                type: 'error',
+                                title: 'There was something wrong.'
+                            })
+                            this.$Progress.fail()
+                    })
+            },
+            updateAboutPics(id){
+                  console.log('update about')
+                  this.$Progress.start();
+                     this.aboutpicsform.patch('/aboutpic/update/'+id)
+                        .then(()=>{
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                         $('#AboutPicsModal').modal('hide')
+                         toast({
+                            type: 'success',
+                            title: 'About Updated successfully'
+                            })
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                             $('#AboutPicsModal').modal('show')
+                            this.$Progress.fail();
+                            toast({
+                            type: 'error',
+                            title: 'There was something wrong'
+                            })
+                        })
+            },
             deleteAboutPics(id){
                 Swal({
                     title: 'Are you sure?',
@@ -1290,7 +1598,524 @@
                         })
                      }
                 })
-             }
+            },
+            //Service
+            newServiceModal(){
+                this.editmodeService = false;
+                 this.serviceform.reset()
+                     $('#ServiceModal').modal('show')
+            },
+            editServiceModal(id){
+                 this.editmodeService = true;
+                 this.serviceform.reset()
+                   console.log('edit service', id)
+                    this.$Progress.start();
+                      axios.get('/service/edit/'+id)
+
+                        .then((response)=>{
+                             console.log(response.data)
+                           $('#ServiceModal').modal('show')
+                           toast({
+                            type: 'success',
+                            title: 'Fetched the Service data successfully'
+                            })
+                            this.serviceform.fill(response.data.service)
+                               this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            //errors
+                            $('#ServiceModal').modal('show');
+                            toast({
+                            type: 'error',
+                            title: 'There was something Wrong'
+                            })
+                            this.$Progress.fail();
+                        })
+            },
+            serviceChangeImage(event){
+             let file = event.target.files[0];
+                if(file.size>1048576){
+                    Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'The File you are uploading is larger than 2mbs!',
+                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+                        })
+                }else{
+                    let reader = new FileReader();
+                        reader.onload = event=> {
+                            this.serviceform.service_image =event.target.result
+                                // console.log(event.target.result)
+                            };
+                        reader.readAsDataURL(file);
+                }
+            },
+            serviceLoadImage(image_id){
+                if(image_id){
+                    return "/assets/organisation/img/website/services/"+image_id;
+                }else{
+                    return "/assets/organisation/img/website/empty.png";
+                }
+            },
+            updateServiceImage(serviceformimage){
+                // console.log(serviceformimage, 'mixcv')
+                let img = this.serviceform.service_image;
+                      if(img.length>100){
+                            console.log('bbbbmixcv')
+                            return this.serviceform.service_image;
+                        }else{
+                            if(serviceformimage){
+                                return "assets/organisation/img/website/services/"+serviceformimage;
+                            }else{
+                                return "/assets/organisation/img/website/empty.png";
+                            }
+                        }
+            },
+            addService() {
+                console.log('add Service new')
+                this.$Progress.start();
+                this.serviceform.post('/service')
+                    .then((response)=>{
+                        //  console.log(response.data)
+                         toast({
+                            type: 'success',
+                            title: 'Service Info Created successfully'
+                            })
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                            this.$store.dispatch( "service")
+                            $('#ServiceModal').modal('hide')
+                            this.serviceform.reset()
+                              this.$Progress.finish()
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        //errors
+                            $('#ServiceModal').modal('show');
+                            toast({
+                                type: 'error',
+                                title: 'There was something wrong.'
+                                })
+                    })
+            },
+            updateService(id){
+                  console.log('update service')
+                  this.$Progress.start();
+                     this.serviceform.patch('/service/update/'+id)
+                        .then(()=>{
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                            this.$store.dispatch( "service")
+                         $('#ServiceModal').modal('hide')
+                         toast({
+                            type: 'success',
+                            title: 'Service Updated successfully'
+                            })
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                             $('#ServiceModal').modal('show')
+                            toast({
+                            type: 'error',
+                            title: 'There was something wrong'
+                            })
+                        })
+            },
+            //Extraservice
+            newExtraServiceModal(){
+                this.editmodeExtraService = false;
+                 this.extraserviceform.reset()
+                     $('#ExtraServiceModal').modal('show')
+            },
+            editExtraServiceModal(id){
+                 this.editmodeExtraService = true;
+                 this.extraserviceform.reset()
+                   console.log('edit extraservice', id)
+                    this.$Progress.start();
+                      axios.get('/extraservice/edit/'+id)
+
+                        .then((response)=>{
+                             console.log(response.data)
+                           $('#ExtraServiceModal').modal('show')
+                           toast({
+                            type: 'success',
+                            title: 'Fetched the Extraservice data successfully'
+                            })
+                            this.extraserviceform.fill(response.data.extraservice)
+                               this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            //errors
+                            $('#ExtraServiceModal').modal('show');
+                            toast({
+                            type: 'error',
+                            title: 'There was something Wrong'
+                            })
+                            this.$Progress.fail();
+                        })
+            },
+            //soon we can add images to extra services
+            // extraserviceChangeImage(event){ //soonn we canaddimages too
+            //  let file = event.target.files[0];
+            //     if(file.size>1048576){
+            //         Swal.fire({
+            //                 type: 'error',
+            //                 title: 'Oops...',
+            //                 text: 'The File you are uploading is larger than 2mbs!',
+            //                 // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+            //             })
+            //     }else{
+            //         let reader = new FileReader();
+            //             reader.onload = event=> {
+            //                 this.extraserviceform.extraservice_image =event.target.result
+            //                     // console.log(event.target.result)
+            //                 };
+            //             reader.readAsDataURL(file);
+            //     }
+            // },
+            // extraserviceLoadImage(image_id){
+            //     if(image_id){
+            //         return "/assets/organisation/img/website/extraservices/"+image_id;
+            //     }else{
+            //         return "/assets/organisation/img/website/empty.png";
+            //     }
+            // },
+            // updateExtraserviceImage(extraserviceformimage){
+            //     // console.log(extraserviceformimage, 'mixcv')
+            //     let img = this.extraserviceform.extraservice_image;
+            //           if(img.length>100){
+            //                 console.log('bbbbmixcv')
+            //                 return this.extraserviceform.extraservice_image;
+            //             }else{
+            //                 if(extraserviceformimage){
+            //                     return "assets/organisation/img/website/extraservices/"+extraserviceformimage;
+            //                 }else{
+            //                     return "/assets/organisation/img/website/empty.png";
+            //                 }
+            //             }
+            // },
+            addExtraService() {
+                console.log('add Extraservice new')
+                this.$Progress.start();
+                this.extraserviceform.post('/extraservice')
+                    .then((response)=>{
+                        //  console.log(response.data)
+                         toast({
+                            type: 'success',
+                            title: 'Extraservice Info Created successfully'
+                            })
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                            this.$store.dispatch( "service")
+                            this.$store.dispatch( "extraservice")
+                            $('#ExtraServiceModal').modal('hide')
+                            this.extraserviceform.reset()
+                              this.$Progress.finish()
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        //errors
+                            $('#ExtraServiceModal').modal('show');
+                            toast({
+                                type: 'error',
+                                title: 'There was something wrong.'
+                                })
+                    })
+            },
+            updateExtraService(id){
+                  console.log('update extraservice')
+                  this.$Progress.start();
+                     this.extraserviceform.patch('/extraservice/update/'+id)
+                        .then(()=>{
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                            this.$store.dispatch( "service")
+                            this.$store.dispatch( "extraservice")
+                         $('#ExtraServiceModal').modal('hide')
+                         toast({
+                            type: 'success',
+                            title: 'Extraservice Updated successfully'
+                            })
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                             $('#ExtraServiceModal').modal('show')
+                            toast({
+                            type: 'error',
+                            title: 'There was something wrong'
+                            })
+                        })
+            },
+            //Servicefilter
+            newServiceFilterModal(){
+                this.editmodeServiceFilter = false;
+                 this.servicefilterform.reset()
+                     $('#ServiceFilterModal').modal('show')
+            },
+            editServiceFilterModal(id){
+                 this.editmodeServiceFilter = true;
+                 this.servicefilterform.reset()
+                   console.log('edit servicefilter', id)
+                    this.$Progress.start();
+                      axios.get('/servicefilter/edit/'+id)
+
+                        .then((response)=>{
+                             console.log(response.data)
+                           $('#ServiceFilterModal').modal('show')
+                           toast({
+                            type: 'success',
+                            title: 'Fetched the Servicefilter data successfully'
+                            })
+                            this.servicefilterform.fill(response.data.servicefilter)
+                               this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            //errors
+                            $('#ServiceFilterModal').modal('show');
+                            toast({
+                            type: 'error',
+                            title: 'There was something Wrong'
+                            })
+                            this.$Progress.fail();
+                        })
+            },
+            //soon we can add images to service filters
+            // servicefilterChangeImage(event){ //soonn we canaddimages too
+            //  let file = event.target.files[0];
+            //     if(file.size>1048576){
+            //         Swal.fire({
+            //                 type: 'error',
+            //                 title: 'Oops...',
+            //                 text: 'The File you are uploading is larger than 2mbs!',
+            //                 // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+            //             })
+            //     }else{
+            //         let reader = new FileReader();
+            //             reader.onload = event=> {
+            //                 this.servicefilterform.servicefilter_image =event.target.result
+            //                     // console.log(event.target.result)
+            //                 };
+            //             reader.readAsDataURL(file);
+            //     }
+            // },
+            // servicefilterLoadImage(image_id){
+            //     if(image_id){
+            //         return "/assets/organisation/img/website/servicefilters/"+image_id;
+            //     }else{
+            //         return "/assets/organisation/img/website/empty.png";
+            //     }
+            // },
+            // updateServicefilterImage(servicefilterformimage){
+            //     // console.log(servicefilterformimage, 'mixcv')
+            //     let img = this.servicefilterform.servicefilter_image;
+            //           if(img.length>100){
+            //                 console.log('bbbbmixcv')
+            //                 return this.servicefilterform.servicefilter_image;
+            //             }else{
+            //                 if(servicefilterformimage){
+            //                     return "assets/organisation/img/website/servicefilters/"+servicefilterformimage;
+            //                 }else{
+            //                     return "/assets/organisation/img/website/empty.png";
+            //                 }
+            //             }
+            // },
+            addServiceFilter() {
+                console.log('add Servicefilter new')
+                this.$Progress.start();
+                this.servicefilterform.post('/servicefilter')
+                    .then((response)=>{
+                        //  console.log(response.data)
+                         toast({
+                            type: 'success',
+                            title: 'Servicefilter Info Created successfully'
+                            })
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                            this.$store.dispatch( "filter")
+                            this.$store.dispatch( "servicefilter")
+                            $('#ServiceFilterModal').modal('hide')
+                            this.servicefilterform.reset()
+                              this.$Progress.finish()
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        //errors
+                            $('#ServiceFilterModal').modal('show');
+                            toast({
+                                type: 'error',
+                                title: 'There was something wrong.'
+                                })
+                    })
+            },
+            updateServiceFilter(id){
+                  console.log('update servicefilter')
+                  this.$Progress.start();
+                     this.servicefilterform.patch('/servicefilter/update/'+id)
+                        .then(()=>{
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                            this.$store.dispatch( "service")
+                            this.$store.dispatch( "extraservice")
+                            this.$store.dispatch( "servicefilter")
+                         $('#ServiceFilterModal').modal('hide')
+                         toast({
+                            type: 'success',
+                            title: 'Servicefilter Updated successfully'
+                            })
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                             $('#ServiceFilterModal').modal('show')
+                            toast({
+                            type: 'error',
+                            title: 'There was something wrong'
+                            })
+                        })
+            },
+            //Advert
+            newAdvertModal(){
+                this.editmodeAdvert = false;
+                 this.advertform.reset()
+                     $('#AdvertModal').modal('show')
+            },
+            editAdvertModal(id){
+                 this.editmodeAdvert = true;
+                 this.advertform.reset()
+                   console.log('edit advert', id)
+                    this.$Progress.start();
+                      axios.get('/advert/edit/'+id)
+
+                        .then((response)=>{
+                             console.log(response.data)
+                           $('#AdvertModal').modal('show')
+                           toast({
+                            type: 'success',
+                            title: 'Fetched the Advert data successfully'
+                            })
+                            this.advertform.fill(response.data.advert)
+                               this.$Progress.finish();
+                        })
+                        .catch(()=>{
+
+                            //errors
+                            $('#AdvertModal').modal('show');
+                            toast({
+                            type: 'error',
+                            title: 'There was something Wrong'
+                            })
+                            this.$Progress.fail();
+                        })
+            },
+            advertChangeImage(event){
+             let file = event.target.files[0];
+                if(file.size>1048576){
+                    Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'The File you are uploading is larger than 2mbs!',
+                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+                        })
+                }else{
+                    let reader = new FileReader();
+                        reader.onload = event=> {
+                            this.advertform.advert_image =event.target.result
+                                // console.log(event.target.result)
+                            };
+                        reader.readAsDataURL(file);
+                }
+            },
+            advertLoadImage(image_id){
+                if(image_id){
+                    return "/assets/organisation/img/website/adverts/"+image_id;
+                }else{
+                    return "/assets/organisation/img/website/empty.png";
+                }
+            },
+            updateAdvertImage(advertformimage){
+                // console.log(advertformimage, 'mixcv')
+                let img = this.advertform.advert_image;
+                      if(img.length>100){
+                            console.log('bbbbmixcv')
+                            return this.advertform.advert_image;
+                        }else{
+                            if(advertformimage){
+                                return "assets/organisation/img/website/adverts/"+advertformimage;
+                            }else{
+                                return "/assets/organisation/img/website/empty.png";
+                            }
+                        }
+            },
+            addAdvert() {
+                console.log('add Advert new')
+                this.$Progress.start();
+                this.advertform.post('/advert')
+                    .then((response)=>{
+                        //  console.log(response.data)
+                         toast({
+                            type: 'success',
+                            title: 'Advert Info Created successfully'
+                            })
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                            this.$store.dispatch( "advert")
+                            $('#AdvertModal').modal('hide')
+                            this.advertform.reset()
+                              this.$Progress.finish()
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        //errors
+                            $('#AdvertModal').modal('show');
+                            toast({
+                                type: 'error',
+                                title: 'There was something wrong.'
+                                })
+                    })
+            },
+            updateAdvert(id){
+                  console.log('update advert')
+                  this.$Progress.start();
+                     this.advertform.patch('/advert/update/'+id)
+                        .then(()=>{
+                            this.$store.dispatch( "organisation")
+                            this.$store.dispatch( "about")
+                            this.$store.dispatch( "aboutpic")
+                            this.$store.dispatch( "advert")
+                         $('#AdvertModal').modal('hide')
+                         toast({
+                            type: 'success',
+                            title: 'Advert Updated successfully'
+                            })
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                             $('#AdvertModal').modal('show')
+                            toast({
+                            type: 'error',
+                            title: 'There was something wrong'
+                            })
+                        })
+            },
+
+
+
+
+
+
+
+
+
         },
 
     }

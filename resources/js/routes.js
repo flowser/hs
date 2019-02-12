@@ -10,6 +10,18 @@ import Orgsetting from './components/admins/organisation/Organisation.vue';
 
 //single about image full more
 import SingleAboutImage from './components/admins/organisation/SingleAboutPic.vue';
+
+//Single Advert read more
+import SingleAdvert from './components/admins/organisation/SingleAdvert.vue';
+
+//Single Service read more
+import SingleService from './components/admins/organisation/SingleService.vue';
+
+//Single ExtraService read more
+import SingleExtraService from './components/admins/organisation/SingleExtraService.vue';
+
+//Single Service Filter read more
+import SingleServiceFilter from './components/admins/organisation/SingleServiceFilter.vue';
 // // //course
 // // import CourseList  from './components/admin/course/List.vue'
 // // import AddCourse  from './components/admin/course/New.vue'
@@ -53,9 +65,29 @@ export const routes = [
     },
 //about pic more
     {
-        path:'/aboutimage/:id',
-        component: SingleAboutImage
-      },
+      path:'/aboutimage/:id',
+      component: SingleAboutImage
+    },
+//advert read more
+    {
+      path:'/advert/:id',
+      component: SingleAdvert
+    },
+//service read more
+    {
+      path:'/service/:id',
+      component: SingleService
+    },
+//Extraservice read more
+    {
+      path:'/extraservice/:id',
+      component: SingleExtraService
+    },
+//Extraservice read more
+    {
+      path:'/servicefilter/:id',
+      component: SingleServiceFilter
+    },
 //   //Course
 //     {
 //       path: '/course-list',
