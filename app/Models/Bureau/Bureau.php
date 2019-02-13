@@ -29,7 +29,7 @@ class Bureau extends Model
         'logo',
         'about_us',
         'what_we_do',
-        'email',
+        'bureau_email',
         'phone',
         'landline',
         'website',

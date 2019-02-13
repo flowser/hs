@@ -48,23 +48,82 @@ class OrganisationController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * OrganisationInfo
      */
+    public function verifyOrganisationInfo (Request $request)
+    {
+        $this->validate($request,[
+                'name'    => 'required|min:2|max:50',
+                'organisation_email' => 'required|email|max:255|unique:organisations',
+                'phone' => 'phone:AUTO,MOBILE',
+                'landline'=> 'phone:AUTO,MOBILE', //FIXED_LINE
+                'website'=> 'required|min:2|max:50',
+                'address'=> 'required|digits_between:1,20',
+                'country_id'=> 'required',
+                'county_id'=> 'required',
+                'constituency_id'=> 'required',
+                'ward_id'=> 'required',
+       ]);
+    }
+    public function verifyDirectorInfo (Request $request)
+    {
+        $this->validate($request,[
+            'director_first_name'  =>  'required',
+            'director_last_name'  =>  'required',
+            'email'  =>  'required|email|max:255|unique:users',
+            'director_password'  =>  'required',
+            'director_phone'  =>  'phone:AUTO,MOBILE',
+            'director_landline'  =>  'phone:AUTO,MOBILE',
+            'director_id_no'  =>  'required|digits_between:7,10',
+            'director_address'  =>  'required|digits_between:1,20',
+            'director_country_id'  =>  'required',
+            'director_county_id'  =>  'required',
+            'director_constituency_id'  =>  'required',
+            'director_ward_id'  =>  'required',
+            // 'director_passport_image'  =>  'required',
+            // 'frontside_director_id_photo'  =>  'required',
+            // 'backside_director_id_photo'  =>  'required',
+       ]);
+    }
+    public function updateverifyOrganisationInfo (Request $request)
+    {
+        $this->validate($request,[
+                'name'    => 'sometimes|required|min:2|max:50',
+                'organisation_email' => 'required|email|max:255|organisation_email,'.$organisation->id,
+                'phone' => 'phone:AUTO,MOBILE',
+                'landline'=> 'phone:AUTO,MOBILE', //FIXED_LINE
+                'website'=> 'sometimes|required|min:2|max:50',
+                'address'=> 'sometimes|required|digits_between:1,20',
+                'country_id'=> 'sometimes|required',
+                'county_id'=> 'sometimes|required',
+                'constituency_id'=> 'sometimes|required',
+                'ward_id'=> 'sometimes|required',
+       ]);
+    }
+    public function updateverifyDirectorInfo (Request $request)
+    {
+        $this->validate($request,[
+            'director_first_name'  =>  'sometimes|required',
+            'director_last_name'  =>  'sometimes|required',
+            'email'  =>  'required|email|max:255|unique:users',
+            'director_password'  =>  'sometimes|required',
+            'director_phone'  =>  'phone:AUTO,MOBILE',
+            'director_landline'  =>  'phone:AUTO,MOBILE',
+            'director_id_no'  =>  'sometimes|required|digits_between:7,10',
+            'director_address'  =>  'sometimes|required|digits_between:1,20',
+            'director_country_id'  =>  'sometimes|required',
+            'director_county_id'  =>  'sometimes|required',
+            'director_constituency_id'  =>  'sometimes|required',
+            'director_ward_id'  =>  'sometimes|required',
+            // 'director_passport_image'  =>  'required',
+            // 'frontside_director_id_photo'  =>  'required',
+            // 'backside_director_id_photo'  =>  'required',
+       ]);
+    }
     public function store(Request $request)
     {
-        // return $request;
+        return $request;
 // return $request ->phone;
-        $this->validate($request,[
-            'name'    => 'required|min:2|max:50',
-            'email' => 'required|email|max:255|unique:organisations',
-            'phone' => 'phone:AUTO,MOBILE',
-            'landline'=> 'phone:AUTO,FIXED_LINE',
-            'website'=> 'required|min:2|max:50',
-            'address'=> 'required|min:2|max:50',
-            'country_id'=> 'required',
-            'county_id'=> 'required',
-            'constituency_id'=> 'required',
-            'ward_id'=> 'required',
-        ]);
 
 
         $organisation = new Organisation();
@@ -138,20 +197,7 @@ class OrganisationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $organisation = Organisation::findOrFail($id);
-        $this->validate($request,[
-            'name'    => 'required|min:2|max:50',
-            'email'=>'required|string|email|max:191|unique:organisations,email,'.$organisation->id,
-            'phone' => 'phone:AUTO,MOBILE',
-            'landline'=> 'phone:AUTO,FIXED_LINE',
-            'website'=> 'sometimes|required|min:2|max:50',
-            'address'=> 'sometimes|required|min:2|max:50',
-            'country_id'=> 'required',
-            'county_id'=> 'required',
-            'constituency_id'=> 'required',
-            'ward_id'=> 'required',
-        ]);
-
+        return $request;
 
         $organisation->name = $request ->name;
         $organisation->email = $request ->email;

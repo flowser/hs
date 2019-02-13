@@ -23,8 +23,8 @@ class CreateOrganisationDirectorsTable extends Migration
             $table->tinyInteger('active')->default(1)->unsigned();
 
             $table->string('id_no', 120);
-            $table->string('id_photo_front', 120);
-            $table->string('id_photo_back', 120);
+            $table->string('id_photo_front', 120)->nullable();
+            $table->string('id_photo_back', 120)->nullable();
             $table->longText('about_me')->nullable();
             $table->string('phone')->nullable();
             $table->string('landline')->nullable();
@@ -34,7 +34,7 @@ class CreateOrganisationDirectorsTable extends Migration
             $table->integer('county_id')->unsigned()->nullable();
             $table->integer('constituency_id')->unsigned()->nullable();
             $table->integer('ward_id')->unsigned()->nullable();
-            
+
             $table->softDeletes();
             $table->timestamps();
 

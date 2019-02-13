@@ -56,6 +56,11 @@ Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 window.Form = Form;
 
+//global registration
+import VueFormWizard from 'vue-form-wizard';
+import 'vue-form-wizard/dist/vue-form-wizard.min.css';
+Vue.use(VueFormWizard);
+
 //editor support
 // import 'v-markdown-editor/dist/index.css';
 // import Editor from 'v-markdown-editor';

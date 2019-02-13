@@ -29,7 +29,7 @@ class Organisation extends Model
     protected $fillable = [
         'name',
         'logo',
-        'email',
+        'organisation_email',
         'phone',
         'landline',
         'website',

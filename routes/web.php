@@ -210,20 +210,24 @@ Route::get('/home', 'HomeController@index')->name('home');
         Route::get('ward/show/{ward}', [WardController::class, 'show'])->name('ward.show');
         Route::get('ward/edit/{ward}', [WardController::class, 'edit'])->name('ward.edit');
         Route::patch('ward/update/{ward}', [WardController::class, 'update'])->name('ward.update');
-        Route::get('ward/delete/{ward}/', [WardController::class, 'destroy'])->name('ward.destroy');
+        Route::get('ward/delete/{ward}', [WardController::class, 'destroy'])->name('ward.destroy');
 
 
         // organisation
         Route::get('organisation/get', [OrganisationController::class, 'index'])->name('organisation.index');
         Route::get('organisation/get/list', [OrganisationController::class, 'OrganisationList'])->name('organisation.list-index');
+        Route::post('organisation/verify/info/', [OrganisationController::class, 'verifyOrganisationInfo'])->name('organisation.verify');
+        Route::post('organisation/verify/director/', [OrganisationController::class, 'verifyDirectorInfo'])->name('organisation.verifydirector');
         Route::post('organisation', [OrganisationController::class, 'store'])->name('organisation.store');
     //     /*
     //      * Specifics
     //      */
         Route::get('organisation/show/{country}', [OrganisationController::class, 'show'])->name('organisation.show');
         Route::get('organisation/edit/{country}', [OrganisationController::class, 'edit'])->name('organisation.edit');
+        Route::patch('organisation/updateverify/info/', [OrganisationController::class, 'updateverifyOrganisationInfo'])->name('organisation.updateverify');
+        Route::patch('organisation/updateverify/director/', [OrganisationController::class, 'updateverifyDirectorInfo'])->name('organisation.updateverifydirector');
         Route::patch('organisation/update/{country}', [OrganisationController::class, 'update'])->name('organisation.update');
-        Route::get('organisation/delete/{country}/', [OrganisationController::class, 'destroy'])->name('organisation.destroy');
+        Route::get('organisation/delete/{country}', [OrganisationController::class, 'destroy'])->name('organisation.destroy');
 
 
         // about

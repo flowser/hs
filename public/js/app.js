@@ -2882,15 +2882,438 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "List",
   data: function data() {
     return {
       editmodeOrganisation: false,
+      organisationOutput: '',
+      //view form data and confirm if is ok before submit
       organisationform: new Form({
         id: '',
         name: '',
-        email: '',
+        organisation_email: '',
         phone: '',
         landline: '',
         website: '',
@@ -2899,13 +3322,39 @@ __webpack_require__.r(__webpack_exports__);
         county_id: '',
         constituency_id: '',
         ward_id: '',
-        logo: ''
+        logo: '',
+        //director
+        director_first_name: '',
+        director_last_name: '',
+        email: '',
+        director_password: '',
+        director_phone: '',
+        director_landline: '',
+        director_id_no: '',
+        director_address: '',
+        director_country_id: '',
+        director_county_id: '',
+        director_constituency_id: '',
+        director_ward_id: '',
+        director_passport_image: '',
+        frontside_director_id_photo: '',
+        backside_director_id_photo: ''
       }),
+      //organisation
       phone1: {
         isValid: false,
         country: undefined
       },
       landline1: {
+        isValid: false,
+        country: undefined
+      },
+      //director
+      director_phone1: {
+        isValid: false,
+        country: undefined
+      },
+      director_landline1: {
         isValid: false,
         country: undefined
       },
@@ -3012,6 +3461,99 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    //Organisation verification
+    validateOrganisation: function validateOrganisation() {
+      var _this = this;
+
+      this.$Progress.start();
+      return this.organisationform.post('/organisation/verify/info').then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Organisation Info Verifed successfully'
+        });
+
+        _this.$Progress.finish();
+      }).catch(function () {
+        _this.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Organisation Info failed Verification.'
+        });
+      });
+    },
+    //Director info verification
+    validateDirector: function validateDirector() {
+      var _this2 = this;
+
+      this.$Progress.start();
+      this.organisationOutput = this.organisationform; //append form data
+
+      return this.organisationform.post('/organisation/verify/director').then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Director Info Verifed successfully'
+        });
+
+        _this2.$Progress.finish();
+      }).catch(function () {
+        _this2.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Director Info failed Verification.'
+        });
+      });
+    },
+    //Organisation verification
+    validateOrganisationUpdate: function validateOrganisationUpdate() {
+      var _this3 = this;
+
+      this.$Progress.start();
+      return this.organisationform.patch('/organisation/updateverify/info').then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Organisation Info Verifed successfully'
+        });
+
+        _this3.$Progress.finish();
+      }).catch(function () {
+        _this3.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Organisation Info failed Verification.'
+        });
+      });
+    },
+    //Director info verification
+    validateDirectorUpdate: function validateDirectorUpdate() {
+      var _this4 = this;
+
+      this.$Progress.start();
+      this.organisationOutput = this.organisationform; //append form data
+
+      return this.organisationform.patch('/organisation/updateverify/director').then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Director Info Verifed successfully'
+        });
+
+        _this4.$Progress.finish();
+      }).catch(function () {
+        _this4.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Director Info failed Verification.'
+        });
+      });
+    },
+    //Organisation
     InputPhone: function InputPhone(_ref) {
       var number = _ref.number,
           isValid = _ref.isValid,
@@ -3030,6 +3572,25 @@ __webpack_require__.r(__webpack_exports__);
       this.landline1.isValid = isValid;
       this.landline1.country = country && country.name;
     },
+    //Director
+    DirectorInputPhone: function DirectorInputPhone(_ref3) {
+      var number = _ref3.number,
+          isValid = _ref3.isValid,
+          country = _ref3.country;
+      console.log(number, isValid, country);
+      this.organisationform.director_phone = number;
+      this.director_phone1.isValid = isValid;
+      this.director_phone1.country = country && country.name;
+    },
+    DirectorInputLandline: function DirectorInputLandline(_ref4) {
+      var number = _ref4.number,
+          isValid = _ref4.isValid,
+          country = _ref4.country;
+      console.log(number, isValid, country);
+      this.organisationform.director_landline = number;
+      this.director_landline1.isValid = isValid;
+      this.director_landline1.country = country && country.name;
+    },
     countryCounties: function countryCounties(country_id) {
       console.log(country_id);
       this.$store.dispatch('countrycounties', country_id);
@@ -3039,6 +3600,18 @@ __webpack_require__.r(__webpack_exports__);
       this.$store.dispatch('countyconstituencies', county_id);
     },
     constituencyWards: function constituencyWards(constituency_id) {
+      console.log(constituency_id);
+      this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
+    },
+    DirectorcountryCounties: function DirectorcountryCounties(country_id) {
+      console.log(country_id);
+      this.$store.dispatch('countrycounties', country_id);
+    },
+    DirectorcountyConstituencies: function DirectorcountyConstituencies(county_id) {
+      console.log(county_id);
+      this.$store.dispatch('countyconstituencies', county_id);
+    },
+    DirectorconstituencyWards: function DirectorconstituencyWards(constituency_id) {
       console.log(constituency_id);
       this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
     },
@@ -3082,7 +3655,7 @@ __webpack_require__.r(__webpack_exports__);
       $('#OrganisationModal').modal('show');
     },
     editOrganisationModal: function editOrganisationModal(id) {
-      var _this = this;
+      var _this5 = this;
 
       this.editmodeOrganisation = true;
       this.organisationform.reset();
@@ -3095,11 +3668,11 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Fetched the Organisation data successfully'
         });
 
-        _this.organisationform.fill(response.data.organisation);
+        _this5.organisationform.fill(response.data.organisation);
 
-        _this.$Progress.finish();
+        _this5.$Progress.finish();
       }).catch(function () {
-        _this.$Progress.fail(); //errors
+        _this5.$Progress.fail(); //errors
 
 
         $('#OrganisationModal').modal('show');
@@ -3109,8 +3682,9 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
+    //organisation logo
     organisationChangeLogo: function organisationChangeLogo(event) {
-      var _this2 = this;
+      var _this6 = this;
 
       var file = event.target.files[0];
 
@@ -3125,7 +3699,7 @@ __webpack_require__.r(__webpack_exports__);
         var reader = new FileReader();
 
         reader.onload = function (event) {
-          _this2.organisationform.logo = event.target.result; // console.log(event.target.result)
+          _this6.organisationform.logo = event.target.result; // console.log(event.target.result)
         };
 
         reader.readAsDataURL(file);
@@ -3142,18 +3716,166 @@ __webpack_require__.r(__webpack_exports__);
       console.log(organisationformlogo);
       var img = this.organisationform.logo;
 
-      if (img.length > 100) {
-        return this.organisationform.logo;
+      if (img == null) {
+        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
       } else {
-        if (organisationformlogo) {
-          return "assets/organisation/img/logo/" + organisationformlogo;
+        if (img.length > 100) {
+          return this.organisationform.logo;
         } else {
-          return "/assets/organisation/img/website/empty.png";
+          if (organisationformlogo) {
+            return "assets/organisation/img/logo/" + organisationformlogo;
+          } else {
+            return "/assets/organisation/img/website/empty.png";
+          }
+        }
+      }
+    },
+    //organisation director passposrt image
+    organisationChangeDirectorPImage: function organisationChangeDirectorPImage(event) {
+      var _this7 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this7.organisationform.director_passport_image = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    organisationLoadDirectorPImage: function organisationLoadDirectorPImage(director_passport_image_id) {
+      if (director_passport_image_id) {
+        return "assets/organisation/img/directors/passports/" + director_passport_image_id;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      }
+    },
+    updateOrganisationDirectorPImage: function updateOrganisationDirectorPImage(organisationformdirector_passport_image) {
+      console.log(organisationformdirector_passport_image);
+      var img = this.organisationform.director_passport_image;
+
+      if (img == null) {
+        return "/assets/organisation/img/website/empty.png";
+      } else {
+        if (img.length > 100) {
+          return this.organisationform.director_passport_image;
+        } else {
+          if (organisationformdirector_passport_image) {
+            return "assets/organisation/img/directors/passports/" + organisationform.director_passport_image;
+          } else {
+            return "/assets/organisation/img/website/empty.png";
+          }
+        }
+      }
+    },
+    //director Front side ID image
+    organisationChangeDirectorFIDPhoto: function organisationChangeDirectorFIDPhoto(event) {
+      var _this8 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this8.organisationform.frontside_director_id_photo = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    organisationLoadDirectorFIDPhoto: function organisationLoadDirectorFIDPhoto(frontside_director_id_photo_id) {
+      if (frontside_director_id_photo_id) {
+        return "assets/organisation/img/directors/IDs/" + frontside_director_id_photo_id;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      }
+    },
+    updateOrganisationDirectorFIDPhoto: function updateOrganisationDirectorFIDPhoto(organisationformfrontside_director_id_photo) {
+      console.log(organisationformfrontside_director_id_photo);
+      var img = this.organisationform.frontside_director_id_photo;
+
+      if (img == null) {
+        return "/assets/organisation/img/website/empty.png";
+      } else {
+        if (img.length > 100) {
+          return this.organisationform.frontside_director_id_photo;
+        } else {
+          if (organisationformfrontside_director_id_photo) {
+            return "assets/organisation/img/directors/IDs/" + organisationformfrontside_director_id_photo;
+          } else {
+            return "/assets/organisation/img/website/empty.png";
+          }
+        }
+      }
+    },
+    //director Backside ID image
+    organisationChangeDirectorBIDPhoto: function organisationChangeDirectorBIDPhoto(event) {
+      var _this9 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this9.organisationform.backside_director_id_photo = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    organisationLoadDirectorBIDPhoto: function organisationLoadDirectorBIDPhoto(backside_director_id_photo) {
+      if (backside_director_id_photo) {
+        return "assets/organisation/img/directors/IDs/" + backside_director_id_photo;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      }
+    },
+    updateOrganisationDirectorBIDPhoto: function updateOrganisationDirectorBIDPhoto(organisationformbackside_director_id_photo) {
+      console.log(organisationformbackside_director_id_photo);
+      var img = this.organisationform.backside_director_id_photo;
+
+      if (img == null) {
+        return "/assets/organisation/img/website/empty.png";
+      } else {
+        if (img.length > 100) {
+          return this.organisationform.backside_director_id_photo;
+        } else {
+          if (organisationformbackside_director_id_photo) {
+            return "assets/organisation/img/directors/IDs/" + organisationformbackside_director_id_photo;
+          } else {
+            return "/assets/organisation/img/website/empty.png";
+          }
         }
       }
     },
     addOrganisation: function addOrganisation() {
-      var _this3 = this;
+      var _this10 = this;
 
       console.log('add Organisation new');
       this.$Progress.start();
@@ -3163,19 +3885,19 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Organisation Created successfully'
         });
 
-        _this3.$store.dispatch("organisation");
+        _this10.$store.dispatch("organisation");
 
-        _this3.$store.dispatch("about");
+        _this10.$store.dispatch("about");
 
-        _this3.$store.dispatch("aboutpic");
+        _this10.$store.dispatch("aboutpic");
 
         $('#OrganisationModal').modal('hide');
 
-        _this3.organisationform.reset();
+        _this10.organisationform.reset();
 
-        _this3.$Progress.finish();
+        _this10.$Progress.finish();
       }).catch(function () {
-        _this3.$Progress.fail(); //errors
+        _this10.$Progress.fail(); //errors
 
 
         $('#OrganisationModal').modal('show');
@@ -3186,16 +3908,16 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updateOrganisation: function updateOrganisation(id) {
-      var _this4 = this;
+      var _this11 = this;
 
       console.log('update organisaton');
       this.$Progress.start();
       this.organisationform.patch('/organisation/update/' + id).then(function () {
-        _this4.$store.dispatch("organisation");
+        _this11.$store.dispatch("organisation");
 
-        _this4.$store.dispatch("about");
+        _this11.$store.dispatch("about");
 
-        _this4.$store.dispatch("aboutpic");
+        _this11.$store.dispatch("aboutpic");
 
         $('#OrganisationModal').modal('hide');
         toast({
@@ -3203,9 +3925,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'User Created successfully'
         });
 
-        _this4.$Progress.finish();
+        _this11.$Progress.finish();
       }).catch(function () {
-        _this4.$Progress.fail();
+        _this11.$Progress.fail();
 
         $('#OrganisationModal').modal('show');
         toast({
@@ -3215,7 +3937,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     deleteOrganisation: function deleteOrganisation(id) {
-      var _this5 = this;
+      var _this12 = this;
 
       Swal({
         title: 'Are you sure?',
@@ -3228,23 +3950,23 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           //  console.log('delete user', id)
-          _this5.$Progress.start();
+          _this12.$Progress.start();
 
-          _this5.organisationform.get('/organisation/delete/' + id).then(function () {
+          _this12.organisationform.get('/organisation/delete/' + id).then(function () {
             toast({
               type: 'success',
               title: 'Organisation Deleted successfully'
             });
 
-            _this5.$store.dispatch("organisation");
+            _this12.$store.dispatch("organisation");
 
-            _this5.$store.dispatch("about");
+            _this12.$store.dispatch("about");
 
-            _this5.$store.dispatch("aboutpic");
+            _this12.$store.dispatch("aboutpic");
 
-            _this5.$Progress.finish();
+            _this12.$Progress.finish();
           }).catch(function () {
-            _this5.$Progress.fail();
+            _this12.$Progress.fail();
 
             toast({
               type: 'error',
@@ -3261,7 +3983,7 @@ __webpack_require__.r(__webpack_exports__);
       $('#AboutModal').modal('show');
     },
     editAboutModal: function editAboutModal(id) {
-      var _this6 = this;
+      var _this13 = this;
 
       this.editmodeAbout = true;
       this.aboutform.reset();
@@ -3275,9 +3997,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Fetched the About data successfully'
         });
 
-        _this6.aboutform.fill(response.data.about);
+        _this13.aboutform.fill(response.data.about);
 
-        _this6.$Progress.finish();
+        _this13.$Progress.finish();
       }).catch(function () {
         //errors
         $('#AboutModal').modal('show');
@@ -3286,11 +4008,11 @@ __webpack_require__.r(__webpack_exports__);
           title: 'There was something Wrong'
         });
 
-        _this6.$Progress.fail();
+        _this13.$Progress.fail();
       });
     },
     aboutChangeFrontImage: function aboutChangeFrontImage(event) {
-      var _this7 = this;
+      var _this14 = this;
 
       var file = event.target.files[0];
 
@@ -3305,7 +4027,7 @@ __webpack_require__.r(__webpack_exports__);
         var reader = new FileReader();
 
         reader.onload = function (event) {
-          _this7.aboutform.front_image = event.target.result; // console.log(event.target.result)
+          _this14.aboutform.front_image = event.target.result; // console.log(event.target.result)
         };
 
         reader.readAsDataURL(file);
@@ -3334,7 +4056,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     addAbout: function addAbout() {
-      var _this8 = this;
+      var _this15 = this;
 
       console.log('add About new');
       this.$Progress.start();
@@ -3345,19 +4067,19 @@ __webpack_require__.r(__webpack_exports__);
           title: 'About Info Created successfully'
         });
 
-        _this8.$store.dispatch("organisation");
+        _this15.$store.dispatch("organisation");
 
-        _this8.$store.dispatch("about");
+        _this15.$store.dispatch("about");
 
-        _this8.$store.dispatch("aboutpic");
+        _this15.$store.dispatch("aboutpic");
 
         $('#AboutModal').modal('hide');
 
-        _this8.aboutform.reset();
+        _this15.aboutform.reset();
 
-        _this8.$Progress.finish();
+        _this15.$Progress.finish();
       }).catch(function () {
-        _this8.$Progress.fail(); //errors
+        _this15.$Progress.fail(); //errors
 
 
         $('#AboutModal').modal('show');
@@ -3368,16 +4090,16 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updateAbout: function updateAbout(id) {
-      var _this9 = this;
+      var _this16 = this;
 
       console.log('update about');
       this.$Progress.start();
       this.aboutform.patch('/about/update/' + id).then(function () {
-        _this9.$store.dispatch("organisation");
+        _this16.$store.dispatch("organisation");
 
-        _this9.$store.dispatch("about");
+        _this16.$store.dispatch("about");
 
-        _this9.$store.dispatch("aboutpic");
+        _this16.$store.dispatch("aboutpic");
 
         $('#AboutModal').modal('hide');
         toast({
@@ -3385,9 +4107,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'About Updated successfully'
         });
 
-        _this9.$Progress.finish();
+        _this16.$Progress.finish();
       }).catch(function () {
-        _this9.$Progress.fail();
+        _this16.$Progress.fail();
 
         $('#AboutModal').modal('show');
         toast({
@@ -3403,7 +4125,7 @@ __webpack_require__.r(__webpack_exports__);
       $('#AboutPicsModal').modal('show');
     },
     editAboutPicsModal: function editAboutPicsModal(id) {
-      var _this10 = this;
+      var _this17 = this;
 
       this.editmodeAboutPics = true;
       this.aboutpicsform.reset();
@@ -3417,9 +4139,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Fetched the About data successfully'
         });
 
-        _this10.aboutpicsform.fill(response.data.aboutpic);
+        _this17.aboutpicsform.fill(response.data.aboutpic);
 
-        _this10.$Progress.finish();
+        _this17.$Progress.finish();
       }).catch(function () {
         //errors
         $('#AboutPicsModal').modal('show');
@@ -3428,11 +4150,11 @@ __webpack_require__.r(__webpack_exports__);
           title: 'There was something Wrong'
         });
 
-        _this10.$Progress.fail();
+        _this17.$Progress.fail();
       });
     },
     aboutChangeImage: function aboutChangeImage(event) {
-      var _this11 = this;
+      var _this18 = this;
 
       var file = event.target.files[0];
 
@@ -3447,7 +4169,7 @@ __webpack_require__.r(__webpack_exports__);
         var reader = new FileReader();
 
         reader.onload = function (event) {
-          _this11.aboutpicsform.image = event.target.result; // console.log(event.target.result)
+          _this18.aboutpicsform.image = event.target.result; // console.log(event.target.result)
         };
 
         reader.readAsDataURL(file);
@@ -3475,7 +4197,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     addAboutPics: function addAboutPics() {
-      var _this12 = this;
+      var _this19 = this;
 
       console.log('add About pics new');
       this.$Progress.start();
@@ -3486,15 +4208,15 @@ __webpack_require__.r(__webpack_exports__);
           title: 'aboutpics Created successfully'
         });
 
-        _this12.$store.dispatch("organisation");
+        _this19.$store.dispatch("organisation");
 
-        _this12.$store.dispatch("about");
+        _this19.$store.dispatch("about");
 
-        _this12.$store.dispatch("aboutpic");
+        _this19.$store.dispatch("aboutpic");
 
-        _this12.aboutpicsform.reset();
+        _this19.aboutpicsform.reset();
 
-        _this12.$Progress.finish();
+        _this19.$Progress.finish();
       }).catch(function () {
         //errors
         $('#AboutPicsModal').modal('show');
@@ -3503,20 +4225,20 @@ __webpack_require__.r(__webpack_exports__);
           title: 'There was something wrong.'
         });
 
-        _this12.$Progress.fail();
+        _this19.$Progress.fail();
       });
     },
     updateAboutPics: function updateAboutPics(id) {
-      var _this13 = this;
+      var _this20 = this;
 
       console.log('update about');
       this.$Progress.start();
       this.aboutpicsform.patch('/aboutpic/update/' + id).then(function () {
-        _this13.$store.dispatch("organisation");
+        _this20.$store.dispatch("organisation");
 
-        _this13.$store.dispatch("about");
+        _this20.$store.dispatch("about");
 
-        _this13.$store.dispatch("aboutpic");
+        _this20.$store.dispatch("aboutpic");
 
         $('#AboutPicsModal').modal('hide');
         toast({
@@ -3524,11 +4246,11 @@ __webpack_require__.r(__webpack_exports__);
           title: 'About Updated successfully'
         });
 
-        _this13.$Progress.finish();
+        _this20.$Progress.finish();
       }).catch(function () {
         $('#AboutPicsModal').modal('show');
 
-        _this13.$Progress.fail();
+        _this20.$Progress.fail();
 
         toast({
           type: 'error',
@@ -3537,7 +4259,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     deleteAboutPics: function deleteAboutPics(id) {
-      var _this14 = this;
+      var _this21 = this;
 
       Swal({
         title: 'Are you sure?',
@@ -3550,23 +4272,23 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           //  console.log('delete user', id)
-          _this14.$Progress.start();
+          _this21.$Progress.start();
 
-          _this14.aboutpicsform.get('/aboutpic/delete/' + id).then(function () {
+          _this21.aboutpicsform.get('/aboutpic/delete/' + id).then(function () {
             toast({
               type: 'success',
               title: 'About Picture Deleted successfully'
             });
 
-            _this14.$store.dispatch("organisation");
+            _this21.$store.dispatch("organisation");
 
-            _this14.$store.dispatch("about");
+            _this21.$store.dispatch("about");
 
-            _this14.$store.dispatch("aboutpic");
+            _this21.$store.dispatch("aboutpic");
 
-            _this14.$Progress.finish();
+            _this21.$Progress.finish();
           }).catch(function () {
-            _this14.$Progress.fail();
+            _this21.$Progress.fail();
 
             toast({
               type: 'error',
@@ -3583,7 +4305,7 @@ __webpack_require__.r(__webpack_exports__);
       $('#ServiceModal').modal('show');
     },
     editServiceModal: function editServiceModal(id) {
-      var _this15 = this;
+      var _this22 = this;
 
       this.editmodeService = true;
       this.serviceform.reset();
@@ -3597,9 +4319,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Fetched the Service data successfully'
         });
 
-        _this15.serviceform.fill(response.data.service);
+        _this22.serviceform.fill(response.data.service);
 
-        _this15.$Progress.finish();
+        _this22.$Progress.finish();
       }).catch(function () {
         //errors
         $('#ServiceModal').modal('show');
@@ -3608,11 +4330,11 @@ __webpack_require__.r(__webpack_exports__);
           title: 'There was something Wrong'
         });
 
-        _this15.$Progress.fail();
+        _this22.$Progress.fail();
       });
     },
     serviceChangeImage: function serviceChangeImage(event) {
-      var _this16 = this;
+      var _this23 = this;
 
       var file = event.target.files[0];
 
@@ -3627,7 +4349,7 @@ __webpack_require__.r(__webpack_exports__);
         var reader = new FileReader();
 
         reader.onload = function (event) {
-          _this16.serviceform.service_image = event.target.result; // console.log(event.target.result)
+          _this23.serviceform.service_image = event.target.result; // console.log(event.target.result)
         };
 
         reader.readAsDataURL(file);
@@ -3656,7 +4378,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     addService: function addService() {
-      var _this17 = this;
+      var _this24 = this;
 
       console.log('add Service new');
       this.$Progress.start();
@@ -3667,21 +4389,21 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Service Info Created successfully'
         });
 
-        _this17.$store.dispatch("organisation");
+        _this24.$store.dispatch("organisation");
 
-        _this17.$store.dispatch("about");
+        _this24.$store.dispatch("about");
 
-        _this17.$store.dispatch("aboutpic");
+        _this24.$store.dispatch("aboutpic");
 
-        _this17.$store.dispatch("service");
+        _this24.$store.dispatch("service");
 
         $('#ServiceModal').modal('hide');
 
-        _this17.serviceform.reset();
+        _this24.serviceform.reset();
 
-        _this17.$Progress.finish();
+        _this24.$Progress.finish();
       }).catch(function () {
-        _this17.$Progress.fail(); //errors
+        _this24.$Progress.fail(); //errors
 
 
         $('#ServiceModal').modal('show');
@@ -3692,18 +4414,18 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updateService: function updateService(id) {
-      var _this18 = this;
+      var _this25 = this;
 
       console.log('update service');
       this.$Progress.start();
       this.serviceform.patch('/service/update/' + id).then(function () {
-        _this18.$store.dispatch("organisation");
+        _this25.$store.dispatch("organisation");
 
-        _this18.$store.dispatch("about");
+        _this25.$store.dispatch("about");
 
-        _this18.$store.dispatch("aboutpic");
+        _this25.$store.dispatch("aboutpic");
 
-        _this18.$store.dispatch("service");
+        _this25.$store.dispatch("service");
 
         $('#ServiceModal').modal('hide');
         toast({
@@ -3711,9 +4433,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Service Updated successfully'
         });
 
-        _this18.$Progress.finish();
+        _this25.$Progress.finish();
       }).catch(function () {
-        _this18.$Progress.fail();
+        _this25.$Progress.fail();
 
         $('#ServiceModal').modal('show');
         toast({
@@ -3729,7 +4451,7 @@ __webpack_require__.r(__webpack_exports__);
       $('#ExtraServiceModal').modal('show');
     },
     editExtraServiceModal: function editExtraServiceModal(id) {
-      var _this19 = this;
+      var _this26 = this;
 
       this.editmodeExtraService = true;
       this.extraserviceform.reset();
@@ -3743,9 +4465,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Fetched the Extraservice data successfully'
         });
 
-        _this19.extraserviceform.fill(response.data.extraservice);
+        _this26.extraserviceform.fill(response.data.extraservice);
 
-        _this19.$Progress.finish();
+        _this26.$Progress.finish();
       }).catch(function () {
         //errors
         $('#ExtraServiceModal').modal('show');
@@ -3754,7 +4476,7 @@ __webpack_require__.r(__webpack_exports__);
           title: 'There was something Wrong'
         });
 
-        _this19.$Progress.fail();
+        _this26.$Progress.fail();
       });
     },
     //soon we can add images to extra services
@@ -3798,7 +4520,7 @@ __webpack_require__.r(__webpack_exports__);
     //             }
     // },
     addExtraService: function addExtraService() {
-      var _this20 = this;
+      var _this27 = this;
 
       console.log('add Extraservice new');
       this.$Progress.start();
@@ -3809,23 +4531,23 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Extraservice Info Created successfully'
         });
 
-        _this20.$store.dispatch("organisation");
+        _this27.$store.dispatch("organisation");
 
-        _this20.$store.dispatch("about");
+        _this27.$store.dispatch("about");
 
-        _this20.$store.dispatch("aboutpic");
+        _this27.$store.dispatch("aboutpic");
 
-        _this20.$store.dispatch("service");
+        _this27.$store.dispatch("service");
 
-        _this20.$store.dispatch("extraservice");
+        _this27.$store.dispatch("extraservice");
 
         $('#ExtraServiceModal').modal('hide');
 
-        _this20.extraserviceform.reset();
+        _this27.extraserviceform.reset();
 
-        _this20.$Progress.finish();
+        _this27.$Progress.finish();
       }).catch(function () {
-        _this20.$Progress.fail(); //errors
+        _this27.$Progress.fail(); //errors
 
 
         $('#ExtraServiceModal').modal('show');
@@ -3836,20 +4558,20 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updateExtraService: function updateExtraService(id) {
-      var _this21 = this;
+      var _this28 = this;
 
       console.log('update extraservice');
       this.$Progress.start();
       this.extraserviceform.patch('/extraservice/update/' + id).then(function () {
-        _this21.$store.dispatch("organisation");
+        _this28.$store.dispatch("organisation");
 
-        _this21.$store.dispatch("about");
+        _this28.$store.dispatch("about");
 
-        _this21.$store.dispatch("aboutpic");
+        _this28.$store.dispatch("aboutpic");
 
-        _this21.$store.dispatch("service");
+        _this28.$store.dispatch("service");
 
-        _this21.$store.dispatch("extraservice");
+        _this28.$store.dispatch("extraservice");
 
         $('#ExtraServiceModal').modal('hide');
         toast({
@@ -3857,9 +4579,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Extraservice Updated successfully'
         });
 
-        _this21.$Progress.finish();
+        _this28.$Progress.finish();
       }).catch(function () {
-        _this21.$Progress.fail();
+        _this28.$Progress.fail();
 
         $('#ExtraServiceModal').modal('show');
         toast({
@@ -3875,7 +4597,7 @@ __webpack_require__.r(__webpack_exports__);
       $('#ServiceFilterModal').modal('show');
     },
     editServiceFilterModal: function editServiceFilterModal(id) {
-      var _this22 = this;
+      var _this29 = this;
 
       this.editmodeServiceFilter = true;
       this.servicefilterform.reset();
@@ -3889,9 +4611,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Fetched the Servicefilter data successfully'
         });
 
-        _this22.servicefilterform.fill(response.data.servicefilter);
+        _this29.servicefilterform.fill(response.data.servicefilter);
 
-        _this22.$Progress.finish();
+        _this29.$Progress.finish();
       }).catch(function () {
         //errors
         $('#ServiceFilterModal').modal('show');
@@ -3900,7 +4622,7 @@ __webpack_require__.r(__webpack_exports__);
           title: 'There was something Wrong'
         });
 
-        _this22.$Progress.fail();
+        _this29.$Progress.fail();
       });
     },
     //soon we can add images to service filters
@@ -3944,7 +4666,7 @@ __webpack_require__.r(__webpack_exports__);
     //             }
     // },
     addServiceFilter: function addServiceFilter() {
-      var _this23 = this;
+      var _this30 = this;
 
       console.log('add Servicefilter new');
       this.$Progress.start();
@@ -3955,23 +4677,23 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Servicefilter Info Created successfully'
         });
 
-        _this23.$store.dispatch("organisation");
+        _this30.$store.dispatch("organisation");
 
-        _this23.$store.dispatch("about");
+        _this30.$store.dispatch("about");
 
-        _this23.$store.dispatch("aboutpic");
+        _this30.$store.dispatch("aboutpic");
 
-        _this23.$store.dispatch("filter");
+        _this30.$store.dispatch("filter");
 
-        _this23.$store.dispatch("servicefilter");
+        _this30.$store.dispatch("servicefilter");
 
         $('#ServiceFilterModal').modal('hide');
 
-        _this23.servicefilterform.reset();
+        _this30.servicefilterform.reset();
 
-        _this23.$Progress.finish();
+        _this30.$Progress.finish();
       }).catch(function () {
-        _this23.$Progress.fail(); //errors
+        _this30.$Progress.fail(); //errors
 
 
         $('#ServiceFilterModal').modal('show');
@@ -3982,22 +4704,22 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updateServiceFilter: function updateServiceFilter(id) {
-      var _this24 = this;
+      var _this31 = this;
 
       console.log('update servicefilter');
       this.$Progress.start();
       this.servicefilterform.patch('/servicefilter/update/' + id).then(function () {
-        _this24.$store.dispatch("organisation");
+        _this31.$store.dispatch("organisation");
 
-        _this24.$store.dispatch("about");
+        _this31.$store.dispatch("about");
 
-        _this24.$store.dispatch("aboutpic");
+        _this31.$store.dispatch("aboutpic");
 
-        _this24.$store.dispatch("service");
+        _this31.$store.dispatch("service");
 
-        _this24.$store.dispatch("extraservice");
+        _this31.$store.dispatch("extraservice");
 
-        _this24.$store.dispatch("servicefilter");
+        _this31.$store.dispatch("servicefilter");
 
         $('#ServiceFilterModal').modal('hide');
         toast({
@@ -4005,9 +4727,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Servicefilter Updated successfully'
         });
 
-        _this24.$Progress.finish();
+        _this31.$Progress.finish();
       }).catch(function () {
-        _this24.$Progress.fail();
+        _this31.$Progress.fail();
 
         $('#ServiceFilterModal').modal('show');
         toast({
@@ -4023,7 +4745,7 @@ __webpack_require__.r(__webpack_exports__);
       $('#AdvertModal').modal('show');
     },
     editAdvertModal: function editAdvertModal(id) {
-      var _this25 = this;
+      var _this32 = this;
 
       this.editmodeAdvert = true;
       this.advertform.reset();
@@ -4037,9 +4759,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Fetched the Advert data successfully'
         });
 
-        _this25.advertform.fill(response.data.advert);
+        _this32.advertform.fill(response.data.advert);
 
-        _this25.$Progress.finish();
+        _this32.$Progress.finish();
       }).catch(function () {
         //errors
         $('#AdvertModal').modal('show');
@@ -4048,11 +4770,11 @@ __webpack_require__.r(__webpack_exports__);
           title: 'There was something Wrong'
         });
 
-        _this25.$Progress.fail();
+        _this32.$Progress.fail();
       });
     },
     advertChangeImage: function advertChangeImage(event) {
-      var _this26 = this;
+      var _this33 = this;
 
       var file = event.target.files[0];
 
@@ -4067,7 +4789,7 @@ __webpack_require__.r(__webpack_exports__);
         var reader = new FileReader();
 
         reader.onload = function (event) {
-          _this26.advertform.advert_image = event.target.result; // console.log(event.target.result)
+          _this33.advertform.advert_image = event.target.result; // console.log(event.target.result)
         };
 
         reader.readAsDataURL(file);
@@ -4096,7 +4818,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     addAdvert: function addAdvert() {
-      var _this27 = this;
+      var _this34 = this;
 
       console.log('add Advert new');
       this.$Progress.start();
@@ -4107,21 +4829,21 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Advert Info Created successfully'
         });
 
-        _this27.$store.dispatch("organisation");
+        _this34.$store.dispatch("organisation");
 
-        _this27.$store.dispatch("about");
+        _this34.$store.dispatch("about");
 
-        _this27.$store.dispatch("aboutpic");
+        _this34.$store.dispatch("aboutpic");
 
-        _this27.$store.dispatch("advert");
+        _this34.$store.dispatch("advert");
 
         $('#AdvertModal').modal('hide');
 
-        _this27.advertform.reset();
+        _this34.advertform.reset();
 
-        _this27.$Progress.finish();
+        _this34.$Progress.finish();
       }).catch(function () {
-        _this27.$Progress.fail(); //errors
+        _this34.$Progress.fail(); //errors
 
 
         $('#AdvertModal').modal('show');
@@ -4132,18 +4854,18 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updateAdvert: function updateAdvert(id) {
-      var _this28 = this;
+      var _this35 = this;
 
       console.log('update advert');
       this.$Progress.start();
       this.advertform.patch('/advert/update/' + id).then(function () {
-        _this28.$store.dispatch("organisation");
+        _this35.$store.dispatch("organisation");
 
-        _this28.$store.dispatch("about");
+        _this35.$store.dispatch("about");
 
-        _this28.$store.dispatch("aboutpic");
+        _this35.$store.dispatch("aboutpic");
 
-        _this28.$store.dispatch("advert");
+        _this35.$store.dispatch("advert");
 
         $('#AdvertModal').modal('hide');
         toast({
@@ -4151,9 +4873,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Advert Updated successfully'
         });
 
-        _this28.$Progress.finish();
+        _this35.$Progress.finish();
       }).catch(function () {
-        _this28.$Progress.fail();
+        _this35.$Progress.fail();
 
         $('#AdvertModal').modal('show');
         toast({
@@ -10615,6 +11337,112 @@ __webpack_require__.r(__webpack_exports__);
 
 })));
 //# sourceMappingURL=bootstrap.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-form-wizard/dist/vue-form-wizard.min.css":
+/*!***************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-form-wizard/dist/vue-form-wizard.min.css ***!
+  \***************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".vue-form-wizard .wizard-btn{display:inline-block;margin-bottom:0;font-weight:400;text-align:center;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid transparent;white-space:nowrap;padding:6px 12px;font-size:14px;line-height:1.42857;border-radius:4px}.vue-form-wizard .wizard-btn.disabled,.vue-form-wizard .wizard-btn[disabled],fieldset[disabled] .vue-form-wizard .wizard-btn{cursor:not-allowed;opacity:.65;filter:alpha(opacity=65);-webkit-box-shadow:none;box-shadow:none}.vue-form-wizard *{-webkit-box-sizing:border-box;box-sizing:border-box}.vue-form-wizard a{text-decoration:none}.vue-form-wizard .wizard-nav{margin-bottom:0;padding-left:0;list-style:none}.vue-form-wizard .wizard-nav>li{position:relative;display:block}.vue-form-wizard .wizard-nav>li>a{position:relative;display:block;padding:10px 15px}.vue-form-wizard .wizard-nav>li>a:focus,.vue-form-wizard .wizard-nav>li>a:hover{text-decoration:none;background-color:#eee}.vue-form-wizard .wizard-nav>li.disabled>a{color:#777}.vue-form-wizard .wizard-nav>li.disabled>a:focus,.vue-form-wizard .wizard-nav>li.disabled>a:hover{color:#777;text-decoration:none;background-color:transparent;cursor:not-allowed}.vue-form-wizard .wizard-progress-bar{float:left;width:0;height:100%;font-size:12px;line-height:20px;color:#fff;text-align:center;background-color:#337ab7;-webkit-box-shadow:inset 0 -1px 0 rgba(0,0,0,.15);box-shadow:inset 0 -1px 0 rgba(0,0,0,.15);-webkit-transition:width .6s ease;transition:width .6s ease}.vue-form-wizard .navbar .navbar-nav>li>a.wizard-btn,.vue-form-wizard .wizard-btn{-webkit-box-sizing:border-box;box-sizing:border-box;border-width:2px;background-color:transparent;font-size:14px;font-weight:600;padding:6px 12px;min-width:140px}.vue-form-wizard .navbar .navbar-nav>li>a.wizard-btn:focus,.vue-form-wizard .navbar .navbar-nav>li>a.wizard-btn:hover,.vue-form-wizard .wizard-btn:focus,.vue-form-wizard .wizard-btn:hover{outline:0!important}.vue-form-wizard .wizard-nav-pills{margin-top:0;position:relative;text-align:center;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.vue-form-wizard .wizard-nav-pills a,.vue-form-wizard .wizard-nav-pills li{-webkit-box-flex:1;-ms-flex:1;flex:1;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-wrap:wrap;flex-wrap:wrap;-ms-flex-positive:1;flex-grow:1}.vue-form-wizard .wizard-nav-pills>li>a,.vue-form-wizard .wizard-nav-pills a{display:-webkit-box;display:-ms-flexbox;display:flex}.vue-form-wizard .wizard-nav-pills>li>a{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;padding:0;margin:0 auto;color:rgba(0,0,0,.2);position:relative;top:3px}.vue-form-wizard .wizard-nav-pills>li>a:focus,.vue-form-wizard .wizard-nav-pills>li>a:hover{background-color:transparent;color:rgba(0,0,0,.2);outline:0!important}.vue-form-wizard .wizard-nav-pills>li>a.disabled{pointer-events:none;cursor:default}.vue-form-wizard .wizard-nav-pills>li.active>a,.vue-form-wizard .wizard-nav-pills>li.active>a:focus,.vue-form-wizard .wizard-nav-pills>li.active>a:hover{background-color:transparent;-webkit-transition:font-size .2s linear;transition:font-size .2s linear}.vue-form-wizard .wizard-nav-pills>li.active>a .wizard-icon,.vue-form-wizard .wizard-nav-pills>li.active>a:focus .wizard-icon,.vue-form-wizard .wizard-nav-pills>li.active>a:hover .wizard-icon{color:#fff;font-size:24px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-transition:all .2s linear;transition:all .2s linear}.vue-form-wizard{padding-bottom:20px}.vue-form-wizard .is_error{border-color:#c84513!important}.vue-form-wizard .is_error .icon-container{background:#c84513!important}.vue-form-wizard.xs .wizard-icon-circle{width:40px;height:40px;font-size:16px}.vue-form-wizard.xs .wizard-icon-circle.tab_shape{height:25px}.vue-form-wizard.xs .wizard-nav-pills>li.active>a .wizard-icon{font-size:16px}.vue-form-wizard.xs .wizard-navigation .wizard-progress-with-circle{position:relative;top:25px;height:4px}.vue-form-wizard.sm .wizard-icon-circle{width:50px;height:50px;font-size:20px}.vue-form-wizard.sm .wizard-icon-circle.tab_shape{height:30px}.vue-form-wizard.sm .wizard-nav-pills>li.active>a .wizard-icon{font-size:20px}.vue-form-wizard.sm .wizard-navigation .wizard-progress-with-circle{position:relative;top:30px;height:4px}.vue-form-wizard.md .wizard-icon-circle{width:70px;height:70px;font-size:24px}.vue-form-wizard.md .wizard-icon-circle.tab_shape{height:40px}.vue-form-wizard.md .wizard-nav-pills>li.active>a .wizard-icon{font-size:24px}.vue-form-wizard.md .wizard-navigation .wizard-progress-with-circle{position:relative;top:40px;height:4px}.vue-form-wizard.lg .wizard-icon-circle{width:90px;height:90px;font-size:28px}.vue-form-wizard.lg .wizard-icon-circle.tab_shape{height:50px}.vue-form-wizard.lg .wizard-nav-pills>li.active>a .wizard-icon{font-size:28px}.vue-form-wizard.lg .wizard-navigation .wizard-progress-with-circle{position:relative;top:50px;height:4px}.vue-form-wizard .wizard-icon-circle{font-size:18px;border:3px solid #f3f2ee;border-radius:50%;font-weight:600;width:70px;height:70px;background-color:#fff;position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-ms-flex-line-pack:center;align-content:center}.vue-form-wizard .wizard-icon-circle.square_shape{border-radius:0}.vue-form-wizard .wizard-icon-circle.tab_shape{width:100%;min-width:100px;height:40px;border:none;background-color:#f3f2ee;border-radius:0}.vue-form-wizard .wizard-icon-circle .wizard-icon-container{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-flex:1;-ms-flex:1;flex:1;border-radius:40%}.vue-form-wizard .wizard-icon-circle .wizard-icon-container.square_shape,.vue-form-wizard .wizard-icon-circle .wizard-icon-container.tab_shape{border-radius:0}.vue-form-wizard .wizard-icon-circle .wizard-icon{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.vue-form-wizard .wizard-tab-content{min-height:100px;padding:30px 20px 10px}.vue-form-wizard .wizard-header{padding:15px;position:relative;border-radius:3px 3px 0 0;text-align:center}.vue-form-wizard .wizard-title{color:#252422;font-weight:300;margin:0;text-align:center}.vue-form-wizard .category{font-size:14px;font-weight:400;color:#9a9a9a;margin-bottom:0;text-align:center}.vue-form-wizard .wizard-navigation .wizard-progress-with-circle{position:relative;top:40px;height:4px}.vue-form-wizard .wizard-navigation .wizard-progress-with-circle .wizard-progress-bar{-webkit-box-shadow:none;box-shadow:none;-webkit-transition:width .3s ease;transition:width .3s ease}.vue-form-wizard .clearfix:after{content:\"\";clear:both;display:table}.vue-form-wizard .wizard-card-footer{padding:0 20px}.vue-form-wizard .wizard-card-footer .wizard-footer-left{float:left}.vue-form-wizard .wizard-card-footer .wizard-footer-right{float:right}@media screen and (max-width:350px){.vue-form-wizard .wizard-card-footer{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.vue-form-wizard .wizard-card-footer .wizard-footer-left,.vue-form-wizard .wizard-card-footer .wizard-footer-right{float:none;-webkit-box-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.vue-form-wizard .wizard-card-footer .wizard-footer-right button{margin-top:10px}}.vue-form-wizard.vertical .wizard-card-footer{display:block}.vue-form-wizard.vertical .wizard-nav-pills{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.vue-form-wizard.vertical .wizard-navigation{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}.vue-form-wizard.vertical .wizard-card-footer{padding-top:30px}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/css-base.js":
+/*!*************************************************!*\
+  !*** ./node_modules/css-loader/lib/css-base.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
 
 
 /***/ }),
@@ -58732,6 +59560,515 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/lib/addStyles.js":
+/*!****************************************************!*\
+  !*** ./node_modules/style-loader/lib/addStyles.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getTarget = function (target, parent) {
+  if (parent){
+    return parent.querySelector(target);
+  }
+  return document.querySelector(target);
+};
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(target, parent) {
+                // If passing function in options, then use it for resolve "head" element.
+                // Useful for Shadow Root style i.e
+                // {
+                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
+                // }
+                if (typeof target === 'function') {
+                        return target();
+                }
+                if (typeof memo[target] === "undefined") {
+			var styleTarget = getTarget.call(this, target, parent);
+			// Special case to return head of iframe instead of iframe itself
+			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+				try {
+					// This will throw an exception if access to iframe is blocked
+					// due to cross-origin restrictions
+					styleTarget = styleTarget.contentDocument.head;
+				} catch(e) {
+					styleTarget = null;
+				}
+			}
+			memo[target] = styleTarget;
+		}
+		return memo[target]
+	};
+})();
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(/*! ./urls */ "./node_modules/style-loader/lib/urls.js");
+
+module.exports = function(list, options) {
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+        if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
+		var nextSibling = getElement(options.insertAt.before, target);
+		target.insertBefore(style, nextSibling);
+	} else {
+		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+
+	if(options.attrs.nonce === undefined) {
+		var nonce = getNonce();
+		if (nonce) {
+			options.attrs.nonce = nonce;
+		}
+	}
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function getNonce() {
+	if (false) {}
+
+	return __webpack_require__.nc;
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = typeof options.transform === 'function'
+		 ? options.transform(obj.css) 
+		 : options.transform.default(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/lib/urls.js":
+/*!***********************************************!*\
+  !*** ./node_modules/style-loader/lib/urls.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/sweetalert2/dist/sweetalert2.all.js":
 /*!**********************************************************!*\
   !*** ./node_modules/sweetalert2/dist/sweetalert2.all.js ***!
@@ -62554,6 +63891,47 @@ var AlertSuccess_Component = normalizeComponent(
 
 /***/ }),
 
+/***/ "./node_modules/vue-form-wizard/dist/vue-form-wizard.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/vue-form-wizard/dist/vue-form-wizard.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(t,e){ true?module.exports=e():undefined}("undefined"!=typeof self?self:this,function(){return function(t){function e(n){if(a[n])return a[n].exports;var i=a[n]={i:n,l:!1,exports:{}};return t[n].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var a={};return e.m=t,e.c=a,e.d=function(t,a,n){e.o(t,a)||Object.defineProperty(t,a,{configurable:!1,enumerable:!0,get:n})},e.n=function(t){var a=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(a,"a",a),a},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=7)}([function(t,e){t.exports=function(t,e,a,n,i,r){var s,o=t=t||{},c=typeof t.default;"object"!==c&&"function"!==c||(s=t,o=t.default);var u="function"==typeof o?o.options:o;e&&(u.render=e.render,u.staticRenderFns=e.staticRenderFns,u._compiled=!0),a&&(u.functional=!0),i&&(u._scopeId=i);var l;if(r?(l=function(t){t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,t||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),n&&n.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(r)},u._ssrRegister=l):n&&(l=n),l){var d=u.functional,b=d?u.render:u.beforeCreate;d?(u._injectStyles=l,u.render=function(t,e){return l.call(e),b(t,e)}):u.beforeCreate=b?[].concat(b,l):[l]}return{esModule:s,exports:o,options:u}}},function(t,e,a){"use strict";var n=a(2),i=a(4),r=a(14);e.a={name:"form-wizard",components:{WizardButton:n.a,WizardStep:i.a},props:{title:{type:String,default:"Awesome Wizard"},subtitle:{type:String,default:"Split a complicated flow in multiple steps"},nextButtonText:{type:String,default:"Next"},backButtonText:{type:String,default:"Back"},finishButtonText:{type:String,default:"Finish"},hideButtons:{type:Boolean,default:!1},validateOnBack:Boolean,color:{type:String,default:"#e74c3c"},errorColor:{type:String,default:"#8b0000"},shape:{type:String,default:"circle"},layout:{type:String,default:"horizontal"},stepsClasses:{type:[String,Array],default:""},stepSize:{type:String,default:"md",validator:function(t){return-1!==["xs","sm","md","lg"].indexOf(t)}},transition:{type:String,default:""},startIndex:{type:Number,default:0,validator:function(t){return t>=0}}},provide:function(){return{addTab:this.addTab,removeTab:this.removeTab}},data:function(){return{activeTabIndex:0,currentPercentage:0,maxStep:0,loading:!1,tabs:[]}},computed:{slotProps:function(){return{nextTab:this.nextTab,prevTab:this.prevTab,activeTabIndex:this.activeTabIndex,isLastStep:this.isLastStep,fillButtonStyle:this.fillButtonStyle}},tabCount:function(){return this.tabs.length},isLastStep:function(){return this.activeTabIndex===this.tabCount-1},isVertical:function(){return"vertical"===this.layout},displayPrevButton:function(){return 0!==this.activeTabIndex},stepPercentage:function(){return 1/(2*this.tabCount)*100},progressBarStyle:function(){return{backgroundColor:this.color,width:this.progress+"%",color:this.color}},fillButtonStyle:function(){return{backgroundColor:this.color,borderColor:this.color,color:"white"}},progress:function(){return this.activeTabIndex>0?this.stepPercentage*(2*this.activeTabIndex+1):this.stepPercentage}},methods:{emitTabChange:function(t,e){this.$emit("on-change",t,e),this.$emit("update:startIndex",e)},addTab:function(t){var e=this.$slots.default.indexOf(t.$vnode);t.tabId=""+t.title.replace(/ /g,"")+e,this.tabs.splice(e,0,t),e<this.activeTabIndex+1&&(this.maxStep=e,this.changeTab(this.activeTabIndex+1,e))},removeTab:function(t){var e=this.tabs,a=e.indexOf(t);a>-1&&(a===this.activeTabIndex&&(this.maxStep=this.activeTabIndex-1,this.changeTab(this.activeTabIndex,this.activeTabIndex-1)),a<this.activeTabIndex&&(this.maxStep=this.activeTabIndex-1,this.activeTabIndex=this.activeTabIndex-1,this.emitTabChange(this.activeTabIndex+1,this.activeTabIndex)),e.splice(a,1))},reset:function(){this.maxStep=0,this.tabs.forEach(function(t){t.checked=!1}),this.navigateToTab(0)},activateAll:function(){this.maxStep=this.tabs.length-1,this.tabs.forEach(function(t){t.checked=!0})},navigateToTab:function(t){var e=this,a=t>this.activeTabIndex;if(t<=this.maxStep){var n=function n(){a&&t-e.activeTabIndex>1?(e.changeTab(e.activeTabIndex,e.activeTabIndex+1),e.beforeTabChange(e.activeTabIndex,n)):(e.changeTab(e.activeTabIndex,t),e.afterTabChange(e.activeTabIndex))};a?this.beforeTabChange(this.activeTabIndex,n):(this.setValidationError(null),n())}return t<=this.maxStep},nextTab:function(){var t=this,e=function(){t.activeTabIndex<t.tabCount-1?(t.changeTab(t.activeTabIndex,t.activeTabIndex+1),t.afterTabChange(t.activeTabIndex)):t.$emit("on-complete")};this.beforeTabChange(this.activeTabIndex,e)},prevTab:function(){var t=this,e=function(){t.activeTabIndex>0&&(t.setValidationError(null),t.changeTab(t.activeTabIndex,t.activeTabIndex-1))};this.validateOnBack?this.beforeTabChange(this.activeTabIndex,e):e()},focusNextTab:function(){var t=Object(r.b)(this.tabs);if(-1!==t&&t<this.tabs.length-1){var e=this.tabs[t+1];e.checked&&Object(r.a)(e.tabId)}},focusPrevTab:function(){var t=Object(r.b)(this.tabs);if(-1!==t&&t>0){var e=this.tabs[t-1].tabId;Object(r.a)(e)}},setLoading:function(t){this.loading=t,this.$emit("on-loading",t)},setValidationError:function(t){this.tabs[this.activeTabIndex].validationError=t,this.$emit("on-error",t)},validateBeforeChange:function(t,e){var a=this;if(this.setValidationError(null),Object(r.c)(t))this.setLoading(!0),t.then(function(t){a.setLoading(!1);var n=!0===t;a.executeBeforeChange(n,e)}).catch(function(t){a.setLoading(!1),a.setValidationError(t)});else{var n=!0===t;this.executeBeforeChange(n,e)}},executeBeforeChange:function(t,e){this.$emit("on-validate",t,this.activeTabIndex),t?e():this.tabs[this.activeTabIndex].validationError="error"},beforeTabChange:function(t,e){if(!this.loading){var a=this.tabs[t];if(a&&void 0!==a.beforeChange){var n=a.beforeChange();this.validateBeforeChange(n,e)}else e()}},afterTabChange:function(t){if(!this.loading){var e=this.tabs[t];e&&void 0!==e.afterChange&&e.afterChange()}},changeTab:function(t,e){var a=!(arguments.length>2&&void 0!==arguments[2])||arguments[2],n=this.tabs[t],i=this.tabs[e];return n&&(n.active=!1),i&&(i.active=!0),a&&this.activeTabIndex!==e&&this.emitTabChange(t,e),this.activeTabIndex=e,this.activateTabAndCheckStep(this.activeTabIndex),!0},tryChangeRoute:function(t){this.$router&&t.route&&this.$router.push(t.route)},checkRouteChange:function(t){var e=-1,a=this.tabs.find(function(a,n){var i=a.route===t;return i&&(e=n),i});if(a&&!a.active){var n=e>this.activeTabIndex;this.navigateToTab(e,n)}},deactivateTabs:function(){this.tabs.forEach(function(t){t.active=!1})},activateTab:function(t){this.deactivateTabs();var e=this.tabs[t];e&&(e.active=!0,e.checked=!0,this.tryChangeRoute(e))},activateTabAndCheckStep:function(t){this.activateTab(t),t>this.maxStep&&(this.maxStep=t),this.activeTabIndex=t},initializeTabs:function(){this.tabs.length>0&&0===this.startIndex&&this.activateTab(this.activeTabIndex),this.startIndex<this.tabs.length?this.activateTabAndCheckStep(this.startIndex):window.console.warn("Prop startIndex set to "+this.startIndex+" is greater than the number of tabs - "+this.tabs.length+". Make sure that the starting index is less than the number of tabs registered")}},mounted:function(){this.initializeTabs()},watch:{"$route.path":function(t){this.checkRouteChange(t)}}}},function(t,e,a){"use strict";function n(t){a(10)}var i=a(3),r=a(11),s=a(0),o=n,c=s(i.a,r.a,!1,o,null,null);e.a=c.exports},function(t,e,a){"use strict";e.a={}},function(t,e,a){"use strict";function n(t){a(12)}var i=a(5),r=a(13),s=a(0),o=n,c=s(i.a,r.a,!1,o,null,null);e.a=c.exports},function(t,e,a){"use strict";e.a={name:"wizard-step",props:{tab:{type:Object,default:function(){}},transition:{type:String,default:""},index:{type:Number,default:0}},computed:{iconActiveStyle:function(){return{backgroundColor:this.tab.color}},stepCheckedStyle:function(){return{borderColor:this.tab.color}},errorStyle:function(){return{borderColor:this.tab.errorColor,backgroundColor:this.tab.errorColor}},stepTitleStyle:function(){return{color:this.tab.validationError?this.tab.errorColor:this.tab.color}},isStepSquare:function(){return"square"===this.tab.shape},isTabShape:function(){return"tab"===this.tab.shape}}}},function(t,e,a){"use strict";e.a={name:"tab-content",props:{title:{type:String,default:""},icon:{type:String,default:""},beforeChange:{type:Function},afterChange:{type:Function},route:{type:[String,Object]},additionalInfo:{type:Object,default:function(){}}},inject:["addTab","removeTab"],data:function(){return{active:!1,validationError:null,checked:!1,tabId:""}},computed:{shape:function(){return this.$parent.shape},color:function(){return this.$parent.color},errorColor:function(){return this.$parent.errorColor}},mounted:function(){this.addTab(this)},destroyed:function(){this.$el&&this.$el.parentNode&&this.$el.parentNode.removeChild(this.$el),this.removeTab(this)}}},function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=a(8),i=a(16),r=a(2),s=a(4);a.d(e,"FormWizard",function(){return n.a}),a.d(e,"TabContent",function(){return i.a}),a.d(e,"WizardButton",function(){return r.a}),a.d(e,"WizardStep",function(){return s.a});var o={install:function(t){t.component("form-wizard",n.a),t.component("tab-content",i.a),t.component("wizard-button",r.a),t.component("wizard-step",s.a)}};"undefined"!=typeof window&&window.Vue&&window.Vue.use(o),e.default=o},function(t,e,a){"use strict";function n(t){a(9)}var i=a(1),r=a(15),s=a(0),o=n,c=s(i.a,r.a,!1,o,null,null);e.a=c.exports},function(t,e){},function(t,e){},function(t,e,a){"use strict";var n=function(){var t=this,e=t.$createElement;return(t._self._c||e)("button",{staticClass:"wizard-btn",attrs:{tabindex:"-1",type:"button"}},[t._t("default")],2)},i=[],r={render:n,staticRenderFns:i};e.a=r},function(t,e){},function(t,e,a){"use strict";var n=function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("li",{class:{active:t.tab.active}},[a("a",{class:{disabled:!t.tab.checked},attrs:{href:"javascript:void(0)"}},[a("div",{staticClass:"wizard-icon-circle md",class:{checked:t.tab.checked,square_shape:t.isStepSquare,tab_shape:t.isTabShape},style:[t.tab.checked?t.stepCheckedStyle:{},t.tab.validationError?t.errorStyle:{}],attrs:{role:"tab",tabindex:t.tab.checked?0:"",id:"step-"+t.tab.tabId,"aria-controls":t.tab.tabId,"aria-disabled":t.tab.active,"aria-selected":t.tab.active}},[a("transition",{attrs:{name:t.transition,mode:"out-in"}},[t.tab.active?a("div",{staticClass:"wizard-icon-container",class:{square_shape:t.isStepSquare,tab_shape:t.isTabShape},style:[t.tab.active?t.iconActiveStyle:{},t.tab.validationError?t.errorStyle:{}]},[t._t("active-step",[t.tab.icon?a("i",{staticClass:"wizard-icon",class:t.tab.icon}):a("i",{staticClass:"wizard-icon"},[t._v(t._s(t.index+1))])])],2):t._e(),t._v(" "),t.tab.active?t._e():t._t("default",[!t.tab.active&&t.tab.icon?a("i",{staticClass:"wizard-icon",class:t.tab.icon}):t._e(),t._v(" "),t.tab.active||t.tab.icon?t._e():a("i",{staticClass:"wizard-icon"},[t._v(t._s(t.index+1))])])],2)],1),t._v(" "),t._t("title",[a("span",{staticClass:"stepTitle",class:{active:t.tab.active,has_error:t.tab.validationError},style:t.tab.active?t.stepTitleStyle:{}},[t._v("\n            "+t._s(t.tab.title)+"\n      ")])])],2)])},i=[],r={render:n,staticRenderFns:i};e.a=r},function(t,e,a){"use strict";function n(){return document.activeElement.id}function i(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[],e=n();return t.findIndex(function(t){return t.tabId===e})}function r(t){document.getElementById(t).focus()}function s(t){return t.then&&"function"==typeof t.then}e.b=i,e.a=r,e.c=s},function(t,e,a){"use strict";var n=function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("div",{staticClass:"vue-form-wizard",class:[t.stepSize,{vertical:t.isVertical}],on:{keyup:[function(e){return"button"in e||!t._k(e.keyCode,"right",39,e.key)?"button"in e&&2!==e.button?null:void t.focusNextTab(e):null},function(e){return"button"in e||!t._k(e.keyCode,"left",37,e.key)?"button"in e&&0!==e.button?null:void t.focusPrevTab(e):null}]}},[a("div",{staticClass:"wizard-header"},[t._t("title",[a("h4",{staticClass:"wizard-title"},[t._v(t._s(t.title))]),t._v(" "),a("p",{staticClass:"category"},[t._v(t._s(t.subtitle))])])],2),t._v(" "),a("div",{staticClass:"wizard-navigation"},[t.isVertical?t._e():a("div",{staticClass:"wizard-progress-with-circle"},[a("div",{staticClass:"wizard-progress-bar",style:t.progressBarStyle})]),t._v(" "),a("ul",{staticClass:"wizard-nav wizard-nav-pills",class:t.stepsClasses,attrs:{role:"tablist"}},[t._l(t.tabs,function(e,n){return t._t("step",[a("wizard-step",{attrs:{tab:e,"step-size":t.stepSize,transition:t.transition,index:n},nativeOn:{click:function(e){t.navigateToTab(n)},keyup:function(e){if(!("button"in e)&&t._k(e.keyCode,"enter",13,e.key))return null;t.navigateToTab(n)}}})],{tab:e,index:n,navigateToTab:t.navigateToTab,stepSize:t.stepSize,transition:t.transition})})],2),t._v(" "),a("div",{staticClass:"wizard-tab-content"},[t._t("default",null,null,t.slotProps)],2)]),t._v(" "),t.hideButtons?t._e():a("div",{staticClass:"wizard-card-footer clearfix"},[t._t("footer",[a("div",{staticClass:"wizard-footer-left"},[t.displayPrevButton?a("span",{attrs:{role:"button",tabindex:"0"},on:{click:t.prevTab,keyup:function(e){if(!("button"in e)&&t._k(e.keyCode,"enter",13,e.key))return null;t.prevTab(e)}}},[t._t("prev",[a("wizard-button",{style:t.fillButtonStyle,attrs:{disabled:t.loading}},[t._v("\n              "+t._s(t.backButtonText)+"\n            ")])],null,t.slotProps)],2):t._e(),t._v(" "),t._t("custom-buttons-left",null,null,t.slotProps)],2),t._v(" "),a("div",{staticClass:"wizard-footer-right"},[t._t("custom-buttons-right",null,null,t.slotProps),t._v(" "),t.isLastStep?a("span",{attrs:{role:"button",tabindex:"0"},on:{click:t.nextTab,keyup:function(e){if(!("button"in e)&&t._k(e.keyCode,"enter",13,e.key))return null;t.nextTab(e)}}},[t._t("finish",[a("wizard-button",{style:t.fillButtonStyle},[t._v("\n              "+t._s(t.finishButtonText)+"\n            ")])],null,t.slotProps)],2):a("span",{attrs:{role:"button",tabindex:"0"},on:{click:t.nextTab,keyup:function(e){if(!("button"in e)&&t._k(e.keyCode,"enter",13,e.key))return null;t.nextTab(e)}}},[t._t("next",[a("wizard-button",{style:t.fillButtonStyle,attrs:{disabled:t.loading}},[t._v("\n            "+t._s(t.nextButtonText)+"\n           ")])],null,t.slotProps)],2)],2)],null,t.slotProps)],2)])},i=[],r={render:n,staticRenderFns:i};e.a=r},function(t,e,a){"use strict";var n=a(6),i=a(17),r=a(0),s=r(n.a,i.a,!1,null,null,null);e.a=s.exports},function(t,e,a){"use strict";var n=function(){var t=this,e=t.$createElement;return(t._self._c||e)("div",{directives:[{name:"show",rawName:"v-show",value:t.active,expression:"active"}],staticClass:"wizard-tab-container",attrs:{role:"tabpanel",id:t.tabId,"aria-hidden":!t.active,"aria-labelledby":"step-"+t.tabId}},[t._t("default",null,{active:t.active})],2)},i=[],r={render:n,staticRenderFns:i};e.a=r}])});
+
+/***/ }),
+
+/***/ "./node_modules/vue-form-wizard/dist/vue-form-wizard.min.css":
+/*!*******************************************************************!*\
+  !*** ./node_modules/vue-form-wizard/dist/vue-form-wizard.min.css ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./vue-form-wizard.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-form-wizard/dist/vue-form-wizard.min.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -62774,26 +64152,24 @@ var render = function() {
       "div",
       { staticClass: "col-md-12" },
       [
-        _vm.Organisation.length < 1
-          ? _c("div", { staticClass: "card-tools" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.newOrganisationModal()
-                    }
-                  }
-                },
-                [
-                  _vm._v("Add Organisation\n                      "),
-                  _c("i", { staticClass: "fas fa-plus fw" })
-                ]
-              )
-            ])
-          : _vm._e(),
+        _c("div", { staticClass: "card-tools" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.newOrganisationModal()
+                }
+              }
+            },
+            [
+              _vm._v("Add Organisation\n                      "),
+              _c("i", { staticClass: "fas fa-plus fw" })
+            ]
+          )
+        ]),
         _vm._v(" "),
         _vm._l(_vm.Organisation, function(organisation) {
           return _c(
@@ -64336,448 +65712,2380 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.editmodeOrganisation,
-                        expression: "editmodeOrganisation"
-                      }
-                    ],
-                    staticClass: "modal-title",
-                    attrs: { id: "OrganisationModalLabel" }
-                  },
-                  [_vm._v("Update Organisation User")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "h5",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: !_vm.editmodeOrganisation,
-                        expression: "!editmodeOrganisation"
-                      }
-                    ],
-                    staticClass: "modal-title",
-                    attrs: { id: "OrganisationModalLabel" }
-                  },
-                  [_vm._v("Add New Organisation User")]
-                ),
-                _vm._v(" "),
-                _vm._m(10)
-              ]),
+              _vm._m(10),
               _vm._v(" "),
               _c(
-                "form",
-                {
-                  attrs: { role: "form" },
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      _vm.editmodeOrganisation
-                        ? _vm.updateOrganisation(_vm.organisationform.id)
-                        : _vm.addOrganisation()
-                    }
-                  }
-                },
+                "div",
+                { staticClass: "modal-body" },
                 [
-                  _c("div", { staticClass: "modal-body" }, [
-                    _c("div", { staticClass: " row" }, [
+                  _c(
+                    "form-wizard",
+                    {
+                      attrs: { role: "form" },
+                      on: {
+                        "on-complete": function($event) {
+                          _vm.editmodeOrganisation
+                            ? _vm.updateOrganisation(_vm.organisationform.id)
+                            : _vm.addOrganisation()
+                        }
+                      }
+                    },
+                    [
                       _c(
-                        "div",
-                        { staticClass: "form-group col-md-4" },
-                        [
-                          _c(
-                            "label",
+                        "h5",
+                        {
+                          directives: [
                             {
-                              staticClass: "col-form-label",
-                              attrs: { for: "name" }
-                            },
-                            [_vm._v(" Organisation Name")]
-                          ),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.organisationform.name,
-                                expression: "organisationform.name"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid": _vm.organisationform.errors.has(
-                                "name"
-                              )
-                            },
-                            attrs: {
-                              type: "text",
-                              name: "name",
-                              placeholder: "Organisation Name"
-                            },
-                            domProps: { value: _vm.organisationform.name },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.organisationform,
-                                  "name",
-                                  $event.target.value
-                                )
-                              }
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.editmodeOrganisation,
+                              expression: "editmodeOrganisation"
                             }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: { form: _vm.organisationform, field: "name" }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-4" },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: " col-form-label",
-                              attrs: { for: "email" }
-                            },
-                            [_vm._v("Email ")]
-                          ),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.organisationform.email,
-                                expression: "organisationform.email"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid": _vm.organisationform.errors.has(
-                                "email"
-                              )
-                            },
-                            attrs: {
-                              type: "email",
-                              name: "email",
-                              placeholder: "Email Address"
-                            },
-                            domProps: { value: _vm.organisationform.email },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.organisationform,
-                                  "email",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.organisationform,
-                              field: "email"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-4" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "col-form-label",
-                            attrs: { for: "phone" }
-                          },
-                          [_vm._v(" Organisation Pxxhone")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          [
-                            _c("vue-tel-input", {
-                              staticClass: "form-control",
-                              class: {
-                                "is-invalid": _vm.organisationform.errors.has(
-                                  "phone"
-                                )
-                              },
-                              attrs: { name: "phone" },
-                              on: { onInput: _vm.InputPhone },
-                              model: {
-                                value: _vm.organisationform.phone,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.organisationform, "phone", $$v)
-                                },
-                                expression: "organisationform.phone"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("has-error", {
-                              staticStyle: { color: "#e83e8c" },
-                              attrs: {
-                                form: _vm.organisationform,
-                                field: "phone"
-                              }
-                            })
                           ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _vm.organisationform.phone
-                          ? _c("div", { staticStyle: { color: "#e83e8c" } }, [
-                              _c("span", [
-                                _vm._v("Is valid: "),
-                                _c("strong", [
-                                  _vm._v(_vm._s(_vm.phone1.isValid))
-                                ]),
-                                _vm._v(", ")
-                              ]),
-                              _vm._v(" "),
-                              _c("span", [
-                                _vm._v("Country: "),
-                                _c("strong", [
-                                  _vm._v(_vm._s(_vm.phone1.country))
-                                ])
-                              ])
-                            ])
-                          : _vm._e()
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: " row" }, [
+                          staticClass: "modal-title",
+                          attrs: { id: "OrganisationModalLabel" }
+                        },
+                        [_vm._v("Update Organisation & Director")]
+                      ),
+                      _vm._v(" "),
                       _c(
-                        "div",
-                        { staticClass: "form-group col-md-4" },
-                        [
-                          _c(
-                            "label",
+                        "h5",
+                        {
+                          directives: [
                             {
-                              staticClass: " col-form-label",
-                              attrs: { for: "landline" }
-                            },
-                            [_vm._v("Landline")]
-                          ),
-                          _vm._v(" "),
-                          _c("vue-tel-input", {
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid": _vm.organisationform.errors.has(
-                                "landline"
-                              )
-                            },
-                            attrs: { name: "landline" },
-                            on: { onInput: _vm.InputLandline },
-                            model: {
-                              value: _vm.organisationform.landline,
-                              callback: function($$v) {
-                                _vm.$set(_vm.organisationform, "landline", $$v)
-                              },
-                              expression: "organisationform.landline"
+                              name: "show",
+                              rawName: "v-show",
+                              value: !_vm.editmodeOrganisation,
+                              expression: "!editmodeOrganisation"
                             }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.organisationform,
-                              field: "landline"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.organisationform.landline
-                            ? _c("div", { staticStyle: { color: "#e83e8c" } }, [
-                                _c("span", [
-                                  _vm._v("Is valid: "),
-                                  _c("strong", [
-                                    _vm._v(_vm._s(_vm.landline1.isValid))
-                                  ]),
-                                  _vm._v(", ")
-                                ]),
+                          ],
+                          staticClass: "modal-title",
+                          attrs: { id: "OrganisationModalLabel" }
+                        },
+                        [_vm._v("Add New Organisation & Director")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "tab-content",
+                        {
+                          attrs: {
+                            title: "Organisation Details",
+                            icon: "fa fa-building",
+                            "before-change": _vm.validateOrganisation
+                          }
+                        },
+                        [
+                          _c("div", { staticClass: " row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "col-form-label",
+                                    attrs: { for: "name" }
+                                  },
+                                  [_vm._v(" Organisation Name")]
+                                ),
                                 _vm._v(" "),
-                                _c("span", [
-                                  _vm._v("Country: "),
-                                  _c("strong", [
-                                    _vm._v(_vm._s(_vm.landline1.country))
-                                  ])
-                                ])
-                              ])
-                            : _vm._e()
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-4" },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "col-form-label",
-                              attrs: { for: "website" }
-                            },
-                            [_vm._v("Website")]
-                          ),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.organisationform.website,
-                                expression: "organisationform.website"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid": _vm.organisationform.errors.has(
-                                "website"
-                              )
-                            },
-                            attrs: {
-                              type: "text",
-                              name: "website",
-                              placeholder: "Website"
-                            },
-                            domProps: { value: _vm.organisationform.website },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.organisationform,
-                                  "website",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.organisationform,
-                              field: "website"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-4" },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: " col-form-label",
-                              attrs: { for: "address" }
-                            },
-                            [_vm._v("address")]
-                          ),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.organisationform.address,
-                                expression: "organisationform.address"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid": _vm.organisationform.errors.has(
-                                "address"
-                              )
-                            },
-                            attrs: {
-                              type: "text",
-                              name: "Address",
-                              placeholder: "Address"
-                            },
-                            domProps: { value: _vm.organisationform.address },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.organisationform,
-                                  "address",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.organisationform,
-                              field: "address"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: " row" }, [
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-3" },
-                        [
-                          _c("label", { attrs: { for: "country_id" } }, [
-                            _vm._v("Select Country")
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.organisationform.name,
+                                      expression: "organisationform.name"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "name"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "text",
+                                    name: "name",
+                                    placeholder: "Organisation Name"
+                                  },
+                                  domProps: {
+                                    value: _vm.organisationform.name
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "name",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "name"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "organisation_email" }
+                                  },
+                                  [_vm._v("Email ")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.organisationform.organisation_email,
+                                      expression:
+                                        "organisationform.organisation_email"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "organisation_email"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "email",
+                                    name: "organisation_email",
+                                    placeholder: "Email Address"
+                                  },
+                                  domProps: {
+                                    value:
+                                      _vm.organisationform.organisation_email
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "organisation_email",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "organisation_email"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group col-md-4" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "col-form-label",
+                                  attrs: { for: "phone" }
+                                },
+                                [_vm._v(" Organisation Phone")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                [
+                                  _c("vue-tel-input", {
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.organisationform.errors.has(
+                                        "phone"
+                                      )
+                                    },
+                                    attrs: { name: "phone" },
+                                    on: { onInput: _vm.InputPhone },
+                                    model: {
+                                      value: _vm.organisationform.phone,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.organisationform,
+                                          "phone",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "organisationform.phone"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("has-error", {
+                                    staticStyle: { color: "#e83e8c" },
+                                    attrs: {
+                                      form: _vm.organisationform,
+                                      field: "phone"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _vm.organisationform.phone
+                                ? _c(
+                                    "div",
+                                    { staticStyle: { color: "#e83e8c" } },
+                                    [
+                                      _c("span", [
+                                        _vm._v("Is valid: "),
+                                        _c("strong", [
+                                          _vm._v(_vm._s(_vm.phone1.isValid))
+                                        ]),
+                                        _vm._v(", ")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("span", [
+                                        _vm._v("Country: "),
+                                        _c("strong", [
+                                          _vm._v(_vm._s(_vm.phone1.country))
+                                        ])
+                                      ])
+                                    ]
+                                  )
+                                : _vm._e()
+                            ])
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "select",
-                            {
+                          _c("div", { staticClass: " row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "landline" }
+                                  },
+                                  [_vm._v("Landline")]
+                                ),
+                                _vm._v(" "),
+                                _c("vue-tel-input", {
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "landline"
+                                    )
+                                  },
+                                  attrs: { name: "landline" },
+                                  on: { onInput: _vm.InputLandline },
+                                  model: {
+                                    value: _vm.organisationform.landline,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "landline",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "organisationform.landline"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "landline"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm.organisationform.landline
+                                  ? _c(
+                                      "div",
+                                      { staticStyle: { color: "#e83e8c" } },
+                                      [
+                                        _c("span", [
+                                          _vm._v("Is valid: "),
+                                          _c("strong", [
+                                            _vm._v(
+                                              _vm._s(_vm.landline1.isValid)
+                                            )
+                                          ]),
+                                          _vm._v(", ")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("span", [
+                                          _vm._v("Country: "),
+                                          _c("strong", [
+                                            _vm._v(
+                                              _vm._s(_vm.landline1.country)
+                                            )
+                                          ])
+                                        ])
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "col-form-label",
+                                    attrs: { for: "website" }
+                                  },
+                                  [_vm._v("Website")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.organisationform.website,
+                                      expression: "organisationform.website"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "website"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "text",
+                                    name: "website",
+                                    placeholder: "Website"
+                                  },
+                                  domProps: {
+                                    value: _vm.organisationform.website
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "website",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "website"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "address" }
+                                  },
+                                  [_vm._v("address")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.organisationform.address,
+                                      expression: "organisationform.address"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "address"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "text",
+                                    name: "Address",
+                                    placeholder: "Address"
+                                  },
+                                  domProps: {
+                                    value: _vm.organisationform.address
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "address",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "address"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: " row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-3" },
+                              [
+                                _c("label", { attrs: { for: "country_id" } }, [
+                                  _vm._v("Select Country")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.organisationform.country_id,
+                                        expression:
+                                          "organisationform.country_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.organisationform.errors.has(
+                                        "country_id"
+                                      )
+                                    },
+                                    on: {
+                                      change: [
+                                        function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "country_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        },
+                                        function($event) {
+                                          return _vm.countryCounties(
+                                            _vm.organisationform.country_id
+                                          )
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { disabled: "", value: "" } },
+                                      [_vm._v("Select Country")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.Countries, function(country) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: country.id,
+                                          domProps: { value: country.id }
+                                        },
+                                        [_vm._v(_vm._s(country.name))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "country_id"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-3" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "county_id" }
+                                  },
+                                  [_vm._v("County")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.organisationform.county_id,
+                                        expression: "organisationform.county_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.organisationform.errors.has(
+                                        "county_id"
+                                      )
+                                    },
+                                    on: {
+                                      change: [
+                                        function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "county_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        },
+                                        function($event) {
+                                          return _vm.countyConstituencies(
+                                            _vm.organisationform.county_id
+                                          )
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { disabled: "", value: "" } },
+                                      [_vm._v("Select County")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.Counties, function(county) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: county.id,
+                                          domProps: { value: county.id }
+                                        },
+                                        [_vm._v(_vm._s(county.name))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "county_id"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-3" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "constituency_id" }
+                                  },
+                                  [_vm._v("Constituency")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.organisationform.constituency_id,
+                                        expression:
+                                          "organisationform.constituency_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.organisationform.errors.has(
+                                        "constituency_id"
+                                      )
+                                    },
+                                    on: {
+                                      change: [
+                                        function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "constituency_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        },
+                                        function($event) {
+                                          return _vm.constituencyWards(
+                                            _vm.organisationform.constituency_id
+                                          )
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { disabled: "", value: "" } },
+                                      [_vm._v("Select County")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.Constituencies, function(
+                                      constituency
+                                    ) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: constituency.id,
+                                          domProps: { value: constituency.id }
+                                        },
+                                        [_vm._v(_vm._s(constituency.name))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "constituency_id"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-3" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "col-form-label",
+                                    attrs: { for: "ward_id" }
+                                  },
+                                  [_vm._v(" Ward ")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.organisationform.ward_id,
+                                        expression: "organisationform.ward_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.organisationform.errors.has(
+                                        "ward_id"
+                                      )
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.organisationform,
+                                          "ward_id",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { disabled: "", value: "" } },
+                                      [_vm._v("Select Town")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.Wards, function(ward) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: ward.id,
+                                          domProps: { value: ward.id }
+                                        },
+                                        [_vm._v(_vm._s(ward.name))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "ward_id"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: " row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-6" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "logo" }
+                                  },
+                                  [_vm._v("Organisation Logo")]
+                                ),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("input", {
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "logo"
+                                    )
+                                  },
+                                  attrs: { type: "file", name: "logo" },
+                                  on: {
+                                    change: function($event) {
+                                      return _vm.organisationChangeLogo($event)
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("img", {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.editmodeOrganisation,
+                                      expression: "editmodeOrganisation"
+                                    }
+                                  ],
+                                  attrs: {
+                                    src: _vm.updateOrganisationLogo(
+                                      _vm.organisationform.logo
+                                    ),
+                                    alt: "",
+                                    width: "100%"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("img", {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.editmodeOrganisation,
+                                      expression: "!editmodeOrganisation"
+                                    }
+                                  ],
+                                  attrs: {
+                                    src: _vm.organisationform.logo,
+                                    alt: "",
+                                    width: "100%"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: { form: _vm.aboutform, field: "logo" }
+                                })
+                              ],
+                              1
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "tab-content",
+                        {
+                          attrs: {
+                            title: "Organisation Director Info",
+                            "before-change": _vm.validateDirector
+                          }
+                        },
+                        [
+                          _c("div", { staticClass: "row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "col-form-label",
+                                    attrs: { for: "director_first_name" }
+                                  },
+                                  [_vm._v(" Director First Name")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.organisationform
+                                          .director_first_name,
+                                      expression:
+                                        "organisationform.director_first_name"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "director_first_name"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "text",
+                                    name: "director_first_name",
+                                    placeholder: "Director First Name"
+                                  },
+                                  domProps: {
+                                    value:
+                                      _vm.organisationform.director_first_name
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "director_first_name",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "director_first_name"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "director_last_name" }
+                                  },
+                                  [_vm._v("director_Last Name ")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.organisationform.director_last_name,
+                                      expression:
+                                        "organisationform.director_last_name"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "director_last_name"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "director_last_name",
+                                    name: "director_last_name",
+                                    placeholder: "director_Last Name"
+                                  },
+                                  domProps: {
+                                    value:
+                                      _vm.organisationform.director_last_name
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "director_last_name",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "director_last_name"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "email" }
+                                  },
+                                  [_vm._v("Email ")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.organisationform.email,
+                                      expression: "organisationform.email"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "email"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "email",
+                                    name: "email",
+                                    placeholder: "Email Address"
+                                  },
+                                  domProps: {
+                                    value: _vm.organisationform.email
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "email",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "email"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: " row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.organisationform.director_password,
+                                      expression:
+                                        "organisationform.director_password"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "director_password"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "password",
+                                    id: "director_password",
+                                    placeholder: "Director Password"
+                                  },
+                                  domProps: {
+                                    value:
+                                      _vm.organisationform.director_password
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "director_password",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "password"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group col-md-4" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "col-form-label",
+                                  attrs: { for: "director_phone" }
+                                },
+                                [_vm._v(" Director Phone")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                [
+                                  _c("vue-tel-input", {
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.organisationform.errors.has(
+                                        "director_phone"
+                                      )
+                                    },
+                                    attrs: { name: "director_phone" },
+                                    on: { onInput: _vm.DirectorInputPhone },
+                                    model: {
+                                      value:
+                                        _vm.organisationform.director_phone,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.organisationform,
+                                          "director_phone",
+                                          $$v
+                                        )
+                                      },
+                                      expression:
+                                        "organisationform.director_phone"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("has-error", {
+                                    staticStyle: { color: "#e83e8c" },
+                                    attrs: {
+                                      form: _vm.organisationform,
+                                      field: "director_phone"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _vm.organisationform.director_phone
+                                ? _c(
+                                    "div",
+                                    { staticStyle: { color: "#e83e8c" } },
+                                    [
+                                      _c("span", [
+                                        _vm._v("Is valid: "),
+                                        _c("strong", [
+                                          _vm._v(
+                                            _vm._s(_vm.director_phone1.isValid)
+                                          )
+                                        ]),
+                                        _vm._v(", ")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("span", [
+                                        _vm._v("Country: "),
+                                        _c("strong", [
+                                          _vm._v(
+                                            _vm._s(_vm.director_phone1.country)
+                                          )
+                                        ])
+                                      ])
+                                    ]
+                                  )
+                                : _vm._e()
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "director_landline" }
+                                  },
+                                  [_vm._v("Director Landline")]
+                                ),
+                                _vm._v(" "),
+                                _c("vue-tel-input", {
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "director_landline"
+                                    )
+                                  },
+                                  attrs: { name: "director_landline" },
+                                  on: { onInput: _vm.DirectorInputLandline },
+                                  model: {
+                                    value:
+                                      _vm.organisationform.director_landline,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "director_landline",
+                                        $$v
+                                      )
+                                    },
+                                    expression:
+                                      "organisationform.director_landline"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "director_landline"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm.organisationform.director_landline
+                                  ? _c(
+                                      "div",
+                                      { staticStyle: { color: "#e83e8c" } },
+                                      [
+                                        _c("span", [
+                                          _vm._v("Is valid: "),
+                                          _c("strong", [
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.director_landline1.isValid
+                                              )
+                                            )
+                                          ]),
+                                          _vm._v(", ")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("span", [
+                                          _vm._v("Country: "),
+                                          _c("strong", [
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.director_landline1.country
+                                              )
+                                            )
+                                          ])
+                                        ])
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ],
+                              1
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: " row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "col-form-label",
+                                    attrs: { for: "director_id_no" }
+                                  },
+                                  [_vm._v("Director ID no.")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.organisationform.director_id_no,
+                                      expression:
+                                        "organisationform.director_id_no"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "director_id_no"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "text",
+                                    name: "director_id_no",
+                                    placeholder: "Director ID NO"
+                                  },
+                                  domProps: {
+                                    value: _vm.organisationform.director_id_no
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "director_id_no",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "director_id_no"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "director_address" }
+                                  },
+                                  [_vm._v("Director Address")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.organisationform.director_address,
+                                      expression:
+                                        "organisationform.director_address"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "director_address"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "text",
+                                    name: "Address",
+                                    placeholder: "Director Address"
+                                  },
+                                  domProps: {
+                                    value: _vm.organisationform.director_address
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "director_address",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "director_address"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: " row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-3" },
+                              [
+                                _c(
+                                  "label",
+                                  { attrs: { for: "director_country_id" } },
+                                  [_vm._v("Select Country")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.organisationform
+                                            .director_country_id,
+                                        expression:
+                                          "organisationform.director_country_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.organisationform.errors.has(
+                                        "director_country_id"
+                                      )
+                                    },
+                                    on: {
+                                      change: [
+                                        function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "director_country_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        },
+                                        function($event) {
+                                          return _vm.DirectorcountryCounties(
+                                            _vm.organisationform
+                                              .director_country_id
+                                          )
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { disabled: "", value: "" } },
+                                      [_vm._v("Select Country")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.Countries, function(country) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: country.id,
+                                          domProps: { value: country.id }
+                                        },
+                                        [_vm._v(_vm._s(country.name))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "director_country_id"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-3" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "director_county_id" }
+                                  },
+                                  [_vm._v("County")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.organisationform
+                                            .director_county_id,
+                                        expression:
+                                          "organisationform.director_county_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.organisationform.errors.has(
+                                        "director_county_id"
+                                      )
+                                    },
+                                    on: {
+                                      change: [
+                                        function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "director_county_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        },
+                                        function($event) {
+                                          return _vm.DirectorcountyConstituencies(
+                                            _vm.organisationform
+                                              .director_county_id
+                                          )
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { disabled: "", value: "" } },
+                                      [_vm._v("Select County")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.Counties, function(county) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: county.id,
+                                          domProps: { value: county.id }
+                                        },
+                                        [_vm._v(_vm._s(county.name))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "director_county_id"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-3" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "director_constituency_id" }
+                                  },
+                                  [_vm._v("Constituency")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.organisationform
+                                            .director_constituency_id,
+                                        expression:
+                                          "organisationform.director_constituency_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.organisationform.errors.has(
+                                        "director_constituency_id"
+                                      )
+                                    },
+                                    on: {
+                                      change: [
+                                        function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "director_constituency_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        },
+                                        function($event) {
+                                          return _vm.DirectorconstituencyWards(
+                                            _vm.organisationform
+                                              .director_constituency_id
+                                          )
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { disabled: "", value: "" } },
+                                      [_vm._v("Select County")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.Constituencies, function(
+                                      constituency
+                                    ) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: constituency.id,
+                                          domProps: { value: constituency.id }
+                                        },
+                                        [_vm._v(_vm._s(constituency.name))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "director_constituency_id"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-3" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "col-form-label",
+                                    attrs: { for: "director_ward_id" }
+                                  },
+                                  [_vm._v(" Ward ")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.organisationform.director_ward_id,
+                                        expression:
+                                          "organisationform.director_ward_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.organisationform.errors.has(
+                                        "director_ward_id"
+                                      )
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.organisationform,
+                                          "director_ward_id",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { disabled: "", value: "" } },
+                                      [_vm._v("Select Ward")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.Wards, function(ward) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: ward.id,
+                                          domProps: { value: ward.id }
+                                        },
+                                        [_vm._v(_vm._s(ward.name))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "director_ward_id"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: " row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "director_passport_image" }
+                                  },
+                                  [_vm._v("Director PassPort Image")]
+                                ),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("input", {
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "director_passport_image"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "file",
+                                    name: "director_passport_image"
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      return _vm.organisationChangeDirectorPImage(
+                                        $event
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("img", {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.editmodeOrganisation,
+                                      expression: "editmodeOrganisation"
+                                    }
+                                  ],
+                                  attrs: {
+                                    src: _vm.updateOrganisationDirectorPImage(
+                                      _vm.organisationform
+                                        .director_passport_image
+                                    ),
+                                    alt: "",
+                                    width: "100%"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("img", {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.editmodeOrganisation,
+                                      expression: "!editmodeOrganisation"
+                                    }
+                                  ],
+                                  attrs: {
+                                    src:
+                                      _vm.organisationform
+                                        .director_passport_image,
+                                    alt: "",
+                                    width: "100%"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "director_passport_image"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: {
+                                      for: "frontside_director_id_photo"
+                                    }
+                                  },
+                                  [_vm._v("Director FrontSide ID Photo")]
+                                ),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("input", {
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "frontside_director_id_photo"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "file",
+                                    name: "frontside_director_id_photo"
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      return _vm.organisationChangeDirectorFIDPhoto(
+                                        $event
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("img", {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.editmodeOrganisation,
+                                      expression: "editmodeOrganisation"
+                                    }
+                                  ],
+                                  attrs: {
+                                    src: _vm.updateOrganisationDirectorFIDPhoto(
+                                      _vm.organisationform
+                                        .frontside_director_id_photo
+                                    ),
+                                    alt: "",
+                                    width: "100%"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("img", {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.editmodeOrganisation,
+                                      expression: "!editmodeOrganisation"
+                                    }
+                                  ],
+                                  attrs: {
+                                    src:
+                                      _vm.organisationform
+                                        .frontside_director_id_photo,
+                                    alt: "",
+                                    width: "100%"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "frontside_director_id_photo"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "backside_director_i_photod" }
+                                  },
+                                  [_vm._v("Director BackSide ID Photo")]
+                                ),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("input", {
+                                  class: {
+                                    "is-invalid": _vm.organisationform.errors.has(
+                                      "backside_director_id"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "file",
+                                    name: "backside_director_id_photo"
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      return _vm.organisationChangeDirectorBIDPhoto(
+                                        $event
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("img", {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.editmodeOrganisation,
+                                      expression: "editmodeOrganisation"
+                                    }
+                                  ],
+                                  attrs: {
+                                    src: _vm.updateOrganisationDirectorBIDPhoto(
+                                      _vm.organisationform
+                                        .backside_director_id_photo
+                                    ),
+                                    alt: "",
+                                    width: "100%"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("img", {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.editmodeOrganisation,
+                                      expression: "!editmodeOrganisation"
+                                    }
+                                  ],
+                                  attrs: {
+                                    src:
+                                      _vm.organisationform
+                                        .backside_director_id_photo,
+                                    alt: "",
+                                    width: "100%"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "backside_director_id_photo"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("tab-content", { attrs: { title: "Last step" } }, [
+                        _vm._v(
+                          "\n                              Organsation Information\n\n                              "
+                        ),
+                        _c("div", { staticClass: " row" }, [
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-form-label",
+                                attrs: { for: "name" }
+                              },
+                              [_vm._v(" Organisation Name")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
                               directives: [
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.organisationform.country_id,
-                                  expression: "organisationform.country_id"
+                                  value: _vm.organisationform.name,
+                                  expression: "organisationform.name"
                                 }
                               ],
                               staticClass: "form-control",
-                              class: {
-                                "is-invalid": _vm.organisationform.errors.has(
-                                  "country_id"
-                                )
+                              attrs: { readonly: true },
+                              domProps: { value: _vm.organisationform.name },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.organisationform,
+                                    "name",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "organisation_email" }
+                              },
+                              [_vm._v("Email ")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value:
+                                    _vm.organisationform.organisation_email,
+                                  expression:
+                                    "organisationform.organisation_email"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { readonly: true },
+                              domProps: {
+                                value: _vm.organisationform.organisation_email
                               },
                               on: {
-                                change: [
-                                  function($event) {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.organisationform,
+                                    "organisation_email",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-form-label",
+                                attrs: { for: "phone" }
+                              },
+                              [_vm._v(" Organisation Phone")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              [
+                                _c("vue-tel-input", {
+                                  staticClass: "form-control",
+                                  attrs: { readonly: true },
+                                  model: {
+                                    value: _vm.organisationform.phone,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "phone",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "organisationform.phone"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.organisationform.phone
+                              ? _c(
+                                  "div",
+                                  { staticStyle: { color: "#e83e8c" } },
+                                  [
+                                    _c("span", [
+                                      _vm._v("Is valid: "),
+                                      _c("strong", [
+                                        _vm._v(_vm._s(_vm.phone1.isValid))
+                                      ]),
+                                      _vm._v(", ")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("span", [
+                                      _vm._v("Country: "),
+                                      _c("strong", [
+                                        _vm._v(_vm._s(_vm.phone1.country))
+                                      ])
+                                    ])
+                                  ]
+                                )
+                              : _vm._e()
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: " row" }, [
+                          _c(
+                            "div",
+                            { staticClass: "form-group col-md-4" },
+                            [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: " col-form-label",
+                                  attrs: { for: "landline" }
+                                },
+                                [_vm._v("Landline")]
+                              ),
+                              _vm._v(" "),
+                              _c("vue-tel-input", {
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                model: {
+                                  value: _vm.organisationform.landline,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.organisationform,
+                                      "landline",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "organisationform.landline"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.organisationform.landline
+                                ? _c(
+                                    "div",
+                                    { staticStyle: { color: "#e83e8c" } },
+                                    [
+                                      _c("span", [
+                                        _vm._v("Is valid: "),
+                                        _c("strong", [
+                                          _vm._v(_vm._s(_vm.landline1.isValid))
+                                        ]),
+                                        _vm._v(", ")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("span", [
+                                        _vm._v("Country: "),
+                                        _c("strong", [
+                                          _vm._v(_vm._s(_vm.landline1.country))
+                                        ])
+                                      ])
+                                    ]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-form-label",
+                                attrs: { for: "website" }
+                              },
+                              [_vm._v("Website")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.organisationform.website,
+                                  expression: "organisationform.website"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { readonly: true },
+                              domProps: { value: _vm.organisationform.website },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.organisationform,
+                                    "website",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "address" }
+                              },
+                              [_vm._v("address")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.organisationform.address,
+                                  expression: "organisationform.address"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { readonly: true },
+                              domProps: { value: _vm.organisationform.address },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.organisationform,
+                                    "address",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: " row" }, [
+                          _c("div", { staticClass: "form-group col-md-3" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "country_id" }
+                              },
+                              [_vm._v("Country")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.organisationform.country_id,
+                                    expression: "organisationform.country_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                on: {
+                                  change: function($event) {
                                     var $$selectedVal = Array.prototype.filter
                                       .call($event.target.options, function(o) {
                                         return o.selected
@@ -64794,22 +68102,9 @@ var render = function() {
                                         ? $$selectedVal
                                         : $$selectedVal[0]
                                     )
-                                  },
-                                  function($event) {
-                                    return _vm.countryCounties(
-                                      _vm.organisationform.country_id
-                                    )
                                   }
-                                ]
-                              }
-                            },
-                            [
-                              _c(
-                                "option",
-                                { attrs: { disabled: "", value: "" } },
-                                [_vm._v("Select Country")]
-                              ),
-                              _vm._v(" "),
+                                }
+                              },
                               _vm._l(_vm.Countries, function(country) {
                                 return _c(
                                   "option",
@@ -64819,55 +68114,36 @@ var render = function() {
                                   },
                                   [_vm._v(_vm._s(country.name))]
                                 )
-                              })
-                            ],
-                            2
-                          ),
+                              }),
+                              0
+                            )
+                          ]),
                           _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.organisationform,
-                              field: "country_id"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-3" },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: " col-form-label",
-                              attrs: { for: "county_id" }
-                            },
-                            [_vm._v("County")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.organisationform.county_id,
-                                  expression: "organisationform.county_id"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                "is-invalid": _vm.organisationform.errors.has(
-                                  "county_id"
-                                )
+                          _c("div", { staticClass: "form-group col-md-3" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "county_id" }
                               },
-                              on: {
-                                change: [
-                                  function($event) {
+                              [_vm._v("County")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.organisationform.county_id,
+                                    expression: "organisationform.county_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                on: {
+                                  change: function($event) {
                                     var $$selectedVal = Array.prototype.filter
                                       .call($event.target.options, function(o) {
                                         return o.selected
@@ -64884,22 +68160,9 @@ var render = function() {
                                         ? $$selectedVal
                                         : $$selectedVal[0]
                                     )
-                                  },
-                                  function($event) {
-                                    return _vm.countyConstituencies(
-                                      _vm.organisationform.county_id
-                                    )
                                   }
-                                ]
-                              }
-                            },
-                            [
-                              _c(
-                                "option",
-                                { attrs: { disabled: "", value: "" } },
-                                [_vm._v("Select County")]
-                              ),
-                              _vm._v(" "),
+                                }
+                              },
                               _vm._l(_vm.Counties, function(county) {
                                 return _c(
                                   "option",
@@ -64909,55 +68172,37 @@ var render = function() {
                                   },
                                   [_vm._v(_vm._s(county.name))]
                                 )
-                              })
-                            ],
-                            2
-                          ),
+                              }),
+                              0
+                            )
+                          ]),
                           _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.organisationform,
-                              field: "county_id"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-3" },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: " col-form-label",
-                              attrs: { for: "constituency_id" }
-                            },
-                            [_vm._v("Constituency")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.organisationform.constituency_id,
-                                  expression: "organisationform.constituency_id"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                "is-invalid": _vm.organisationform.errors.has(
-                                  "constituency_id"
-                                )
+                          _c("div", { staticClass: "form-group col-md-3" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "constituency_id" }
                               },
-                              on: {
-                                change: [
-                                  function($event) {
+                              [_vm._v("Constituency")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.organisationform.constituency_id,
+                                    expression:
+                                      "organisationform.constituency_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                on: {
+                                  change: function($event) {
                                     var $$selectedVal = Array.prototype.filter
                                       .call($event.target.options, function(o) {
                                         return o.selected
@@ -64974,22 +68219,9 @@ var render = function() {
                                         ? $$selectedVal
                                         : $$selectedVal[0]
                                     )
-                                  },
-                                  function($event) {
-                                    return _vm.constituencyWards(
-                                      _vm.organisationform.constituency_id
-                                    )
                                   }
-                                ]
-                              }
-                            },
-                            [
-                              _c(
-                                "option",
-                                { attrs: { disabled: "", value: "" } },
-                                [_vm._v("Select County")]
-                              ),
-                              _vm._v(" "),
+                                }
+                              },
                               _vm._l(_vm.Constituencies, function(
                                 constituency
                               ) {
@@ -65001,80 +68233,55 @@ var render = function() {
                                   },
                                   [_vm._v(_vm._s(constituency.name))]
                                 )
-                              })
-                            ],
-                            2
-                          ),
+                              }),
+                              0
+                            )
+                          ]),
                           _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.organisationform,
-                              field: "constituency_id"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-3" },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "col-form-label",
-                              attrs: { for: "ward_id" }
-                            },
-                            [_vm._v(" Ward ")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.organisationform.ward_id,
-                                  expression: "organisationform.ward_id"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                "is-invalid": _vm.organisationform.errors.has(
-                                  "ward_id"
-                                )
+                          _c("div", { staticClass: "form-group col-md-3" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-form-label",
+                                attrs: { for: "ward_id" }
                               },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.organisationform,
-                                    "ward_id",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
+                              [_vm._v(" Ward ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.organisationform.ward_id,
+                                    expression: "organisationform.ward_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.organisationform,
+                                      "ward_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
                                 }
-                              }
-                            },
-                            [
-                              _c(
-                                "option",
-                                { attrs: { disabled: "", value: "" } },
-                                [_vm._v("Select Town")]
-                              ),
-                              _vm._v(" "),
+                              },
                               _vm._l(_vm.Wards, function(ward) {
                                 return _c(
                                   "option",
@@ -65084,141 +68291,845 @@ var render = function() {
                                   },
                                   [_vm._v(_vm._s(ward.name))]
                                 )
+                              }),
+                              0
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: " row" }, [
+                          _c(
+                            "div",
+                            { staticClass: "form-group col-md-6" },
+                            [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: " col-form-label",
+                                  attrs: { for: "logo" }
+                                },
+                                [_vm._v("Organisation Logo")]
+                              ),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("input", {
+                                attrs: {
+                                  type: "file",
+                                  name: "logo",
+                                  readonly: true
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("img", {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.editmodeOrganisation,
+                                    expression: "editmodeOrganisation"
+                                  }
+                                ],
+                                attrs: {
+                                  src: _vm.updateOrganisationLogo(
+                                    _vm.organisationform.logo
+                                  ),
+                                  alt: "",
+                                  width: "100%"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("img", {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: !_vm.editmodeOrganisation,
+                                    expression: "!editmodeOrganisation"
+                                  }
+                                ],
+                                attrs: {
+                                  src: _vm.organisationform.logo,
+                                  alt: "",
+                                  width: "100%"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("has-error", {
+                                staticStyle: { color: "#e83e8c" },
+                                attrs: { form: _vm.aboutform, field: "logo" }
                               })
                             ],
-                            2
-                          ),
+                            1
+                          )
+                        ]),
+                        _vm._v(
+                          "\n\n                              Director Info\n                              "
+                        ),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-form-label",
+                                attrs: { for: "director_first_name" }
+                              },
+                              [_vm._v(" Director First Name")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value:
+                                    _vm.organisationform.director_first_name,
+                                  expression:
+                                    "organisationform.director_first_name"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { readonly: true },
+                              domProps: {
+                                value: _vm.organisationform.director_first_name
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.organisationform,
+                                    "director_first_name",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
                           _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: {
-                              form: _vm.organisationform,
-                              field: "ward_id"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: " row" }, [
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-6" },
-                        [
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "director_last_name" }
+                              },
+                              [_vm._v("director_Last Name ")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value:
+                                    _vm.organisationform.director_last_name,
+                                  expression:
+                                    "organisationform.director_last_name"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { readonly: true },
+                              domProps: {
+                                value: _vm.organisationform.director_last_name
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.organisationform,
+                                    "director_last_name",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "email" }
+                              },
+                              [_vm._v("Email ")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.organisationform.email,
+                                  expression: "organisationform.email"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { readonly: true },
+                              domProps: { value: _vm.organisationform.email },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.organisationform,
+                                    "email",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: " row" }, [
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.organisationform.director_password,
+                                  expression:
+                                    "organisationform.director_password"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { type: "password", readonly: true },
+                              domProps: {
+                                value: _vm.organisationform.director_password
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.organisationform,
+                                    "director_password",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-form-label",
+                                attrs: { for: "director_phone" }
+                              },
+                              [_vm._v(" Director Phone")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              [
+                                _c("vue-tel-input", {
+                                  staticClass: "form-control",
+                                  attrs: { readonly: true },
+                                  model: {
+                                    value: _vm.organisationform.director_phone,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.organisationform,
+                                        "director_phone",
+                                        $$v
+                                      )
+                                    },
+                                    expression:
+                                      "organisationform.director_phone"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.organisationform.director_phone
+                              ? _c(
+                                  "div",
+                                  { staticStyle: { color: "#e83e8c" } },
+                                  [
+                                    _c("span", [
+                                      _vm._v("Is valid: "),
+                                      _c("strong", [
+                                        _vm._v(
+                                          _vm._s(_vm.director_phone1.isValid)
+                                        )
+                                      ]),
+                                      _vm._v(", ")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("span", [
+                                      _vm._v("Country: "),
+                                      _c("strong", [
+                                        _vm._v(
+                                          _vm._s(_vm.director_phone1.country)
+                                        )
+                                      ])
+                                    ])
+                                  ]
+                                )
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
                           _c(
-                            "label",
-                            {
-                              staticClass: " col-form-label",
-                              attrs: { for: "logo" }
-                            },
-                            [_vm._v("Organisation Logo")]
-                          ),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("input", {
-                            class: {
-                              "is-invalid": _vm.organisationform.errors.has(
-                                "logo"
-                              )
-                            },
-                            attrs: { type: "file", name: "logo" },
-                            on: {
-                              change: function($event) {
-                                return _vm.organisationChangeLogo($event)
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("img", {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.editmodeOrganisation,
-                                expression: "editmodeOrganisation"
-                              }
-                            ],
-                            attrs: {
-                              src: _vm.updateOrganisationLogo(
-                                _vm.organisationform.logo
+                            "div",
+                            { staticClass: "form-group col-md-4" },
+                            [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: " col-form-label",
+                                  attrs: { for: "director_landline" }
+                                },
+                                [_vm._v("Director Landline")]
                               ),
-                              alt: "",
-                              width: "100%"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("img", {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: !_vm.editmodeOrganisation,
-                                expression: "!editmodeOrganisation"
-                              }
+                              _vm._v(" "),
+                              _c("vue-tel-input", {
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                model: {
+                                  value: _vm.organisationform.director_landline,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.organisationform,
+                                      "director_landline",
+                                      $$v
+                                    )
+                                  },
+                                  expression:
+                                    "organisationform.director_landline"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.organisationform.director_landline
+                                ? _c(
+                                    "div",
+                                    { staticStyle: { color: "#e83e8c" } },
+                                    [
+                                      _c("span", [
+                                        _vm._v("Is valid: "),
+                                        _c("strong", [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm.director_landline1.isValid
+                                            )
+                                          )
+                                        ]),
+                                        _vm._v(", ")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("span", [
+                                        _vm._v("Country: "),
+                                        _c("strong", [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm.director_landline1.country
+                                            )
+                                          )
+                                        ])
+                                      ])
+                                    ]
+                                  )
+                                : _vm._e()
                             ],
-                            attrs: {
-                              src: _vm.organisationform.logo,
-                              alt: "",
-                              width: "100%"
-                            }
-                          }),
+                            1
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: " row" }, [
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-form-label",
+                                attrs: { for: "director_id_no" }
+                              },
+                              [_vm._v("Director ID no.")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.organisationform.director_id_no,
+                                  expression: "organisationform.director_id_no"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { readonly: true },
+                              domProps: {
+                                value: _vm.organisationform.director_id_no
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.organisationform,
+                                    "director_id_no",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
                           _vm._v(" "),
-                          _c("has-error", {
-                            staticStyle: { color: "#e83e8c" },
-                            attrs: { form: _vm.aboutform, field: "logo" }
-                          })
-                        ],
-                        1
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("Close")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.editmodeOrganisation,
-                            expression: "editmodeOrganisation"
-                          }
-                        ],
-                        staticClass: "btn btn-success",
-                        attrs: { type: "submit" }
-                      },
-                      [_vm._v("Update")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: !_vm.editmodeOrganisation,
-                            expression: "!editmodeOrganisation"
-                          }
-                        ],
-                        staticClass: "btn btn-primary",
-                        attrs: { type: "submit" }
-                      },
-                      [_vm._v("Create")]
-                    )
-                  ])
-                ]
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "director_address" }
+                              },
+                              [_vm._v("Director Address")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.organisationform.director_address,
+                                  expression:
+                                    "organisationform.director_address"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { readonly: true },
+                              domProps: {
+                                value: _vm.organisationform.director_address
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.organisationform,
+                                    "director_address",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: " row" }, [
+                          _c("div", { staticClass: "form-group col-md-3" }, [
+                            _c(
+                              "label",
+                              { attrs: { for: "director_country_id" } },
+                              [_vm._v("Select Country")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value:
+                                      _vm.organisationform.director_country_id,
+                                    expression:
+                                      "organisationform.director_country_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.organisationform,
+                                      "director_country_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.Countries, function(country) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: country.id,
+                                    domProps: { value: country.id }
+                                  },
+                                  [_vm._v(_vm._s(country.name))]
+                                )
+                              }),
+                              0
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-3" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "director_county_id" }
+                              },
+                              [_vm._v("County")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value:
+                                      _vm.organisationform.director_county_id,
+                                    expression:
+                                      "organisationform.director_county_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.organisationform,
+                                      "director_county_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.Counties, function(county) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: county.id,
+                                    domProps: { value: county.id }
+                                  },
+                                  [_vm._v(_vm._s(county.name))]
+                                )
+                              }),
+                              0
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-3" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "director_constituency_id" }
+                              },
+                              [_vm._v("Constituency")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value:
+                                      _vm.organisationform
+                                        .director_constituency_id,
+                                    expression:
+                                      "organisationform.director_constituency_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.organisationform,
+                                      "director_constituency_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.Constituencies, function(
+                                constituency
+                              ) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: constituency.id,
+                                    domProps: { value: constituency.id }
+                                  },
+                                  [_vm._v(_vm._s(constituency.name))]
+                                )
+                              }),
+                              0
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-3" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-form-label",
+                                attrs: { for: "director_ward_id" }
+                              },
+                              [_vm._v(" Ward ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value:
+                                      _vm.organisationform.director_ward_id,
+                                    expression:
+                                      "organisationform.director_ward_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.organisationform,
+                                      "director_ward_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.Wards, function(ward) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: ward.id,
+                                    domProps: { value: ward.id }
+                                  },
+                                  [_vm._v(_vm._s(ward.name))]
+                                )
+                              }),
+                              0
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: " row" }, [
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "director_passport_image" }
+                              },
+                              [_vm._v("Director PassPort Image")]
+                            ),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("input", {
+                              attrs: { type: "file", readonly: true }
+                            }),
+                            _vm._v(" "),
+                            _c("img", {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.editmodeOrganisation,
+                                  expression: "editmodeOrganisation"
+                                }
+                              ],
+                              attrs: {
+                                src: _vm.updateOrganisationDirectorPImage(
+                                  _vm.organisationform.director_passport_image
+                                ),
+                                alt: "",
+                                width: "100%"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("img", {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.editmodeOrganisation,
+                                  expression: "!editmodeOrganisation"
+                                }
+                              ],
+                              attrs: {
+                                src:
+                                  _vm.organisationform.director_passport_image,
+                                alt: "",
+                                width: "100%"
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "frontside_director_id_photo" }
+                              },
+                              [_vm._v("Director FrontSide ID Photo")]
+                            ),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("input", {
+                              attrs: { type: "file", readonly: true }
+                            }),
+                            _vm._v(" "),
+                            _c("img", {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.editmodeOrganisation,
+                                  expression: "editmodeOrganisation"
+                                }
+                              ],
+                              attrs: {
+                                src: _vm.updateOrganisationDirectorFIDPhoto(
+                                  _vm.organisationform
+                                    .frontside_director_id_photo
+                                ),
+                                alt: "",
+                                width: "100%"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("img", {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.editmodeOrganisation,
+                                  expression: "!editmodeOrganisation"
+                                }
+                              ],
+                              attrs: {
+                                src:
+                                  _vm.organisationform
+                                    .frontside_director_id_photo,
+                                alt: "",
+                                width: "100%"
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "backside_director_i_photod" }
+                              },
+                              [_vm._v("Director BackSide ID Photo")]
+                            ),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("input", {
+                              attrs: { type: "file", readonly: true }
+                            }),
+                            _vm._v(" "),
+                            _c("img", {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.editmodeOrganisation,
+                                  expression: "editmodeOrganisation"
+                                }
+                              ],
+                              attrs: {
+                                src: _vm.updateOrganisationDirectorBIDPhoto(
+                                  _vm.organisationform
+                                    .backside_director_id_photo
+                                ),
+                                alt: "",
+                                width: "100%"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("img", {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.editmodeOrganisation,
+                                  expression: "!editmodeOrganisation"
+                                }
+                              ],
+                              attrs: {
+                                src:
+                                  _vm.organisationform
+                                    .backside_director_id_photo,
+                                alt: "",
+                                width: "100%"
+                              }
+                            })
+                          ])
+                        ])
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
               )
             ])
           ]
@@ -67423,7 +71334,7 @@ var staticRenderFns = [
                   },
                   [
                     _vm._v(
-                      "Follow us\n                                              "
+                      "Follow us\n                                                  "
                     ),
                     _c("i", { staticClass: "fas fa-plus fw" })
                   ]
@@ -67451,7 +71362,7 @@ var staticRenderFns = [
                   },
                   [
                     _vm._v(
-                      "Follow us\n                                              "
+                      "Follow us\n                                                  "
                     ),
                     _c("i", { staticClass: "fas fa-plus fw" })
                   ]
@@ -67477,7 +71388,7 @@ var staticRenderFns = [
                   },
                   [
                     _vm._v(
-                      "Follow us\n                                              "
+                      "Follow us\n                                                  "
                     ),
                     _c("i", { staticClass: "fas fa-plus fw" })
                   ]
@@ -67697,18 +71608,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "modal",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
   },
   function() {
     var _vm = this
@@ -87340,6 +91253,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
 /* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var vue_form_wizard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-form-wizard */ "./node_modules/vue-form-wizard/dist/vue-form-wizard.js");
+/* harmony import */ var vue_form_wizard__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vue_form_wizard__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var vue_form_wizard_dist_vue_form_wizard_min_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue-form-wizard/dist/vue-form-wizard.min.css */ "./node_modules/vue-form-wizard/dist/vue-form-wizard.min.css");
+/* harmony import */ var vue_form_wizard_dist_vue_form_wizard_min_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(vue_form_wizard_dist_vue_form_wizard_min_css__WEBPACK_IMPORTED_MODULE_10__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // Support vuex
@@ -87381,7 +91298,11 @@ window.toast = toast; //vform
 
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_8__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_8__["HasError"]);
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_8__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_8__["AlertError"]);
-window.Form = vform__WEBPACK_IMPORTED_MODULE_8__["Form"]; //editor support
+window.Form = vform__WEBPACK_IMPORTED_MODULE_8__["Form"]; //global registration
+
+
+
+Vue.use(vue_form_wizard__WEBPACK_IMPORTED_MODULE_9___default.a); //editor support
 // import 'v-markdown-editor/dist/index.css';
 // import Editor from 'v-markdown-editor';
 // // global register
