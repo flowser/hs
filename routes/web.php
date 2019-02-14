@@ -222,12 +222,12 @@ Route::get('/home', 'HomeController@index')->name('home');
     //     /*
     //      * Specifics
     //      */
-        Route::get('organisation/show/{country}', [OrganisationController::class, 'show'])->name('organisation.show');
-        Route::get('organisation/edit/{country}', [OrganisationController::class, 'edit'])->name('organisation.edit');
-        Route::patch('organisation/updateverify/info/', [OrganisationController::class, 'updateverifyOrganisationInfo'])->name('organisation.updateverify');
-        Route::patch('organisation/updateverify/director/', [OrganisationController::class, 'updateverifyDirectorInfo'])->name('organisation.updateverifydirector');
-        Route::patch('organisation/update/{country}', [OrganisationController::class, 'update'])->name('organisation.update');
-        Route::get('organisation/delete/{country}', [OrganisationController::class, 'destroy'])->name('organisation.destroy');
+        Route::get('organisation/show/{organisation}', [OrganisationController::class, 'show'])->name('organisation.show');
+        Route::get('organisation/edit/{organisation}', [OrganisationController::class, 'edit'])->name('organisation.edit');
+        Route::patch('organisation/updateverify/info/{organisation}', [OrganisationController::class, 'updateverifyOrganisationInfo'])->name('organisation.updateverify');
+        Route::patch('organisation/updateverify/director/{organisation}', [OrganisationController::class, 'updateverifyDirectorInfo'])->name('organisation.updateverifydirector');
+        Route::patch('organisation/update/{organisation}', [OrganisationController::class, 'update'])->name('organisation.update');
+        Route::get('organisation/delete/{organisation}', [OrganisationController::class, 'destroy'])->name('organisation.destroy');
 
 
         // about

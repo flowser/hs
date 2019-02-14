@@ -519,8 +519,8 @@
                         <form-wizard role="form" @on-complete="editmodeOrganisation ? updateOrganisation(organisationform.id) : addOrganisation ()" >
                             <h5 class="modal-title" v-show="editmodeOrganisation" id="OrganisationModalLabel">Update Organisation & Director</h5>
                             <h5 class="modal-title" v-show="!editmodeOrganisation" id="OrganisationModalLabel">Add New Organisation & Director</h5>
-                            <tab-content title="Organisation Details" icon="fa fa-building" :before-change="validateOrganisation" >
-
+                            <tab-content title="Organisation Details" icon="fa fa-building" :before-change="editmodeOrganisation ? validateOrganisationUpdate : validateOrganisation" >
+                                {{organisationform.id}}
                                 <div class=" row">
                                     <div class="form-group col-md-4">
                                         <label for="name" class="col-form-label"> Organisation Name</label>
@@ -624,7 +624,7 @@
                                 </div>
                             </tab-content>
                             <!-- :before-change="validateDirector()" -->
-                            <tab-content title="Organisation Director Info" :before-change="validateDirector">
+                            <tab-content title="Organisation Director Info" :before-change="editmodeOrganisation ? validateDirectorUpdate : validateDirector">
                                 <div class="row">
                                     <div class="form-group col-md-4">
                                         <label for="director_first_name" class="col-form-label"> Director First Name</label>
@@ -1598,13 +1598,15 @@
             },
             //Organisation verification
             validateOrganisationUpdate() {
+                let id = this.organisationform.id;
+                console.log('first',id);
                 this.$Progress.start()
-                return this.organisationform.patch('/organisation/updateverify/info')
+                return this.organisationform.patch('/organisation/updateverify/info/'+id)
                     .then((response)=>{
                         return true;
                         toast({
                             type: 'success',
-                            title: 'Organisation Info Verifed successfully'
+                            title: 'Organisation update Info Verifed successfully'
                         })
                         this.$Progress.finish()
                     })
@@ -1612,20 +1614,23 @@
                         this.$Progress.fail()
                         toast({
                             type: 'error',
-                            title: 'The Organisation Info failed Verification.'
+                            title: 'The Organisation update Info failed Verification.'
                         })
                     })
             },
             //Director info verification
             validateDirectorUpdate() {
+                 let id = this.organisationform.id;
+                console.log('mix me down',id);
                 this.$Progress.start()
-                this.organisationOutput = this.organisationform;  //append form data
-                return this.organisationform.patch('/organisation/updateverify/director')
+                // console.log('mis me down')
+                // this.organisationOutput = this.organisationform;  //append form data
+                return this.organisationform.patch('/organisation/updateverify/director/'+id)
                     .then((response)=>{
                         return true;
                         toast({
                             type: 'success',
-                            title: 'Director Info Verifed successfully'
+                            title: 'Director Update Info Verifed successfully'
                         })
                         this.$Progress.finish()
                     })
@@ -1633,7 +1638,7 @@
                         this.$Progress.fail()
                         toast({
                             type: 'error',
-                            title: 'The Director Info failed Verification.'
+                            title: 'The Director update Info failed Verification.'
                         })
                     })
             },
@@ -1730,7 +1735,7 @@
             editOrganisationModal(id){
                  this.editmodeOrganisation = true;
                  this.organisationform.reset()
-                   console.log('edit user', id)
+                   console.log('edit organisaton', id)
                     this.$Progress.start();
                       axios.get('/organisation/edit/'+id)
                         .then((response)=>{

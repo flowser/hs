@@ -3511,12 +3511,14 @@ __webpack_require__.r(__webpack_exports__);
     validateOrganisationUpdate: function validateOrganisationUpdate() {
       var _this3 = this;
 
+      var id = this.organisationform.id;
+      console.log('first', id);
       this.$Progress.start();
-      return this.organisationform.patch('/organisation/updateverify/info').then(function (response) {
+      return this.organisationform.patch('/organisation/updateverify/info/' + id).then(function (response) {
         return true;
         toast({
           type: 'success',
-          title: 'Organisation Info Verifed successfully'
+          title: 'Organisation update Info Verifed successfully'
         });
 
         _this3.$Progress.finish();
@@ -3525,7 +3527,7 @@ __webpack_require__.r(__webpack_exports__);
 
         toast({
           type: 'error',
-          title: 'The Organisation Info failed Verification.'
+          title: 'The Organisation update Info failed Verification.'
         });
       });
     },
@@ -3533,14 +3535,16 @@ __webpack_require__.r(__webpack_exports__);
     validateDirectorUpdate: function validateDirectorUpdate() {
       var _this4 = this;
 
-      this.$Progress.start();
-      this.organisationOutput = this.organisationform; //append form data
+      var id = this.organisationform.id;
+      console.log('mix me down', id);
+      this.$Progress.start(); // console.log('mis me down')
+      // this.organisationOutput = this.organisationform;  //append form data
 
-      return this.organisationform.patch('/organisation/updateverify/director').then(function (response) {
+      return this.organisationform.patch('/organisation/updateverify/director/' + id).then(function (response) {
         return true;
         toast({
           type: 'success',
-          title: 'Director Info Verifed successfully'
+          title: 'Director Update Info Verifed successfully'
         });
 
         _this4.$Progress.finish();
@@ -3549,7 +3553,7 @@ __webpack_require__.r(__webpack_exports__);
 
         toast({
           type: 'error',
-          title: 'The Director Info failed Verification.'
+          title: 'The Director update Info failed Verification.'
         });
       });
     },
@@ -3659,7 +3663,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.editmodeOrganisation = true;
       this.organisationform.reset();
-      console.log('edit user', id);
+      console.log('edit organisaton', id);
       this.$Progress.start();
       axios.get('/organisation/edit/' + id).then(function (response) {
         $('#OrganisationModal').modal('show');
@@ -65771,10 +65775,17 @@ var render = function() {
                           attrs: {
                             title: "Organisation Details",
                             icon: "fa fa-building",
-                            "before-change": _vm.validateOrganisation
+                            "before-change": _vm.editmodeOrganisation
+                              ? _vm.validateOrganisationUpdate
+                              : _vm.validateOrganisation
                           }
                         },
                         [
+                          _vm._v(
+                            "\n                              " +
+                              _vm._s(_vm.organisationform.id) +
+                              "\n                              "
+                          ),
                           _c("div", { staticClass: " row" }, [
                             _c(
                               "div",
@@ -66620,7 +66631,9 @@ var render = function() {
                         {
                           attrs: {
                             title: "Organisation Director Info",
-                            "before-change": _vm.validateDirector
+                            "before-change": _vm.editmodeOrganisation
+                              ? _vm.validateDirectorUpdate
+                              : _vm.validateDirector
                           }
                         },
                         [
