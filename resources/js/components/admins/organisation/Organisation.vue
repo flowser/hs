@@ -623,143 +623,145 @@
                                     </div>
                                 </div>
                             </tab-content>
-                            <!-- :before-change="validateDirector()" -->
-                            <tab-content title="Organisation Director Info" :before-change="editmodeOrganisation ? validateDirectorUpdate : validateDirector">
-                                <div class="row">
-                                    <div class="form-group col-md-4">
-                                        <label for="director_first_name" class="col-form-label"> Director First Name</label>
-                                        <input v-model="organisationform.director_first_name" type="text" name="director_first_name" placeholder="Director First Name"
-                                            class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_first_name') }" >
-                                        <has-error style="color: #e83e8c" :form="organisationform" field="director_first_name"></has-error>
+
+                            <tab-content title="Organisation Director Info" :before-change="newOrgDirector ? validateDirectorUpdate : validateDirector">
+                                <div v-show="newOrgDirector">
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label for="director_first_name" class="col-form-label"> Director First Name</label>
+                                            <input v-model="organisationform.director_first_name" type="text" name="first_name" placeholder="Director First Name"
+                                                class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_first_name') }" >
+                                            <has-error style="color: #e83e8c" :form="organisationform" field="director_first_name"></has-error>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="director_last_name" class=" col-form-label">director_Last Name </label>
+                                            <input v-model="organisationform.director_last_name" type="director_last_name" name="director_last_name" placeholder="director_Last Name"
+                                                class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_last_name') }" >
+                                            <has-error style="color: #e83e8c" :form="organisationform" field="director_last_name"></has-error>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="email" class=" col-form-label">Email </label>
+                                            <input v-model="organisationform.email" type="email" name="email" placeholder="Email Address"
+                                                class="form-control" :class="{ 'is-invalid': organisationform.errors.has('email') }" >
+                                            <has-error style="color: #e83e8c" :form="organisationform" field="email"></has-error>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="director_last_name" class=" col-form-label">director_Last Name </label>
-                                        <input v-model="organisationform.director_last_name" type="director_last_name" name="director_last_name" placeholder="director_Last Name"
-                                            class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_last_name') }" >
-                                        <has-error style="color: #e83e8c" :form="organisationform" field="director_last_name"></has-error>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="email" class=" col-form-label">Email </label>
-                                        <input v-model="organisationform.email" type="email" name="email" placeholder="Email Address"
-                                            class="form-control" :class="{ 'is-invalid': organisationform.errors.has('email') }" >
-                                        <has-error style="color: #e83e8c" :form="organisationform" field="email"></has-error>
-                                    </div>
-                                </div>
-                                 <div class=" row">
-                                     <div class="form-group col-md-4">
-                                        <input v-model="organisationform.director_password" type="password" id="director_password" placeholder="Director Password"
-                                            class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_password') }">
-                                        <has-error :form="organisationform" field="password"></has-error>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="director_phone" class="col-form-label"> Director Phone</label>
-                                            <div>
-                                                <vue-tel-input v-model="organisationform.director_phone" name="director_phone" @onInput="DirectorInputPhone"
-                                                class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_phone') }">
-                                                </vue-tel-input>
-                                                <has-error style="color: #e83e8c" :form="organisationform" field="director_phone"></has-error>
+                                    <div class=" row">
+                                        <div class="form-group col-md-4">
+                                            <input v-model="organisationform.director_password" type="password" id="director_password" placeholder="Director Password"
+                                                class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_password') }">
+                                            <has-error :form="organisationform" field="password"></has-error>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="director_phone" class="col-form-label"> Director Phone</label>
+                                                <div>
+                                                    <vue-tel-input v-model="organisationform.director_phone" name="director_phone" @onInput="DirectorInputPhone"
+                                                    class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_phone') }">
+                                                    </vue-tel-input>
+                                                    <has-error style="color: #e83e8c" :form="organisationform" field="director_phone"></has-error>
+                                                </div>
+                                                <div v-if="organisationform.director_phone" style="color: #e83e8c">
+                                                    <span>Is valid: <strong>{{director_phone1.isValid}}</strong>,&nbsp;</span>
+                                                    <span>Country: <strong>{{director_phone1.country}}</strong></span>
                                             </div>
-                                            <div v-if="organisationform.director_phone" style="color: #e83e8c">
-                                                <span>Is valid: <strong>{{director_phone1.isValid}}</strong>,&nbsp;</span>
-                                                <span>Country: <strong>{{director_phone1.country}}</strong></span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="director_landline" class=" col-form-label">Director Landline</label>
+                                                <vue-tel-input v-model="organisationform.director_landline" name="director_landline" @onInput="DirectorInputLandline"
+                                                    class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_landline') }">
+                                                </vue-tel-input>
+                                                <has-error style="color: #e83e8c" :form="organisationform" field="director_landline"></has-error>
+
+                                                <div v-if="organisationform.director_landline" style="color: #e83e8c">
+                                                    <span>Is valid: <strong>{{director_landline1.isValid}}</strong>,&nbsp;</span>
+                                                    <span>Country: <strong>{{director_landline1.country}}</strong></span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="director_landline" class=" col-form-label">Director Landline</label>
-                                            <vue-tel-input v-model="organisationform.director_landline" name="director_landline" @onInput="DirectorInputLandline"
-                                                class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_landline') }">
-                                            </vue-tel-input>
-                                            <has-error style="color: #e83e8c" :form="organisationform" field="director_landline"></has-error>
-
-                                            <div v-if="organisationform.director_landline" style="color: #e83e8c">
-                                                <span>Is valid: <strong>{{director_landline1.isValid}}</strong>,&nbsp;</span>
-                                                <span>Country: <strong>{{director_landline1.country}}</strong></span>
+                                    <div class=" row">
+                                        <div class="form-group col-md-4">
+                                            <label for="director_id_no" class="col-form-label">Director ID no.</label>
+                                            <input v-model="organisationform.director_id_no" type="text" name="director_id_no" placeholder="Director ID NO"
+                                                class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_id_no') }" >
+                                            <has-error style="color: #e83e8c" :form="organisationform" field="director_id_no"></has-error>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="director_address" class=" col-form-label">Director Address</label>
+                                            <input v-model="organisationform.director_address" type="text" name="Address" placeholder="Director Address"
+                                                class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_address') }" >
+                                            <has-error style="color: #e83e8c" :form="organisationform" field="director_address"></has-error>
                                         </div>
                                     </div>
-                                </div>
-                                <div class=" row">
-                                    <div class="form-group col-md-4">
-                                        <label for="director_id_no" class="col-form-label">Director ID no.</label>
-                                        <input v-model="organisationform.director_id_no" type="text" name="director_id_no" placeholder="Director ID NO"
-                                            class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_id_no') }" >
-                                        <has-error style="color: #e83e8c" :form="organisationform" field="director_id_no"></has-error>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="director_address" class=" col-form-label">Director Address</label>
-                                        <input v-model="organisationform.director_address" type="text" name="Address" placeholder="Director Address"
-                                            class="form-control" :class="{ 'is-invalid': organisationform.errors.has('director_address') }" >
-                                        <has-error style="color: #e83e8c" :form="organisationform" field="director_address"></has-error>
-                                    </div>
-                                </div>
-                                <div class=" row">
-                                    <div class="form-group col-md-3">
-                                        <label for="director_country_id">Select Country</label>
-                                        <select class="form-control" @change="DirectorcountryCounties(organisationform.director_country_id)"
-                                        v-model="organisationform.director_country_id" :class="{ 'is-invalid': organisationform.errors.has('director_country_id') }">
-                                                <option disabled value="">Select Country</option>
-                                                <option v-for="country in Countries" :value="country.id" :key="country.id">{{country.name}}</option>
-                                        </select>
-                                            <has-error style="color: #e83e8c" :form="organisationform" field="director_country_id"></has-error>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="director_county_id" class=" col-form-label">County</label>
-                                        <select class="form-control" @change="DirectorcountyConstituencies(organisationform.director_county_id)"
-                                        v-model="organisationform.director_county_id" :class="{ 'is-invalid': organisationform.errors.has('director_county_id') }">
-                                                <option disabled value="">Select County</option>
-                                                <option v-for="county in Counties" :value="county.id" :key="county.id">{{county.name}}</option>
-                                        </select>
-                                        <has-error style="color: #e83e8c" :form="organisationform" field="director_county_id"></has-error>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="director_constituency_id" class=" col-form-label">Constituency</label>
-                                        <select class="form-control" @change="DirectorconstituencyWards(organisationform.director_constituency_id)"
-                                        v-model="organisationform.director_constituency_id" :class="{ 'is-invalid': organisationform.errors.has('director_constituency_id') }">
-                                                <option disabled value="">Select County</option>
-                                                <option v-for="constituency in Constituencies" :value="constituency.id" :key="constituency.id">{{constituency.name}}</option>
-                                        </select>
-                                        <has-error style="color: #e83e8c" :form="organisationform" field="director_constituency_id"></has-error>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="director_ward_id" class="col-form-label"> Ward </label>
-                                        <select class="form-control"
-                                        v-model="organisationform.director_ward_id" :class="{ 'is-invalid': organisationform.errors.has('director_ward_id') }">
-                                                <option disabled value="">Select Ward</option>
-                                                <option v-for="ward in Wards" :value="ward.id" :key="ward.id">{{ward.name}}</option>
-                                        </select>
-                                        <has-error style="color: #e83e8c" :form="organisationform" field="director_ward_id"></has-error>
-                                    </div>
+                                    <div class=" row">
+                                        <div class="form-group col-md-3">
+                                            <label for="director_country_id">Select Country</label>
+                                            <select class="form-control" @change="DirectorcountryCounties(organisationform.director_country_id)"
+                                            v-model="organisationform.director_country_id" :class="{ 'is-invalid': organisationform.errors.has('director_country_id') }">
+                                                    <option disabled value="">Select Country</option>
+                                                    <option v-for="country in Countries" :value="country.id" :key="country.id">{{country.name}}</option>
+                                            </select>
+                                                <has-error style="color: #e83e8c" :form="organisationform" field="director_country_id"></has-error>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="director_county_id" class=" col-form-label">County</label>
+                                            <select class="form-control" @change="DirectorcountyConstituencies(organisationform.director_county_id)"
+                                            v-model="organisationform.director_county_id" :class="{ 'is-invalid': organisationform.errors.has('director_county_id') }">
+                                                    <option disabled value="">Select County</option>
+                                                    <option v-for="county in Counties" :value="county.id" :key="county.id">{{county.name}}</option>
+                                            </select>
+                                            <has-error style="color: #e83e8c" :form="organisationform" field="director_county_id"></has-error>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="director_constituency_id" class=" col-form-label">Constituency</label>
+                                            <select class="form-control" @change="DirectorconstituencyWards(organisationform.director_constituency_id)"
+                                            v-model="organisationform.director_constituency_id" :class="{ 'is-invalid': organisationform.errors.has('director_constituency_id') }">
+                                                    <option disabled value="">Select County</option>
+                                                    <option v-for="constituency in Constituencies" :value="constituency.id" :key="constituency.id">{{constituency.name}}</option>
+                                            </select>
+                                            <has-error style="color: #e83e8c" :form="organisationform" field="director_constituency_id"></has-error>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="director_ward_id" class="col-form-label"> Ward </label>
+                                            <select class="form-control"
+                                            v-model="organisationform.director_ward_id" :class="{ 'is-invalid': organisationform.errors.has('director_ward_id') }">
+                                                    <option disabled value="">Select Ward</option>
+                                                    <option v-for="ward in Wards" :value="ward.id" :key="ward.id">{{ward.name}}</option>
+                                            </select>
+                                            <has-error style="color: #e83e8c" :form="organisationform" field="director_ward_id"></has-error>
+                                        </div>
 
 
-                                </div>
-                                <div class=" row">
-                                    <div class="form-group col-md-4">
-                                        <label for="director_passport_image" class=" col-form-label">Director PassPort Image</label><br>
-                                            <input @change="organisationChangeDirectorPImage($event)" type="file" name="director_passport_image"
-                                                :class="{ 'is-invalid': organisationform.errors.has('director_passport_image') }">
-                                                <img v-show="editmodeOrganisation" :src="updateOrganisationDirectorPImage(organisationform.director_passport_image)" alt="" width="100%" >
-                                                <img  v-show="!editmodeOrganisation" :src="organisationform.director_passport_image" alt="" width="100%" >
-                                            <has-error style="color: #e83e8c" :form="organisationform" field="director_passport_image"></has-error>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="frontside_director_id_photo" class=" col-form-label">Director FrontSide ID Photo</label><br>
-                                            <input @change="organisationChangeDirectorFIDPhoto($event)" type="file" name="frontside_director_id_photo"
-                                                :class="{ 'is-invalid': organisationform.errors.has('frontside_director_id_photo') }">
-                                                <img v-show="editmodeOrganisation" :src="updateOrganisationDirectorFIDPhoto(organisationform.frontside_director_id_photo)" alt="" width="100%" >
-                                                <img  v-show="!editmodeOrganisation" :src="organisationform.frontside_director_id_photo" alt="" width="100%" >
-                                            <has-error style="color: #e83e8c" :form="organisationform" field="frontside_director_id_photo"></has-error>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="backside_director_i_photod" class=" col-form-label">Director BackSide ID Photo</label><br>
-                                            <input @change="organisationChangeDirectorBIDPhoto($event)" type="file" name="backside_director_id_photo"
-                                                :class="{ 'is-invalid': organisationform.errors.has('backside_director_id') }">
-                                                <img v-show="editmodeOrganisation" :src="updateOrganisationDirectorBIDPhoto(organisationform.backside_director_id_photo)" alt="" width="100%" >
-                                                <img  v-show="!editmodeOrganisation" :src="organisationform.backside_director_id_photo" alt="" width="100%" >
-                                            <has-error style="color: #e83e8c" :form="organisationform" field="backside_director_id_photo"></has-error>
+                                    <div class=" row">
+                                        <div class="form-group col-md-4">
+                                            <label for="director_passport_image" class=" col-form-label">Director PassPort Image</label><br>
+                                                <input @change="organisationChangeDirectorPImage($event)" type="file" name="director_passport_image"
+                                                    :class="{ 'is-invalid': organisationform.errors.has('director_passport_image') }">
+                                                    <img v-show="editmodeOrganisation" :src="updateOrganisationDirectorPImage(organisationform.director_passport_image)" alt="" width="100%" >
+                                                    <img  v-show="!editmodeOrganisation" :src="organisationform.director_passport_image" alt="" width="100%" >
+                                                <has-error style="color: #e83e8c" :form="organisationform" field="director_passport_image"></has-error>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="frontside_director_id_photo" class=" col-form-label">Director FrontSide ID Photo</label><br>
+                                                <input @change="organisationChangeDirectorFIDPhoto($event)" type="file" name="frontside_director_id_photo"
+                                                    :class="{ 'is-invalid': organisationform.errors.has('frontside_director_id_photo') }">
+                                                    <img v-show="editmodeOrganisation" :src="updateOrganisationDirectorFIDPhoto(organisationform.frontside_director_id_photo)" alt="" width="100%" >
+                                                    <img  v-show="!editmodeOrganisation" :src="organisationform.frontside_director_id_photo" alt="" width="100%" >
+                                                <has-error style="color: #e83e8c" :form="organisationform" field="frontside_director_id_photo"></has-error>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="backside_director_i_photod" class=" col-form-label">Director BackSide ID Photo</label><br>
+                                                <input @change="organisationChangeDirectorBIDPhoto($event)" type="file" name="backside_director_id_photo"
+                                                    :class="{ 'is-invalid': organisationform.errors.has('backside_director_id') }">
+                                                    <img v-show="editmodeOrganisation" :src="updateOrganisationDirectorBIDPhoto(organisationform.backside_director_id_photo)" alt="" width="100%" >
+                                                    <img  v-show="!editmodeOrganisation" :src="organisationform.backside_director_id_photo" alt="" width="100%" >
+                                                <has-error style="color: #e83e8c" :form="organisationform" field="backside_director_id_photo"></has-error>
+                                        </div>
                                     </div>
                                 </div>
                             </tab-content>
                             <tab-content title="Last step">
-                                Organsation Information
+                                Organisation Information
 
                                 <div class=" row">
                                     <div class="form-group col-md-4">
@@ -836,7 +838,7 @@
                                             <has-error style="color: #e83e8c" :form="aboutform" field="logo"></has-error>
                                     </div>
                                 </div>
-
+                            <div v-show="newOrgDirector">
                                 Director Info
                                 <div class="row">
                                     <div class="form-group col-md-4">
@@ -933,6 +935,7 @@
                                                 <img  v-show="!editmodeOrganisation" :src="organisationform.backside_director_id_photo" alt="" width="100%" >
                                     </div>
                                 </div>
+                             </div>
                             </tab-content>
                         </form-wizard>
                     </div>
@@ -1403,6 +1406,7 @@
         name:"List",
         data(){
             return{
+                newOrgDirector: false,
                 editmodeOrganisation: false,
                 organisationOutput:'',//view form data and confirm if is ok before submit
                 organisationform: new Form({
@@ -1733,6 +1737,7 @@
                      $('#OrganisationModal').modal('show')
             },
             editOrganisationModal(id){
+
                  this.editmodeOrganisation = true;
                  this.organisationform.reset()
                    console.log('edit organisaton', id)
@@ -1744,8 +1749,17 @@
                             type: 'success',
                             title: 'Fetched the Organisation data successfully'
                             })
-                            this.organisationform.fill(response.data.organisation)
+                            let directors = response.data.organisation.organisationdirectors.length;
+
+                            if(directors == 0){
+                                 this.newOrgDirector = true;
+                                  this.organisationform.fill(response.data.organisation)
                                this.$Progress.finish();
+                            }else{
+                                 this.newOrgDirector = false;
+                                  this.organisationform.fill(response.data.organisation)
+                               this.$Progress.finish();
+                            }
                         })
                         .catch(()=>{
                             this.$Progress.fail();

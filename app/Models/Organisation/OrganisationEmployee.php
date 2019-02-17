@@ -12,10 +12,10 @@ use App\Models\Standard\Country;
 use App\Models\Standard\Position;
 use App\Models\Househelp\Househelp;
 use App\Models\Standard\Constituency;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Organisation\Organisation;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class OrganisationEmployee extends Model
+class OrganisationEmployee extends Pivot
 {
     protected $fillable = [
         'user_id',

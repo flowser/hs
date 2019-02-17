@@ -22,7 +22,7 @@ class AboutController extends Controller
     public function index()
     {
 
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
 
         // $about = $organisation->about()->get();
         $about = About::with('user', 'aboutpics', 'organisation')
@@ -83,7 +83,7 @@ class AboutController extends Controller
 
         //getting Organisation $user
         $user = Auth::user();
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
 
         $about->organisation_id = $organisation ->id;
         $about->user_id = $user ->id;
@@ -127,7 +127,7 @@ class AboutController extends Controller
     public function edit($id)
     {
         // return $id;
-        // $orgemployee= Auth::user()-> organisationemployee()->first()->organisation()->first();
+        // $orgemployee= Auth::user()-> organisationemployeeusers()->first()->organisation()->first();
         // return $organisation;
 
         $about = About::with('organisation')
@@ -167,7 +167,7 @@ class AboutController extends Controller
 
         //getting Organisation $user
         $user = Auth::user();
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
 
         $about->organisation_id = $organisation ->id;
         $about->user_id = $user ->id;

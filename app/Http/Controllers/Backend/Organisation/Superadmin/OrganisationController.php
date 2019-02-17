@@ -22,16 +22,21 @@ class OrganisationController extends Controller
      */
     public function index()
     {
-        // $orgadirector= Auth::user()-> organisationdirector()->first()->organisation()->first();
-        $orgemployee= Auth::user()-> organisationemployee()->first()->organisation()->first();
 
-
+        $orgemployee= Auth::user()-> organisationemployeeusers()->first();
+        // $organisation = Organisation::
+        // with('country', 'county', 'constituency', 'ward', 'organisationemployees')
+        //                             ->where('organisations.id', $orgemployee->organisation_id)
+        //                             // ->where('organisation.organisationemployees.user_id', Auth::id())
+        //                             ->get();
         $organisation = Organisation::
-        with('country', 'county', 'constituency', 'ward','organisationemployees','organisationdirectors')
-                                    ->where('organisations.id', $orgemployee->id )
-                                    // ->where('organisations.id', $orgadirector->id)
+        with('country', 'county', 'constituency', 'ward', 'organisationdirectors', 'positions','countries','counties', 'constituencies','wards')
+                                    ->where('organisations.id', $orgemployee->organisation_id)
+                                    // ->where('organisation.organisationemployees.user_id', Auth::id())
                                     ->get();
-        // return $organisation;
+                                    // json_encode($organisation);
+                                    // var_dump($organisation);
+                                    // return ($organisation);
         return response()-> json([
             'organisation' => $organisation,
         ], 200);
@@ -72,19 +77,19 @@ class OrganisationController extends Controller
     public function verifyDirectorInfo (Request $request)
     {
         $this->validate($request,[
-            'director_first_name'  =>  'required',
-            'director_last_name'  =>  'required',
-            'email'  =>  'required|email|max:255|unique:users',
-            'director_password'  =>  'required',
-            'director_phone'  =>  'phone:AUTO,MOBILE',
-            'director_landline'  =>  'phone:AUTO,MOBILE',
-            'director_id_no'  =>  'required|digits_between:7,10',
-            'director_address'  =>  'required|digits_between:1,20',
-            // 'gender_id'  =>  'required',
-            'director_country_id'  =>  'required',
-            'director_county_id'  =>  'required',
-            'director_constituency_id'  =>  'required',
-            'director_ward_id'  =>  'required',
+            // 'director_first_name'  =>  'required',
+            // 'director_last_name'  =>  'required',
+            // 'email'  =>  'required|email|max:255|unique:users',
+            // 'director_password'  =>  'required',
+            // 'director_phone'  =>  'phone:AUTO,MOBILE',
+            // 'director_landline'  =>  'phone:AUTO,MOBILE',
+            // 'director_id_no'  =>  'required|digits_between:7,10',
+            // 'director_address'  =>  'required|digits_between:1,20',
+            // // 'gender_id'  =>  'required',
+            // 'director_country_id'  =>  'required',
+            // 'director_county_id'  =>  'required',
+            // 'director_constituency_id'  =>  'required',
+            // 'director_ward_id'  =>  'required',
             // 'director_passport_image'  =>  'required',
             // 'frontside_director_id_photo'  =>  'required',
             // 'backside_director_id_photo'  =>  'required',
@@ -106,7 +111,7 @@ class OrganisationController extends Controller
         $user->password   = Hash::make($request->director_password);
 
         if($user){
-            //adding organisation
+            //adding organisation new
 
             $organisation = new Organisation();
             $organisation->name = $request ->name;
@@ -230,25 +235,29 @@ class OrganisationController extends Controller
     public function edit($id)
     {
         // return $id;
-        $orgemployee= Auth::user()-> organisationemployee()->first()->organisation()->first();
+        $orgemployee= Auth::user()-> organisationemployeeusers()->first()->organisation()->first();
         // return $organisation;
 
-        $organisation = Organisation::with('country', 'county', 'constituency', 'ward','organisationemployees','organisationdirectors')
+        $organisation = Organisation::with('country', 'county', 'constituency', 'ward', 'organisationdirectors', 'positions','countries','counties', 'constituencies','wards')
                                     // ->where('organisations.id', $orgemployee->id )
                                     // ->where('organisations.id', $orgadirector->id)
                                     ->find($id);
         // dd($organisation);
+        // $organisationdirector = $organisation->organisationdirectors()->with('positions','countries','counties', 'constituencies','wards')->first();
+
         return response()-> json([
             'organisation' => $organisation,
+            // 'organisationdirector' => $organisationdirector,
         ], 200);
     }
 
     public function updateverifyOrganisationInfo (Request $request, $id)
     {
        $organisation = Organisation::find($id);
-       $organisation_email = $organisation->email;
+       $organisation_email = $organisation->organisation_email;
+    //    return $organisation_email;
 
-        if($organisation_email == null ){
+        if($organisation_email == null){
 
             $this->validate($request,[
                             'name'    => 'sometimes|required|min:2|max:50',
@@ -266,7 +275,7 @@ class OrganisationController extends Controller
         }else{
             $this->validate($request,[
                             'name'    => 'sometimes|required|min:2|max:50',
-                            'organisation_email' => 'required|email|max:191|organisation_email,'.$organisation->id,
+                            'organisation_email' => 'required|email|max:191|unique:organisations,organisation_email,'.$organisation->id,
                             'phone' => 'phone:AUTO,MOBILE',
                             'landline'=> 'phone:AUTO,MOBILE', //FIXED_LINE
                             'website'=> 'sometimes|required|min:2|max:50',
@@ -292,7 +301,7 @@ class OrganisationController extends Controller
             $this->validate($request,[
                 'director_first_name'  =>  'required',
                 'director_last_name'  =>  'required',
-                'email'  =>  'required|email|max:255|unique:users',
+                // 'email'  =>  'required|email|max:255|unique:users',
                 // 'gender_id'  =>  'required',
                 'director_password'  =>  '|required',
                 'director_phone'  =>  'phone:AUTO,MOBILE',
@@ -309,21 +318,22 @@ class OrganisationController extends Controller
            ]);
 
         }else{
-            $user = $organisationdirector->user()->first();
+            // return $organisationdirector;
+        //   $user_id = $organisationdirector->id;
             $this->validate($request,[
-                'director_first_name'  =>  'required',
-                'director_last_name'  =>  'required',
-                'email'=>'required|string|email|max:191|unique:users,email,'.$user->id,
+                'director_first_name'  =>  'sometimes|required',
+                'director_last_name'  =>  'sometimes|required',
+                'email'=>'sometimes|required|string|email|max:191',
                 // 'gender_id'  =>  'required',
-                'director_password'  =>  'required',
-                'director_phone'  =>  'phone:AUTO,MOBILE',
-                'director_landline'  =>  'phone:AUTO,MOBILE',
-                'director_id_no'  =>  'required|digits_between:7,10',
-                'director_address'  =>  'required|digits_between:1,20',
-                'director_country_id'  =>  'required',
-                'director_county_id'  =>  'required',
-                'director_constituency_id'  =>  'required',
-                'director_ward_id'  =>  'required',
+                'director_password'  =>  'sometimes|required',
+                'director_phone'  =>  'sometimes|phone:AUTO,MOBILE',
+                'director_landline'  =>  'sometimes|phone:AUTO,MOBILE',
+                'director_id_no'  =>  'sometimes|required|digits_between:7,10',
+                'director_address'  =>  'sometimes|required|digits_between:1,20',
+                'director_country_id'  =>  'sometimes|required',
+                'director_county_id'  =>  'sometimes|required',
+                'director_constituency_id'  =>  'sometimes|required',
+                'director_ward_id'  =>  'sometimes|required',
                 // 'director_passport_image'  =>  'required',
                 // 'frontside_director_id_photo'  =>  'required',
                 // 'backside_director_id_photo'  =>  'required',
@@ -375,7 +385,9 @@ class OrganisationController extends Controller
             $organisation->logo = $name;
 
             if($organisation){
+
                 $organisationdirector = $organisation->organisationdirectors()->first();
+                // return $organisationdirector;
                 if($organisationdirector ==null){
                     // director user
                     $user = new User();
@@ -387,6 +399,10 @@ class OrganisationController extends Controller
                     $user->confirmation_code = md5(uniqid(mt_rand(), true));
                     $user->user_type      = 'Organisation Director';
                     $user->password   = Hash::make($request->director_password);
+
+                    $user->assignRole('Organisation Director');
+                    $user ->givePermissionTo('View Backend', 'View All');
+
                     $user->save();
 
                     //add director to organisation
@@ -459,113 +475,126 @@ class OrganisationController extends Controller
                         }
                         $organisationdirector->save();
                     }
-                    return $organisationdirector;
+                    // return "mix me down ";
 
-                }else{//not null
-                    $organisationdirector = $organisation->organisationdirectors()->first();
-                    $user = $organisationdirector->user()->first();
-                    //update
-                    $user->first_name = $request->director_first_name;
-                    $user->last_name  = $request->director_last_name;
-                    $user->email      = $request->email;
-                    $user->active     = true;
-                    $user->confirmed  = true;
-                    $user->confirmation_code = md5(uniqid(mt_rand(), true));
-                    $user->user_type      = 'Organisation Director';
-                    $user->password   = Hash::make($request->director_password);
-
-                    if($user){
-                        $user_id = $user->id;
-                        $organisation_id = $organisation->id;
-                        $position_id = Position::find(1);
-
-                        $organisationdirector->user_id                = $user_id;
-                        $organisationdirector->organisation_id        = $organisation_id;
-                        $organisationdirector->position_id            = 1;
-                        $organisationdirector->gender_id              = 1;
-
-                        $organisationdirector->active                 = true;
-                        $organisationdirector->phone         = $request ->director_phone;
-                        $organisationdirector->landline      = $request ->director_landline;
-                        $organisationdirector->id_no         = $request ->director_id_no;
-                        $organisationdirector->address        = $request ->director_address;
-
-                        $organisationdirector->country_id    = $request ->director_country_id;
-                        $organisationdirector->county_id     = $request ->director_county_id;
-                        $organisationdirector->constituency_id  = $request ->director_constituency_id;
-                        $organisationdirector->ward_id  = $request ->director_ward_id;
-
-                        //pass port
-                        $passport = $request->passport_image;
-                        if($passport){
-                            //deleteing the previous passsport if it exists
-                            $ps_Path = public_path()."/assets/organisation/img/directors/passports";
-
-                                $ps_currentpassport = $ps_Path. $organisationdirector->photo;
-
-                                if(file_exists($ps_currentpassport)){
-                                    @unlink($ps_currentpassport);
-                                }
-                            //processing passport name
-                            $ps_strpos = strpos($passport, ';'); //positionof image name semicolon
-                            $ps_sub = substr($passport, 0, $ps_strpos);
-                            $ps_ex = explode('/', $ps_sub)[1];
-                            $ps_name = time().".".$ps_ex;
-
-                                $ps_img = Image::make($passport);
-                                $ps_img ->save($ps_Path.'/'.$ps_name);
-                            //end processing
-                            $organisationdirector->photo = $ps_name;
-                        }
-                        //director Front side id image
-                        $frontside_id = $request->frontside_director_id_photo;
-                        if($frontside_id){
-                            //deleteing the previous front id photo if it exists
-                            $fr_id_Path = public_path()."/assets/organisation/img/directors/IDs/front";
-
-                                $fr_id_currentdIDPhoto = $fr_id_Path. $organisationdirector->id_photo_front;
-
-                                if(file_exists($fr_id_currentdIDPhoto)){
-                                    @unlink($fr_id_currentdIDPhoto);
-                                }
-                            //processing front side id imagee
-                            $fr_id_strpos = strpos($frontside_id, ';');
-                            $fr_id_sub = substr($frontside_id, 0, $fr_id_strpos);
-                            $fr_id_ex = explode('/', $fr_id_sub)[1];
-                            $fr_id_name = time().".".$fr_id_ex;
-
-                                $fr_id_img = Image::make($frontside_id);
-                                $fr_id_img ->save($fr_id_Path.'/'.$fr_id_name);
-                            //end processing
-                            $organisationdirector->id_photo_front = $fr_id_name;
-                        }
-                        //director Front side id image
-                        $backside_id = $request->backside_director_id_photo;
-                        if($backside_id){
-                            //deleteing the previous front id photo if it exists
-                            $bs_id_Path = public_path()."/assets/organisation/img/directors/IDs/back";
-
-                                $bs_id_currentdIDPhoto = $bs_id_Path. $organisationdirector->id_photo_back;
-
-                                if(file_exists($bs_id_currentdIDPhoto)){
-                                    @unlink($bs_id_currentdIDPhoto);
-                                }
-                            //processing front side id imagee
-                            $bs_id_strpos = strpos($backside_id, ';');
-                            $bs_id_sub = substr($backside_id, 0, $bs_id_strpos);
-                            $bs_id_ex = explode('/', $bs_id_sub)[1];
-                            $bs_id_name = time().".".$bs_id_ex;
-
-                            $bs_id_Path = public_path()."/assets/organisation/img/directors/IDs/back";
-                                $bs_id_img = Image::make($backside_id);
-                                $bs_id_img ->save($bs_id_Path.'/'.$bs_id_name);
-                            //end processing
-                            $organisationdirector->id_photo_back = $bs_id_name;
-                        }
-                        $organisationdirector->save();
-                    }
-                    $user->save();
                 }
+
+                // else{//not null
+                //     // $organisationdirector :
+                //     $update = $organisation->organisationdirectors()
+                //             ->updateExistingPivot($organisation->id, [
+                //                 'hiringstatus'=> 0,
+                //                 'releasestatus'=> 1
+                //             ]);
+                //     return $update;
+                //    $user_id = $organisationdirector->id;
+                //     $user = User::find($user_id);
+                //     //update
+                //     $user->first_name = $request->director_first_name;
+                //     $user->last_name  = $request->director_last_name;
+                //     $user->email      = $request->email;
+                //     $user->active     = true;
+                //     $user->confirmed  = true;
+                //     $user->confirmation_code = md5(uniqid(mt_rand(), true));
+                //     $user->user_type      = 'Organisation Director';
+                //     $user->password   = Hash::make($request->director_password);
+
+                //     $user->assignRole('Organisation Director');
+                //     $user ->givePermissionTo('View Backend', 'View All');
+                //     // return $user;
+
+                //     if($user){
+                //         // $currentuser_id = $user->id;
+                //         $organisation_id = $organisation->id;
+                //         $position_id = Position::find(1);
+
+                //         $organisationdirector->user_id                = $user_id;
+                //         $organisationdirector->organisation_id        = $organisation_id;
+                //         $organisationdirector->position_id            = 1;
+                //         $organisationdirector->gender_id              = 1;
+
+                //         $organisationdirector->active                 = true;
+                //         $organisationdirector->phone         = $request ->director_phone;
+                //         $organisationdirector->landline      = $request ->director_landline;
+                //         $organisationdirector->id_no         = $request ->director_id_no;
+                //         $organisationdirector->address        = $request ->director_address;
+
+                //         $organisationdirector->country_id    = $request ->director_country_id;
+                //         $organisationdirector->county_id     = $request ->director_county_id;
+                //         $organisationdirector->constituency_id  = $request ->director_constituency_id;
+                //         $organisationdirector->ward_id  = $request ->director_ward_id;
+
+                //         //pass port
+                //         $passport = $request->passport_image;
+                //         if($passport){
+                //             //deleteing the previous passsport if it exists
+                //             $ps_Path = public_path()."/assets/organisation/img/directors/passports";
+
+                //                 $ps_currentpassport = $ps_Path. $organisationdirector->photo;
+
+                //                 if(file_exists($ps_currentpassport)){
+                //                     @unlink($ps_currentpassport);
+                //                 }
+                //             //processing passport name
+                //             $ps_strpos = strpos($passport, ';'); //positionof image name semicolon
+                //             $ps_sub = substr($passport, 0, $ps_strpos);
+                //             $ps_ex = explode('/', $ps_sub)[1];
+                //             $ps_name = time().".".$ps_ex;
+
+                //                 $ps_img = Image::make($passport);
+                //                 $ps_img ->save($ps_Path.'/'.$ps_name);
+                //             //end processing
+                //             $organisationdirector->photo = $ps_name;
+                //         }
+                //         //director Front side id image
+                //         $frontside_id = $request->frontside_director_id_photo;
+                //         if($frontside_id){
+                //             //deleteing the previous front id photo if it exists
+                //             $fr_id_Path = public_path()."/assets/organisation/img/directors/IDs/front";
+
+                //                 $fr_id_currentdIDPhoto = $fr_id_Path. $organisationdirector->id_photo_front;
+
+                //                 if(file_exists($fr_id_currentdIDPhoto)){
+                //                     @unlink($fr_id_currentdIDPhoto);
+                //                 }
+                //             //processing front side id imagee
+                //             $fr_id_strpos = strpos($frontside_id, ';');
+                //             $fr_id_sub = substr($frontside_id, 0, $fr_id_strpos);
+                //             $fr_id_ex = explode('/', $fr_id_sub)[1];
+                //             $fr_id_name = time().".".$fr_id_ex;
+
+                //                 $fr_id_img = Image::make($frontside_id);
+                //                 $fr_id_img ->save($fr_id_Path.'/'.$fr_id_name);
+                //             //end processing
+                //             $organisationdirector->id_photo_front = $fr_id_name;
+                //         }
+                //         //director Front side id image
+                //         $backside_id = $request->backside_director_id_photo;
+                //         if($backside_id){
+                //             //deleteing the previous front id photo if it exists
+                //             $bs_id_Path = public_path()."/assets/organisation/img/directors/IDs/back";
+
+                //                 $bs_id_currentdIDPhoto = $bs_id_Path. $organisationdirector->id_photo_back;
+
+                //                 if(file_exists($bs_id_currentdIDPhoto)){
+                //                     @unlink($bs_id_currentdIDPhoto);
+                //                 }
+                //             //processing front side id imagee
+                //             $bs_id_strpos = strpos($backside_id, ';');
+                //             $bs_id_sub = substr($backside_id, 0, $bs_id_strpos);
+                //             $bs_id_ex = explode('/', $bs_id_sub)[1];
+                //             $bs_id_name = time().".".$bs_id_ex;
+
+                //             $bs_id_Path = public_path()."/assets/organisation/img/directors/IDs/back";
+                //                 $bs_id_img = Image::make($backside_id);
+                //                 $bs_id_img ->save($bs_id_Path.'/'.$bs_id_name);
+                //             //end processing
+                //             $organisationdirector->id_photo_back = $bs_id_name;
+                //         }
+                //         $organisationdirector->save();
+                //     }
+                //     $user->save();
+                // }
             }
         $organisation->save();
         }

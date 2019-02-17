@@ -12,16 +12,26 @@ class ServiceFilterController extends Controller
 {
     public function index()
     {
-        $organisation = (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $service = $organisation->services()->first();
 
-        // $about = $organisation->about()->get();
-        $servicefilter = ServiceFilter::with('user', 'service')
-                        ->where('service_filters.service_id', $service->id)
+        if($service ==null){
+             // $about = $organisation->about()->get();
+            $servicefilter = ServiceFilter::with('user', 'service')
+                        ->where('service_filters.service_id', $service)
                         ->get();
-            return response()-> json([
+                return response()-> json([
                             'servicefilter' => $servicefilter,
                             ], 200);
+        }else{
+       // $about = $organisation->about()->get();
+            $servicefilter = ServiceFilter::with('user', 'service')
+                        ->where('service_filters.service_id', $service->id)
+                        ->get();
+                return response()-> json([
+                            'servicefilter' => $servicefilter,
+                            ], 200);
+        }
     }
     public function organisations()//all servicefilters linked to organisation
     {
@@ -67,7 +77,7 @@ class ServiceFilterController extends Controller
         //getting Organisation $user
         $user = Auth::user();
 
-        $organisation = (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $service = $organisation->services()->first();
 
         $servicefilter->service_id = $service->id;
@@ -101,7 +111,7 @@ class ServiceFilterController extends Controller
      */
     public function show($id)
     {
-        $organisation = (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $service = $organisation->services()->first();
 
         $singleservicefilter = ServiceFilter::with('user', 'service')
@@ -122,7 +132,7 @@ class ServiceFilterController extends Controller
      */
     public function edit($id)
     {
-        $organisation = (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $service = $organisation->services()->first();
 
         $servicefilter = ServiceFilter::with('user', 'service')
@@ -155,7 +165,7 @@ class ServiceFilterController extends Controller
         $servicefilter->why = $request ->why;
         //getting Organisation $user, about_id
         $user = Auth::user();
-        $organisation = (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $service = $organisation->services()->first();
 
         $servicefilter->service_id = $service->id;

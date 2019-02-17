@@ -12,11 +12,11 @@ use App\Models\Standard\Country;
 use App\Models\Standard\Position;
 use App\Models\Househelp\Househelp;
 use App\Models\Standard\Constituency;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Organisation\Organisation;
 use App\Models\Organisation\OrganisationEmployee;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class OrganisationDirector extends Model
+class OrganisationDirector extends Pivot
 {
     protected $fillable = [
         'user_id',
@@ -41,7 +41,12 @@ class OrganisationDirector extends Model
         'active' => 'boolean',
     ];
 
-    //belongs to
+    //belongs to Pivot
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'position_id');
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class);
@@ -65,10 +70,7 @@ class OrganisationDirector extends Model
         return $this->belongsTo(Organisation::class);
     }
 
-    public function position()
-    {
-        return $this->belongsTo(Position::class);
-    }
+
     public function gender()
     {
         return $this->belongsTo(Gender::class);

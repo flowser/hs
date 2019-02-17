@@ -112,6 +112,8 @@ class PermissionRoleTableSeeder extends Seeder
 
                       // Create Roles
         $superadmin = Role::create(['name' => 'Organisation Superadmin']);
+        $orgdirector = Role::create(['name' => 'Organisation Director']);
+        $bureaudirector = Role::create(['name' => 'Bureau Director']);
         $orgadmin = Role::create(['name' => 'Organisation Admin']);
         $orgaaccountant = Role::create(['name' => 'Organisation Accountant']);
 
@@ -126,6 +128,14 @@ class PermissionRoleTableSeeder extends Seeder
 
         // ALWAYS GIVE ADMIN ROLE ALL PERMISSIONS
         $superadmin->givePermissionTo(
+                   'View Backend', 'View All',
+                    //own profile
+                   'View', 'Edit',
+                   'Add Organisation', 'Edit Organisation', 'Delete Organisation', 'Disable Organisation',
+                   'Add Organisation Admin','View Organisation Admin','Edit Organisation Admin','Delete Organisation Admin','Disable Organisation Admin'
+               );
+               //Director
+        $orgdirector->givePermissionTo(
                    'View Backend', 'View All',
                     //own profile
                    'View', 'Edit',
@@ -157,6 +167,20 @@ class PermissionRoleTableSeeder extends Seeder
 
                   //bureau Superadmin
         $bureausuperadmin->givePermissionTo(
+                  'View Backend',
+                   //own profile
+                   'View', 'Edit',
+                   //Bureau Admin
+                  'Add Bureau Admin', 'View Bureau Admin', 'Edit Bureau Admin', 'Delete Bureau Admin', 'Disable Bureau Admin',
+                   //Bureau accounts cashier
+                  'View Bureau Accounts',
+                   //Bureau Reviews
+                  'View Bureau Reviews',
+                   //Bureau Requests
+                  'View Bureau Requests'
+                );
+                  //bureau Director
+        $bureaudirector->givePermissionTo(
                   'View Backend',
                    //own profile
                    'View', 'Edit',

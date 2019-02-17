@@ -3303,10 +3303,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "List",
   data: function data() {
     return {
+      newOrgDirector: false,
       editmodeOrganisation: false,
       organisationOutput: '',
       //view form data and confirm if is ok before submit
@@ -3671,10 +3675,21 @@ __webpack_require__.r(__webpack_exports__);
           type: 'success',
           title: 'Fetched the Organisation data successfully'
         });
+        var directors = response.data.organisation.organisationdirectors.length;
 
-        _this5.organisationform.fill(response.data.organisation);
+        if (directors == 0) {
+          _this5.newOrgDirector = true;
 
-        _this5.$Progress.finish();
+          _this5.organisationform.fill(response.data.organisation);
+
+          _this5.$Progress.finish();
+        } else {
+          _this5.newOrgDirector = false;
+
+          _this5.organisationform.fill(response.data.organisation);
+
+          _this5.$Progress.finish();
+        }
       }).catch(function () {
         _this5.$Progress.fail(); //errors
 
@@ -66631,1180 +66646,1240 @@ var render = function() {
                         {
                           attrs: {
                             title: "Organisation Director Info",
-                            "before-change": _vm.editmodeOrganisation
+                            "before-change": _vm.newOrgDirector
                               ? _vm.validateDirectorUpdate
                               : _vm.validateDirector
                           }
                         },
                         [
-                          _c("div", { staticClass: "row" }, [
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-4" },
-                              [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: "col-form-label",
-                                    attrs: { for: "director_first_name" }
-                                  },
-                                  [_vm._v(" Director First Name")]
-                                ),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value:
-                                        _vm.organisationform
-                                          .director_first_name,
-                                      expression:
-                                        "organisationform.director_first_name"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  class: {
-                                    "is-invalid": _vm.organisationform.errors.has(
-                                      "director_first_name"
-                                    )
-                                  },
-                                  attrs: {
-                                    type: "text",
-                                    name: "director_first_name",
-                                    placeholder: "Director First Name"
-                                  },
-                                  domProps: {
-                                    value:
-                                      _vm.organisationform.director_first_name
-                                  },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.organisationform,
-                                        "director_first_name",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("has-error", {
-                                  staticStyle: { color: "#e83e8c" },
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "director_first_name"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-4" },
-                              [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: " col-form-label",
-                                    attrs: { for: "director_last_name" }
-                                  },
-                                  [_vm._v("director_Last Name ")]
-                                ),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value:
-                                        _vm.organisationform.director_last_name,
-                                      expression:
-                                        "organisationform.director_last_name"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  class: {
-                                    "is-invalid": _vm.organisationform.errors.has(
-                                      "director_last_name"
-                                    )
-                                  },
-                                  attrs: {
-                                    type: "director_last_name",
-                                    name: "director_last_name",
-                                    placeholder: "director_Last Name"
-                                  },
-                                  domProps: {
-                                    value:
-                                      _vm.organisationform.director_last_name
-                                  },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.organisationform,
-                                        "director_last_name",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("has-error", {
-                                  staticStyle: { color: "#e83e8c" },
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "director_last_name"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-4" },
-                              [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: " col-form-label",
-                                    attrs: { for: "email" }
-                                  },
-                                  [_vm._v("Email ")]
-                                ),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.organisationform.email,
-                                      expression: "organisationform.email"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  class: {
-                                    "is-invalid": _vm.organisationform.errors.has(
-                                      "email"
-                                    )
-                                  },
-                                  attrs: {
-                                    type: "email",
-                                    name: "email",
-                                    placeholder: "Email Address"
-                                  },
-                                  domProps: {
-                                    value: _vm.organisationform.email
-                                  },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.organisationform,
-                                        "email",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("has-error", {
-                                  staticStyle: { color: "#e83e8c" },
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "email"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: " row" }, [
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-4" },
-                              [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value:
-                                        _vm.organisationform.director_password,
-                                      expression:
-                                        "organisationform.director_password"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  class: {
-                                    "is-invalid": _vm.organisationform.errors.has(
-                                      "director_password"
-                                    )
-                                  },
-                                  attrs: {
-                                    type: "password",
-                                    id: "director_password",
-                                    placeholder: "Director Password"
-                                  },
-                                  domProps: {
-                                    value:
-                                      _vm.organisationform.director_password
-                                  },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.organisationform,
-                                        "director_password",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("has-error", {
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "password"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-4" }, [
-                              _c(
-                                "label",
+                          _c(
+                            "div",
+                            {
+                              directives: [
                                 {
-                                  staticClass: "col-form-label",
-                                  attrs: { for: "director_phone" }
-                                },
-                                [_vm._v(" Director Phone")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                [
-                                  _c("vue-tel-input", {
-                                    staticClass: "form-control",
-                                    class: {
-                                      "is-invalid": _vm.organisationform.errors.has(
-                                        "director_phone"
-                                      )
-                                    },
-                                    attrs: { name: "director_phone" },
-                                    on: { onInput: _vm.DirectorInputPhone },
-                                    model: {
-                                      value:
-                                        _vm.organisationform.director_phone,
-                                      callback: function($$v) {
-                                        _vm.$set(
-                                          _vm.organisationform,
-                                          "director_phone",
-                                          $$v
-                                        )
-                                      },
-                                      expression:
-                                        "organisationform.director_phone"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("has-error", {
-                                    staticStyle: { color: "#e83e8c" },
-                                    attrs: {
-                                      form: _vm.organisationform,
-                                      field: "director_phone"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _vm.organisationform.director_phone
-                                ? _c(
-                                    "div",
-                                    { staticStyle: { color: "#e83e8c" } },
-                                    [
-                                      _c("span", [
-                                        _vm._v("Is valid: "),
-                                        _c("strong", [
-                                          _vm._v(
-                                            _vm._s(_vm.director_phone1.isValid)
-                                          )
-                                        ]),
-                                        _vm._v(", ")
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("span", [
-                                        _vm._v("Country: "),
-                                        _c("strong", [
-                                          _vm._v(
-                                            _vm._s(_vm.director_phone1.country)
-                                          )
-                                        ])
-                                      ])
-                                    ]
-                                  )
-                                : _vm._e()
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-4" },
-                              [
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.newOrgDirector,
+                                  expression: "newOrgDirector"
+                                }
+                              ]
+                            },
+                            [
+                              _c("div", { staticClass: "row" }, [
                                 _c(
-                                  "label",
-                                  {
-                                    staticClass: " col-form-label",
-                                    attrs: { for: "director_landline" }
-                                  },
-                                  [_vm._v("Director Landline")]
-                                ),
-                                _vm._v(" "),
-                                _c("vue-tel-input", {
-                                  staticClass: "form-control",
-                                  class: {
-                                    "is-invalid": _vm.organisationform.errors.has(
-                                      "director_landline"
-                                    )
-                                  },
-                                  attrs: { name: "director_landline" },
-                                  on: { onInput: _vm.DirectorInputLandline },
-                                  model: {
-                                    value:
-                                      _vm.organisationform.director_landline,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.organisationform,
-                                        "director_landline",
-                                        $$v
-                                      )
-                                    },
-                                    expression:
-                                      "organisationform.director_landline"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("has-error", {
-                                  staticStyle: { color: "#e83e8c" },
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "director_landline"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _vm.organisationform.director_landline
-                                  ? _c(
-                                      "div",
-                                      { staticStyle: { color: "#e83e8c" } },
-                                      [
-                                        _c("span", [
-                                          _vm._v("Is valid: "),
-                                          _c("strong", [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.director_landline1.isValid
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(", ")
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("span", [
-                                          _vm._v("Country: "),
-                                          _c("strong", [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.director_landline1.country
-                                              )
-                                            )
-                                          ])
-                                        ])
-                                      ]
-                                    )
-                                  : _vm._e()
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: " row" }, [
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-4" },
-                              [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: "col-form-label",
-                                    attrs: { for: "director_id_no" }
-                                  },
-                                  [_vm._v("Director ID no.")]
-                                ),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value:
-                                        _vm.organisationform.director_id_no,
-                                      expression:
-                                        "organisationform.director_id_no"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  class: {
-                                    "is-invalid": _vm.organisationform.errors.has(
-                                      "director_id_no"
-                                    )
-                                  },
-                                  attrs: {
-                                    type: "text",
-                                    name: "director_id_no",
-                                    placeholder: "Director ID NO"
-                                  },
-                                  domProps: {
-                                    value: _vm.organisationform.director_id_no
-                                  },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.organisationform,
-                                        "director_id_no",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("has-error", {
-                                  staticStyle: { color: "#e83e8c" },
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "director_id_no"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-4" },
-                              [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: " col-form-label",
-                                    attrs: { for: "director_address" }
-                                  },
-                                  [_vm._v("Director Address")]
-                                ),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value:
-                                        _vm.organisationform.director_address,
-                                      expression:
-                                        "organisationform.director_address"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  class: {
-                                    "is-invalid": _vm.organisationform.errors.has(
-                                      "director_address"
-                                    )
-                                  },
-                                  attrs: {
-                                    type: "text",
-                                    name: "Address",
-                                    placeholder: "Director Address"
-                                  },
-                                  domProps: {
-                                    value: _vm.organisationform.director_address
-                                  },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.organisationform,
-                                        "director_address",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("has-error", {
-                                  staticStyle: { color: "#e83e8c" },
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "director_address"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: " row" }, [
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-3" },
-                              [
-                                _c(
-                                  "label",
-                                  { attrs: { for: "director_country_id" } },
-                                  [_vm._v("Select Country")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "select",
-                                  {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value:
-                                          _vm.organisationform
-                                            .director_country_id,
-                                        expression:
-                                          "organisationform.director_country_id"
-                                      }
-                                    ],
-                                    staticClass: "form-control",
-                                    class: {
-                                      "is-invalid": _vm.organisationform.errors.has(
-                                        "director_country_id"
-                                      )
-                                    },
-                                    on: {
-                                      change: [
-                                        function($event) {
-                                          var $$selectedVal = Array.prototype.filter
-                                            .call(
-                                              $event.target.options,
-                                              function(o) {
-                                                return o.selected
-                                              }
-                                            )
-                                            .map(function(o) {
-                                              var val =
-                                                "_value" in o
-                                                  ? o._value
-                                                  : o.value
-                                              return val
-                                            })
-                                          _vm.$set(
-                                            _vm.organisationform,
-                                            "director_country_id",
-                                            $event.target.multiple
-                                              ? $$selectedVal
-                                              : $$selectedVal[0]
-                                          )
-                                        },
-                                        function($event) {
-                                          return _vm.DirectorcountryCounties(
-                                            _vm.organisationform
-                                              .director_country_id
-                                          )
-                                        }
-                                      ]
-                                    }
-                                  },
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
                                   [
                                     _c(
-                                      "option",
-                                      { attrs: { disabled: "", value: "" } },
+                                      "label",
+                                      {
+                                        staticClass: "col-form-label",
+                                        attrs: { for: "director_first_name" }
+                                      },
+                                      [_vm._v(" Director First Name")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.organisationform
+                                              .director_first_name,
+                                          expression:
+                                            "organisationform.director_first_name"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.organisationform.errors.has(
+                                          "director_first_name"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "text",
+                                        name: "first_name",
+                                        placeholder: "Director First Name"
+                                      },
+                                      domProps: {
+                                        value:
+                                          _vm.organisationform
+                                            .director_first_name
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "director_first_name",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "director_first_name"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: { for: "director_last_name" }
+                                      },
+                                      [_vm._v("director_Last Name ")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.organisationform
+                                              .director_last_name,
+                                          expression:
+                                            "organisationform.director_last_name"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.organisationform.errors.has(
+                                          "director_last_name"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "director_last_name",
+                                        name: "director_last_name",
+                                        placeholder: "director_Last Name"
+                                      },
+                                      domProps: {
+                                        value:
+                                          _vm.organisationform
+                                            .director_last_name
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "director_last_name",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "director_last_name"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: { for: "email" }
+                                      },
+                                      [_vm._v("Email ")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.organisationform.email,
+                                          expression: "organisationform.email"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.organisationform.errors.has(
+                                          "email"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "email",
+                                        name: "email",
+                                        placeholder: "Email Address"
+                                      },
+                                      domProps: {
+                                        value: _vm.organisationform.email
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "email",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "email"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: " row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.organisationform
+                                              .director_password,
+                                          expression:
+                                            "organisationform.director_password"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.organisationform.errors.has(
+                                          "director_password"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "password",
+                                        id: "director_password",
+                                        placeholder: "Director Password"
+                                      },
+                                      domProps: {
+                                        value:
+                                          _vm.organisationform.director_password
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "director_password",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "password"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "col-form-label",
+                                        attrs: { for: "director_phone" }
+                                      },
+                                      [_vm._v(" Director Phone")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      [
+                                        _c("vue-tel-input", {
+                                          staticClass: "form-control",
+                                          class: {
+                                            "is-invalid": _vm.organisationform.errors.has(
+                                              "director_phone"
+                                            )
+                                          },
+                                          attrs: { name: "director_phone" },
+                                          on: {
+                                            onInput: _vm.DirectorInputPhone
+                                          },
+                                          model: {
+                                            value:
+                                              _vm.organisationform
+                                                .director_phone,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                _vm.organisationform,
+                                                "director_phone",
+                                                $$v
+                                              )
+                                            },
+                                            expression:
+                                              "organisationform.director_phone"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("has-error", {
+                                          staticStyle: { color: "#e83e8c" },
+                                          attrs: {
+                                            form: _vm.organisationform,
+                                            field: "director_phone"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _vm.organisationform.director_phone
+                                      ? _c(
+                                          "div",
+                                          { staticStyle: { color: "#e83e8c" } },
+                                          [
+                                            _c("span", [
+                                              _vm._v("Is valid: "),
+                                              _c("strong", [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.director_phone1.isValid
+                                                  )
+                                                )
+                                              ]),
+                                              _vm._v(", ")
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("span", [
+                                              _vm._v("Country: "),
+                                              _c("strong", [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.director_phone1.country
+                                                  )
+                                                )
+                                              ])
+                                            ])
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: { for: "director_landline" }
+                                      },
+                                      [_vm._v("Director Landline")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("vue-tel-input", {
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.organisationform.errors.has(
+                                          "director_landline"
+                                        )
+                                      },
+                                      attrs: { name: "director_landline" },
+                                      on: {
+                                        onInput: _vm.DirectorInputLandline
+                                      },
+                                      model: {
+                                        value:
+                                          _vm.organisationform
+                                            .director_landline,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "director_landline",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "organisationform.director_landline"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "director_landline"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _vm.organisationform.director_landline
+                                      ? _c(
+                                          "div",
+                                          { staticStyle: { color: "#e83e8c" } },
+                                          [
+                                            _c("span", [
+                                              _vm._v("Is valid: "),
+                                              _c("strong", [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.director_landline1
+                                                      .isValid
+                                                  )
+                                                )
+                                              ]),
+                                              _vm._v(", ")
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("span", [
+                                              _vm._v("Country: "),
+                                              _c("strong", [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.director_landline1
+                                                      .country
+                                                  )
+                                                )
+                                              ])
+                                            ])
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: " row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "col-form-label",
+                                        attrs: { for: "director_id_no" }
+                                      },
+                                      [_vm._v("Director ID no.")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.organisationform.director_id_no,
+                                          expression:
+                                            "organisationform.director_id_no"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.organisationform.errors.has(
+                                          "director_id_no"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "text",
+                                        name: "director_id_no",
+                                        placeholder: "Director ID NO"
+                                      },
+                                      domProps: {
+                                        value:
+                                          _vm.organisationform.director_id_no
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "director_id_no",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "director_id_no"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: { for: "director_address" }
+                                      },
+                                      [_vm._v("Director Address")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.organisationform
+                                              .director_address,
+                                          expression:
+                                            "organisationform.director_address"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.organisationform.errors.has(
+                                          "director_address"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "text",
+                                        name: "Address",
+                                        placeholder: "Director Address"
+                                      },
+                                      domProps: {
+                                        value:
+                                          _vm.organisationform.director_address
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "director_address",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "director_address"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: " row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-3" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "director_country_id" } },
                                       [_vm._v("Select Country")]
                                     ),
                                     _vm._v(" "),
-                                    _vm._l(_vm.Countries, function(country) {
-                                      return _c(
-                                        "option",
-                                        {
-                                          key: country.id,
-                                          domProps: { value: country.id }
-                                        },
-                                        [_vm._v(_vm._s(country.name))]
-                                      )
-                                    })
-                                  ],
-                                  2
-                                ),
-                                _vm._v(" "),
-                                _c("has-error", {
-                                  staticStyle: { color: "#e83e8c" },
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "director_country_id"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-3" },
-                              [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: " col-form-label",
-                                    attrs: { for: "director_county_id" }
-                                  },
-                                  [_vm._v("County")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "select",
-                                  {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value:
-                                          _vm.organisationform
-                                            .director_county_id,
-                                        expression:
-                                          "organisationform.director_county_id"
-                                      }
-                                    ],
-                                    staticClass: "form-control",
-                                    class: {
-                                      "is-invalid": _vm.organisationform.errors.has(
-                                        "director_county_id"
-                                      )
-                                    },
-                                    on: {
-                                      change: [
-                                        function($event) {
-                                          var $$selectedVal = Array.prototype.filter
-                                            .call(
-                                              $event.target.options,
-                                              function(o) {
-                                                return o.selected
-                                              }
-                                            )
-                                            .map(function(o) {
-                                              var val =
-                                                "_value" in o
-                                                  ? o._value
-                                                  : o.value
-                                              return val
-                                            })
-                                          _vm.$set(
-                                            _vm.organisationform,
-                                            "director_county_id",
-                                            $event.target.multiple
-                                              ? $$selectedVal
-                                              : $$selectedVal[0]
-                                          )
-                                        },
-                                        function($event) {
-                                          return _vm.DirectorcountyConstituencies(
-                                            _vm.organisationform
-                                              .director_county_id
-                                          )
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  [
                                     _c(
-                                      "option",
-                                      { attrs: { disabled: "", value: "" } },
-                                      [_vm._v("Select County")]
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.organisationform
+                                                .director_country_id,
+                                            expression:
+                                              "organisationform.director_country_id"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        class: {
+                                          "is-invalid": _vm.organisationform.errors.has(
+                                            "director_country_id"
+                                          )
+                                        },
+                                        on: {
+                                          change: [
+                                            function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.$set(
+                                                _vm.organisationform,
+                                                "director_country_id",
+                                                $event.target.multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              )
+                                            },
+                                            function($event) {
+                                              return _vm.DirectorcountryCounties(
+                                                _vm.organisationform
+                                                  .director_country_id
+                                              )
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: { disabled: "", value: "" }
+                                          },
+                                          [_vm._v("Select Country")]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.Countries, function(
+                                          country
+                                        ) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: country.id,
+                                              domProps: { value: country.id }
+                                            },
+                                            [_vm._v(_vm._s(country.name))]
+                                          )
+                                        })
+                                      ],
+                                      2
                                     ),
                                     _vm._v(" "),
-                                    _vm._l(_vm.Counties, function(county) {
-                                      return _c(
-                                        "option",
-                                        {
-                                          key: county.id,
-                                          domProps: { value: county.id }
-                                        },
-                                        [_vm._v(_vm._s(county.name))]
-                                      )
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "director_country_id"
+                                      }
                                     })
                                   ],
-                                  2
-                                ),
-                                _vm._v(" "),
-                                _c("has-error", {
-                                  staticStyle: { color: "#e83e8c" },
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "director_county_id"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-3" },
-                              [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: " col-form-label",
-                                    attrs: { for: "director_constituency_id" }
-                                  },
-                                  [_vm._v("Constituency")]
+                                  1
                                 ),
                                 _vm._v(" "),
                                 _c(
-                                  "select",
-                                  {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value:
-                                          _vm.organisationform
-                                            .director_constituency_id,
-                                        expression:
-                                          "organisationform.director_constituency_id"
-                                      }
-                                    ],
-                                    staticClass: "form-control",
-                                    class: {
-                                      "is-invalid": _vm.organisationform.errors.has(
-                                        "director_constituency_id"
-                                      )
-                                    },
-                                    on: {
-                                      change: [
-                                        function($event) {
-                                          var $$selectedVal = Array.prototype.filter
-                                            .call(
-                                              $event.target.options,
-                                              function(o) {
-                                                return o.selected
-                                              }
-                                            )
-                                            .map(function(o) {
-                                              var val =
-                                                "_value" in o
-                                                  ? o._value
-                                                  : o.value
-                                              return val
-                                            })
-                                          _vm.$set(
-                                            _vm.organisationform,
-                                            "director_constituency_id",
-                                            $event.target.multiple
-                                              ? $$selectedVal
-                                              : $$selectedVal[0]
-                                          )
-                                        },
-                                        function($event) {
-                                          return _vm.DirectorconstituencyWards(
-                                            _vm.organisationform
-                                              .director_constituency_id
-                                          )
-                                        }
-                                      ]
-                                    }
-                                  },
+                                  "div",
+                                  { staticClass: "form-group col-md-3" },
                                   [
                                     _c(
-                                      "option",
-                                      { attrs: { disabled: "", value: "" } },
-                                      [_vm._v("Select County")]
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: { for: "director_county_id" }
+                                      },
+                                      [_vm._v("County")]
                                     ),
                                     _vm._v(" "),
-                                    _vm._l(_vm.Constituencies, function(
-                                      constituency
-                                    ) {
-                                      return _c(
-                                        "option",
-                                        {
-                                          key: constituency.id,
-                                          domProps: { value: constituency.id }
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.organisationform
+                                                .director_county_id,
+                                            expression:
+                                              "organisationform.director_county_id"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        class: {
+                                          "is-invalid": _vm.organisationform.errors.has(
+                                            "director_county_id"
+                                          )
                                         },
-                                        [_vm._v(_vm._s(constituency.name))]
-                                      )
+                                        on: {
+                                          change: [
+                                            function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.$set(
+                                                _vm.organisationform,
+                                                "director_county_id",
+                                                $event.target.multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              )
+                                            },
+                                            function($event) {
+                                              return _vm.DirectorcountyConstituencies(
+                                                _vm.organisationform
+                                                  .director_county_id
+                                              )
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: { disabled: "", value: "" }
+                                          },
+                                          [_vm._v("Select County")]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.Counties, function(county) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: county.id,
+                                              domProps: { value: county.id }
+                                            },
+                                            [_vm._v(_vm._s(county.name))]
+                                          )
+                                        })
+                                      ],
+                                      2
+                                    ),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "director_county_id"
+                                      }
                                     })
                                   ],
-                                  2
-                                ),
-                                _vm._v(" "),
-                                _c("has-error", {
-                                  staticStyle: { color: "#e83e8c" },
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "director_constituency_id"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-3" },
-                              [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: "col-form-label",
-                                    attrs: { for: "director_ward_id" }
-                                  },
-                                  [_vm._v(" Ward ")]
+                                  1
                                 ),
                                 _vm._v(" "),
                                 _c(
-                                  "select",
-                                  {
-                                    directives: [
+                                  "div",
+                                  { staticClass: "form-group col-md-3" },
+                                  [
+                                    _c(
+                                      "label",
                                       {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value:
-                                          _vm.organisationform.director_ward_id,
-                                        expression:
-                                          "organisationform.director_ward_id"
+                                        staticClass: " col-form-label",
+                                        attrs: {
+                                          for: "director_constituency_id"
+                                        }
+                                      },
+                                      [_vm._v("Constituency")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.organisationform
+                                                .director_constituency_id,
+                                            expression:
+                                              "organisationform.director_constituency_id"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        class: {
+                                          "is-invalid": _vm.organisationform.errors.has(
+                                            "director_constituency_id"
+                                          )
+                                        },
+                                        on: {
+                                          change: [
+                                            function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.$set(
+                                                _vm.organisationform,
+                                                "director_constituency_id",
+                                                $event.target.multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              )
+                                            },
+                                            function($event) {
+                                              return _vm.DirectorconstituencyWards(
+                                                _vm.organisationform
+                                                  .director_constituency_id
+                                              )
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: { disabled: "", value: "" }
+                                          },
+                                          [_vm._v("Select County")]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.Constituencies, function(
+                                          constituency
+                                        ) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: constituency.id,
+                                              domProps: {
+                                                value: constituency.id
+                                              }
+                                            },
+                                            [_vm._v(_vm._s(constituency.name))]
+                                          )
+                                        })
+                                      ],
+                                      2
+                                    ),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "director_constituency_id"
                                       }
-                                    ],
-                                    staticClass: "form-control",
-                                    class: {
-                                      "is-invalid": _vm.organisationform.errors.has(
-                                        "director_ward_id"
-                                      )
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$selectedVal = Array.prototype.filter
-                                          .call($event.target.options, function(
-                                            o
-                                          ) {
-                                            return o.selected
-                                          })
-                                          .map(function(o) {
-                                            var val =
-                                              "_value" in o ? o._value : o.value
-                                            return val
-                                          })
-                                        _vm.$set(
-                                          _vm.organisationform,
-                                          "director_ward_id",
-                                          $event.target.multiple
-                                            ? $$selectedVal
-                                            : $$selectedVal[0]
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-3" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "col-form-label",
+                                        attrs: { for: "director_ward_id" }
+                                      },
+                                      [_vm._v(" Ward ")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.organisationform
+                                                .director_ward_id,
+                                            expression:
+                                              "organisationform.director_ward_id"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        class: {
+                                          "is-invalid": _vm.organisationform.errors.has(
+                                            "director_ward_id"
+                                          )
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.$set(
+                                              _vm.organisationform,
+                                              "director_ward_id",
+                                              $event.target.multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: { disabled: "", value: "" }
+                                          },
+                                          [_vm._v("Select Ward")]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.Wards, function(ward) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: ward.id,
+                                              domProps: { value: ward.id }
+                                            },
+                                            [_vm._v(_vm._s(ward.name))]
+                                          )
+                                        })
+                                      ],
+                                      2
+                                    ),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "director_ward_id"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: " row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: {
+                                          for: "director_passport_image"
+                                        }
+                                      },
+                                      [_vm._v("Director PassPort Image")]
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      class: {
+                                        "is-invalid": _vm.organisationform.errors.has(
+                                          "director_passport_image"
                                         )
+                                      },
+                                      attrs: {
+                                        type: "file",
+                                        name: "director_passport_image"
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.organisationChangeDirectorPImage(
+                                            $event
+                                          )
+                                        }
                                       }
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "option",
-                                      { attrs: { disabled: "", value: "" } },
-                                      [_vm._v("Select Ward")]
-                                    ),
+                                    }),
                                     _vm._v(" "),
-                                    _vm._l(_vm.Wards, function(ward) {
-                                      return _c(
-                                        "option",
+                                    _c("img", {
+                                      directives: [
                                         {
-                                          key: ward.id,
-                                          domProps: { value: ward.id }
-                                        },
-                                        [_vm._v(_vm._s(ward.name))]
-                                      )
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: _vm.editmodeOrganisation,
+                                          expression: "editmodeOrganisation"
+                                        }
+                                      ],
+                                      attrs: {
+                                        src: _vm.updateOrganisationDirectorPImage(
+                                          _vm.organisationform
+                                            .director_passport_image
+                                        ),
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: !_vm.editmodeOrganisation,
+                                          expression: "!editmodeOrganisation"
+                                        }
+                                      ],
+                                      attrs: {
+                                        src:
+                                          _vm.organisationform
+                                            .director_passport_image,
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "director_passport_image"
+                                      }
                                     })
                                   ],
-                                  2
+                                  1
                                 ),
                                 _vm._v(" "),
-                                _c("has-error", {
-                                  staticStyle: { color: "#e83e8c" },
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "director_ward_id"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: " row" }, [
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-4" },
-                              [
                                 _c(
-                                  "label",
-                                  {
-                                    staticClass: " col-form-label",
-                                    attrs: { for: "director_passport_image" }
-                                  },
-                                  [_vm._v("Director PassPort Image")]
-                                ),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("input", {
-                                  class: {
-                                    "is-invalid": _vm.organisationform.errors.has(
-                                      "director_passport_image"
-                                    )
-                                  },
-                                  attrs: {
-                                    type: "file",
-                                    name: "director_passport_image"
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      return _vm.organisationChangeDirectorPImage(
-                                        $event
-                                      )
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("img", {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: _vm.editmodeOrganisation,
-                                      expression: "editmodeOrganisation"
-                                    }
-                                  ],
-                                  attrs: {
-                                    src: _vm.updateOrganisationDirectorPImage(
-                                      _vm.organisationform
-                                        .director_passport_image
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: {
+                                          for: "frontside_director_id_photo"
+                                        }
+                                      },
+                                      [_vm._v("Director FrontSide ID Photo")]
                                     ),
-                                    alt: "",
-                                    width: "100%"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("img", {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: !_vm.editmodeOrganisation,
-                                      expression: "!editmodeOrganisation"
-                                    }
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      class: {
+                                        "is-invalid": _vm.organisationform.errors.has(
+                                          "frontside_director_id_photo"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "file",
+                                        name: "frontside_director_id_photo"
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.organisationChangeDirectorFIDPhoto(
+                                            $event
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: _vm.editmodeOrganisation,
+                                          expression: "editmodeOrganisation"
+                                        }
+                                      ],
+                                      attrs: {
+                                        src: _vm.updateOrganisationDirectorFIDPhoto(
+                                          _vm.organisationform
+                                            .frontside_director_id_photo
+                                        ),
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: !_vm.editmodeOrganisation,
+                                          expression: "!editmodeOrganisation"
+                                        }
+                                      ],
+                                      attrs: {
+                                        src:
+                                          _vm.organisationform
+                                            .frontside_director_id_photo,
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "frontside_director_id_photo"
+                                      }
+                                    })
                                   ],
-                                  attrs: {
-                                    src:
-                                      _vm.organisationform
-                                        .director_passport_image,
-                                    alt: "",
-                                    width: "100%"
-                                  }
-                                }),
+                                  1
+                                ),
                                 _vm._v(" "),
-                                _c("has-error", {
-                                  staticStyle: { color: "#e83e8c" },
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "director_passport_image"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-4" },
-                              [
                                 _c(
-                                  "label",
-                                  {
-                                    staticClass: " col-form-label",
-                                    attrs: {
-                                      for: "frontside_director_id_photo"
-                                    }
-                                  },
-                                  [_vm._v("Director FrontSide ID Photo")]
-                                ),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("input", {
-                                  class: {
-                                    "is-invalid": _vm.organisationform.errors.has(
-                                      "frontside_director_id_photo"
-                                    )
-                                  },
-                                  attrs: {
-                                    type: "file",
-                                    name: "frontside_director_id_photo"
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      return _vm.organisationChangeDirectorFIDPhoto(
-                                        $event
-                                      )
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("img", {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: _vm.editmodeOrganisation,
-                                      expression: "editmodeOrganisation"
-                                    }
-                                  ],
-                                  attrs: {
-                                    src: _vm.updateOrganisationDirectorFIDPhoto(
-                                      _vm.organisationform
-                                        .frontside_director_id_photo
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: {
+                                          for: "backside_director_i_photod"
+                                        }
+                                      },
+                                      [_vm._v("Director BackSide ID Photo")]
                                     ),
-                                    alt: "",
-                                    width: "100%"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("img", {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: !_vm.editmodeOrganisation,
-                                      expression: "!editmodeOrganisation"
-                                    }
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      class: {
+                                        "is-invalid": _vm.organisationform.errors.has(
+                                          "backside_director_id"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "file",
+                                        name: "backside_director_id_photo"
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.organisationChangeDirectorBIDPhoto(
+                                            $event
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: _vm.editmodeOrganisation,
+                                          expression: "editmodeOrganisation"
+                                        }
+                                      ],
+                                      attrs: {
+                                        src: _vm.updateOrganisationDirectorBIDPhoto(
+                                          _vm.organisationform
+                                            .backside_director_id_photo
+                                        ),
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: !_vm.editmodeOrganisation,
+                                          expression: "!editmodeOrganisation"
+                                        }
+                                      ],
+                                      attrs: {
+                                        src:
+                                          _vm.organisationform
+                                            .backside_director_id_photo,
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.organisationform,
+                                        field: "backside_director_id_photo"
+                                      }
+                                    })
                                   ],
-                                  attrs: {
-                                    src:
-                                      _vm.organisationform
-                                        .frontside_director_id_photo,
-                                    alt: "",
-                                    width: "100%"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("has-error", {
-                                  staticStyle: { color: "#e83e8c" },
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "frontside_director_id_photo"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "form-group col-md-4" },
-                              [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: " col-form-label",
-                                    attrs: { for: "backside_director_i_photod" }
-                                  },
-                                  [_vm._v("Director BackSide ID Photo")]
-                                ),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("input", {
-                                  class: {
-                                    "is-invalid": _vm.organisationform.errors.has(
-                                      "backside_director_id"
-                                    )
-                                  },
-                                  attrs: {
-                                    type: "file",
-                                    name: "backside_director_id_photo"
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      return _vm.organisationChangeDirectorBIDPhoto(
-                                        $event
-                                      )
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("img", {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: _vm.editmodeOrganisation,
-                                      expression: "editmodeOrganisation"
-                                    }
-                                  ],
-                                  attrs: {
-                                    src: _vm.updateOrganisationDirectorBIDPhoto(
-                                      _vm.organisationform
-                                        .backside_director_id_photo
-                                    ),
-                                    alt: "",
-                                    width: "100%"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("img", {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: !_vm.editmodeOrganisation,
-                                      expression: "!editmodeOrganisation"
-                                    }
-                                  ],
-                                  attrs: {
-                                    src:
-                                      _vm.organisationform
-                                        .backside_director_id_photo,
-                                    alt: "",
-                                    width: "100%"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("has-error", {
-                                  staticStyle: { color: "#e83e8c" },
-                                  attrs: {
-                                    form: _vm.organisationform,
-                                    field: "backside_director_id_photo"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ])
+                                  1
+                                )
+                              ])
+                            ]
+                          )
                         ]
                       ),
                       _vm._v(" "),
                       _c("tab-content", { attrs: { title: "Last step" } }, [
                         _vm._v(
-                          "\n                              Organsation Information\n\n                              "
+                          "\n                              Organisation Information\n\n                              "
                         ),
                         _c("div", { staticClass: " row" }, [
                           _c("div", { staticClass: "form-group col-md-4" }, [
@@ -68375,768 +68450,888 @@ var render = function() {
                             1
                           )
                         ]),
-                        _vm._v(
-                          "\n\n                              Director Info\n                              "
-                        ),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "form-group col-md-4" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: "col-form-label",
-                                attrs: { for: "director_first_name" }
-                              },
-                              [_vm._v(" Director First Name")]
-                            ),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value:
-                                    _vm.organisationform.director_first_name,
-                                  expression:
-                                    "organisationform.director_first_name"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { readonly: true },
-                              domProps: {
-                                value: _vm.organisationform.director_first_name
-                              },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.organisationform,
-                                    "director_first_name",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col-md-4" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: " col-form-label",
-                                attrs: { for: "director_last_name" }
-                              },
-                              [_vm._v("director_Last Name ")]
-                            ),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value:
-                                    _vm.organisationform.director_last_name,
-                                  expression:
-                                    "organisationform.director_last_name"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { readonly: true },
-                              domProps: {
-                                value: _vm.organisationform.director_last_name
-                              },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.organisationform,
-                                    "director_last_name",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col-md-4" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: " col-form-label",
-                                attrs: { for: "email" }
-                              },
-                              [_vm._v("Email ")]
-                            ),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.organisationform.email,
-                                  expression: "organisationform.email"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { readonly: true },
-                              domProps: { value: _vm.organisationform.email },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.organisationform,
-                                    "email",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ])
-                        ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: " row" }, [
-                          _c("div", { staticClass: "form-group col-md-4" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.organisationform.director_password,
-                                  expression:
-                                    "organisationform.director_password"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { type: "password", readonly: true },
-                              domProps: {
-                                value: _vm.organisationform.director_password
-                              },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.organisationform,
-                                    "director_password",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col-md-4" }, [
-                            _c(
-                              "label",
+                        _c(
+                          "div",
+                          {
+                            directives: [
                               {
-                                staticClass: "col-form-label",
-                                attrs: { for: "director_phone" }
-                              },
-                              [_vm._v(" Director Phone")]
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.newOrgDirector,
+                                expression: "newOrgDirector"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              "\n                              Director Info\n                              "
                             ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              [
-                                _c("vue-tel-input", {
-                                  staticClass: "form-control",
-                                  attrs: { readonly: true },
-                                  model: {
-                                    value: _vm.organisationform.director_phone,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.organisationform,
-                                        "director_phone",
-                                        $$v
-                                      )
-                                    },
-                                    expression:
-                                      "organisationform.director_phone"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _vm.organisationform.director_phone
-                              ? _c(
-                                  "div",
-                                  { staticStyle: { color: "#e83e8c" } },
-                                  [
-                                    _c("span", [
-                                      _vm._v("Is valid: "),
-                                      _c("strong", [
-                                        _vm._v(
-                                          _vm._s(_vm.director_phone1.isValid)
-                                        )
-                                      ]),
-                                      _vm._v(", ")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("span", [
-                                      _vm._v("Country: "),
-                                      _c("strong", [
-                                        _vm._v(
-                                          _vm._s(_vm.director_phone1.country)
-                                        )
-                                      ])
-                                    ])
-                                  ]
-                                )
-                              : _vm._e()
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "form-group col-md-4" },
-                            [
+                            _c("div", { staticClass: "row" }, [
                               _c(
-                                "label",
-                                {
-                                  staticClass: " col-form-label",
-                                  attrs: { for: "director_landline" }
-                                },
-                                [_vm._v("Director Landline")]
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "col-form-label",
+                                      attrs: { for: "director_first_name" }
+                                    },
+                                    [_vm._v(" Director First Name")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.organisationform
+                                            .director_first_name,
+                                        expression:
+                                          "organisationform.director_first_name"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { readonly: true },
+                                    domProps: {
+                                      value:
+                                        _vm.organisationform.director_first_name
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.organisationform,
+                                          "director_first_name",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]
                               ),
                               _vm._v(" "),
-                              _c("vue-tel-input", {
-                                staticClass: "form-control",
-                                attrs: { readonly: true },
-                                model: {
-                                  value: _vm.organisationform.director_landline,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.organisationform,
-                                      "director_landline",
-                                      $$v
-                                    )
-                                  },
-                                  expression:
-                                    "organisationform.director_landline"
-                                }
-                              }),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "director_last_name" }
+                                    },
+                                    [_vm._v("director_Last Name ")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.organisationform
+                                            .director_last_name,
+                                        expression:
+                                          "organisationform.director_last_name"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { readonly: true },
+                                    domProps: {
+                                      value:
+                                        _vm.organisationform.director_last_name
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.organisationform,
+                                          "director_last_name",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]
+                              ),
                               _vm._v(" "),
-                              _vm.organisationform.director_landline
-                                ? _c(
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "email" }
+                                    },
+                                    [_vm._v("Email ")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.organisationform.email,
+                                        expression: "organisationform.email"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { readonly: true },
+                                    domProps: {
+                                      value: _vm.organisationform.email
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.organisationform,
+                                          "email",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: " row" }, [
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.organisationform
+                                            .director_password,
+                                        expression:
+                                          "organisationform.director_password"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { type: "password", readonly: true },
+                                    domProps: {
+                                      value:
+                                        _vm.organisationform.director_password
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.organisationform,
+                                          "director_password",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "col-form-label",
+                                      attrs: { for: "director_phone" }
+                                    },
+                                    [_vm._v(" Director Phone")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
                                     "div",
-                                    { staticStyle: { color: "#e83e8c" } },
                                     [
-                                      _c("span", [
-                                        _vm._v("Is valid: "),
-                                        _c("strong", [
-                                          _vm._v(
-                                            _vm._s(
-                                              _vm.director_landline1.isValid
+                                      _c("vue-tel-input", {
+                                        staticClass: "form-control",
+                                        attrs: { readonly: true },
+                                        model: {
+                                          value:
+                                            _vm.organisationform.director_phone,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.organisationform,
+                                              "director_phone",
+                                              $$v
                                             )
-                                          )
-                                        ]),
-                                        _vm._v(", ")
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("span", [
-                                        _vm._v("Country: "),
-                                        _c("strong", [
-                                          _vm._v(
-                                            _vm._s(
-                                              _vm.director_landline1.country
+                                          },
+                                          expression:
+                                            "organisationform.director_phone"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _vm.organisationform.director_phone
+                                    ? _c(
+                                        "div",
+                                        { staticStyle: { color: "#e83e8c" } },
+                                        [
+                                          _c("span", [
+                                            _vm._v("Is valid: "),
+                                            _c("strong", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.director_phone1.isValid
+                                                )
+                                              )
+                                            ]),
+                                            _vm._v(", ")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v("Country: "),
+                                            _c("strong", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.director_phone1.country
+                                                )
+                                              )
+                                            ])
+                                          ])
+                                        ]
+                                      )
+                                    : _vm._e()
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "director_landline" }
+                                    },
+                                    [_vm._v("Director Landline")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("vue-tel-input", {
+                                    staticClass: "form-control",
+                                    attrs: { readonly: true },
+                                    model: {
+                                      value:
+                                        _vm.organisationform.director_landline,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.organisationform,
+                                          "director_landline",
+                                          $$v
+                                        )
+                                      },
+                                      expression:
+                                        "organisationform.director_landline"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _vm.organisationform.director_landline
+                                    ? _c(
+                                        "div",
+                                        { staticStyle: { color: "#e83e8c" } },
+                                        [
+                                          _c("span", [
+                                            _vm._v("Is valid: "),
+                                            _c("strong", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.director_landline1.isValid
+                                                )
+                                              )
+                                            ]),
+                                            _vm._v(", ")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v("Country: "),
+                                            _c("strong", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.director_landline1.country
+                                                )
+                                              )
+                                            ])
+                                          ])
+                                        ]
+                                      )
+                                    : _vm._e()
+                                ],
+                                1
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: " row" }, [
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "col-form-label",
+                                      attrs: { for: "director_id_no" }
+                                    },
+                                    [_vm._v("Director ID no.")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.organisationform.director_id_no,
+                                        expression:
+                                          "organisationform.director_id_no"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { readonly: true },
+                                    domProps: {
+                                      value: _vm.organisationform.director_id_no
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.organisationform,
+                                          "director_id_no",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "director_address" }
+                                    },
+                                    [_vm._v("Director Address")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.organisationform.director_address,
+                                        expression:
+                                          "organisationform.director_address"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { readonly: true },
+                                    domProps: {
+                                      value:
+                                        _vm.organisationform.director_address
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.organisationform,
+                                          "director_address",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: " row" }, [
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-3" },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "director_country_id" } },
+                                    [_vm._v("Select Country")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.organisationform
+                                              .director_country_id,
+                                          expression:
+                                            "organisationform.director_country_id"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
                                             )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "director_country_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
                                           )
-                                        ])
-                                      ])
-                                    ]
+                                        }
+                                      }
+                                    },
+                                    _vm._l(_vm.Countries, function(country) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: country.id,
+                                          domProps: { value: country.id }
+                                        },
+                                        [_vm._v(_vm._s(country.name))]
+                                      )
+                                    }),
+                                    0
                                   )
-                                : _vm._e()
-                            ],
-                            1
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: " row" }, [
-                          _c("div", { staticClass: "form-group col-md-4" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: "col-form-label",
-                                attrs: { for: "director_id_no" }
-                              },
-                              [_vm._v("Director ID no.")]
-                            ),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.organisationform.director_id_no,
-                                  expression: "organisationform.director_id_no"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { readonly: true },
-                              domProps: {
-                                value: _vm.organisationform.director_id_no
-                              },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.organisationform,
-                                    "director_id_no",
-                                    $event.target.value
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-3" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "director_county_id" }
+                                    },
+                                    [_vm._v("County")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.organisationform
+                                              .director_county_id,
+                                          expression:
+                                            "organisationform.director_county_id"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: { readonly: true },
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "director_county_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        }
+                                      }
+                                    },
+                                    _vm._l(_vm.Counties, function(county) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: county.id,
+                                          domProps: { value: county.id }
+                                        },
+                                        [_vm._v(_vm._s(county.name))]
+                                      )
+                                    }),
+                                    0
                                   )
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col-md-4" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: " col-form-label",
-                                attrs: { for: "director_address" }
-                              },
-                              [_vm._v("Director Address")]
-                            ),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.organisationform.director_address,
-                                  expression:
-                                    "organisationform.director_address"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { readonly: true },
-                              domProps: {
-                                value: _vm.organisationform.director_address
-                              },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.organisationform,
-                                    "director_address",
-                                    $event.target.value
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-3" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "director_constituency_id" }
+                                    },
+                                    [_vm._v("Constituency")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.organisationform
+                                              .director_constituency_id,
+                                          expression:
+                                            "organisationform.director_constituency_id"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: { readonly: true },
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "director_constituency_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        }
+                                      }
+                                    },
+                                    _vm._l(_vm.Constituencies, function(
+                                      constituency
+                                    ) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: constituency.id,
+                                          domProps: { value: constituency.id }
+                                        },
+                                        [_vm._v(_vm._s(constituency.name))]
+                                      )
+                                    }),
+                                    0
                                   )
-                                }
-                              }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: " row" }, [
-                          _c("div", { staticClass: "form-group col-md-3" }, [
-                            _c(
-                              "label",
-                              { attrs: { for: "director_country_id" } },
-                              [_vm._v("Select Country")]
-                            ),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-3" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "col-form-label",
+                                      attrs: { for: "director_ward_id" }
+                                    },
+                                    [_vm._v(" Ward ")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.organisationform
+                                              .director_ward_id,
+                                          expression:
+                                            "organisationform.director_ward_id"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: { readonly: true },
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.organisationform,
+                                            "director_ward_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        }
+                                      }
+                                    },
+                                    _vm._l(_vm.Wards, function(ward) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: ward.id,
+                                          domProps: { value: ward.id }
+                                        },
+                                        [_vm._v(_vm._s(ward.name))]
+                                      )
+                                    }),
+                                    0
+                                  )
+                                ]
+                              )
+                            ]),
                             _vm._v(" "),
-                            _c(
-                              "select",
-                              {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value:
-                                      _vm.organisationform.director_country_id,
-                                    expression:
-                                      "organisationform.director_country_id"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                on: {
-                                  change: function($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call($event.target.options, function(o) {
-                                        return o.selected
-                                      })
-                                      .map(function(o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.$set(
-                                      _vm.organisationform,
-                                      "director_country_id",
-                                      $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    )
-                                  }
-                                }
-                              },
-                              _vm._l(_vm.Countries, function(country) {
-                                return _c(
-                                  "option",
-                                  {
-                                    key: country.id,
-                                    domProps: { value: country.id }
-                                  },
-                                  [_vm._v(_vm._s(country.name))]
-                                )
-                              }),
-                              0
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col-md-3" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: " col-form-label",
-                                attrs: { for: "director_county_id" }
-                              },
-                              [_vm._v("County")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "select",
-                              {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value:
-                                      _vm.organisationform.director_county_id,
-                                    expression:
-                                      "organisationform.director_county_id"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { readonly: true },
-                                on: {
-                                  change: function($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call($event.target.options, function(o) {
-                                        return o.selected
-                                      })
-                                      .map(function(o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.$set(
-                                      _vm.organisationform,
-                                      "director_county_id",
-                                      $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    )
-                                  }
-                                }
-                              },
-                              _vm._l(_vm.Counties, function(county) {
-                                return _c(
-                                  "option",
-                                  {
-                                    key: county.id,
-                                    domProps: { value: county.id }
-                                  },
-                                  [_vm._v(_vm._s(county.name))]
-                                )
-                              }),
-                              0
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col-md-3" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: " col-form-label",
-                                attrs: { for: "director_constituency_id" }
-                              },
-                              [_vm._v("Constituency")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "select",
-                              {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value:
-                                      _vm.organisationform
-                                        .director_constituency_id,
-                                    expression:
-                                      "organisationform.director_constituency_id"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { readonly: true },
-                                on: {
-                                  change: function($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call($event.target.options, function(o) {
-                                        return o.selected
-                                      })
-                                      .map(function(o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.$set(
-                                      _vm.organisationform,
-                                      "director_constituency_id",
-                                      $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    )
-                                  }
-                                }
-                              },
-                              _vm._l(_vm.Constituencies, function(
-                                constituency
-                              ) {
-                                return _c(
-                                  "option",
-                                  {
-                                    key: constituency.id,
-                                    domProps: { value: constituency.id }
-                                  },
-                                  [_vm._v(_vm._s(constituency.name))]
-                                )
-                              }),
-                              0
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col-md-3" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: "col-form-label",
-                                attrs: { for: "director_ward_id" }
-                              },
-                              [_vm._v(" Ward ")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "select",
-                              {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value:
-                                      _vm.organisationform.director_ward_id,
-                                    expression:
-                                      "organisationform.director_ward_id"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { readonly: true },
-                                on: {
-                                  change: function($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call($event.target.options, function(o) {
-                                        return o.selected
-                                      })
-                                      .map(function(o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.$set(
-                                      _vm.organisationform,
-                                      "director_ward_id",
-                                      $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    )
-                                  }
-                                }
-                              },
-                              _vm._l(_vm.Wards, function(ward) {
-                                return _c(
-                                  "option",
-                                  {
-                                    key: ward.id,
-                                    domProps: { value: ward.id }
-                                  },
-                                  [_vm._v(_vm._s(ward.name))]
-                                )
-                              }),
-                              0
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: " row" }, [
-                          _c("div", { staticClass: "form-group col-md-4" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: " col-form-label",
-                                attrs: { for: "director_passport_image" }
-                              },
-                              [_vm._v("Director PassPort Image")]
-                            ),
-                            _c("br"),
-                            _vm._v(" "),
-                            _c("input", {
-                              attrs: { type: "file", readonly: true }
-                            }),
-                            _vm._v(" "),
-                            _c("img", {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: _vm.editmodeOrganisation,
-                                  expression: "editmodeOrganisation"
-                                }
-                              ],
-                              attrs: {
-                                src: _vm.updateOrganisationDirectorPImage(
-                                  _vm.organisationform.director_passport_image
-                                ),
-                                alt: "",
-                                width: "100%"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("img", {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: !_vm.editmodeOrganisation,
-                                  expression: "!editmodeOrganisation"
-                                }
-                              ],
-                              attrs: {
-                                src:
-                                  _vm.organisationform.director_passport_image,
-                                alt: "",
-                                width: "100%"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col-md-4" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: " col-form-label",
-                                attrs: { for: "frontside_director_id_photo" }
-                              },
-                              [_vm._v("Director FrontSide ID Photo")]
-                            ),
-                            _c("br"),
-                            _vm._v(" "),
-                            _c("input", {
-                              attrs: { type: "file", readonly: true }
-                            }),
-                            _vm._v(" "),
-                            _c("img", {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: _vm.editmodeOrganisation,
-                                  expression: "editmodeOrganisation"
-                                }
-                              ],
-                              attrs: {
-                                src: _vm.updateOrganisationDirectorFIDPhoto(
-                                  _vm.organisationform
-                                    .frontside_director_id_photo
-                                ),
-                                alt: "",
-                                width: "100%"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("img", {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: !_vm.editmodeOrganisation,
-                                  expression: "!editmodeOrganisation"
-                                }
-                              ],
-                              attrs: {
-                                src:
-                                  _vm.organisationform
-                                    .frontside_director_id_photo,
-                                alt: "",
-                                width: "100%"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col-md-4" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: " col-form-label",
-                                attrs: { for: "backside_director_i_photod" }
-                              },
-                              [_vm._v("Director BackSide ID Photo")]
-                            ),
-                            _c("br"),
-                            _vm._v(" "),
-                            _c("input", {
-                              attrs: { type: "file", readonly: true }
-                            }),
-                            _vm._v(" "),
-                            _c("img", {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: _vm.editmodeOrganisation,
-                                  expression: "editmodeOrganisation"
-                                }
-                              ],
-                              attrs: {
-                                src: _vm.updateOrganisationDirectorBIDPhoto(
-                                  _vm.organisationform
-                                    .backside_director_id_photo
-                                ),
-                                alt: "",
-                                width: "100%"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("img", {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: !_vm.editmodeOrganisation,
-                                  expression: "!editmodeOrganisation"
-                                }
-                              ],
-                              attrs: {
-                                src:
-                                  _vm.organisationform
-                                    .backside_director_id_photo,
-                                alt: "",
-                                width: "100%"
-                              }
-                            })
-                          ])
-                        ])
+                            _c("div", { staticClass: " row" }, [
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "director_passport_image" }
+                                    },
+                                    [_vm._v("Director PassPort Image")]
+                                  ),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    attrs: { type: "file", readonly: true }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.editmodeOrganisation,
+                                        expression: "editmodeOrganisation"
+                                      }
+                                    ],
+                                    attrs: {
+                                      src: _vm.updateOrganisationDirectorPImage(
+                                        _vm.organisationform
+                                          .director_passport_image
+                                      ),
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.editmodeOrganisation,
+                                        expression: "!editmodeOrganisation"
+                                      }
+                                    ],
+                                    attrs: {
+                                      src:
+                                        _vm.organisationform
+                                          .director_passport_image,
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: {
+                                        for: "frontside_director_id_photo"
+                                      }
+                                    },
+                                    [_vm._v("Director FrontSide ID Photo")]
+                                  ),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    attrs: { type: "file", readonly: true }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.editmodeOrganisation,
+                                        expression: "editmodeOrganisation"
+                                      }
+                                    ],
+                                    attrs: {
+                                      src: _vm.updateOrganisationDirectorFIDPhoto(
+                                        _vm.organisationform
+                                          .frontside_director_id_photo
+                                      ),
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.editmodeOrganisation,
+                                        expression: "!editmodeOrganisation"
+                                      }
+                                    ],
+                                    attrs: {
+                                      src:
+                                        _vm.organisationform
+                                          .frontside_director_id_photo,
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: {
+                                        for: "backside_director_i_photod"
+                                      }
+                                    },
+                                    [_vm._v("Director BackSide ID Photo")]
+                                  ),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    attrs: { type: "file", readonly: true }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.editmodeOrganisation,
+                                        expression: "editmodeOrganisation"
+                                      }
+                                    ],
+                                    attrs: {
+                                      src: _vm.updateOrganisationDirectorBIDPhoto(
+                                        _vm.organisationform
+                                          .backside_director_id_photo
+                                      ),
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.editmodeOrganisation,
+                                        expression: "!editmodeOrganisation"
+                                      }
+                                    ],
+                                    attrs: {
+                                      src:
+                                        _vm.organisationform
+                                          .backside_director_id_photo,
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  })
+                                ]
+                              )
+                            ])
+                          ]
+                        )
                       ])
                     ],
                     1

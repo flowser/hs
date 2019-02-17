@@ -12,7 +12,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
 
         // $about = $organisation->about()->get();
         $service = Service::with('user', 'organisation')
@@ -67,7 +67,7 @@ class ServiceController extends Controller
 
         //getting Organisation $user
         $user = Auth::user();
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
 
         $service->organisation_id = $organisation ->id;
         $service->user_id = $user ->id;
@@ -100,7 +100,7 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $singleservice = Service::with('user', 'organisation')
                                 ->where('services.organisation_id', $organisation->id)
                                 ->find($id);
@@ -119,7 +119,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $service = Service::with('user', 'organisation')
                                 ->where('services.organisation_id', $organisation->id)
                                 ->find($id);
@@ -150,7 +150,7 @@ class ServiceController extends Controller
         $service->service_details = $request ->service_details;
         //getting Organisation $user, about_id
         $user = Auth::user();
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
 
         $service->organisation_id = $organisation ->id;
         $service->user_id = $user ->id;

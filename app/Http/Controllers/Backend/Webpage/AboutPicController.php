@@ -69,7 +69,7 @@ class AboutPicController extends Controller
         $aboutpic->title = $request ->title;
         $aboutpic->description = $request ->description;
         $user = Auth::user();
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $about_id = $organisation->about()->first();
 
         $aboutpic->about_id = $about_id ->id;
@@ -142,7 +142,7 @@ class AboutPicController extends Controller
         $aboutpic->description = $request ->description;
         //getting Organisation $user, about_id
         $user = Auth::user();
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $about_id = $organisation->about()->first();
 
         $aboutpic->about_id = $about_id ->id;

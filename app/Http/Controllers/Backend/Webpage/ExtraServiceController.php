@@ -13,16 +13,28 @@ class ExtraServiceController extends Controller
 {
     public function index()
     {
-        $organisation = (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $service = $organisation->services()->first();
 
-        // $about = $organisation->about()->get();
-        $extraservice = ExtraService::with('user', 'service')
-                        ->where('extra_services.service_id', $service->id)
+        // return $service;
+        if($service == null){
+            $extraservice = ExtraService::with('user', 'service')
+                        ->where('extra_services.service_id', $service)
                         ->get();
             return response()-> json([
                             'extraservice' => $extraservice,
                             ], 200);
+
+        }else{
+            // $about = $organisation->about()->get();
+            $extraservice = ExtraService::with('user', 'service')
+                        ->where('extra_services.service_id', $service->id)
+                        ->get();
+            return response()-> json([
+                        'extraservice' => $extraservice,
+                        ], 200);
+        }
+
     }
     public function organisations()//all extraservices linked to organisation
     {
@@ -68,7 +80,7 @@ class ExtraServiceController extends Controller
         //getting Organisation $user
         $user = Auth::user();
 
-        $organisation = (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $service = $organisation->services()->first();
 
         $extraservice->service_id = $service ->id;
@@ -102,7 +114,7 @@ class ExtraServiceController extends Controller
      */
     public function show($id)
     {
-        $organisation = (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $service = $organisation->services()->first();
 
         $singleextraservice = ExtraService::with('user', 'service')
@@ -123,7 +135,7 @@ class ExtraServiceController extends Controller
      */
     public function edit($id)
     {
-        $organisation = (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $service = $organisation->services()->first();
 
         $extraservice = ExtraService::with('user', 'service')
@@ -156,7 +168,7 @@ class ExtraServiceController extends Controller
         $extraservice->why = $request ->why;
         //getting Organisation $user, about_id
         $user = Auth::user();
-        $organisation = (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $service = $organisation->services()->first();
 
         $extraservice->service_id = $service ->id;

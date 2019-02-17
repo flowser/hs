@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrganisationDirectorsTable extends Migration
+class CreateOrganisationEmployeeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,22 @@ class CreateOrganisationDirectorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('organisation_directors', function (Blueprint $table) {
+        Schema::create('organisation_employee', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('organisation_id');
             $table->unsignedInteger('position_id');
-            $table->unsignedInteger('gender_id');
+            $table->unsignedInteger('gender_id')->nullable();
             $table->string('photo')->nullable();
             $table->tinyInteger('active')->default(1)->unsigned();
 
-            $table->string('id_no', 120);
+            $table->string('id_no', 120)->nullable();
             $table->string('id_photo_front', 120)->nullable();
             $table->string('id_photo_back', 120)->nullable();
             $table->longText('about_me')->nullable();
             $table->string('phone')->nullable();
             $table->string('landline')->nullable();
-            $table->string('address', 120);
+            $table->string('address', 120)->nullable();
 
             $table->integer('country_id')->unsigned()->nullable();
             $table->integer('county_id')->unsigned()->nullable();
@@ -57,6 +57,6 @@ class CreateOrganisationDirectorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('organisation_directors');
+        Schema::dropIfExists('organisation_employee');
     }
 }

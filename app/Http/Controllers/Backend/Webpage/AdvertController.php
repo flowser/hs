@@ -20,7 +20,7 @@ class AdvertController extends Controller
      */
     public function index()
     {
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
 
         // $about = $organisation->about()->get();
         $advert = Advert::with('user', 'organisation')
@@ -76,7 +76,7 @@ class AdvertController extends Controller
 
         //getting Organisation $user
         $user = Auth::user();
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
 
         $advert->organisation_id = $organisation ->id;
         $advert->user_id = $user ->id;
@@ -110,7 +110,7 @@ class AdvertController extends Controller
      */
     public function show($id)
     {
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $singleadvert = Advert::with('user', 'organisation')
                                 ->where('adverts.organisation_id', $organisation->id)
                                 ->find($id);
@@ -130,7 +130,7 @@ class AdvertController extends Controller
      */
     public function edit($id)
     {
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
         $advert = Advert::with('user', 'organisation')
                                 ->where('adverts.organisation_id', $organisation->id)
                                 ->find($id);
@@ -161,7 +161,7 @@ class AdvertController extends Controller
         $advert->details = $request ->details;
         //getting Organisation $user, about_id
         $user = Auth::user();
-        $organisation= (Auth::user()-> organisationemployee()->first()->organisation()->first());
+        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
 
         $advert->organisation_id = $organisation ->id;
         $advert->user_id = $user ->id;

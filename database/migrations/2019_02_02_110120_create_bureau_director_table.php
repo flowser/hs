@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBureauDirectorsTable extends Migration
+class CreateBureauDirectorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBureauDirectorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bureau_directors', function (Blueprint $table) {
+        Schema::create('bureau_director', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('bureau_id');
@@ -57,6 +57,6 @@ class CreateBureauDirectorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bureau_directors');
+        Schema::dropIfExists('bureau_director');
     }
 }

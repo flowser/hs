@@ -91,18 +91,188 @@ class User extends Authenticatable
           return $this->full_name;
       }
 
-      public function organisation()
+    //   public function organisation()
+    // {
+    //     return $this->hasOne(Organisation::class);
+    // }
+
+    public function organisationdirectors()
     {
-        return $this->hasOne(Organisation::class);
+        return $this->belongsToMany(Organisation::class,'organisation_director')
+                    // ->using(OrganisationDirector::class)
+                    ->withPivot(
+                        'photo',
+                        'active',
+                        'id_no',
+                        'id_photo_front',
+                        'id_photo_back',
+                        'about_me',
+                        'phone',
+                        'landline',
+                        'address',
+                        'position_id'
+                    )
+                    ->withTimestamps();
     }
-    public function organisationdirector()
+    public function positions()
     {
-        return $this->hasOne(OrganisationDirector::class);
+        return $this->belongsToMany(Position::class,'organisation_director')
+                    ->using(OrganisationDirector::class)
+                    ->withPivot(
+                        'photo',
+                        'active',
+                        'id_no',
+                        'id_photo_front',
+                        'id_photo_back',
+                        'about_me',
+                        'phone',
+                        'landline',
+                        'address',
+                        'position_id'
+                    )
+                    ->withTimestamps();
     }
-    public function organisationemployee()
+    public function countries()
     {
-        return $this->hasOne(OrganisationEmployee::class);
+        return $this->belongsToMany(Country::class,'organisation_director')
+                    ->using(OrganisationDirector::class)
+                    ->withPivot(
+                        'photo',
+                        'active',
+                        'id_no',
+                        'id_photo_front',
+                        'id_photo_back',
+                        'about_me',
+                        'phone',
+                        'landline',
+                        'address',
+                        'position_id',
+                        'country_id',
+                        'county_id',
+                        'constituency_id',
+                        'ward_id'
+                    )
+                    ->withTimestamps();
     }
+    public function counties()
+    {
+        return $this->belongsToMany(County::class,'organisation_director')
+                    ->using(OrganisationDirector::class)
+                    ->withPivot(
+                        'photo',
+                        'active',
+                        'id_no',
+                        'id_photo_front',
+                        'id_photo_back',
+                        'about_me',
+                        'phone',
+                        'landline',
+                        'address',
+                        'position_id',
+                        'country_id',
+                        'county_id',
+                        'constituency_id',
+                        'ward_id'
+                    )
+                    ->withTimestamps();
+    }
+    public function constituencies()
+    {
+        return $this->belongsToMany(Constituency::class,'organisation_director')
+                    ->using(OrganisationDirector::class)
+                    ->withPivot(
+                        'photo',
+                        'active',
+                        'id_no',
+                        'id_photo_front',
+                        'id_photo_back',
+                        'about_me',
+                        'phone',
+                        'landline',
+                        'address',
+                        'position_id',
+                        'country_id',
+                        'county_id',
+                        'constituency_id',
+                        'ward_id'
+                    )
+                    ->withTimestamps();
+    }
+    public function wards()
+    {
+        return $this->belongsToMany(Ward::class,'organisation_director')
+                    ->using(OrganisationDirector::class)
+                    ->withPivot(
+                        'photo',
+                        'active',
+                        'id_no',
+                        'id_photo_front',
+                        'id_photo_back',
+                        'about_me',
+                        'phone',
+                        'landline',
+                        'address',
+                        'position_id',
+                        'country_id',
+                        'county_id',
+                        'constituency_id',
+                        'ward_id'
+                    )
+                    ->withTimestamps();
+    }
+
+
+
+    public function organisationemployeeusers()
+    {
+        return $this->hasMany(OrganisationEmployee::class);
+    }
+    //     return $this->belongsToMany(Organisation::class, 'organisation_director')
+    //                 ->withPivot(
+    //                     'user_id',
+    //                     'organisation_id',
+    //                     'position_id',
+    //                     'photo',
+    //                     'active',
+    //                     'id_no',
+    //                     'id_photo_front',
+    //                     'id_photo_back',
+    //                     'about_me',
+    //                     'phone',
+    //                     'landline',
+    //                     'address',
+    //                     'country_id',
+    //                     'county_id',
+    //                     'constituency_id',
+    //                     'ward_id'
+    //                 )
+    //                 ->withTimestamps();
+    // }
+
+    // public function organisationemployeess()
+    // {
+    //     return $this->belongsToMany(User::class, 'organisation_employee')
+    //                 ->withPivot(
+    //                     'user_id',
+    //                     'organisation_id',
+    //                     'position_id',
+    //                     'photo',
+    //                     'active',
+    //                     'id_no',
+    //                     'id_photo_front',
+    //                     'id_photo_back',
+    //                     'about_me',
+    //                     'phone',
+    //                     'landline',
+    //                     'address',
+    //                     'country_id',
+    //                     'county_id',
+    //                     'constituency_id',
+    //                     'ward_id'
+    //                 );
+    // }
+
+
 
       public function bureau()
     {

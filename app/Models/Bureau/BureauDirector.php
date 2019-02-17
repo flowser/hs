@@ -11,13 +11,11 @@ use App\Models\Standard\Position;
 use App\Models\Househelp\Househelp;
 use App\Models\Bureau\BureauEmployee;
 use App\Models\Standard\Constituency;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Organisation\Organisation;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 
-
-
-class BureauDirector extends Model
+class BureauDirector extends Pivot
 {
     protected $fillable = [
         'user_id',
