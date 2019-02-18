@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\Webpage\ServiceFilterController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\RoleController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\UserController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\PermissionController;
+use App\Http\Controllers\Backend\Organisation\Superadmin\OrgDirectorController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\OrganisationController;
 
 
@@ -228,6 +229,21 @@ Route::get('/home', 'HomeController@index')->name('home');
         Route::patch('organisation/updateverify/director/{organisation}', [OrganisationController::class, 'updateverifyDirectorInfo'])->name('organisation.updateverifydirector');
         Route::patch('organisation/update/{organisation}', [OrganisationController::class, 'update'])->name('organisation.update');
         Route::get('organisation/delete/{organisation}', [OrganisationController::class, 'destroy'])->name('organisation.destroy');
+
+        // orgdirector
+        Route::get('orgdirector/get', [OrgDirectorController::class, 'index'])->name('orgdirector.index');
+        Route::get('orgdirectors/get', [OrgDirectorController::class, 'organisations'])->name('orgdirector.organisations');
+        Route::get('orgdirector/get/list', [OrgDirectorController::class, 'orgdirectorList'])->name('orgdirector.list-index');
+        Route::post('orgdirector', [OrgDirectorController::class, 'store'])->name('orgdirector.store');
+    //     /*
+    //      * Specifics
+    //      */
+        Route::get('orgdirector/show/{orgdirector}', [OrgDirectorController::class, 'show'])->name('orgdirector.show');
+        Route::get('orgdirector/edit/{orgdirector}', [OrgDirectorController::class, 'edit'])->name('orgdirector.edit');
+        Route::patch('orgdirector/update/{orgdirector}', [OrgDirectorController::class, 'update'])->name('orgdirector.update');
+        Route::get('orgdirector/delete/{orgdirector}/', [OrgDirectorController::class, 'destroy'])->name('orgdirector.destroy');
+
+
 
 
         // about

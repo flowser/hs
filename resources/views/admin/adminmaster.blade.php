@@ -144,11 +144,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <router-link to="/home" class="brand-link">
             <img src="{{URL::asset('assets/admin/default/logo.png')}}" alt="Teif Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light">Teif BackEnd</span>
-        </a>
+        </router-link>
 
         <!-- Sidebar -->
         <div class="sidebar">
@@ -180,7 +180,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
                              <p> Dashboard </p>
                     </router-link>
                 </li>
-
+{{-- organisation view by Super Admin --}}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon  yellow fas fa-cog"></i>
+                        <p>Organisation
+                            <i class="right fa fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <router-link to="/orgdirectors" class="nav-link">
+                                <i class="fa fa-users purple  nav-icon"></i>
+                                <p>Directors</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/orgadmins" class="nav-link">
+                                <i class="fa fa-users blue nav-icon"></i>
+                                <p>Admins</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/orgemployees" class="nav-link">
+                                <i class="fa fa-users green nav-icon"></i>
+                                <p>Employees</p>
+                            </router-link>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon  red fas fa-cog"></i>
@@ -202,14 +230,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <p>Roles & Permissions</p>
                             </router-link>
                         </li>
-                        {{-- <li class="nav-item">
-
-                              <router-link to="/permissions" class="nav-link">
-                                  <i class="fa fa-cog red nav-icon"></i>
-                                  <p>Permissions</p>
-
-                              </router-link>
-                          </li> --}}
                     </ul>
                 </li>
                 <li class="nav-item">

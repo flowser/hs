@@ -1,4 +1,13 @@
 import AdminHome from './components/admins/AdminHome.vue';
+
+//org superadmin
+//org Directors
+import DirectorList from './components/admins/organisation/superadmin/directors/Directors.vue';
+//org Admins
+import AdminList from './components/admins/organisation/superadmin/admins/Admins.vue';
+//org Employees
+import EmployeeList from './components/admins/organisation/superadmin/Employees/Employees.vue';
+
 //Permission
 import PermissionList from './components/admins/organisation/superadmin/permission/List.vue';
 //role
@@ -41,6 +50,23 @@ export const routes = [
       path: '/home',
       component: AdminHome
     },
+    //organisation
+    //directors
+    {
+      path: '/orgdirectors',
+      component: DirectorList
+    },
+    //admins
+    {
+      path: '/orgadmins',
+      component:AdminList
+    },
+    //employees
+    {
+      path: '/orgemployees',
+      component:EmployeeList
+    },
+
     //Permisions
     {
       path: '/permissions',

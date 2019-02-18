@@ -18,14 +18,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $countries = Country::with('counties', 'towns')->get();
-        // dd($countries);
         $users = User::with('roles', 'permissions')->get();
-        // dd($users);
         return response()-> json([
             'users'=>$users,
-            // 'countries' => $countries,
-
         ], 200);
     }
 

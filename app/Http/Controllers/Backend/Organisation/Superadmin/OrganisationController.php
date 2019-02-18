@@ -22,21 +22,19 @@ class OrganisationController extends Controller
      */
     public function index()
     {
-
-        $orgemployee= Auth::user()-> organisationemployeeusers()->first();
-        // $organisation = Organisation::
-        // with('country', 'county', 'constituency', 'ward', 'organisationemployees')
-        //                             ->where('organisations.id', $orgemployee->organisation_id)
-        //                             // ->where('organisation.organisationemployees.user_id', Auth::id())
-        //                             ->get();
         $organisation = Organisation::
-        with('country', 'county', 'constituency', 'ward', 'organisationdirectors', 'positions','countries','counties', 'constituencies','wards')
-                                    ->where('organisations.id', $orgemployee->organisation_id)
-                                    // ->where('organisation.organisationemployees.user_id', Auth::id())
-                                    ->get();
-                                    // json_encode($organisation);
-                                    // var_dump($organisation);
-                                    // return ($organisation);
+                        with('country', 'county', 'constituency', 'ward')
+                        ->with(array('organisationemployees' => function($query)
+                                {
+                                $query ->where('user_id', Auth::id());
+                                }
+                            ))
+                        ->with(array('organisationdirectors' => function($query)
+                                {
+                                $query ->where('user_id', Auth::id());
+                                }
+                            ))
+                        ->get();
         return response()-> json([
             'organisation' => $organisation,
         ], 200);
@@ -234,20 +232,21 @@ class OrganisationController extends Controller
      */
     public function edit($id)
     {
-        // return $id;
-        $orgemployee= Auth::user()-> organisationemployeeusers()->first()->organisation()->first();
-        // return $organisation;
-
         $organisation = Organisation::with('country', 'county', 'constituency', 'ward', 'organisationdirectors', 'positions','countries','counties', 'constituencies','wards')
-                                    // ->where('organisations.id', $orgemployee->id )
-                                    // ->where('organisations.id', $orgadirector->id)
-                                    ->find($id);
-        // dd($organisation);
-        // $organisationdirector = $organisation->organisationdirectors()->with('positions','countries','counties', 'constituencies','wards')->first();
 
+                                        ->with(array('organisationemployees' => function($query)
+                                                {
+                                                $query ->where('user_id', Auth::id());
+                                                }
+                                            ))
+                                        ->with(array('organisationdirectors' => function($query)
+                                                {
+                                                $query ->where('user_id', Auth::id());
+                                                }
+                                            ))
+                                    ->find($id);
         return response()-> json([
             'organisation' => $organisation,
-            // 'organisationdirector' => $organisationdirector,
         ], 200);
     }
 

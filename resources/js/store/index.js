@@ -1,123 +1,68 @@
-// import Axios from "axios";
-// import Axios from "axios";
 
-// // import Vue from 'vue'
-// // import Vuex from 'vuex'
-// // Vue.use(Vuex)
-// //pemission module
-//     const permModule = {
-//       state:{
-//         permissions:[],
-//       },
-//       getters:{
-//         Permissions(state){
-//           return state.permissions
-//         }
-//       },
-//       actions:{
-//         permissions(context){//permission.index route laravel
-//           axios.get('/permission-list')
-//           .then((response)=>{
-//             console.log(response.data.permissions)
-//             context.commit('permissions', response.data.permissions)
-//           })
-//         }
-//       },
-//       mutations:{
-//         permissions(state, data){
-//           return state.permissions = data
-//         }
-//       }
-//     }
-// //roles module
-    // const country = {
-    //   state:{
-    //     countries:[],
-    //   },
-    //   getters:{
-    //     Countries(state){
-    //       return state.countries
-    //     }
-    //   },
-    //   actions:{
-    //     countries(context){//permission.index route laravel
-    //       axios.get('/country/get')
-    //       .then((response)=>{
-    //         console.log(response.data.countries)
-    //         context.commit('countries', response.data.countries)
-    //       })
-    //     }
-    //   },
-    //   mutations:{
-    //     countries(state, data){
-    //       return state.countries = data
-    //     }
-    //   }
-    // }
+        // organisation
+            import organisation from './modules/organisation/organisation';
+            // under org superadmin
+                import permission from './modules/organisation/superadmin/permission';
+                import role from './modules/organisation/superadmin/role';
+                import user from './modules/organisation/superadmin/user';
+                //org Director
+                import orgdirector from './modules/organisation/superadmin/director';
+                //org Admin
+                import orgadmin from './modules/organisation/superadmin/admin';
 
+            //under org Admin
+            import orgemployee from './modules/organisation/admin/employee';
 
-    // import Vue from 'vue';
-    // import Vuex from 'vuex';// import Axios from "axios";
+        //standard
+            import countries from './modules/standard/countries';
+            import counties from './modules/standard/counties';
+            import constituencies from './modules/standard/constituencies';
+            import wards from './modules/standard/wards';
 
-    // import permission from './modules/permission';
-    // import role from './modules/role';
-    // import user from './modules/user';
-    // // Vue.use(Vuex)
-
-
-
-    // export default ({
-    //       modules: {
-    //         permission:
-    //               role:
-    //               user:
-    //       }
-    //     })
-
-        // store.state.permission // -> `permModule`'s state
-        // store.state.role // -> `roleModule`'s state
-
-
-
-        // import Vue from 'vue'
-        // import Vuex from 'vuex'
-        import permission from './modules/permission';
-        import role from './modules/role';
-        import user from './modules/user';
-        import countries from './modules/countries';
-        import counties from './modules/counties';
-        import constituencies from './modules/constituencies';
-        import wards from './modules/wards';
-        import organisation from './modules/organisation/organisation';
-        import about from './modules/organisation/webpages/about';
-        import aboutpic from './modules/organisation/webpages/aboutpic';
-        import advert from './modules/organisation/webpages/advert';
-        import service from './modules/organisation/webpages/service';
-        import extraservice from './modules/organisation/webpages/extraservice';
-        import servicefilter from './modules/organisation/webpages/servicefilter';
-
-        // Vue.use(Vuex)
-
-        // const debug = process.env.NODE_ENV !== 'production'
+        //universal
+            import about from './modules/webpages/about';
+            import aboutpic from './modules/webpages/aboutpic';
+            import advert from './modules/webpages/advert';
+            import service from './modules/webpages/service';
+            import extraservice from './modules/webpages/extraservice';
+            import servicefilter from './modules/webpages/servicefilter';
 
         export default {
           modules: {
-            user,
-            permission,
-            role,
-            countries,
-            counties,
-            constituencies,
-            wards,
-            organisation,
-            about,
-            aboutpic,
-            advert,
-            service,
-            extraservice,
-            servicefilter,
+            //organisation
+                organisation,
+                orgdirector,
+                orgadmin,
+                orgemployee,
+                // orghoushelp, //get all househelps
+                user,
+                permission,
+                role,
+            //bureau
+                // bureau,
+                // bureaudirector,
+                // bureauadmin,
+                // bureauemployee,
+                // bureauhousehelp,
+            //househelp
+                // househelp,
+
+            //client
+                // client,
+
+
+            //standard
+                countries,
+                counties,
+                constituencies,
+                wards,
+            //universal
+                about,
+                aboutpic,
+                advert,
+                service,
+                extraservice,
+                servicefilter,
           },
-          // strict: debug,
-          // plugins: debug ? [createLogger()] : []
         };
 

@@ -3,14 +3,14 @@
       <!-- Main content -->
         <div class="col-md-12">
                 <!-- Widget: user widget style 1 -->
-                <!-- <div v-if="Organisation.length <1" class="card-tools"> -->
-                <div  class="card-tools">
-                    <button class="btn btn-success" @click.prevent="newOrganisationModal()" >Add Organisation
+                <div v-if="Organisation.length <1" class="card-tools">
+                <!-- <div  class="card-tools"> -->
+                    <button class="btn btn-success" @click.prevent="newOrganisationModal()" >Add Organisat''ion
                         <i class="fas fa-plus fw"></i>
                     </button>
                 </div>
                 <div class="card card-widget widget-user" v-for="organisation in Organisation" :key="organisation.id">
-                <!-- Add the bg color to the header using any of the bg-* classes -->
+                   <!-- Add the bg color to the header using any of the bg-* classes -->
                     <div class="widget-user-header text-white" style="background: url('assets/organisation/img/background/background-1.jpg')
                     center center;width:100%;height:300px">
                     <div class="clearfix">
@@ -177,9 +177,6 @@
                                              <a href="#general_configuration">About Us Settings</a>
                                         </h3>
                                         <div class="card-tools">
-                                                <button class="btn btn-success" @click.prevent="newAboutPicsModal()" >Add New About US Pictures
-                                                    <i class="fas fa-plus fw"></i>
-                                                </button>
                                                 <button class="btn btn-success" @click.prevent="newAboutModal()" >Add About Us
                                                     <i class="fas fa-plus fw"></i>
                                                 </button>
