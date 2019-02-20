@@ -12,25 +12,87 @@ class ServiceFilterController extends Controller
 {
     public function index()
     {
-        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-        $service = $organisation->services()->first();
-
-        if($service ==null){
-             // $about = $organisation->about()->get();
-            $servicefilter = ServiceFilter::with('user', 'service')
-                        ->where('service_filters.service_id', $service)
+        if (auth()->check()) {
+            if (auth()->user()->hasRole('Organisation Director')) {
+                $organisation= Auth::user()-> organisationdirectors()->first();
+                $service = $organisation->services()->first();
+                if($service ==null){
+                    // $about = $organisation->about()->get();
+                    $servicefilter = ServiceFilter::with('user', 'service')
+                    ->where('service_id', $service)
+                    ->get();
+                    return response()-> json([
+                        'servicefilter' => $servicefilter,
+                    ], 200);
+                }else{
+                        $servicefilter =  Servicefilter::with('user','service')
+                        ->where('service_id', $service->id)
                         ->get();
-                return response()-> json([
+                        return response()-> json([
                             'servicefilter' => $servicefilter,
-                            ], 200);
-        }else{
-       // $about = $organisation->about()->get();
-            $servicefilter = ServiceFilter::with('user', 'service')
-                        ->where('service_filters.service_id', $service->id)
+                        ], 200);
+                }
+            }
+            if (auth()->user()->hasRole('Organisation Superadmin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $service = $organisation->services()->first();
+                if($service ==null){
+                    // $about = $organisation->about()->get();
+                    $servicefilter = ServiceFilter::with('user', 'service')
+                    ->where('service_id', $service)
+                    ->get();
+                    return response()-> json([
+                        'servicefilter' => $servicefilter,
+                    ], 200);
+                }else{
+                        $servicefilter =  Servicefilter::with('user','service')
+                        ->where('service_id', $service->id)
                         ->get();
-                return response()-> json([
+                        return response()-> json([
                             'servicefilter' => $servicefilter,
-                            ], 200);
+                        ], 200);
+                }
+            }
+            if (auth()->user()->hasRole('Organisation Admin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $service = $organisation->services()->first();
+                if($service ==null){
+                    // $about = $organisation->about()->get();
+                    $servicefilter = ServiceFilter::with('user', 'service')
+                    ->where('service_id', $service)
+                    ->get();
+                    return response()-> json([
+                        'servicefilter' => $servicefilter,
+                    ], 200);
+                }else{
+                        $servicefilter =  Servicefilter::with('user','service')
+                        ->where('service_id', $service->id)
+                        ->get();
+                        return response()-> json([
+                            'servicefilter' => $servicefilter,
+                        ], 200);
+                }
+            }
+            if (auth()->user()->hasRole('Organisation Accountant')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $service = $organisation->services()->first();
+                if($service ==null){
+                    // $about = $organisation->about()->get();
+                    $servicefilter = ServiceFilter::with('user', 'service')
+                    ->where('service_id', $service)
+                    ->get();
+                    return response()-> json([
+                        'servicefilter' => $servicefilter,
+                    ], 200);
+                }else{
+                        $servicefilter =  Servicefilter::with('user','service')
+                        ->where('service_id', $service->id)
+                        ->get();
+                        return response()-> json([
+                            'servicefilter' => $servicefilter,
+                        ], 200);
+               }
+            }
         }
     }
     public function organisations()//all servicefilters linked to organisation
@@ -75,30 +137,40 @@ class ServiceFilterController extends Controller
         $servicefilter->why = $request ->why;
 
         //getting Organisation $user
-        $user = Auth::user();
-
-        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-        $service = $organisation->services()->first();
-
-        $servicefilter->service_id = $service->id;
-        $servicefilter->user_id = $user ->id;
-        //bureau
-        // $burueau= (Auth::user()-> bureauemployee()->first()->bureau()->first());
-        // $servicefilter->bureau_id = $bureau ->id;
-        // $servicefilter->user_id = $user ->id;
-        //processing photo nme and size
-
-//         $strpos = strpos($request->servicefilter_image, ';'); //positionof image name semicolon
-//         $sub = substr($request->servicefilter_image, 0, $strpos);
-//         $ex = explode('/', $sub)[1];
-//         $name = time().".".$ex;
-
-//         $Path = public_path()."/assets/organisation/img/website/filters/servicefilters";
-//             $img = Image::make($request->servicefilter_image);
-// //            $img->crop(300, 150, 25, 25);
-//             $img ->save($Path.'/'.$name);
-//         $servicefilter->servicefilter_image = $name;
-        //end processing photo and size
+        if (auth()->check()) {
+            if (auth()->user()->hasRole('Organisation Director')) {
+                $organisation= Auth::user()-> organisationdirectors()->first();
+                $service = $organisation->service()->first();
+                 //then
+                 $user = Auth::user();
+                 $servicefilter->service_id = $service ->id;
+                 $servicefilter->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Superadmin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $service = $organisation->service()->first();
+                 //then
+                 $user = Auth::user();
+                 $servicefilter->service_id = $service ->id;
+                 $servicefilter->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Admin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $service = $organisation->service()->first();
+                 //then
+                 $user = Auth::user();
+                 $servicefilter->service_id = $service ->id;
+                 $servicefilter->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Accountant')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $service = $organisation->service()->first();
+                //then
+                $user = Auth::user();
+                $servicefilter->service_id = $service ->id;
+                $servicefilter->user_id = $user ->id;
+            }
+        }
         $servicefilter->save();
 
     }
@@ -111,12 +183,8 @@ class ServiceFilterController extends Controller
      */
     public function show($id)
     {
-        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-        $service = $organisation->services()->first();
 
-        $singleservicefilter = ServiceFilter::with('user', 'service')
-                                ->where('service_filters.service_id', $service->id)
-                                ->find($id);
+        $singleservicefilter = ServiceFilter::find($id);
         // dd($organisation);
         return response()-> json([
             'singleservicefilter' => $singleservicefilter,
@@ -132,12 +200,8 @@ class ServiceFilterController extends Controller
      */
     public function edit($id)
     {
-        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-        $service = $organisation->services()->first();
 
-        $servicefilter = ServiceFilter::with('user', 'service')
-                                ->where('service_filters.service_id', $service->id)
-                                ->find($id);
+        $servicefilter = ServiceFilter::find($id);
         // dd($organisation);
         return response()-> json([
             'servicefilter' => $servicefilter,
@@ -164,36 +228,40 @@ class ServiceFilterController extends Controller
         $servicefilter->details = $request ->details;
         $servicefilter->why = $request ->why;
         //getting Organisation $user, about_id
-        $user = Auth::user();
-        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-        $service = $organisation->services()->first();
-
-        $servicefilter->service_id = $service->id;
-        $servicefilter->user_id = $user ->id;
-
-        // $currentservicefilter_image =  $servicefilter->servicefilter_image;
-
-        //  //processing servicefilter_image nme and size
-        // if($request->servicefilter_image != $currentservicefilter_image){
-        //     $Path = public_path()."/assets/organisation/img/website/filters/servicefilters";
-
-        //     $currentServicefilter_image = $Path. $currentservicefilter_image;
-        //     //deleting if exists
-        //         if(file_exists($currentServicefilter_image)){
-        //             @unlink($currentServicefilter_image);
-        //         }
-        //         $strpos = strpos($request->servicefilter_image, ';'); //positionof image name semicolon
-        //         $sub = substr($request->servicefilter_image, 0, $strpos);
-        //         $ex = explode('/', $sub)[1];
-        //         $name = time().".".$ex;
-
-        //         $img = Image::make($request->servicefilter_image);
-        //         $img ->save($Path.'/'.$name);
-
-        // }else{
-        //     $name = $servicefilter->servicefilter_image;
-        // }
-        // $servicefilter->servicefilter_image = $name;
+        if (auth()->check()) {
+            if (auth()->user()->hasRole('Organisation Director')) {
+                $organisation= Auth::user()-> organisationdirectors()->first();
+                $service = $organisation->service()->first();
+                 //then
+                 $user = Auth::user();
+                 $servicefilter->service_id = $service ->id;
+                 $servicefilter->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Superadmin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $service = $organisation->service()->first();
+                 //then
+                 $user = Auth::user();
+                 $servicefilter->service_id = $service ->id;
+                 $servicefilter->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Admin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $service = $organisation->service()->first();
+                 //then
+                 $user = Auth::user();
+                 $servicefilter->service_id = $service ->id;
+                 $servicefilter->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Accountant')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $service = $organisation->service()->first();
+                //then
+                $user = Auth::user();
+                $servicefilter->service_id = $service ->id;
+                $servicefilter->user_id = $user ->id;
+            }
+        }
         $servicefilter->save();
     }
 

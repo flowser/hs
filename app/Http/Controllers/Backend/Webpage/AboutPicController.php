@@ -18,13 +18,48 @@ class AboutPicController extends Controller
      */
     public function index()
     {
-        $aboutpic = AboutPic::with('user', 'about')
-                            ->where('about_pics.user_id', Auth::user()->id)
-                            ->get();
-            // dd($about);
-            return response()-> json([
-            'aboutpic' => $aboutpic,
-            ], 200);
+        if (auth()->check()) {
+            if (auth()->user()->hasRole('Organisation Director')) {
+                $organisation= Auth::user()-> organisationdirectors()->first();
+                $about = $organisation->about()->first();
+                $aboutpic =  AboutPic::with('user','about')
+                ->where('about_id', $about->id)
+                ->get();
+                return response()-> json([
+                    'aboutpic' => $aboutpic,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Organisation Superadmin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $about = $organisation->about()->first();
+                $aboutpic =  AboutPic::with('user','about')
+                ->where('about_id', $about->id)
+                ->get();
+                return response()-> json([
+                    'aboutpic' => $aboutpic,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Organisation Admin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $about = $organisation->about()->first();
+                $aboutpic =  AboutPic::with('user','about')
+                ->where('about_id', $about->id)
+                ->get();
+                return response()-> json([
+                    'aboutpic' => $aboutpic,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Organisation Accountant')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $about = $organisation->about()->first();
+                $aboutpic =  AboutPic::with('user','about')
+                ->where('about_id', $about->id)
+                ->get();
+                return response()-> json([
+                    'aboutpic' => $aboutpic,
+                ], 200);
+            }
+        }
     }
 
     public function aboutpics()
@@ -68,12 +103,41 @@ class AboutPicController extends Controller
         //getting Organisation $user, about_id
         $aboutpic->title = $request ->title;
         $aboutpic->description = $request ->description;
-        $user = Auth::user();
-        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-        $about_id = $organisation->about()->first();
 
-        $aboutpic->about_id = $about_id ->id;
-        $aboutpic->user_id = $user ->id;
+        if (auth()->check()) {
+            if (auth()->user()->hasRole('Organisation Director')) {
+                $organisation= Auth::user()-> organisationdirectors()->first();
+                $about = $organisation->about()->first();
+                 //then
+                 $user = Auth::user();
+                 $aboutpic->about_id = $about ->id;
+                 $aboutpic->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Superadmin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $about = $organisation->about()->first();
+                 //then
+                 $user = Auth::user();
+                 $aboutpic->about_id = $about ->id;
+                 $aboutpic->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Admin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $about = $organisation->about()->first();
+                 //then
+                 $user = Auth::user();
+                 $aboutpic->about_id = $about ->id;
+                 $aboutpic->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Accountant')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $about = $organisation->about()->first();
+                //then
+                $user = Auth::user();
+                $aboutpic->about_id = $about ->id;
+                $aboutpic->user_id = $user ->id;
+            }
+        }
 
         $strpos = strpos($request->image, ';'); //positionof image name semicolon
         $sub = substr($request->image, 0, $strpos);
@@ -141,12 +205,40 @@ class AboutPicController extends Controller
         $aboutpic->title = $request ->title;
         $aboutpic->description = $request ->description;
         //getting Organisation $user, about_id
-        $user = Auth::user();
-        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-        $about_id = $organisation->about()->first();
-
-        $aboutpic->about_id = $about_id ->id;
-        $aboutpic->user_id = $user ->id;
+        if (auth()->check()) {
+            if (auth()->user()->hasRole('Organisation Director')) {
+                $organisation= Auth::user()-> organisationdirectors()->first();
+                $about = $organisation->about()->first();
+                 //then
+                 $user = Auth::user();
+                 $aboutpic->about_id = $about ->id;
+                 $aboutpic->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Superadmin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $about = $organisation->about()->first();
+                 //then
+                 $user = Auth::user();
+                 $aboutpic->about_id = $about ->id;
+                 $aboutpic->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Admin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $about = $organisation->about()->first();
+                 //then
+                 $user = Auth::user();
+                 $aboutpic->about_id = $about ->id;
+                 $aboutpic->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Accountant')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $about = $organisation->about()->first();
+                //then
+                $user = Auth::user();
+                $aboutpic->about_id = $about ->id;
+                $aboutpic->user_id = $user ->id;
+            }
+        }
 
         $currentimage =  $aboutpic->image;
 

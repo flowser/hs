@@ -20,15 +20,44 @@ class AdvertController extends Controller
      */
     public function index()
     {
-        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-
-        // $about = $organisation->about()->get();
-        $advert = Advert::with('user', 'organisation')
-                        ->where('adverts.organisation_id', $organisation->id)
-                        ->get();
-            return response()-> json([
-                            'advert' => $advert,
-                            ], 200);
+        if (auth()->check()) {
+            if (auth()->user()->hasRole('Organisation Director')) {
+                $organisation= Auth::user()-> organisationdirectors()->first();
+                $advert = Advert::with('user', 'organisation')
+                ->where('organisation_id', $organisation->id)
+                ->get();
+                return response()-> json([
+                    'advert' => $advert,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Organisation Superadmin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $advert = Advert::with('user', 'organisation')
+                ->where('organisation_id', $organisation->id)
+                ->get();
+                return response()-> json([
+                    'advert' => $advert,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Organisation Admin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $about = Advert::with('user', 'organisation')
+                ->where('organisation_id', $organisation->id)
+                ->get();
+                return response()-> json([
+                    'about' => $about,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Organisation Accountant')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $advert = Advert::with('user', 'organisation')
+                ->where('organisation_id', $organisation->id)
+                ->get();
+                return response()-> json([
+                    'advert' => $advert,
+                ], 200);
+            }
+      }
     }
     public function organisations()//all adverts linked to organisation
     {
@@ -75,16 +104,36 @@ class AdvertController extends Controller
 
 
         //getting Organisation $user
-        $user = Auth::user();
-        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-
-        $advert->organisation_id = $organisation ->id;
-        $advert->user_id = $user ->id;
-        //bureau
-        // $burueau= (Auth::user()-> bureauemployee()->first()->bureau()->first());
-        // $advert->bureau_id = $bureau ->id;
-        // $advert->user_id = $user ->id;
-        //processing photo nme and size
+        if (auth()->check()) {
+            if (auth()->user()->hasRole('Organisation Director')) {
+                $organisation= Auth::user()-> organisationdirectors()->first();
+                 //then
+                 $user = Auth::user();
+                 $advert->organisation_id = $organisation ->id;
+                 $advert->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Superadmin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $advert->organisation_id = $organisation ->id;
+                 $advert->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Admin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $advert->organisation_id = $organisation ->id;
+                 $advert->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Accountant')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                //then
+                $user = Auth::user();
+                $advert->organisation_id = $organisation ->id;
+                $advert->user_id = $user ->id;
+            }
+        }
 
         $strpos = strpos($request->advert_image, ';'); //positionof image name semicolon
         $sub = substr($request->advert_image, 0, $strpos);
@@ -110,10 +159,7 @@ class AdvertController extends Controller
      */
     public function show($id)
     {
-        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-        $singleadvert = Advert::with('user', 'organisation')
-                                ->where('adverts.organisation_id', $organisation->id)
-                                ->find($id);
+        $singleadvert = Advert::find($id);
         // dd($organisation);
         return response()-> json([
             'singleadvert' => $singleadvert,
@@ -130,10 +176,7 @@ class AdvertController extends Controller
      */
     public function edit($id)
     {
-        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-        $advert = Advert::with('user', 'organisation')
-                                ->where('adverts.organisation_id', $organisation->id)
-                                ->find($id);
+        $advert = Advert::find($id);
         // dd($organisation);
         return response()-> json([
             'advert' => $advert,
@@ -160,12 +203,36 @@ class AdvertController extends Controller
         $advert->subtitle = $request ->subtitle;
         $advert->details = $request ->details;
         //getting Organisation $user, about_id
-        $user = Auth::user();
-        $organisation= (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-
-        $advert->organisation_id = $organisation ->id;
-        $advert->user_id = $user ->id;
-
+        if (auth()->check()) {
+            if (auth()->user()->hasRole('Organisation Director')) {
+                $organisation= Auth::user()-> organisationdirectors()->first();
+                 //then
+                 $user = Auth::user();
+                 $advert->organisation_id = $organisation ->id;
+                 $advert->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Superadmin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $advert->organisation_id = $organisation ->id;
+                 $advert->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Admin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $advert->organisation_id = $organisation ->id;
+                 $advert->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Accountant')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                //then
+                $user = Auth::user();
+                $advert->organisation_id = $organisation ->id;
+                $advert->user_id = $user ->id;
+            }
+        }
         $currentadvert_image =  $advert->advert_image;
 
          //processing advert_image nme and size

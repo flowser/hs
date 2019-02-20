@@ -75,22 +75,22 @@ class OrganisationController extends Controller
     public function verifyDirectorInfo (Request $request)
     {
         $this->validate($request,[
-            // 'director_first_name'  =>  'required',
-            // 'director_last_name'  =>  'required',
-            // 'email'  =>  'required|email|max:255|unique:users',
-            // 'director_password'  =>  'required',
-            // 'director_phone'  =>  'phone:AUTO,MOBILE',
-            // 'director_landline'  =>  'phone:AUTO,MOBILE',
-            // 'director_id_no'  =>  'required|digits_between:7,10',
-            // 'director_address'  =>  'required|digits_between:1,20',
-            // // 'gender_id'  =>  'required',
-            // 'director_country_id'  =>  'required',
-            // 'director_county_id'  =>  'required',
-            // 'director_constituency_id'  =>  'required',
-            // 'director_ward_id'  =>  'required',
-            // 'director_passport_image'  =>  'required',
-            // 'frontside_director_id_photo'  =>  'required',
-            // 'backside_director_id_photo'  =>  'required',
+            'director_first_name'  =>  'required',
+            'director_last_name'  =>  'required',
+            'email'  =>  'required|email|max:255|unique:users',
+            'director_password'  =>  'required',
+            'director_phone'  =>  'phone:AUTO,MOBILE',
+            'director_landline'  =>  'phone:AUTO,MOBILE',
+            'director_id_no'  =>  'required|digits_between:7,10',
+            'director_address'  =>  'required|digits_between:1,20',
+            // 'gender_id'  =>  'required',
+            'director_country_id'  =>  'required',
+            'director_county_id'  =>  'required',
+            'director_constituency_id'  =>  'required',
+            'director_ward_id'  =>  'required',
+            'director_passport_image'  =>  'required',
+            'frontside_director_id_photo'  =>  'required',
+            'backside_director_id_photo'  =>  'required',
        ]);
     }
 
