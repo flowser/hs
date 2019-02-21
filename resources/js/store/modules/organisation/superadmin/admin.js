@@ -1,34 +1,35 @@
 
-// //director module
+//admin module
 
-// const state = {
-//     directors:[],
-//   };
-// const getters = {
-//     Directors(state){
-//       return state.directors;
-//     }
-//   };
-// const actions = {
-//     directors(context){//permission.index route laravel
-//       axios.get('/director/get')
-//       .then((response)=>{
-//         // console.log(response.data.directors)
-//         context.commit('directors', response.data.directors);
-//       });
-//     }
-//   }
-// const mutations = {
-//     directors(state, data){
-//       return state.directors = data;
-//     }
-//   };
+const state = {
+    admins:[],
+  };
+const getters = {
+    Admins(state){
+      return state.admins;
+    }
+  };
+const actions = {
+    admins(context){//permission.index route laravel
+      axios.get('/orgadmin/get')
+      .then((response)=>{
+        // console.log(response.data.admins)
+        context.commit('admins', response.data.admins);
+      });
+    }
+  }
+const mutations = {
+    admins(state, data){
+      return state.admins = data;
+    }
+  };
 
-// export default {
-//   // namespaced: true,
-//   state,
-//   getters,
-//   actions,
-//   mutations
-// };
+export default {
+  // namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations
+};
+
 

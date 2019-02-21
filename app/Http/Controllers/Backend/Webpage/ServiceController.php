@@ -12,7 +12,8 @@ class ServiceController extends Controller
 {
     public function index()
     {
-       if (auth()->check()) {
+        if (auth()->check()) {
+            //organisation
             if (auth()->user()->hasRole('Organisation Director')) {
                 $organisation= Auth::user()-> organisationdirectors()->first();
                 $service = Service::with('user', 'organisation')
@@ -33,11 +34,11 @@ class ServiceController extends Controller
             }
             if (auth()->user()->hasRole('Organisation Admin')) {
                 $organisation= Auth::user()-> organisationemployees()->first();
-                $about = Service::with('user', 'organisation')
+                $service = Service::with('user', 'organisation')
                 ->where('organisation_id', $organisation->id)
                 ->get();
                 return response()-> json([
-                    'about' => $about,
+                    'service' => $service,
                 ], 200);
             }
             if (auth()->user()->hasRole('Organisation Accountant')) {
@@ -49,8 +50,44 @@ class ServiceController extends Controller
                     'service' => $service,
                 ], 200);
             }
-      }
-
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                $service = Service::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'service' => $service,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $service = Service::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'service' => $service,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $service = Service::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'service' => $service,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $service = Service::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'service' => $service,
+                ], 200);
+            }
+        }
     }
     public function organisations()//all services linked to organisation
     {
@@ -125,8 +162,36 @@ class ServiceController extends Controller
                 $service->organisation_id = $organisation ->id;
                 $service->user_id = $user ->id;
             }
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                 //then
+                 $user = Auth::user();
+                 $service->bureau_id = $bureau ->id;
+                 $service->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $service->bureau_id = $bureau ->id;
+                 $service->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $service->bureau_id = $bureau ->id;
+                 $service->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                //then
+                $user = Auth::user();
+                $service->bureau_id = $bureau ->id;
+                $service->user_id = $user ->id;
+            }
         }
-
         $strpos = strpos($request->service_image, ';'); //positionof image name semicolon
         $sub = substr($request->service_image, 0, $strpos);
         $ex = explode('/', $sub)[1];
@@ -222,6 +287,35 @@ class ServiceController extends Controller
                 //then
                 $user = Auth::user();
                 $service->organisation_id = $organisation ->id;
+                $service->user_id = $user ->id;
+            }
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                 //then
+                 $user = Auth::user();
+                 $service->bureau_id = $bureau ->id;
+                 $service->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $service->bureau_id = $bureau ->id;
+                 $service->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $service->bureau_id = $bureau ->id;
+                 $service->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                //then
+                $user = Auth::user();
+                $service->bureau_id = $bureau ->id;
                 $service->user_id = $user ->id;
             }
         }

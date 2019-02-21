@@ -4,6 +4,7 @@ namespace App\Models\Standard\Webservices;
 
 use App\Models\Standard\User;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Organisation\Organisation;
 use App\Models\Standard\Webservices\About;
 use App\Models\Standard\Webservices\Service;
 
@@ -14,7 +15,8 @@ class ServiceFilter extends Model
         'details',
         'why',
         'user_id',
-        'service_id',
+        'organisation_id',
+        'bureau_id',
     ];
 
     //belongs to
@@ -26,8 +28,12 @@ class ServiceFilter extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function service()
+    public function organisation()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(Organisation::class);
+    }
+    public function bureau()
+    {
+        return $this->belongsTo(Bureau::class);
     }
 }

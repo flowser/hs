@@ -59,6 +59,49 @@ class AboutPicController extends Controller
                     'aboutpic' => $aboutpic,
                 ], 200);
             }
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                $about = $bureau->about()->first();
+                $aboutpic =  AboutPic::with('user','about')
+                ->where('about_id', $about->id)
+                ->get();
+                return response()-> json([
+                    'aboutpic' => $aboutpic,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $about = $bureau->about()->first();
+                $aboutpic =  AboutPic::with('user','about')
+                ->where('about_id', $about->id)
+                ->get();
+                return response()-> json([
+                    'aboutpic' => $aboutpic,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $about = $bureau->about()->first();
+                $aboutpic =  AboutPic::with('user','about')
+                ->where('about_id', $about->id)
+                ->get();
+                return response()-> json([
+                    'aboutpic' => $aboutpic,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $about = $bureau->about()->first();
+                $aboutpic =  AboutPic::with('user','about')
+                ->where('about_id', $about->id)
+                ->get();
+                return response()-> json([
+                    'aboutpic' => $aboutpic,
+                ], 200);
+            }
+
+
         }
     }
 
@@ -132,6 +175,39 @@ class AboutPicController extends Controller
             if (auth()->user()->hasRole('Organisation Accountant')) {
                 $organisation= Auth::user()-> organisationemployees()->first();
                 $about = $organisation->about()->first();
+                //then
+                $user = Auth::user();
+                $aboutpic->about_id = $about ->id;
+                $aboutpic->user_id = $user ->id;
+            }
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                $about = $bureau->about()->first();
+                 //then
+                 $user = Auth::user();
+                 $aboutpic->about_id = $about ->id;
+                 $aboutpic->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $about = $bureau->about()->first();
+                 //then
+                 $user = Auth::user();
+                 $aboutpic->about_id = $about ->id;
+                 $aboutpic->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $about = $bureau->about()->first();
+                 //then
+                 $user = Auth::user();
+                 $aboutpic->about_id = $about ->id;
+                 $aboutpic->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $about = $bureau->about()->first();
                 //then
                 $user = Auth::user();
                 $aboutpic->about_id = $about ->id;
@@ -233,6 +309,39 @@ class AboutPicController extends Controller
             if (auth()->user()->hasRole('Organisation Accountant')) {
                 $organisation= Auth::user()-> organisationemployees()->first();
                 $about = $organisation->about()->first();
+                //then
+                $user = Auth::user();
+                $aboutpic->about_id = $about ->id;
+                $aboutpic->user_id = $user ->id;
+            }
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                $about = $bureau->about()->first();
+                 //then
+                 $user = Auth::user();
+                 $aboutpic->about_id = $about ->id;
+                 $aboutpic->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $about = $bureau->about()->first();
+                 //then
+                 $user = Auth::user();
+                 $aboutpic->about_id = $about ->id;
+                 $aboutpic->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $about = $bureau->about()->first();
+                 //then
+                 $user = Auth::user();
+                 $aboutpic->about_id = $about ->id;
+                 $aboutpic->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $about = $bureau->about()->first();
                 //then
                 $user = Auth::user();
                 $aboutpic->about_id = $about ->id;

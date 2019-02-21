@@ -22,10 +22,11 @@ class AboutController extends Controller
     public function index()
     {
         if (auth()->check()) {
+            //organisation
             if (auth()->user()->hasRole('Organisation Director')) {
                 $organisation= Auth::user()-> organisationdirectors()->first();
-                $about = About::with('user', 'aboutpics', 'organisation')
-                ->where('abouts.organisation_id', $organisation->id)
+                $about = About::with('user', 'organisation')
+                ->where('organisation_id', $organisation->id)
                 ->get();
                 return response()-> json([
                     'about' => $about,
@@ -33,8 +34,8 @@ class AboutController extends Controller
             }
             if (auth()->user()->hasRole('Organisation Superadmin')) {
                 $organisation= Auth::user()-> organisationemployees()->first();
-                $about = About::with('user', 'aboutpics', 'organisation')
-                ->where('abouts.organisation_id', $organisation->id)
+                $about = About::with('user', 'organisation')
+                ->where('organisation_id', $organisation->id)
                 ->get();
                 return response()-> json([
                     'about' => $about,
@@ -42,8 +43,8 @@ class AboutController extends Controller
             }
             if (auth()->user()->hasRole('Organisation Admin')) {
                 $organisation= Auth::user()-> organisationemployees()->first();
-                $about = About::with('user', 'aboutpics', 'organisation')
-                ->where('abouts.organisation_id', $organisation->id)
+                $about = About::with('user', 'organisation')
+                ->where('organisation_id', $organisation->id)
                 ->get();
                 return response()-> json([
                     'about' => $about,
@@ -51,32 +52,57 @@ class AboutController extends Controller
             }
             if (auth()->user()->hasRole('Organisation Accountant')) {
                 $organisation= Auth::user()-> organisationemployees()->first();
-                $about = About::with('user', 'aboutpics', 'organisation')
-                ->where('abouts.organisation_id', $organisation->id)
+                $about = About::with('user', 'organisation')
+                ->where('organisation_id', $organisation->id)
+                ->get();
+                return response()-> json([
+                    'about' => $about,
+                ], 200);
+            }
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                $about = About::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'about' => $about,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $about = About::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'about' => $about,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $about = About::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'about' => $about,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $about = About::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
                 ->get();
                 return response()-> json([
                     'about' => $about,
                 ], 200);
             }
         }
-
-        // $organisation= Auth::user()-> organisationemployees()->first();
-        // // return $organisation;
-
-        // // $about = $organisation->about()->get();
-        // $about = About::with('user', 'aboutpics', 'organisation')
-        //                 ->where('abouts.organisation_id', $organisation->id)
-        //                 ->get();
-        // // dd($about);
-        // return response()-> json([
-        // 'about' => $about,
-        // ], 200);
     }
 
     public function abouts()
     {
 
-        $about = About::with('about', 'aboutpics')
+        $abouts = About::with('about', 'aboutpics')
                         ->get();
         // dd($about);
         return response()-> json([
@@ -148,6 +174,35 @@ class AboutController extends Controller
                 //then
                 $user = Auth::user();
                 $about->organisation_id = $organisation ->id;
+                $about->user_id = $user ->id;
+            }
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                 //then
+                 $user = Auth::user();
+                 $about->bureau_id = $bureau ->id;
+                 $about->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $about->bureau_id = $bureau ->id;
+                 $about->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $about->bureau_id = $bureau ->id;
+                 $about->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                //then
+                $user = Auth::user();
+                $about->bureau_id = $bureau ->id;
                 $about->user_id = $user ->id;
             }
         }
@@ -252,6 +307,35 @@ class AboutController extends Controller
                 //then
                 $user = Auth::user();
                 $about->organisation_id = $organisation ->id;
+                $about->user_id = $user ->id;
+            }
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                 //then
+                 $user = Auth::user();
+                 $about->bureau_id = $bureau ->id;
+                 $about->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $about->bureau_id = $bureau ->id;
+                 $about->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $about->bureau_id = $bureau ->id;
+                 $about->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                //then
+                $user = Auth::user();
+                $about->bureau_id = $bureau ->id;
                 $about->user_id = $user ->id;
             }
         }

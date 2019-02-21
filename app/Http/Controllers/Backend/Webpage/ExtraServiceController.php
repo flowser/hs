@@ -13,28 +13,82 @@ class ExtraServiceController extends Controller
 {
     public function index()
     {
-        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-        $service = $organisation->services()->first();
-
-        // return $service;
-        if($service == null){
-            $extraservice = ExtraService::with('user', 'service')
-                        ->where('extra_services.service_id', $service)
-                        ->get();
-            return response()-> json([
-                            'extraservice' => $extraservice,
-                            ], 200);
-
-        }else{
-            // $about = $organisation->about()->get();
-            $extraservice = ExtraService::with('user', 'service')
-                        ->where('extra_services.service_id', $service->id)
-                        ->get();
-            return response()-> json([
-                        'extraservice' => $extraservice,
-                        ], 200);
+        if (auth()->check()) {
+            //organisation
+            if (auth()->user()->hasRole('Organisation Director')) {
+                $organisation= Auth::user()-> organisationdirectors()->first();
+                $extraservice = ExtraService::with('user', 'organisation')
+                ->where('organisation_id', $organisation->id)
+                ->get();
+                return response()-> json([
+                    'extraservice' => $extraservice,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Organisation Superadmin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $extraservice = ExtraService::with('user', 'organisation')
+                ->where('organisation_id', $organisation->id)
+                ->get();
+                return response()-> json([
+                    'extraservice' => $extraservice,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Organisation Admin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $extraservice = ExtraService::with('user', 'organisation')
+                ->where('organisation_id', $organisation->id)
+                ->get();
+                return response()-> json([
+                    'extraservice' => $extraservice,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Organisation Accountant')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                $extraservice = ExtraService::with('user', 'organisation')
+                ->where('organisation_id', $organisation->id)
+                ->get();
+                return response()-> json([
+                    'extraservice' => $extraservice,
+                ], 200);
+            }
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                $extraservice = ExtraService::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'extraservice' => $extraservice,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $extraservice = ExtraService::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'extraservice' => $extraservice,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $extraservice = ExtraService::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'extraservice' => $extraservice,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $extraservice = ExtraService::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'extraservice' => $extraservice,
+                ], 200);
+            }
         }
-
     }
     public function organisations()//all extraservices linked to organisation
     {
@@ -78,30 +132,65 @@ class ExtraServiceController extends Controller
         $extraservice->why = $request ->why;
 
         //getting Organisation $user
-        $user = Auth::user();
-
-        $organisation = (Auth::user()-> organisationemployeeusers()->first()->organisation()->first());
-        $service = $organisation->services()->first();
-
-        $extraservice->service_id = $service ->id;
-        $extraservice->user_id = $user ->id;
-        //bureau
-        // $burueau= (Auth::user()-> bureauemployee()->first()->bureau()->first());
-        // $extraservice->bureau_id = $bureau ->id;
-        // $extraservice->user_id = $user ->id;
-        //processing photo nme and size
-
-//         $strpos = strpos($request->extraservice_image, ';'); //positionof image name semicolon
-//         $sub = substr($request->extraservice_image, 0, $strpos);
-//         $ex = explode('/', $sub)[1];
-//         $name = time().".".$ex;
-
-//         $Path = public_path()."/assets/organisation/img/website/services/extraservices";
-//             $img = Image::make($request->extraservice_image);
-// //            $img->crop(300, 150, 25, 25);
-//             $img ->save($Path.'/'.$name);
-//         $extraservice->extraservice_image = $name;
-        //end processing photo and size
+        if (auth()->check()) {
+            if (auth()->user()->hasRole('Organisation Director')) {
+                $organisation= Auth::user()-> organisationdirectors()->first();
+                 //then
+                 $user = Auth::user();
+                 $extraservice->organisation_id = $organisation ->id;
+                 $extraservice->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Superadmin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $extraservice->organisation_id = $organisation ->id;
+                 $extraservice->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Admin')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $extraservice->organisation_id = $organisation ->id;
+                 $extraservice->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Organisation Accountant')) {
+                $organisation= Auth::user()-> organisationemployees()->first();
+                //then
+                $user = Auth::user();
+                $extraservice->organisation_id = $organisation ->id;
+                $extraservice->user_id = $user ->id;
+            }
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                 //then
+                 $user = Auth::user();
+                 $extraservice->bureau_id = $bureau ->id;
+                 $extraservice->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $extraservice->bureau_id = $bureau ->id;
+                 $extraservice->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $extraservice->bureau_id = $bureau ->id;
+                 $extraservice->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                //then
+                $user = Auth::user();
+                $extraservice->bureau_id = $bureau ->id;
+                $extraservice->user_id = $user ->id;
+            }
+        }
         $extraservice->save();
 
     }

@@ -16,13 +16,15 @@ class CreateExtraServicesTable extends Migration
         Schema::create('extra_services', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');//edited or creted by
-            $table->unsignedInteger('service_id');
+            $table->unsignedInteger('organisation_id')->nullable();
+            $table->unsignedInteger('bureau_id')->nullable();
             $table->string('title')->nullable();
             $table->string('details')->nullable();
             $table->string('why')->nullable();
             $table->timestamps();
 
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
+            $table->foreign('organisation_id')->references('id')->on('organisations')->onDelete('cascade');
+            $table->foreign('bureau_id')->references('id')->on('bureaus')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

@@ -2,8 +2,10 @@
 
 namespace App\Models\Standard\Webservices;
 
+use App\Models\Bureau\Bureau;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Organisation\Organisation;
 use App\Models\Standard\Webservices\About;
 
 class ExtraService extends Model
@@ -13,7 +15,8 @@ class ExtraService extends Model
         'details',
         'why',
         'user_id',
-        'service_id',
+        'organisation_id',
+        'bureau_id',
     ];
 
     //belongs to
@@ -25,8 +28,12 @@ class ExtraService extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function service()
+    public function organisation()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(Organisation::class);
+    }
+    public function bureau()
+    {
+        return $this->belongsTo(Bureau::class);
     }
 }

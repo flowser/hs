@@ -21,6 +21,7 @@ class AdvertController extends Controller
     public function index()
     {
         if (auth()->check()) {
+            //organisation
             if (auth()->user()->hasRole('Organisation Director')) {
                 $organisation= Auth::user()-> organisationdirectors()->first();
                 $advert = Advert::with('user', 'organisation')
@@ -41,11 +42,11 @@ class AdvertController extends Controller
             }
             if (auth()->user()->hasRole('Organisation Admin')) {
                 $organisation= Auth::user()-> organisationemployees()->first();
-                $about = Advert::with('user', 'organisation')
+                $advert = Advert::with('user', 'organisation')
                 ->where('organisation_id', $organisation->id)
                 ->get();
                 return response()-> json([
-                    'about' => $about,
+                    'advert' => $advert,
                 ], 200);
             }
             if (auth()->user()->hasRole('Organisation Accountant')) {
@@ -57,7 +58,44 @@ class AdvertController extends Controller
                     'advert' => $advert,
                 ], 200);
             }
-      }
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                $advert = Advert::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'advert' => $advert,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $advert = Advert::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'advert' => $advert,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $advert = Advert::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'advert' => $advert,
+                ], 200);
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                $advert = Advert::with('user', 'bureau')
+                ->where('bureau_id', $bureau->id)
+                ->get();
+                return response()-> json([
+                    'advert' => $advert,
+                ], 200);
+            }
+        }
     }
     public function organisations()//all adverts linked to organisation
     {
@@ -131,6 +169,35 @@ class AdvertController extends Controller
                 //then
                 $user = Auth::user();
                 $advert->organisation_id = $organisation ->id;
+                $advert->user_id = $user ->id;
+            }
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                 //then
+                 $user = Auth::user();
+                 $advert->bureau_id = $bureau ->id;
+                 $advert->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $advert->bureau_id = $bureau ->id;
+                 $advert->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $advert->bureau_id = $bureau ->id;
+                 $advert->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                //then
+                $user = Auth::user();
+                $advert->bureau_id = $bureau ->id;
                 $advert->user_id = $user ->id;
             }
         }
@@ -230,6 +297,35 @@ class AdvertController extends Controller
                 //then
                 $user = Auth::user();
                 $advert->organisation_id = $organisation ->id;
+                $advert->user_id = $user ->id;
+            }
+            //bureau
+            if (auth()->user()->hasRole('Bureau Director')) {
+                $bureau= Auth::user()-> bureaudirectors()->first();
+                 //then
+                 $user = Auth::user();
+                 $advert->bureau_id = $bureau ->id;
+                 $advert->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Superadmin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $advert->bureau_id = $bureau ->id;
+                 $advert->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Admin')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                 //then
+                 $user = Auth::user();
+                 $advert->bureau_id = $bureau ->id;
+                 $advert->user_id = $user ->id;
+            }
+            if (auth()->user()->hasRole('Bureau Accountant')) {
+                $bureau= Auth::user()-> bureauemployees()->first();
+                //then
+                $user = Auth::user();
+                $advert->bureau_id = $bureau ->id;
                 $advert->user_id = $user ->id;
             }
         }

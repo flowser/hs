@@ -12,8 +12,12 @@ use App\Http\Controllers\Backend\Webpage\AboutPicController;
 use App\Http\Controllers\Backend\Webpage\ExtraServiceController;
 use App\Http\Controllers\Backend\Standard\ConstituencyController;
 use App\Http\Controllers\Backend\Webpage\ServiceFilterController;
+use App\Http\Controllers\Backend\Organisation\Admin\BureauController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\RoleController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\UserController;
+use App\Http\Controllers\Backend\Organisation\Admin\BureauAdminController;
+use App\Http\Controllers\Backend\Organisation\Superadmin\OrgAdminController;
+use App\Http\Controllers\Backend\Organisation\Admin\BureauDirectorController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\PermissionController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\OrgDirectorController;
 use App\Http\Controllers\Backend\Organisation\Superadmin\OrganisationController;
@@ -234,16 +238,31 @@ Route::get('/home', 'HomeController@index')->name('home');
         Route::get('orgdirector/get', [OrgDirectorController::class, 'index'])->name('orgdirector.index');
         Route::get('orgdirectors/get', [OrgDirectorController::class, 'organisations'])->name('orgdirector.organisations');
         Route::get('orgdirector/get/list', [OrgDirectorController::class, 'orgdirectorList'])->name('orgdirector.list-index');
+        Route::post('orgdirector/verify/director/', [OrgDirectorController::class, 'verifyDirectorInfo'])->name('orgdirector.verifydirector');
         Route::post('orgdirector', [OrgDirectorController::class, 'store'])->name('orgdirector.store');
     //     /*
     //      * Specifics
     //      */
         Route::get('orgdirector/show/{orgdirector}', [OrgDirectorController::class, 'show'])->name('orgdirector.show');
         Route::get('orgdirector/edit/{orgdirector}', [OrgDirectorController::class, 'edit'])->name('orgdirector.edit');
+        Route::patch('orgdirector/updateverify/director/{orgdirector}', [OrgDirectorController::class, 'updateverifyDirectorInfo'])->name('orgdirector.updateverifydirector');
         Route::patch('orgdirector/update/{orgdirector}', [OrgDirectorController::class, 'update'])->name('orgdirector.update');
         Route::get('orgdirector/delete/{orgdirector}/', [OrgDirectorController::class, 'destroy'])->name('orgdirector.destroy');
 
-
+                // orgadmin
+        Route::get('orgadmin/get', [OrgAdminController::class, 'index'])->name('orgadmin.index');
+        Route::get('orgadmins/get', [OrgAdminController::class, 'organisations'])->name('orgadmin.organisations');
+        Route::get('orgadmin/get/list', [OrgAdminController::class, 'orgadminList'])->name('orgadmin.list-index');
+        Route::post('orgadmin/verify/admin/', [OrgAdminController::class, 'verifyAdminInfo'])->name('orgadmin.verifyadmin');
+        Route::post('orgadmin', [OrgAdminController::class, 'store'])->name('orgadmin.store');
+    //     /*
+    //      * Specifics
+    //      */
+        Route::get('orgadmin/show/{orgadmin}', [OrgAdminController::class, 'show'])->name('orgadmin.show');
+        Route::get('orgadmin/edit/{orgadmin}', [OrgAdminController::class, 'edit'])->name('orgadmin.edit');
+        Route::patch('orgadmin/updateverify/admin/{orgadmin}', [OrgAdminController::class, 'updateverifyAdminInfo'])->name('orgadmin.updateverifyadmin');
+        Route::patch('orgadmin/update/{orgadmin}', [OrgAdminController::class, 'update'])->name('orgadmin.update');
+        Route::get('orgadmin/delete/{orgadmin}/', [OrgAdminController::class, 'destroy'])->name('orgadmin.destroy');
 
 
         // about
@@ -327,4 +346,52 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 // });
+
+
+        // bureau
+        Route::get('bureau/get', [BureauController::class, 'index'])->name('bureau.index');
+        Route::get('bureaus/get/list', [BureauController::class, 'BureauList'])->name('bureau.list-index');
+        Route::post('bureau/verify/info/', [BureauController::class, 'verifyBureauInfo'])->name('bureau.verify');
+        Route::post('bureau/verify/director/', [BureauController::class, 'verifyDirectorInfo'])->name('bureau.verifydirector');
+        Route::post('bureau', [BureauController::class, 'store'])->name('bureau.store');
+    //     /*
+    //      * Specifics
+    //      */
+        Route::get('bureau/show/{bureau}', [BureauController::class, 'show'])->name('bureau.show');
+        Route::get('bureau/edit/{bureau}', [BureauController::class, 'edit'])->name('bureau.edit');
+        Route::patch('bureau/updateverify/info/{bureau}', [BureauController::class, 'updateverifyBureauInfo'])->name('bureau.updateverify');
+        Route::patch('bureau/updateverify/director/{bureau}', [BureauController::class, 'updateverifyDirectorInfo'])->name('bureau.updateverifydirector');
+        Route::patch('bureau/update/{bureau}', [BureauController::class, 'update'])->name('bureau.update');
+        Route::get('bureau/delete/{bureau}', [BureauController::class, 'destroy'])->name('bureau.destroy');
+
+        // bureaudirector
+        Route::get('bureaudirector/get', [BureauDirectorController::class, 'index'])->name('bureaudirector.index');
+        Route::get('bureaudirectors/get', [BureauDirectorController::class, 'bureaus'])->name('bureaudirector.bureaus');
+        Route::get('bureaudirector/get/list', [BureauDirectorController::class, 'bureaudirectorList'])->name('bureaudirector.list-index');
+        Route::post('bureaudirector/verify/director/', [BureauDirectorController::class, 'verifyDirectorInfo'])->name('bureaudirector.verifydirector');
+        Route::post('bureaudirector', [BureauDirectorController::class, 'store'])->name('bureaudirector.store');
+    //     /*
+    //      * Specifics
+    //      */
+        Route::get('bureaudirector/show/{bureaudirector}', [BureauDirectorController::class, 'show'])->name('bureaudirector.show');
+        Route::get('bureaudirector/edit/{bureaudirector}', [BureauDirectorController::class, 'edit'])->name('bureaudirector.edit');
+        Route::patch('bureaudirector/updateverify/director/{bureaudirector}', [BureauDirectorController::class, 'updateverifyDirectorInfo'])->name('bureaudirector.updateverifydirector');
+        Route::patch('bureaudirector/update/{bureaudirector}', [BureauDirectorController::class, 'update'])->name('bureaudirector.update');
+        Route::get('bureaudirector/delete/{bureaudirector}/', [BureauDirectorController::class, 'destroy'])->name('bureaudirector.destroy');
+
+                // bureauadmin
+        Route::get('bureauadmin/get', [BureauAdminController::class, 'index'])->name('bureauadmin.index');
+        Route::get('bureauadmins/get', [BureauAdminController::class, 'bureaus'])->name('bureauadmin.bureaus');
+        Route::get('bureauadmin/get/list', [BureauAdminController::class, 'bureauadminList'])->name('bureauadmin.list-index');
+        Route::post('bureauadmin/verify/admin/', [BureauAdminController::class, 'verifyAdminInfo'])->name('bureauadmin.verifyadmin');
+        Route::post('bureauadmin', [BureauAdminController::class, 'store'])->name('bureauadmin.store');
+    //     /*
+    //      * Specifics
+    //      */
+        Route::get('bureauadmin/show/{bureauadmin}', [BureauAdminController::class, 'show'])->name('bureauadmin.show');
+        Route::get('bureauadmin/edit/{bureauadmin}', [BureauAdminController::class, 'edit'])->name('bureauadmin.edit');
+        Route::patch('bureauadmin/updateverify/admin/{bureauadmin}', [BureauAdminController::class, 'updateverifyAdminInfo'])->name('bureauadmin.updateverifyadmin');
+        Route::patch('bureauadmin/update/{bureauadmin}', [BureauAdminController::class, 'update'])->name('bureauadmin.update');
+        Route::get('bureauadmin/delete/{bureauadmin}/', [BureauAdminController::class, 'destroy'])->name('bureauadmin.destroy');
+
 

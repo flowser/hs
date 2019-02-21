@@ -12,6 +12,15 @@
 
             //under org Admin
             import orgemployee from './modules/organisation/admin/employee';
+             // bureau
+             import bureau from './modules/organisation/admin/bureau';
+             //bureau Director
+             import bureaudirector from './modules/organisation/admin/director';
+             //bureau Admin
+             import bureauadmin from './modules/organisation/admin/admin';
+
+
+
 
         //standard
             import countries from './modules/standard/countries';
@@ -39,9 +48,9 @@
                 permission,
                 role,
             //bureau
-                // bureau,
-                // bureaudirector,
-                // bureauadmin,
+                bureau,
+                bureaudirector,
+                bureauadmin,
                 // bureauemployee,
                 // bureauhousehelp,
             //househelp

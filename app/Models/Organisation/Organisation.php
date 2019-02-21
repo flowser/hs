@@ -15,7 +15,6 @@ use App\Models\Househelp\Househelp;
 use App\Models\Bureau\BureauEmployee;
 use App\Models\Standard\Constituency;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Organisation\Organisation;
 use App\Models\Standard\Webservices\About;
 use App\Models\Standard\Webservices\Advert;
 use App\Models\Standard\Webservices\Service;
@@ -79,116 +78,29 @@ class Organisation extends Model
                         'about_me',
                         'phone',
                         'landline',
-                        'address',
-                        'position_id'
+                        'address'
                     )
                     ->withTimestamps();
     }
     public function positions()
     {
-        return $this->belongsToMany(Position::class,'organisation_director')
-                    ->using(OrganisationDirector::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(Position::class,'organisation_director');
     }
     public function countries()
     {
-        return $this->belongsToMany(Country::class,'organisation_director')
-                    ->using(OrganisationDirector::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id',
-                        'country_id',
-                        'county_id',
-                        'constituency_id',
-                        'ward_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(Country::class,'organisation_director');
     }
     public function counties()
     {
-        return $this->belongsToMany(County::class,'organisation_director')
-                    ->using(OrganisationDirector::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id',
-                        'country_id',
-                        'county_id',
-                        'constituency_id',
-                        'ward_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(County::class,'organisation_director');
     }
     public function constituencies()
     {
-        return $this->belongsToMany(Constituency::class,'organisation_director')
-                    ->using(OrganisationDirector::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id',
-                        'country_id',
-                        'county_id',
-                        'constituency_id',
-                        'ward_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(Constituency::class,'organisation_director');
     }
     public function wards()
     {
-        return $this->belongsToMany(Ward::class,'organisation_director')
-                    ->using(OrganisationDirector::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id',
-                        'country_id',
-                        'county_id',
-                        'constituency_id',
-                        'ward_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(Ward::class,'organisation_director');
     }
     public function organisationemployees()
     {
@@ -330,7 +242,7 @@ class Organisation extends Model
     }
     public function bureauemployees()
     {
-        return $this->hasManyThrough()(BureauEmployee::class, Bureau::class);
+        return $this->hasManyThrough(BureauEmployee::class, Bureau::class);
     }
     public function househelps()
     {
@@ -352,11 +264,11 @@ class Organisation extends Model
     }
     public function servicefilters()
     {
-        return $this->hasManyThrough(ServiceFilter::class, Service::class);
+        return $this->hasMany(ServiceFilter::class, Service::class);
     }
     public function extraservices()
     {
-        return $this->hasManyThrough(ExtraService::class, Service::class);
+        return $this->hasMany(ExtraService::class, Service::class);
     }
     //advert page or section
     public function adverts()

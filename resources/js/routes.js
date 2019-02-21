@@ -31,15 +31,13 @@ import SingleExtraService from './components/admins/organisation/SingleExtraServ
 
 //Single Service Filter read more
 import SingleServiceFilter from './components/admins/organisation/SingleServiceFilter.vue';
-// // //course
-// // import CourseList  from './components/admin/course/List.vue'
-// // import AddCourse  from './components/admin/course/New.vue'
-// // import EditCourse  from './components/admin/course/Edit.vue'
 
-// // //FrontEnd Comonent
-// // import PublicHome from './components/public/PublicHome.vue'
-// // import BlogCourse from './components/public/blog/BlogCourse.vue'
-// // import SingleCourse from './components/public/blog/SingleBlog.vue'
+
+// Bureeau
+import BureauDirectorList from './components/admins/organisation/admin/Bureau.vue';
+//org Admins
+import BureauAdminList from './components/admins/organisation/admin/BureauAdmins.vue';
+
 
 
 
@@ -114,19 +112,15 @@ export const routes = [
       path:'/servicefilter/:id',
       component: SingleServiceFilter
     },
-//   //Course
-//     {
-//       path: '/course-list',
-//       component: CourseList
-//     },
-//     {
-//       path: '/add-course',
-//       component: AddCourse
-//     },
-//     {
-//       path:'/edit-course/:courseid',
-//       component: EditCourse
-    // },
+//   //Bureau
+    {
+      path: '/bureaudirectors',
+      component: BureauDirectorList
+    },
+    {
+      path: '/bureauadmins',
+      component: BureauAdminList
+    },
 
 
 // //Front End

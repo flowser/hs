@@ -3189,120 +3189,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "List",
   data: function data() {
@@ -6289,6 +6175,2240 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/admin/Bureau.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admins/organisation/admin/Bureau.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var _methods;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "List",
+  data: function data() {
+    return {
+      newBureauDirector: false,
+      editmodeBureau: false,
+      bureauOutput: '',
+      //view form data and confirm if is ok before submit
+      bureauform: new Form({
+        id: '',
+        name: '',
+        bureau_email: '',
+        phone: '',
+        landline: '',
+        website: '',
+        address: '',
+        country_id: '',
+        county_id: '',
+        constituency_id: '',
+        ward_id: '',
+        logo: '',
+        //director
+        director_first_name: '',
+        director_last_name: '',
+        email: '',
+        director_password: '',
+        director_phone: '',
+        director_landline: '',
+        director_id_no: '',
+        director_address: '',
+        director_country_id: '',
+        director_county_id: '',
+        director_constituency_id: '',
+        director_ward_id: '',
+        director_passport_image: '',
+        frontside_director_id_photo: '',
+        backside_director_id_photo: ''
+      }),
+      //bureau
+      phone1: {
+        isValid: false,
+        country: undefined
+      },
+      landline1: {
+        isValid: false,
+        country: undefined
+      },
+      //director
+      director_phone1: {
+        isValid: false,
+        country: undefined
+      },
+      director_landline1: {
+        isValid: false,
+        country: undefined
+      },
+      newDirector: false,
+      editmodeDirector: false,
+      directorform: new Form({
+        id: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: '',
+        director_type: '',
+        permissions: [],
+        roles: [],
+        user_id: '',
+        organisation_id: '',
+        position_id: '',
+        photo: '',
+        active: '',
+        id_no: '',
+        id_photo_front: '',
+        id_photo_back: '',
+        about_me: '',
+        phone: '',
+        landline: '',
+        address: '',
+        country_id: '',
+        county_id: '',
+        constituency_id: '',
+        ward_id: ''
+      }),
+      //director
+      phone: {
+        isValid: false,
+        country: undefined
+      },
+      landline: {
+        isValid: false,
+        country: undefined
+      }
+    };
+  },
+  mounted: function mounted() {
+    this.loadCountries();
+    this.loadCounties();
+    this.loadConstituencies(); ///linked to methods and actions store
+
+    this.loadWards(); ///linked to methods and actions store
+
+    this.loadBureaus();
+  },
+  computed: {
+    Countries: function Countries() {
+      return this.$store.getters.Countries;
+    },
+    Counties: function Counties() {
+      return this.$store.getters.CountryCounties;
+    },
+    Constituencies: function Constituencies() {
+      return this.$store.getters.CountyConstituencies;
+    },
+    Wards: function Wards() {
+      return this.$store.getters.ConstituencyWards;
+    },
+    Bureaus: function Bureaus() {
+      return this.$store.getters.Bureaus;
+    }
+  },
+  methods: (_methods = {
+    //Bureau verification
+    validateBureau: function validateBureau() {
+      var _this = this;
+
+      this.$Progress.start();
+      return this.bureauform.post('/bureau/verify/info').then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Bureau Info Verifed successfully'
+        });
+
+        _this.$Progress.finish();
+      }).catch(function () {
+        _this.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Bureau Info failed Verification.'
+        });
+      });
+    },
+    //Director info verification
+    validateDirector: function validateDirector() {
+      var _this2 = this;
+
+      this.$Progress.start();
+      this.bureauOutput = this.bureauform; //append form data
+
+      return this.bureauform.post('/bureau/verify/director').then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Director Info Verifed successfully'
+        });
+
+        _this2.$Progress.finish();
+      }).catch(function () {
+        _this2.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Director Info failed Verification.'
+        });
+      });
+    },
+    //Bureau verification
+    validateBureauUpdate: function validateBureauUpdate() {
+      var _this3 = this;
+
+      var id = this.bureauform.id;
+      console.log('first', id);
+      this.$Progress.start();
+      return this.bureauform.patch('/bureau/updateverify/info/' + id).then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Bureau update Info Verifed successfully'
+        });
+
+        _this3.$Progress.finish();
+      }).catch(function () {
+        _this3.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Bureau update Info failed Verification.'
+        });
+      });
+    },
+    //Director info verification
+    validateDirectorUpdate: function validateDirectorUpdate() {
+      var _this4 = this;
+
+      var id = this.bureauform.id;
+      console.log('mix me down', id);
+      this.$Progress.start(); // console.log('mis me down')
+      // this.bureauOutput = this.bureauform;  //append form data
+
+      return this.bureauform.patch('/bureau/updateverify/director/' + id).then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Director Update Info Verifed successfully'
+        });
+
+        _this4.$Progress.finish();
+      }).catch(function () {
+        _this4.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Director update Info failed Verification.'
+        });
+      });
+    },
+    //Bureau
+    InputPhone: function InputPhone(_ref) {
+      var number = _ref.number,
+          isValid = _ref.isValid,
+          country = _ref.country;
+      console.log(number, isValid, country);
+      this.bureauform.phone = number;
+      this.phone1.isValid = isValid;
+      this.phone1.country = country && country.name;
+    },
+    InputLandline: function InputLandline(_ref2) {
+      var number = _ref2.number,
+          isValid = _ref2.isValid,
+          country = _ref2.country;
+      console.log(number, isValid, country);
+      this.bureauform.landline = number;
+      this.landline1.isValid = isValid;
+      this.landline1.country = country && country.name;
+    },
+    //Director
+    DirectorInputPhone: function DirectorInputPhone(_ref3) {
+      var number = _ref3.number,
+          isValid = _ref3.isValid,
+          country = _ref3.country;
+      console.log(number, isValid, country);
+      this.bureauform.director_phone = number;
+      this.director_phone1.isValid = isValid;
+      this.director_phone1.country = country && country.name;
+    },
+    DirectorInputLandline: function DirectorInputLandline(_ref4) {
+      var number = _ref4.number,
+          isValid = _ref4.isValid,
+          country = _ref4.country;
+      console.log(number, isValid, country);
+      this.bureauform.director_landline = number;
+      this.director_landline1.isValid = isValid;
+      this.director_landline1.country = country && country.name;
+    },
+    countryCounties: function countryCounties(country_id) {
+      console.log(country_id);
+      this.$store.dispatch('countrycounties', country_id);
+    },
+    countyConstituencies: function countyConstituencies(county_id) {
+      console.log(county_id);
+      this.$store.dispatch('countyconstituencies', county_id);
+    },
+    constituencyWards: function constituencyWards(constituency_id) {
+      console.log(constituency_id);
+      this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
+    },
+    DirectorcountryCounties: function DirectorcountryCounties(country_id) {
+      console.log(country_id);
+      this.$store.dispatch('countrycounties', country_id);
+    },
+    DirectorcountyConstituencies: function DirectorcountyConstituencies(county_id) {
+      console.log(county_id);
+      this.$store.dispatch('countyconstituencies', county_id);
+    },
+    DirectorconstituencyWards: function DirectorconstituencyWards(constituency_id) {
+      console.log(constituency_id);
+      this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
+    },
+    loadCountries: function loadCountries() {
+      return this.$store.dispatch("countries"); //get all from roles.index
+    },
+    loadCounties: function loadCounties() {
+      return this.$store.dispatch("countrycounties"); //get all from counties.index
+    },
+    loadConstituencies: function loadConstituencies() {
+      return this.$store.dispatch("countyconstituencies"); //get all from counties.index
+    },
+    loadWards: function loadWards() {
+      return this.$store.dispatch("constituencywards"); //get all from towns.index
+    },
+    loadBureaus: function loadBureaus() {
+      return this.$store.dispatch("bureaus"); //get all from bureau. bureau linked to user
+    },
+    //Bureau
+    newBureauModal: function newBureauModal() {
+      this.editmodeBureau = false;
+      this.bureauform.reset();
+      $('#BureauModal').modal('show');
+    },
+    editBureauModal: function editBureauModal(id) {
+      var _this5 = this;
+
+      this.editmodeBureau = true;
+      this.bureauform.reset();
+      console.log('edit organisaton', id);
+      this.$Progress.start();
+      axios.get('/bureau/edit/' + id).then(function (response) {
+        $('#BureauModal').modal('show');
+        toast({
+          type: 'success',
+          title: 'Fetched the Bureau data successfully'
+        });
+        var directors = response.data.bureau.bureaudirectors.length;
+
+        if (directors == 0) {
+          _this5.newBureauDirector = true;
+
+          _this5.bureauform.fill(response.data.bureau);
+
+          _this5.$Progress.finish();
+        } else {
+          _this5.newBureauDirector = false;
+
+          _this5.bureauform.fill(response.data.bureau);
+
+          _this5.$Progress.finish();
+        }
+      }).catch(function () {
+        _this5.$Progress.fail(); //errors
+
+
+        $('#BureauModal').modal('show');
+        toast({
+          type: 'error',
+          title: 'There was something Wrong'
+        });
+      });
+    },
+    //bureau logo
+    bureauChangeLogo: function bureauChangeLogo(event) {
+      var _this6 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this6.bureauform.logo = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    bureauLoadLogo: function bureauLoadLogo(logo_id) {
+      if (logo_id) {
+        return "assets/bureau/img/logo/" + logo_id;
+      } else {
+        return "/assets/bureau/img/empty.png";
+      }
+    },
+    updateBureauLogo: function updateBureauLogo(bureauformlogo) {
+      console.log(bureauformlogo);
+      var img = this.bureauform.logo;
+
+      if (img == null) {
+        return "/assets/bureau/img/empty.png"; //  console.log('its reall null')
+      } else {
+        if (img.length > 100) {
+          return this.bureauform.logo;
+        } else {
+          if (bureauformlogo) {
+            return "assets/bureau/img/logo/" + bureauformlogo;
+          } else {
+            return "/assets/bureau/img/empty.png";
+          }
+        }
+      }
+    }
+  }, _defineProperty(_methods, "bureauChangeLogo", function bureauChangeLogo(event) {
+    var _this7 = this;
+
+    var file = event.target.files[0];
+
+    if (file.size > 1048576) {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+      });
+    } else {
+      var reader = new FileReader();
+
+      reader.onload = function (event) {
+        _this7.bureauform.logo = event.target.result; // console.log(event.target.result)
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }), _defineProperty(_methods, "bureauLoadLogo", function bureauLoadLogo(logo_id) {
+    if (logo_id) {
+      return "assets/bureau/img/logo/" + logo_id;
+    } else {
+      return "/assets/bureau/img/empty.png";
+    }
+  }), _defineProperty(_methods, "updateBureauLogo", function updateBureauLogo(bureauformlogo) {
+    console.log(bureauformlogo);
+    var img = this.bureauform.logo;
+
+    if (img == null) {
+      return "/assets/bureau/img/empty.png"; //  console.log('its reall null')
+    } else {
+      if (img.length > 100) {
+        return this.bureauform.logo;
+      } else {
+        if (bureauformlogo) {
+          return "assets/bureau/img/logo/" + bureauformlogo;
+        } else {
+          return "/assets/bureau/img/empty.png";
+        }
+      }
+    }
+  }), _defineProperty(_methods, "bureauChangeDirectorPImage", function bureauChangeDirectorPImage(event) {
+    var _this8 = this;
+
+    var file = event.target.files[0];
+
+    if (file.size > 1048576) {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+      });
+    } else {
+      var reader = new FileReader();
+
+      reader.onload = function (event) {
+        _this8.bureauform.director_passport_image = event.target.result; // console.log(event.target.result)
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }), _defineProperty(_methods, "updateBureauDirectorPImage", function updateBureauDirectorPImage(bureauformdirector_passport_image) {
+    console.log(bureauformdirector_passport_image);
+    var img = this.bureauform.director_passport_image;
+
+    if (img == null) {
+      return "/assets/bureau/img/empty.png";
+    } else {
+      if (img.length > 100) {
+        return this.bureauform.director_passport_image;
+      } else {
+        if (bureauformdirector_passport_image) {
+          return "assets/bureau/img/directors/passports/" + bureauform.director_passport_image;
+        } else {
+          return "/assets/bureau/img/empty.png";
+        }
+      }
+    }
+  }), _defineProperty(_methods, "bureauChangeDirectorFIDPhoto", function bureauChangeDirectorFIDPhoto(event) {
+    var _this9 = this;
+
+    var file = event.target.files[0];
+
+    if (file.size > 1048576) {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+      });
+    } else {
+      var reader = new FileReader();
+
+      reader.onload = function (event) {
+        _this9.bureauform.frontside_director_id_photo = event.target.result; // console.log(event.target.result)
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }), _defineProperty(_methods, "updateBureauDirectorFIDPhoto", function updateBureauDirectorFIDPhoto(bureauformfrontside_director_id_photo) {
+    console.log(bureauformfrontside_director_id_photo);
+    var img = this.bureauform.frontside_director_id_photo;
+
+    if (img == null) {
+      return "/assets/bureau/img/empty.png";
+    } else {
+      if (img.length > 100) {
+        return this.bureauform.frontside_director_id_photo;
+      } else {
+        if (bureauformfrontside_director_id_photo) {
+          return "assets/bureau/img/directors/IDs/" + bureauformfrontside_director_id_photo;
+        } else {
+          return "/assets/bureau/img/empty.png";
+        }
+      }
+    }
+  }), _defineProperty(_methods, "bureauChangeDirectorBIDPhoto", function bureauChangeDirectorBIDPhoto(event) {
+    var _this10 = this;
+
+    var file = event.target.files[0];
+
+    if (file.size > 1048576) {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+      });
+    } else {
+      var reader = new FileReader();
+
+      reader.onload = function (event) {
+        _this10.bureauform.backside_director_id_photo = event.target.result; // console.log(event.target.result)
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }), _defineProperty(_methods, "updateBureauDirectorBIDPhoto", function updateBureauDirectorBIDPhoto(bureauformbackside_director_id_photo) {
+    console.log(bureauformbackside_director_id_photo);
+    var img = this.bureauform.backside_director_id_photo;
+
+    if (img == null) {
+      return "/assets/bureau/img/empty.png";
+    } else {
+      if (img.length > 100) {
+        return this.bureauform.backside_director_id_photo;
+      } else {
+        if (bureauformbackside_director_id_photo) {
+          return "assets/bureau/img/directors/IDs/" + bureauformbackside_director_id_photo;
+        } else {
+          return "/assets/bureau/img/empty.png";
+        }
+      }
+    }
+  }), _defineProperty(_methods, "newDirectorModal", function newDirectorModal() {
+    console.log('new director modal');
+    this.editmodeDirector = false;
+    this.directorform.reset();
+    $('#DirectorModal').modal('show');
+  }), _defineProperty(_methods, "directorLoadPassPhoto", function directorLoadPassPhoto(directorpivot_photo) {
+    if (directorpivot_photo) {
+      return "/assets/bureau/img/directors/passports/" + directorpivot_photo;
+    } else {
+      return "/assets/bureau/img/empty.png";
+    }
+  }), _defineProperty(_methods, "directorChangePassPhoto", function directorChangePassPhoto(event) {
+    var _this11 = this;
+
+    var file = event.target.files[0];
+
+    if (file.size > 1048576) {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+      });
+    } else {
+      var reader = new FileReader();
+
+      reader.onload = function (event) {
+        _this11.directorform.photo = event.target.result; // console.log(event.target.result)
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }), _defineProperty(_methods, "updateDirectorPassPhoto", function updateDirectorPassPhoto(directorform_organisationdirector_photo) {
+    // console.log(directorform_organisationdirector_photo)
+    var img = this.directorform.photo;
+
+    if (img == null) {
+      return "/assets/bureau/img/empty.png"; //  console.log('its reall null')
+    } else {
+      if (img.length > 100) {
+        return this.directorform.photo;
+      } else {
+        if (directorform_organisationdirector_photo) {
+          return "assets/bureau/img/directors/passports/" + directorform_organisationdirector_photo;
+        } else {
+          return "/assets/bureau/img/empty.png";
+        }
+      }
+    }
+  }), _defineProperty(_methods, "directorLoadIDFrontPhoto", function directorLoadIDFrontPhoto(directorpivot_id_photo_front) {
+    if (directorpivot_id_photo_front) {
+      return "/assets/bureau/img/directors/IDs/front/" + directorpivot_id_photo_front;
+    } else {
+      return "/assets/bureau/img/empty.png";
+    }
+  }), _defineProperty(_methods, "directorChangeIDFrontPhoto", function directorChangeIDFrontPhoto(event) {
+    var _this12 = this;
+
+    var file = event.target.files[0];
+
+    if (file.size > 1048576) {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+      });
+    } else {
+      var reader = new FileReader();
+
+      reader.onload = function (event) {
+        _this12.directorform.id_photo_front = event.target.result; // console.log(event.target.result)
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }), _defineProperty(_methods, "updateDirectorIDFrontPhoto", function updateDirectorIDFrontPhoto(directorform_id_photo_front) {
+    // console.log(directorform.id_photo_front)
+    var img = this.directorform.id_photo_front;
+
+    if (img == null) {
+      return "/assets/bureau/img/empty.png"; //  console.log('its reall null')
+    } else {
+      if (img.length > 100) {
+        return this.directorform.id_photo_front;
+      } else {
+        if (directorform_id_photo_front) {
+          return "assets/bureau/img/directors/passports/" + directorform_id_photo_front;
+        } else {
+          return "/assets/bureau/img/empty.png";
+        }
+      }
+    }
+  }), _defineProperty(_methods, "directorLoadIDBackPhoto", function directorLoadIDBackPhoto(directorform_id_photo_back) {
+    if (directorform_id_photo_back) {
+      return "/assets/bureau/img/directors/IDs/back/" + directorform_id_photo_back;
+    } else {
+      return "/assets/bureau/img/empty.png";
+    }
+  }), _defineProperty(_methods, "directorChangeIDBackPhoto", function directorChangeIDBackPhoto(event) {
+    var _this13 = this;
+
+    var file = event.target.files[0];
+
+    if (file.size > 1048576) {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+      });
+    } else {
+      var reader = new FileReader();
+
+      reader.onload = function (event) {
+        _this13.directorform.id_photo_back = event.target.result; // console.log(event.target.result)
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }), _defineProperty(_methods, "updateDirectorIDBackPhoto", function updateDirectorIDBackPhoto(directorform_id_photo_back) {
+    // console.log(directorform.id_photo_back)
+    var img = this.directorform.id_photo_back;
+
+    if (img == null) {
+      return "/assets/bureau/img/empty.png"; //  console.log('its reall null')
+    } else {
+      if (img.length > 100) {
+        return this.directorform.id_photo_back;
+      } else {
+        if (directorform_id_photo_back) {
+          return "assets/bureau/img/directors/IDs/front/" + directorform_id_photo_back;
+        } else {
+          return "/assets/bureau/img/empty.png";
+        }
+      }
+    }
+  }), _defineProperty(_methods, "addBureau", function addBureau() {
+    var _this14 = this;
+
+    console.log('add Bureau new');
+    this.$Progress.start();
+    this.bureauform.post('/bureau').then(function (response) {
+      toast({
+        type: 'success',
+        title: 'Bureau Created successfully'
+      });
+
+      _this14.$store.dispatch("bureau");
+
+      $('#BureauModal').modal('hide');
+
+      _this14.bureauform.reset();
+
+      _this14.$Progress.finish();
+    }).catch(function () {
+      _this14.$Progress.fail(); //errors
+
+
+      $('#BureauModal').modal('show');
+      toast({
+        type: 'error',
+        title: 'There was something wrong.'
+      });
+    });
+  }), _defineProperty(_methods, "updateBureau", function updateBureau(id) {
+    var _this15 = this;
+
+    console.log('update organisaton');
+    this.$Progress.start();
+    this.bureauform.patch('/bureau/update/' + id).then(function () {
+      _this15.$store.dispatch("bureau");
+
+      $('#BureauModal').modal('hide');
+      toast({
+        type: 'success',
+        title: 'User Created successfully'
+      });
+
+      _this15.$Progress.finish();
+    }).catch(function () {
+      _this15.$Progress.fail();
+
+      $('#BureauModal').modal('show');
+      toast({
+        type: 'error',
+        title: 'There was something wrong'
+      });
+    });
+  }), _defineProperty(_methods, "deleteBureau", function deleteBureau(id) {
+    var _this16 = this;
+
+    Swal({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+      if (result.value) {
+        //  console.log('delete user', id)
+        _this16.$Progress.start();
+
+        _this16.bureauform.get('/bureau/delete/' + id).then(function () {
+          toast({
+            type: 'success',
+            title: 'Bureau Deleted successfully'
+          });
+
+          _this16.$store.dispatch("bureau");
+
+          _this16.$Progress.finish();
+        }).catch(function () {
+          _this16.$Progress.fail();
+
+          toast({
+            type: 'error',
+            title: 'There was something wrong'
+          });
+        });
+      }
+    });
+  }), _methods)
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/admin/BureauAdmins.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admins/organisation/admin/BureauAdmins.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "List",
+  data: function data() {
+    return {
+      newBureauadmin: false,
+      editmodeBureauadmin: false,
+      bureauadminform: new Form({
+        id: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: '',
+        bureauadmin_type: '',
+        permissions: [],
+        roles: [],
+        user_id: '',
+        bureau_id: '',
+        position_id: '',
+        photo: '',
+        active: '',
+        id_no: '',
+        id_photo_front: '',
+        id_photo_back: '',
+        about_me: '',
+        phone: '',
+        landline: '',
+        address: '',
+        country_id: '',
+        county_id: '',
+        constituency_id: '',
+        ward_id: ''
+      }),
+      //bureauadmin
+      phone: {
+        isValid: false,
+        country: undefined
+      },
+      landline: {
+        isValid: false,
+        country: undefined
+      }
+    };
+  },
+  mounted: function mounted() {
+    this.loadCountries();
+    this.loadCounties();
+    this.loadConstituencies(); ///linked to methods and actions store
+
+    this.loadWards(); ///linked to methods and actions store
+
+    this.loadBureauadmins();
+    this.loadRoles();
+    this.loadPermissions();
+  },
+  computed: {
+    Countries: function Countries() {
+      return this.$store.getters.Countries;
+    },
+    Counties: function Counties() {
+      return this.$store.getters.CountryCounties;
+    },
+    Constituencies: function Constituencies() {
+      return this.$store.getters.CountyConstituencies;
+    },
+    Wards: function Wards() {
+      return this.$store.getters.ConstituencyWards;
+    },
+    Bureauadmins: function Bureauadmins() {
+      //  console.log('edit permiion')
+      return this.$store.getters.Bureauadmins;
+    },
+    Permissions: function Permissions() {
+      return this.$store.getters.Permissions;
+    },
+    Roles: function Roles() {
+      return this.$store.getters.Roles;
+    },
+    selectedRoles: function selectedRoles() {
+      return this.selected_roles;
+    },
+    selectedPermissions: function selectedPermissions() {
+      return this.selected_permissions;
+    }
+  },
+  methods: {
+    //Bureauadmin info verification
+    validateBureauadmin: function validateBureauadmin() {
+      var _this = this;
+
+      this.$Progress.start();
+      return this.bureauadminform.post('/bureauadmin/verify/bureauadmin').then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Bureauadmin Info Verifed successfully'
+        });
+
+        _this.$Progress.finish();
+      }).catch(function () {
+        _this.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Bureauadmin Info failed Verification.'
+        });
+      });
+    },
+    //Bureauadmin info verification
+    validateBureauadminUpdate: function validateBureauadminUpdate() {
+      var _this2 = this;
+
+      var id = this.bureauadminform.id;
+      console.log('mix me down', id);
+      this.$Progress.start();
+      return this.bureauadminform.patch('/bureauadmin/updateverify/bureauadmin/' + id).then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Bureauadmin Update Info Verifed successfully'
+        });
+
+        _this2.$Progress.finish();
+      }).catch(function () {
+        _this2.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Bureauadmin update Info failed Verification.'
+        });
+      });
+    },
+    //bureauadmin
+    InputPhone: function InputPhone(_ref) {
+      var number = _ref.number,
+          isValid = _ref.isValid,
+          country = _ref.country;
+      console.log(number, isValid, country);
+      this.bureauadminform.phone = number;
+      this.phone.isValid = isValid;
+      this.phone.country = country && country.name;
+    },
+    InputLandline: function InputLandline(_ref2) {
+      var number = _ref2.number,
+          isValid = _ref2.isValid,
+          country = _ref2.country;
+      console.log(number, isValid, country);
+      this.bureauadminform.landline = number;
+      this.landline.isValid = isValid;
+      this.landline.country = country && country.name;
+    },
+    countryCounties: function countryCounties(country_id) {
+      console.log(country_id);
+      this.$store.dispatch('countrycounties', country_id);
+    },
+    countyConstituencies: function countyConstituencies(county_id) {
+      console.log(county_id);
+      this.$store.dispatch('countyconstituencies', county_id);
+    },
+    constituencyWards: function constituencyWards(constituency_id) {
+      console.log(constituency_id);
+      this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
+    },
+    loadCountries: function loadCountries() {
+      return this.$store.dispatch("countries"); //get all from roles.index
+    },
+    loadCounties: function loadCounties() {
+      return this.$store.dispatch("countrycounties"); //get all from counties.index
+    },
+    loadConstituencies: function loadConstituencies() {
+      return this.$store.dispatch("countyconstituencies"); //get all from counties.index
+    },
+    loadWards: function loadWards() {
+      return this.$store.dispatch("constituencywards"); //get all from towns.index
+    },
+    loadBureauadmins: function loadBureauadmins() {
+      return this.$store.dispatch("bureauadmins"); //get all from bureauadmins.index
+    },
+    //Permissions
+    loadPermissions: function loadPermissions() {
+      return this.$store.dispatch("permissions"); //get all from roles.index
+    },
+    //Roles
+    loadRoles: function loadRoles() {
+      return this.$store.dispatch("roles"); //get all from roles.index
+    },
+    newBureauadminModal: function newBureauadminModal() {
+      console.log('new bureauadmin modal');
+      this.editmodeBureauadmin = false;
+      this.bureauadminform.reset();
+      $('#BureauadminModal').modal('show');
+    },
+    bureauadminLoadPassPhoto: function bureauadminLoadPassPhoto(bureauadminpivot_photo) {
+      if (bureauadminpivot_photo) {
+        return "/assets/bureau/img/bureauadmins/passports/" + bureauadminpivot_photo;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      }
+    },
+    //bureauadmin passport photo
+    bureauadminChangePassPhoto: function bureauadminChangePassPhoto(event) {
+      var _this3 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this3.bureauadminform.photo = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    updateBureauadminPassPhoto: function updateBureauadminPassPhoto(bureauadminform_bureauadmin_photo) {
+      // console.log(bureauadminform_bureauadmin_photo)
+      var img = this.bureauadminform.photo;
+
+      if (img == null) {
+        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
+      } else {
+        if (img.length > 100) {
+          return this.bureauadminform.photo;
+        } else {
+          if (bureauadminform_bureauadmin_photo) {
+            return "assets/bureau/img/bureauadmins/passports/" + bureauadminform_bureauadmin_photo;
+          } else {
+            return "/assets/organisation/img/website/empty.png";
+          }
+        }
+      }
+    },
+    bureauadminLoadIDFrontPhoto: function bureauadminLoadIDFrontPhoto(bureauadminpivot_id_photo_front) {
+      if (bureauadminpivot_id_photo_front) {
+        return "/assets/bureau/img/bureauadmins/IDs/front/" + bureauadminpivot_id_photo_front;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      }
+    },
+    bureauadminChangeIDFrontPhoto: function bureauadminChangeIDFrontPhoto(event) {
+      var _this4 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this4.bureauadminform.id_photo_front = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    updateBureauadminIDFrontPhoto: function updateBureauadminIDFrontPhoto(bureauadminform_id_photo_front) {
+      // console.log(bureauadminform.id_photo_front)
+      var img = this.bureauadminform.id_photo_front;
+
+      if (img == null) {
+        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
+      } else {
+        if (img.length > 100) {
+          return this.bureauadminform.id_photo_front;
+        } else {
+          if (bureauadminform_id_photo_front) {
+            return "assets/bureau/img/bureauadmins/passports/" + bureauadminform_id_photo_front;
+          } else {
+            return "/assets/organisation/img/website/empty.png";
+          }
+        }
+      }
+    },
+    bureauadminLoadIDBackPhoto: function bureauadminLoadIDBackPhoto(bureauadminform_id_photo_back) {
+      if (bureauadminform_id_photo_back) {
+        return "/assets/bureau/img/bureauadmins/IDs/back/" + bureauadminform_id_photo_back;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      }
+    },
+    bureauadminChangeIDBackPhoto: function bureauadminChangeIDBackPhoto(event) {
+      var _this5 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this5.bureauadminform.id_photo_back = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    updateBureauadminIDBackPhoto: function updateBureauadminIDBackPhoto(bureauadminform_id_photo_back) {
+      // console.log(bureauadminform.id_photo_back)
+      var img = this.bureauadminform.id_photo_back;
+
+      if (img == null) {
+        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
+      } else {
+        if (img.length > 100) {
+          return this.bureauadminform.id_photo_back;
+        } else {
+          if (bureauadminform_id_photo_back) {
+            return "assets/bureau/img/bureauadmins/IDs/front/" + bureauadminform_id_photo_back;
+          } else {
+            return "/assets/organisation/img/website/empty.png";
+          }
+        }
+      }
+    },
+    editBureauadminModal: function editBureauadminModal(id) {
+      var _this6 = this;
+
+      this.editmodeBureauadmin = true;
+      this.bureauadminform.reset();
+      console.log('edit bureauadmin', id);
+      this.$Progress.start();
+      axios.get('/bureauadmin/edit/' + id).then(function (response) {
+        $('#BureauadminModal').modal('show');
+        toast({
+          type: 'success',
+          title: 'Fetched the Bureauadmin data successfully'
+        });
+
+        _this6.bureauadminform.fill(response.data.bureauadmin);
+
+        _this6.$Progress.finish();
+      }).catch(function () {
+        _this6.$Progress.fail(); //errors
+
+
+        $('#BureauadminModal').modal('show');
+        toast({
+          type: 'error',
+          title: 'There was something Wrong'
+        });
+      });
+    },
+    addBureauadmin: function addBureauadmin(bureauadminform_bureau_id) {
+      var _this7 = this;
+
+      console.log(bureauadminform_bureau_id);
+      this.$Progress.start();
+      this.bureauadminform.post('/bureauadmin').then(function (response) {
+        //  console.log(response.data)
+        toast({
+          type: 'success',
+          title: 'Bureauadmin Created successfully'
+        });
+
+        _this7.$store.dispatch("bureauadmins");
+
+        _this7.bureauadminform.reset();
+
+        $('#BureauadminModal').modal('hide');
+
+        _this7.$Progress.finish();
+      }).catch(function () {
+        _this7.$Progress.fail(); //errors
+
+
+        $('#BureauadminModal').modal('show');
+        toast({
+          type: 'error',
+          title: 'There was something wrong.'
+        });
+      });
+    },
+    updateBureauadmin: function updateBureauadmin(id) {
+      var _this8 = this;
+
+      console.log('update bureauadmin');
+      this.$Progress.start();
+      this.bureauadminform.patch('/bureauadmin/update/' + id).then(function () {
+        _this8.$store.dispatch("bureauadmins");
+
+        $('#BureauadminModal').modal('hide');
+        toast({
+          type: 'success',
+          title: 'Bureauadmin Created successfully'
+        });
+
+        _this8.$Progress.finish();
+      }).catch(function () {
+        _this8.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'There was something wrong'
+        });
+      });
+    },
+    deleteBureauadmin: function deleteBureauadmin(id) {
+      var _this9 = this;
+
+      Swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        if (result.value) {
+          //  console.log('delete bureauadmin', id)
+          _this9.$Progress.start();
+
+          _this9.bureauadminform.get('/bureauadmin/delete/' + id).then(function () {
+            toast({
+              type: 'success',
+              title: 'Bureauadmin Deleted successfully'
+            });
+
+            _this9.$store.dispatch("bureauadmins");
+
+            _this9.$Progress.finish();
+          }).catch(function () {
+            _this9.$Progress.fail();
+
+            toast({
+              type: 'error',
+              title: 'There was something wrong'
+            });
+          });
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/superadmin/Employees/Employees.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admins/organisation/superadmin/Employees/Employees.vue?vue&type=script&lang=js& ***!
@@ -6820,34 +8940,179 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "List",
   data: function data() {
     return {
-      editmodeUser: false,
-      userform: new Form({
+      newAdmin: false,
+      editmodeAdmin: false,
+      adminform: new Form({
         id: '',
         first_name: '',
         last_name: '',
         email: '',
         password: '',
-        user_type: '',
+        admin_type: '',
         permissions: [],
-        roles: []
+        roles: [],
+        user_id: '',
+        organisation_id: '',
+        position_id: '',
+        photo: '',
+        active: '',
+        id_no: '',
+        id_photo_front: '',
+        id_photo_back: '',
+        about_me: '',
+        phone: '',
+        landline: '',
+        address: '',
+        country_id: '',
+        county_id: '',
+        constituency_id: '',
+        ward_id: ''
       }),
-      selected_permissions: [],
-      selected_roles: []
+      //admin
+      phone: {
+        isValid: false,
+        country: undefined
+      },
+      landline: {
+        isValid: false,
+        country: undefined
+      }
     };
   },
   mounted: function mounted() {
-    this.loadUsers();
+    this.loadCountries();
+    this.loadCounties();
+    this.loadConstituencies(); ///linked to methods and actions store
+
+    this.loadWards(); ///linked to methods and actions store
+
+    this.loadAdmins();
     this.loadRoles();
     this.loadPermissions();
   },
   computed: {
-    Users: function Users() {
+    Countries: function Countries() {
+      return this.$store.getters.Countries;
+    },
+    Counties: function Counties() {
+      return this.$store.getters.CountryCounties;
+    },
+    Constituencies: function Constituencies() {
+      return this.$store.getters.CountyConstituencies;
+    },
+    Wards: function Wards() {
+      return this.$store.getters.ConstituencyWards;
+    },
+    Admins: function Admins() {
       //  console.log('edit permiion')
-      return this.$store.getters.Users;
+      return this.$store.getters.Admins;
     },
     Permissions: function Permissions() {
       return this.$store.getters.Permissions;
@@ -6863,8 +9128,97 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    loadUsers: function loadUsers() {
-      return this.$store.dispatch("users"); //get all from users.index
+    //Admin info verification
+    validateAdmin: function validateAdmin() {
+      var _this = this;
+
+      this.$Progress.start();
+      return this.adminform.post('/orgadmin/verify/admin').then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Admin Info Verifed successfully'
+        });
+
+        _this.$Progress.finish();
+      }).catch(function () {
+        _this.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Admin Info failed Verification.'
+        });
+      });
+    },
+    //Admin info verification
+    validateAdminUpdate: function validateAdminUpdate() {
+      var _this2 = this;
+
+      var id = this.adminform.id;
+      console.log('mix me down', id);
+      this.$Progress.start();
+      return this.adminform.patch('/orgadmin/updateverify/admin/' + id).then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Admin Update Info Verifed successfully'
+        });
+
+        _this2.$Progress.finish();
+      }).catch(function () {
+        _this2.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Admin update Info failed Verification.'
+        });
+      });
+    },
+    //admin
+    InputPhone: function InputPhone(_ref) {
+      var number = _ref.number,
+          isValid = _ref.isValid,
+          country = _ref.country;
+      console.log(number, isValid, country);
+      this.adminform.phone = number;
+      this.phone.isValid = isValid;
+      this.phone.country = country && country.name;
+    },
+    InputLandline: function InputLandline(_ref2) {
+      var number = _ref2.number,
+          isValid = _ref2.isValid,
+          country = _ref2.country;
+      console.log(number, isValid, country);
+      this.adminform.landline = number;
+      this.landline.isValid = isValid;
+      this.landline.country = country && country.name;
+    },
+    countryCounties: function countryCounties(country_id) {
+      console.log(country_id);
+      this.$store.dispatch('countrycounties', country_id);
+    },
+    countyConstituencies: function countyConstituencies(county_id) {
+      console.log(county_id);
+      this.$store.dispatch('countyconstituencies', county_id);
+    },
+    constituencyWards: function constituencyWards(constituency_id) {
+      console.log(constituency_id);
+      this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
+    },
+    loadCountries: function loadCountries() {
+      return this.$store.dispatch("countries"); //get all from roles.index
+    },
+    loadCounties: function loadCounties() {
+      return this.$store.dispatch("countrycounties"); //get all from counties.index
+    },
+    loadConstituencies: function loadConstituencies() {
+      return this.$store.dispatch("countyconstituencies"); //get all from counties.index
+    },
+    loadWards: function loadWards() {
+      return this.$store.dispatch("constituencywards"); //get all from towns.index
+    },
+    loadAdmins: function loadAdmins() {
+      return this.$store.dispatch("admins"); //get all from admins.index
     },
     //Permissions
     loadPermissions: function loadPermissions() {
@@ -6874,85 +9228,229 @@ __webpack_require__.r(__webpack_exports__);
     loadRoles: function loadRoles() {
       return this.$store.dispatch("roles"); //get all from roles.index
     },
-    newUserModal: function newUserModal() {
-      console.log('new user modal');
-      this.editmodeUser = false;
-      this.userform.reset();
-      $('#UserModal').modal('show');
+    newAdminModal: function newAdminModal() {
+      console.log('new admin modal');
+      this.editmodeAdmin = false;
+      this.adminform.reset();
+      $('#AdminModal').modal('show');
     },
-    editUserModal: function editUserModal(id) {
-      var _this = this;
+    adminLoadPassPhoto: function adminLoadPassPhoto(adminpivot_photo) {
+      if (adminpivot_photo) {
+        return "/assets/organisation/img/admins/passports/" + adminpivot_photo;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      }
+    },
+    //admin passport photo
+    adminChangePassPhoto: function adminChangePassPhoto(event) {
+      var _this3 = this;
 
-      this.editmodeUser = true;
-      this.userform.reset();
-      console.log('edit user', id);
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this3.adminform.photo = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    updateAdminPassPhoto: function updateAdminPassPhoto(adminform_organisationadmin_photo) {
+      // console.log(adminform_organisationadmin_photo)
+      var img = this.adminform.photo;
+
+      if (img == null) {
+        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
+      } else {
+        if (img.length > 100) {
+          return this.adminform.photo;
+        } else {
+          if (adminform_organisationadmin_photo) {
+            return "assets/organisation/img/admins/passports/" + adminform_organisationadmin_photo;
+          } else {
+            return "/assets/organisation/img/website/empty.png";
+          }
+        }
+      }
+    },
+    adminLoadIDFrontPhoto: function adminLoadIDFrontPhoto(adminpivot_id_photo_front) {
+      if (adminpivot_id_photo_front) {
+        return "/assets/organisation/img/admins/IDs/front/" + adminpivot_id_photo_front;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      }
+    },
+    adminChangeIDFrontPhoto: function adminChangeIDFrontPhoto(event) {
+      var _this4 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this4.adminform.id_photo_front = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    updateAdminIDFrontPhoto: function updateAdminIDFrontPhoto(adminform_id_photo_front) {
+      // console.log(adminform.id_photo_front)
+      var img = this.adminform.id_photo_front;
+
+      if (img == null) {
+        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
+      } else {
+        if (img.length > 100) {
+          return this.adminform.id_photo_front;
+        } else {
+          if (adminform_id_photo_front) {
+            return "assets/organisation/img/admins/passports/" + adminform_id_photo_front;
+          } else {
+            return "/assets/organisation/img/website/empty.png";
+          }
+        }
+      }
+    },
+    adminLoadIDBackPhoto: function adminLoadIDBackPhoto(adminform_id_photo_back) {
+      if (adminform_id_photo_back) {
+        return "/assets/organisation/img/admins/IDs/back/" + adminform_id_photo_back;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      }
+    },
+    adminChangeIDBackPhoto: function adminChangeIDBackPhoto(event) {
+      var _this5 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this5.adminform.id_photo_back = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    updateAdminIDBackPhoto: function updateAdminIDBackPhoto(adminform_id_photo_back) {
+      // console.log(adminform.id_photo_back)
+      var img = this.adminform.id_photo_back;
+
+      if (img == null) {
+        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
+      } else {
+        if (img.length > 100) {
+          return this.adminform.id_photo_back;
+        } else {
+          if (adminform_id_photo_back) {
+            return "assets/organisation/img/admins/IDs/front/" + adminform_id_photo_back;
+          } else {
+            return "/assets/organisation/img/website/empty.png";
+          }
+        }
+      }
+    },
+    editAdminModal: function editAdminModal(id) {
+      var _this6 = this;
+
+      this.editmodeAdmin = true;
+      this.adminform.reset();
+      console.log('edit admin', id);
       this.$Progress.start();
-      axios.get('/user/edit/' + id).then(function (response) {
-        $('#UserModal').modal('show');
+      axios.get('/orgadmin/edit/' + id).then(function (response) {
+        $('#AdminModal').modal('show');
         toast({
           type: 'success',
-          title: 'Fetched the User data successfully'
+          title: 'Fetched the Admin data successfully'
         });
 
-        _this.userform.fill(response.data.user);
+        _this6.adminform.fill(response.data.admin);
 
-        _this.$Progress.finish();
+        _this6.$Progress.finish();
       }).catch(function () {
-        _this.$Progress.fail(); //errors
+        _this6.$Progress.fail(); //errors
 
 
-        $('#UserModal').modal('show');
+        $('#AdminModal').modal('show');
         toast({
           type: 'error',
           title: 'There was something Wrong'
         });
       });
     },
-    addUser: function addUser() {
-      var _this2 = this;
+    addAdmin: function addAdmin(adminform_organisation_id) {
+      var _this7 = this;
 
-      console.log('add user new');
+      console.log(adminform_organisation_id);
       this.$Progress.start();
-      this.userform.post('/user').then(function (response) {
+      this.adminform.post('/orgadmin').then(function (response) {
         //  console.log(response.data)
         toast({
           type: 'success',
-          title: 'User Created successfully'
+          title: 'Admin Created successfully'
         });
 
-        _this2.$store.dispatch("users");
+        _this7.$store.dispatch("admins");
 
-        $('#UserModal').modal('hide');
+        _this7.adminform.reset();
 
-        _this2.$Progress.finish();
+        $('#AdminModal').modal('hide');
+
+        _this7.$Progress.finish();
       }).catch(function () {
-        _this2.$Progress.fail(); //errors
+        _this7.$Progress.fail(); //errors
 
 
-        $('#UserModal').modal('show');
+        $('#AdminModal').modal('show');
         toast({
           type: 'error',
           title: 'There was something wrong.'
         });
       });
     },
-    updateUser: function updateUser(id) {
-      var _this3 = this;
+    updateAdmin: function updateAdmin(id) {
+      var _this8 = this;
 
-      console.log('update user');
+      console.log('update admin');
       this.$Progress.start();
-      this.userform.patch('/user/update/' + id).then(function () {
-        _this3.$store.dispatch("users");
+      this.adminform.patch('/orgadmin/update/' + id).then(function () {
+        _this8.$store.dispatch("admins");
 
-        $('#UserModal').modal('hide');
+        $('#AdminModal').modal('hide');
         toast({
           type: 'success',
-          title: 'User Created successfully'
+          title: 'Admin Created successfully'
         });
 
-        _this3.$Progress.finish();
+        _this8.$Progress.finish();
       }).catch(function () {
-        _this3.$Progress.fail();
+        _this8.$Progress.fail();
 
         toast({
           type: 'error',
@@ -6960,8 +9458,8 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    deleteUser: function deleteUser(id) {
-      var _this4 = this;
+    deleteAdmin: function deleteAdmin(id) {
+      var _this9 = this;
 
       Swal({
         title: 'Are you sure?',
@@ -6973,20 +9471,20 @@ __webpack_require__.r(__webpack_exports__);
         confirmButtonText: 'Yes, delete it!'
       }).then(function (result) {
         if (result.value) {
-          //  console.log('delete user', id)
-          _this4.$Progress.start();
+          //  console.log('delete admin', id)
+          _this9.$Progress.start();
 
-          _this4.userform.get('/user/delete/' + id).then(function () {
+          _this9.adminform.get('/orgadmin/delete/' + id).then(function () {
             toast({
               type: 'success',
-              title: 'User Deleted successfully'
+              title: 'Admin Deleted successfully'
             });
 
-            _this4.$store.dispatch("users");
+            _this9.$store.dispatch("admins");
 
-            _this4.$Progress.finish();
+            _this9.$Progress.finish();
           }).catch(function () {
-            _this4.$Progress.fail();
+            _this9.$Progress.fail();
 
             toast({
               type: 'error',
@@ -7216,10 +9714,74 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "List",
   data: function data() {
     return {
+      newDirector: false,
       editmodeDirector: false,
       directorform: new Form({
         id: '',
@@ -7229,18 +9791,59 @@ __webpack_require__.r(__webpack_exports__);
         password: '',
         director_type: '',
         permissions: [],
-        roles: []
+        roles: [],
+        user_id: '',
+        organisation_id: '',
+        position_id: '',
+        photo: '',
+        active: '',
+        id_no: '',
+        id_photo_front: '',
+        id_photo_back: '',
+        about_me: '',
+        phone: '',
+        landline: '',
+        address: '',
+        country_id: '',
+        county_id: '',
+        constituency_id: '',
+        ward_id: ''
       }),
-      selected_permissions: [],
-      selected_roles: []
+      //director
+      phone: {
+        isValid: false,
+        country: undefined
+      },
+      landline: {
+        isValid: false,
+        country: undefined
+      }
     };
   },
   mounted: function mounted() {
+    this.loadCountries();
+    this.loadCounties();
+    this.loadConstituencies(); ///linked to methods and actions store
+
+    this.loadWards(); ///linked to methods and actions store
+
     this.loadDirectors();
     this.loadRoles();
     this.loadPermissions();
   },
   computed: {
+    Countries: function Countries() {
+      return this.$store.getters.Countries;
+    },
+    Counties: function Counties() {
+      return this.$store.getters.CountryCounties;
+    },
+    Constituencies: function Constituencies() {
+      return this.$store.getters.CountyConstituencies;
+    },
+    Wards: function Wards() {
+      return this.$store.getters.ConstituencyWards;
+    },
     Directors: function Directors() {
       //  console.log('edit permiion')
       return this.$store.getters.Directors;
@@ -7259,6 +9862,95 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    //Director info verification
+    validateDirector: function validateDirector() {
+      var _this = this;
+
+      this.$Progress.start();
+      return this.directorform.post('/orgdirector/verify/director').then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Director Info Verifed successfully'
+        });
+
+        _this.$Progress.finish();
+      }).catch(function () {
+        _this.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Director Info failed Verification.'
+        });
+      });
+    },
+    //Director info verification
+    validateDirectorUpdate: function validateDirectorUpdate() {
+      var _this2 = this;
+
+      var id = this.directorform.id;
+      console.log('mix me down', id);
+      this.$Progress.start();
+      return this.directorform.patch('/orgdirector/updateverify/director/' + id).then(function (response) {
+        return true;
+        toast({
+          type: 'success',
+          title: 'Director Update Info Verifed successfully'
+        });
+
+        _this2.$Progress.finish();
+      }).catch(function () {
+        _this2.$Progress.fail();
+
+        toast({
+          type: 'error',
+          title: 'The Director update Info failed Verification.'
+        });
+      });
+    },
+    //director
+    InputPhone: function InputPhone(_ref) {
+      var number = _ref.number,
+          isValid = _ref.isValid,
+          country = _ref.country;
+      console.log(number, isValid, country);
+      this.directorform.phone = number;
+      this.phone.isValid = isValid;
+      this.phone.country = country && country.name;
+    },
+    InputLandline: function InputLandline(_ref2) {
+      var number = _ref2.number,
+          isValid = _ref2.isValid,
+          country = _ref2.country;
+      console.log(number, isValid, country);
+      this.directorform.landline = number;
+      this.landline.isValid = isValid;
+      this.landline.country = country && country.name;
+    },
+    countryCounties: function countryCounties(country_id) {
+      console.log(country_id);
+      this.$store.dispatch('countrycounties', country_id);
+    },
+    countyConstituencies: function countyConstituencies(county_id) {
+      console.log(county_id);
+      this.$store.dispatch('countyconstituencies', county_id);
+    },
+    constituencyWards: function constituencyWards(constituency_id) {
+      console.log(constituency_id);
+      this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
+    },
+    loadCountries: function loadCountries() {
+      return this.$store.dispatch("countries"); //get all from roles.index
+    },
+    loadCounties: function loadCounties() {
+      return this.$store.dispatch("countrycounties"); //get all from counties.index
+    },
+    loadConstituencies: function loadConstituencies() {
+      return this.$store.dispatch("countyconstituencies"); //get all from counties.index
+    },
+    loadWards: function loadWards() {
+      return this.$store.dispatch("constituencywards"); //get all from towns.index
+    },
     loadDirectors: function loadDirectors() {
       return this.$store.dispatch("directors"); //get all from directors.index
     },
@@ -7276,25 +9968,167 @@ __webpack_require__.r(__webpack_exports__);
       this.directorform.reset();
       $('#DirectorModal').modal('show');
     },
+    directorLoadPassPhoto: function directorLoadPassPhoto(directorpivot_photo) {
+      if (directorpivot_photo) {
+        return "/assets/organisation/img/directors/passports/" + directorpivot_photo;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      }
+    },
+    //director passport photo
+    directorChangePassPhoto: function directorChangePassPhoto(event) {
+      var _this3 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this3.directorform.photo = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    updateDirectorPassPhoto: function updateDirectorPassPhoto(directorform_organisationdirector_photo) {
+      // console.log(directorform_organisationdirector_photo)
+      var img = this.directorform.photo;
+
+      if (img == null) {
+        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
+      } else {
+        if (img.length > 100) {
+          return this.directorform.photo;
+        } else {
+          if (directorform_organisationdirector_photo) {
+            return "assets/organisation/img/directors/passports/" + directorform_organisationdirector_photo;
+          } else {
+            return "/assets/organisation/img/website/empty.png";
+          }
+        }
+      }
+    },
+    directorLoadIDFrontPhoto: function directorLoadIDFrontPhoto(directorpivot_id_photo_front) {
+      if (directorpivot_id_photo_front) {
+        return "/assets/organisation/img/directors/IDs/front/" + directorpivot_id_photo_front;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      }
+    },
+    directorChangeIDFrontPhoto: function directorChangeIDFrontPhoto(event) {
+      var _this4 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this4.directorform.id_photo_front = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    updateDirectorIDFrontPhoto: function updateDirectorIDFrontPhoto(directorform_id_photo_front) {
+      // console.log(directorform.id_photo_front)
+      var img = this.directorform.id_photo_front;
+
+      if (img == null) {
+        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
+      } else {
+        if (img.length > 100) {
+          return this.directorform.id_photo_front;
+        } else {
+          if (directorform_id_photo_front) {
+            return "assets/organisation/img/directors/passports/" + directorform_id_photo_front;
+          } else {
+            return "/assets/organisation/img/website/empty.png";
+          }
+        }
+      }
+    },
+    directorLoadIDBackPhoto: function directorLoadIDBackPhoto(directorform_id_photo_back) {
+      if (directorform_id_photo_back) {
+        return "/assets/organisation/img/directors/IDs/back/" + directorform_id_photo_back;
+      } else {
+        return "/assets/organisation/img/website/empty.png";
+      }
+    },
+    directorChangeIDBackPhoto: function directorChangeIDBackPhoto(event) {
+      var _this5 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 1048576) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The File you are uploading is larger than 2mbs!' // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this5.directorform.id_photo_back = event.target.result; // console.log(event.target.result)
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    updateDirectorIDBackPhoto: function updateDirectorIDBackPhoto(directorform_id_photo_back) {
+      // console.log(directorform.id_photo_back)
+      var img = this.directorform.id_photo_back;
+
+      if (img == null) {
+        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
+      } else {
+        if (img.length > 100) {
+          return this.directorform.id_photo_back;
+        } else {
+          if (directorform_id_photo_back) {
+            return "assets/organisation/img/directors/IDs/front/" + directorform_id_photo_back;
+          } else {
+            return "/assets/organisation/img/website/empty.png";
+          }
+        }
+      }
+    },
     editDirectorModal: function editDirectorModal(id) {
-      var _this = this;
+      var _this6 = this;
 
       this.editmodeDirector = true;
       this.directorform.reset();
-      console.log('edit director', id);
       this.$Progress.start();
-      axios.get('/director/edit/' + id).then(function (response) {
+      axios.get('/orgdirector/edit/' + id).then(function (response) {
         $('#DirectorModal').modal('show');
         toast({
           type: 'success',
           title: 'Fetched the Director data successfully'
         });
+        console.log(response.data);
 
-        _this.directorform.fill(response.data.director);
+        _this6.directorform.fill(response.data.director);
 
-        _this.$Progress.finish();
+        _this6.$Progress.finish();
       }).catch(function () {
-        _this.$Progress.fail(); //errors
+        _this6.$Progress.fail(); //errors
 
 
         $('#DirectorModal').modal('show');
@@ -7304,25 +10138,27 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    addDirector: function addDirector() {
-      var _this2 = this;
+    addDirector: function addDirector(directorform_organisation_id) {
+      var _this7 = this;
 
-      console.log('add director new');
+      console.log(directorform_organisation_id);
       this.$Progress.start();
-      this.directorform.post('/director').then(function (response) {
+      this.directorform.post('/orgdirector').then(function (response) {
         //  console.log(response.data)
         toast({
           type: 'success',
           title: 'Director Created successfully'
         });
 
-        _this2.$store.dispatch("directors");
+        _this7.$store.dispatch("directors");
+
+        _this7.directorform.reset();
 
         $('#DirectorModal').modal('hide');
 
-        _this2.$Progress.finish();
+        _this7.$Progress.finish();
       }).catch(function () {
-        _this2.$Progress.fail(); //errors
+        _this7.$Progress.fail(); //errors
 
 
         $('#DirectorModal').modal('show');
@@ -7333,12 +10169,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updateDirector: function updateDirector(id) {
-      var _this3 = this;
+      var _this8 = this;
 
       console.log('update director');
       this.$Progress.start();
-      this.directorform.patch('/director/update/' + id).then(function () {
-        _this3.$store.dispatch("directors");
+      this.directorform.patch('/orgdirector/update/' + id).then(function () {
+        _this8.$store.dispatch("directors");
 
         $('#DirectorModal').modal('hide');
         toast({
@@ -7346,9 +10182,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Director Created successfully'
         });
 
-        _this3.$Progress.finish();
+        _this8.$Progress.finish();
       }).catch(function () {
-        _this3.$Progress.fail();
+        _this8.$Progress.fail();
 
         toast({
           type: 'error',
@@ -7357,7 +10193,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     deleteDirector: function deleteDirector(id) {
-      var _this4 = this;
+      var _this9 = this;
 
       Swal({
         title: 'Are you sure?',
@@ -7370,19 +10206,19 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           //  console.log('delete director', id)
-          _this4.$Progress.start();
+          _this9.$Progress.start();
 
-          _this4.directorform.get('/director/delete/' + id).then(function () {
+          _this9.directorform.get('/orgdirector/delete/' + id).then(function () {
             toast({
               type: 'success',
               title: 'Director Deleted successfully'
             });
 
-            _this4.$store.dispatch("directors");
+            _this9.$store.dispatch("directors");
 
-            _this4.$Progress.finish();
+            _this9.$Progress.finish();
           }).catch(function () {
-            _this4.$Progress.fail();
+            _this9.$Progress.fail();
 
             toast({
               type: 'error',
@@ -67719,7 +70555,10 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("has-error", {
                                   staticStyle: { color: "#e83e8c" },
-                                  attrs: { form: _vm.aboutform, field: "logo" }
+                                  attrs: {
+                                    form: _vm.organisationform,
+                                    field: "logo"
+                                  }
                                 })
                               ],
                               1
@@ -69531,7 +72370,10 @@ var render = function() {
                               _vm._v(" "),
                               _c("has-error", {
                                 staticStyle: { color: "#e83e8c" },
-                                attrs: { form: _vm.aboutform, field: "logo" }
+                                attrs: {
+                                  form: _vm.organisationform,
+                                  field: "logo"
+                                }
                               })
                             ],
                             1
@@ -75344,6 +78186,6893 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/admin/Bureau.vue?vue&type=template&id=f93a8522&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admins/organisation/admin/Bureau.vue?vue&type=template&id=f93a8522& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container-fluid mt-5" }, [
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "row justify-content-around" }, [
+        _c("div", { staticClass: "col-md" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _c("h3", { staticClass: "card-title" }, [
+                _vm._v("Bureaus And Directors Table")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-tools" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.newBureauModal()
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "Add New Bureau and Director\n                       "
+                    ),
+                    _c("i", { staticClass: "fas fa-plus fw" })
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "table",
+                {
+                  staticClass: "table table-bordered table-hover",
+                  attrs: { id: "example2" }
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.Bureaus, function(bureau, index) {
+                      return _c("tr", { key: bureau.id }, [
+                        _c("td", [_vm._v(_vm._s(index + 1))]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          _vm._l(bureau.bureaudirectors, function(bureau) {
+                            return _c(
+                              "div",
+                              { key: bureau.id, staticClass: "row" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "col",
+                                    staticStyle: { padding: "3px" }
+                                  },
+                                  [
+                                    _c("img", {
+                                      staticClass: "card-img-top",
+                                      staticStyle: { width: "100%" },
+                                      attrs: {
+                                        src: _vm.directorLoadPassPhoto(
+                                          bureau.pivot.photo
+                                        ),
+                                        alt: "Card image cap"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v(
+                                        "\n                              " +
+                                          _vm._s(bureau.name) +
+                                          "\n                              "
+                                      )
+                                    ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "col",
+                                    staticStyle: { padding: "3px" }
+                                  },
+                                  [
+                                    _c("img", {
+                                      staticClass: "card-img-top",
+                                      staticStyle: { width: "100%" },
+                                      attrs: {
+                                        src: _vm.directorLoadIDFrontPhoto(
+                                          bureau.pivot.id_photo_front
+                                        ),
+                                        alt: "Card image cap"
+                                      }
+                                    }),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      staticClass: "card-img-top",
+                                      staticStyle: { width: "100%" },
+                                      attrs: {
+                                        src: _vm.directorLoadIDBackPhoto(
+                                          bureau.pivot.id_photo_back
+                                        ),
+                                        alt: "Card image cap"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticStyle: {
+                                      "font-weight": "bold",
+                                      "font-size": "0.7em",
+                                      "min-width": "210px",
+                                      "max-width": "400px",
+                                      "margin-top": "4px",
+                                      "padding-top": "4px",
+                                      "font-style": "italic"
+                                    }
+                                  },
+                                  [
+                                    _c("div", [
+                                      _vm._v(_vm._s(bureau.full_name) + ",")
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(bureau.positions, function(
+                                      position
+                                    ) {
+                                      return _c("div", { key: position.id }, [
+                                        _vm._v(
+                                          "\n                                  " +
+                                            _vm._s(position.name) +
+                                            ",\n                                  "
+                                        ),
+                                        _c(
+                                          "span",
+                                          { staticStyle: { color: "#9a009a" } },
+                                          [
+                                            _vm._v(
+                                              "\n                                      " +
+                                                _vm._s(bureau.name) +
+                                                ",\n                                  "
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    }),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v(" ID: ,"),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [_vm._v(_vm._s(bureau.pivot.id_no))]
+                                      ),
+                                      _vm._v(
+                                        ",\n                                  Phone: "
+                                      ),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [
+                                          _vm._v(
+                                            _vm._s(bureau.pivot.phone) + ","
+                                          )
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v(
+                                        "\n                                   Mail: "
+                                      ),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [_vm._v(_vm._s(bureau.email) + ",")]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v("P. O. Box , "),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [_vm._v(_vm._s(bureau.pivot.address))]
+                                      ),
+                                      _vm._v(
+                                        ",\n                                  "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(bureau.wards, function(ward) {
+                                      return _c(
+                                        "div",
+                                        { key: ward.id },
+                                        [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticStyle: { color: "#9a009a" }
+                                            },
+                                            [_vm._v(_vm._s(ward.name))]
+                                          ),
+                                          _vm._v(
+                                            " ward,\n                                  "
+                                          ),
+                                          _vm._l(
+                                            bureau.constituencies,
+                                            function(constituency) {
+                                              return _c(
+                                                "span",
+                                                {
+                                                  key: constituency.id,
+                                                  staticStyle: {
+                                                    color: "#9a009a"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                      " +
+                                                      _vm._s(constituency.name)
+                                                  )
+                                                ]
+                                              )
+                                            }
+                                          ),
+                                          _vm._v(
+                                            " constituency,\n                              "
+                                          )
+                                        ],
+                                        2
+                                      )
+                                    }),
+                                    _vm._v(" "),
+                                    _vm._l(bureau.counties, function(county) {
+                                      return _c(
+                                        "div",
+                                        { key: county.id },
+                                        [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticStyle: { color: "#9a009a" }
+                                            },
+                                            [_vm._v(_vm._s(county.name))]
+                                          ),
+                                          _vm._v(
+                                            " county,\n                                  "
+                                          ),
+                                          _vm._l(bureau.countries, function(
+                                            country
+                                          ) {
+                                            return _c(
+                                              "span",
+                                              {
+                                                key: country.id,
+                                                staticStyle: {
+                                                  color: "#9a009a"
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                      " +
+                                                    _vm._s(country.name) +
+                                                    ",\n                                  "
+                                                )
+                                              ]
+                                            )
+                                          })
+                                        ],
+                                        2
+                                      )
+                                    })
+                                  ],
+                                  2
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { staticStyle: { padding: "3px" } },
+                          _vm._l(bureau.roles, function(role) {
+                            return _c(
+                              "span",
+                              { key: role.id, staticClass: "pl-2" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "btn btn-primary btn-sm ml-1 mb-2 "
+                                  },
+                                  [_vm._v(_vm._s(role.name) + " ")]
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { staticStyle: { padding: "3px" } },
+                          _vm._l(bureau.permissions, function(permission) {
+                            return _c(
+                              "span",
+                              { key: permission.id, staticClass: "pl-2" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "btn btn-primary btn-sm ml-1 mb-2 "
+                                  },
+                                  [_vm._v(_vm._s(permission.name) + " ")]
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { padding: "3px" } }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "clearfix",
+                              staticStyle: {
+                                "font-weight": "bold",
+                                "font-size": "0.7em"
+                              }
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "float-left",
+                                  staticStyle: { "margin-bottom": "-0.5em" }
+                                },
+                                [
+                                  _c("div", { staticClass: "card-tools" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-success",
+                                        on: {
+                                          click: function($event) {
+                                            $event.preventDefault()
+                                            return _vm.newDirectorModal(
+                                              bureau.id
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "Add Director\n                                          "
+                                        ),
+                                        _c("i", {
+                                          staticClass: "fas fa-plus fw"
+                                        })
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticStyle: { "margin-bottom": "0.25em" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        " Updated at:\n                                  "
+                                      ),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("dateformat")(
+                                                bureau.created_at
+                                              )
+                                            ) + " "
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "float-right" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.editBureauModal(bureau.id)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fa fa-edit blue" })]
+                                ),
+                                _vm._v(
+                                  "\n                              /\n                              "
+                                ),
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.deleteBureau(bureau.id)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fa fa-trash red" })]
+                                )
+                              ])
+                            ]
+                          )
+                        ])
+                      ])
+                    }),
+                    0
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade ",
+        attrs: {
+          id: "BureauModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "BureauModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered modal-lg",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-body" },
+                [
+                  _c(
+                    "form-wizard",
+                    {
+                      attrs: { role: "form" },
+                      on: {
+                        "on-complete": function($event) {
+                          _vm.editmodeBureau
+                            ? _vm.updateBureau(_vm.bureauform.id)
+                            : _vm.addBureau()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "h5",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.editmodeBureau,
+                              expression: "editmodeBureau"
+                            }
+                          ],
+                          staticClass: "modal-title",
+                          attrs: { id: "BureauModalLabel" }
+                        },
+                        [_vm._v("Update Bureau & Director")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h5",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: !_vm.editmodeBureau,
+                              expression: "!editmodeBureau"
+                            }
+                          ],
+                          staticClass: "modal-title",
+                          attrs: { id: "BureauModalLabel" }
+                        },
+                        [_vm._v("Add New Bureau & Director")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "tab-content",
+                        {
+                          attrs: {
+                            title: "Bureau Details",
+                            icon: "fa fa-building",
+                            "before-change": _vm.editmodeBureau
+                              ? _vm.validateBureauUpdate
+                              : _vm.validateBureau
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                              " +
+                              _vm._s(_vm.bureauform.id) +
+                              "\n                              "
+                          ),
+                          _c("div", { staticClass: " row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "col-form-label",
+                                    attrs: { for: "name" }
+                                  },
+                                  [_vm._v(" Bureau Name")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.bureauform.name,
+                                      expression: "bureauform.name"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.bureauform.errors.has(
+                                      "name"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "text",
+                                    name: "name",
+                                    placeholder: "Bureau Name"
+                                  },
+                                  domProps: { value: _vm.bureauform.name },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.bureauform,
+                                        "name",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: { form: _vm.bureauform, field: "name" }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "bureau_email" }
+                                  },
+                                  [_vm._v("Email ")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.bureauform.bureau_email,
+                                      expression: "bureauform.bureau_email"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.bureauform.errors.has(
+                                      "bureau_email"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "email",
+                                    name: "bureau_email",
+                                    placeholder: "Email Address"
+                                  },
+                                  domProps: {
+                                    value: _vm.bureauform.bureau_email
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.bureauform,
+                                        "bureau_email",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.bureauform,
+                                    field: "bureau_email"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group col-md-4" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "col-form-label",
+                                  attrs: { for: "phone" }
+                                },
+                                [_vm._v(" Bureau Phone")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                [
+                                  _c("vue-tel-input", {
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.bureauform.errors.has(
+                                        "phone"
+                                      )
+                                    },
+                                    attrs: { name: "phone" },
+                                    on: { onInput: _vm.InputPhone },
+                                    model: {
+                                      value: _vm.bureauform.phone,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.bureauform, "phone", $$v)
+                                      },
+                                      expression: "bureauform.phone"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("has-error", {
+                                    staticStyle: { color: "#e83e8c" },
+                                    attrs: {
+                                      form: _vm.bureauform,
+                                      field: "phone"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _vm.bureauform.phone
+                                ? _c(
+                                    "div",
+                                    { staticStyle: { color: "#e83e8c" } },
+                                    [
+                                      _c("span", [
+                                        _vm._v("Is valid: "),
+                                        _c("strong", [
+                                          _vm._v(_vm._s(_vm.phone1.isValid))
+                                        ]),
+                                        _vm._v(", ")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("span", [
+                                        _vm._v("Country: "),
+                                        _c("strong", [
+                                          _vm._v(_vm._s(_vm.phone1.country))
+                                        ])
+                                      ])
+                                    ]
+                                  )
+                                : _vm._e()
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: " row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "landline" }
+                                  },
+                                  [_vm._v("Landline")]
+                                ),
+                                _vm._v(" "),
+                                _c("vue-tel-input", {
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.bureauform.errors.has(
+                                      "landline"
+                                    )
+                                  },
+                                  attrs: { name: "landline" },
+                                  on: { onInput: _vm.InputLandline },
+                                  model: {
+                                    value: _vm.bureauform.landline,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.bureauform, "landline", $$v)
+                                    },
+                                    expression: "bureauform.landline"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.bureauform,
+                                    field: "landline"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm.bureauform.landline
+                                  ? _c(
+                                      "div",
+                                      { staticStyle: { color: "#e83e8c" } },
+                                      [
+                                        _c("span", [
+                                          _vm._v("Is valid: "),
+                                          _c("strong", [
+                                            _vm._v(
+                                              _vm._s(_vm.landline1.isValid)
+                                            )
+                                          ]),
+                                          _vm._v(", ")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("span", [
+                                          _vm._v("Country: "),
+                                          _c("strong", [
+                                            _vm._v(
+                                              _vm._s(_vm.landline1.country)
+                                            )
+                                          ])
+                                        ])
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "col-form-label",
+                                    attrs: { for: "website" }
+                                  },
+                                  [_vm._v("Website")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.bureauform.website,
+                                      expression: "bureauform.website"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.bureauform.errors.has(
+                                      "website"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "text",
+                                    name: "website",
+                                    placeholder: "Website"
+                                  },
+                                  domProps: { value: _vm.bureauform.website },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.bureauform,
+                                        "website",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.bureauform,
+                                    field: "website"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-4" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "address" }
+                                  },
+                                  [_vm._v("address")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.bureauform.address,
+                                      expression: "bureauform.address"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  class: {
+                                    "is-invalid": _vm.bureauform.errors.has(
+                                      "address"
+                                    )
+                                  },
+                                  attrs: {
+                                    type: "text",
+                                    name: "Address",
+                                    placeholder: "Address"
+                                  },
+                                  domProps: { value: _vm.bureauform.address },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.bureauform,
+                                        "address",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.bureauform,
+                                    field: "address"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: " row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-3" },
+                              [
+                                _c("label", { attrs: { for: "country_id" } }, [
+                                  _vm._v("Select Country")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.bureauform.country_id,
+                                        expression: "bureauform.country_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.bureauform.errors.has(
+                                        "country_id"
+                                      )
+                                    },
+                                    on: {
+                                      change: [
+                                        function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "country_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        },
+                                        function($event) {
+                                          return _vm.countryCounties(
+                                            _vm.bureauform.country_id
+                                          )
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { disabled: "", value: "" } },
+                                      [_vm._v("Select Country")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.Countries, function(country) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: country.id,
+                                          domProps: { value: country.id }
+                                        },
+                                        [_vm._v(_vm._s(country.name))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.bureauform,
+                                    field: "country_id"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-3" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "county_id" }
+                                  },
+                                  [_vm._v("County")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.bureauform.county_id,
+                                        expression: "bureauform.county_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.bureauform.errors.has(
+                                        "county_id"
+                                      )
+                                    },
+                                    on: {
+                                      change: [
+                                        function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "county_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        },
+                                        function($event) {
+                                          return _vm.countyConstituencies(
+                                            _vm.bureauform.county_id
+                                          )
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { disabled: "", value: "" } },
+                                      [_vm._v("Select County")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.Counties, function(county) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: county.id,
+                                          domProps: { value: county.id }
+                                        },
+                                        [_vm._v(_vm._s(county.name))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.bureauform,
+                                    field: "county_id"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-3" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "constituency_id" }
+                                  },
+                                  [_vm._v("Constituency")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.bureauform.constituency_id,
+                                        expression: "bureauform.constituency_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.bureauform.errors.has(
+                                        "constituency_id"
+                                      )
+                                    },
+                                    on: {
+                                      change: [
+                                        function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "constituency_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        },
+                                        function($event) {
+                                          return _vm.constituencyWards(
+                                            _vm.bureauform.constituency_id
+                                          )
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { disabled: "", value: "" } },
+                                      [_vm._v("Select County")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.Constituencies, function(
+                                      constituency
+                                    ) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: constituency.id,
+                                          domProps: { value: constituency.id }
+                                        },
+                                        [_vm._v(_vm._s(constituency.name))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.bureauform,
+                                    field: "constituency_id"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-3" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "col-form-label",
+                                    attrs: { for: "ward_id" }
+                                  },
+                                  [_vm._v(" Ward ")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.bureauform.ward_id,
+                                        expression: "bureauform.ward_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.bureauform.errors.has(
+                                        "ward_id"
+                                      )
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.bureauform,
+                                          "ward_id",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { disabled: "", value: "" } },
+                                      [_vm._v("Select Town")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.Wards, function(ward) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: ward.id,
+                                          domProps: { value: ward.id }
+                                        },
+                                        [_vm._v(_vm._s(ward.name))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: {
+                                    form: _vm.bureauform,
+                                    field: "ward_id"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: " row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group col-md-6" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: " col-form-label",
+                                    attrs: { for: "logo" }
+                                  },
+                                  [_vm._v("Bureau Logo")]
+                                ),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("input", {
+                                  class: {
+                                    "is-invalid": _vm.bureauform.errors.has(
+                                      "logo"
+                                    )
+                                  },
+                                  attrs: { type: "file", name: "logo" },
+                                  on: {
+                                    change: function($event) {
+                                      return _vm.bureauChangeLogo($event)
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("img", {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.editmodeBureau,
+                                      expression: "editmodeBureau"
+                                    }
+                                  ],
+                                  attrs: {
+                                    src: _vm.updateBureauLogo(
+                                      _vm.bureauform.logo
+                                    ),
+                                    alt: "",
+                                    width: "100%"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("img", {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.editmodeBureau,
+                                      expression: "!editmodeBureau"
+                                    }
+                                  ],
+                                  attrs: {
+                                    src: _vm.bureauform.logo,
+                                    alt: "",
+                                    width: "100%"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("has-error", {
+                                  staticStyle: { color: "#e83e8c" },
+                                  attrs: { form: _vm.bureauform, field: "logo" }
+                                })
+                              ],
+                              1
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "tab-content",
+                        {
+                          attrs: {
+                            title: "Bureau Director Info",
+                            "before-change": _vm.newBureauDirector
+                              ? _vm.validateDirectorUpdate
+                              : _vm.validateDirector
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.newBureauDirector,
+                                  expression: "newBureauDirector"
+                                }
+                              ]
+                            },
+                            [
+                              _c("div", { staticClass: "row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "col-form-label",
+                                        attrs: { for: "director_first_name" }
+                                      },
+                                      [_vm._v(" Director First Name")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.bureauform.director_first_name,
+                                          expression:
+                                            "bureauform.director_first_name"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.bureauform.errors.has(
+                                          "director_first_name"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "text",
+                                        name: "first_name",
+                                        placeholder: "Director First Name"
+                                      },
+                                      domProps: {
+                                        value:
+                                          _vm.bureauform.director_first_name
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "director_first_name",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "director_first_name"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: { for: "director_last_name" }
+                                      },
+                                      [_vm._v("director_Last Name ")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.bureauform.director_last_name,
+                                          expression:
+                                            "bureauform.director_last_name"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.bureauform.errors.has(
+                                          "director_last_name"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "director_last_name",
+                                        name: "director_last_name",
+                                        placeholder: "director_Last Name"
+                                      },
+                                      domProps: {
+                                        value: _vm.bureauform.director_last_name
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "director_last_name",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "director_last_name"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: { for: "email" }
+                                      },
+                                      [_vm._v("Email ")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.bureauform.email,
+                                          expression: "bureauform.email"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.bureauform.errors.has(
+                                          "email"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "email",
+                                        name: "email",
+                                        placeholder: "Email Address"
+                                      },
+                                      domProps: { value: _vm.bureauform.email },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "email",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "email"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: " row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.bureauform.director_password,
+                                          expression:
+                                            "bureauform.director_password"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.bureauform.errors.has(
+                                          "director_password"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "password",
+                                        id: "director_password",
+                                        placeholder: "Director Password"
+                                      },
+                                      domProps: {
+                                        value: _vm.bureauform.director_password
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "director_password",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "password"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "col-form-label",
+                                        attrs: { for: "director_phone" }
+                                      },
+                                      [_vm._v(" Director Phone")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      [
+                                        _c("vue-tel-input", {
+                                          staticClass: "form-control",
+                                          class: {
+                                            "is-invalid": _vm.bureauform.errors.has(
+                                              "director_phone"
+                                            )
+                                          },
+                                          attrs: { name: "director_phone" },
+                                          on: {
+                                            onInput: _vm.DirectorInputPhone
+                                          },
+                                          model: {
+                                            value:
+                                              _vm.bureauform.director_phone,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                _vm.bureauform,
+                                                "director_phone",
+                                                $$v
+                                              )
+                                            },
+                                            expression:
+                                              "bureauform.director_phone"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("has-error", {
+                                          staticStyle: { color: "#e83e8c" },
+                                          attrs: {
+                                            form: _vm.bureauform,
+                                            field: "director_phone"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _vm.bureauform.director_phone
+                                      ? _c(
+                                          "div",
+                                          { staticStyle: { color: "#e83e8c" } },
+                                          [
+                                            _c("span", [
+                                              _vm._v("Is valid: "),
+                                              _c("strong", [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.director_phone1.isValid
+                                                  )
+                                                )
+                                              ]),
+                                              _vm._v(", ")
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("span", [
+                                              _vm._v("Country: "),
+                                              _c("strong", [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.director_phone1.country
+                                                  )
+                                                )
+                                              ])
+                                            ])
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: { for: "director_landline" }
+                                      },
+                                      [_vm._v("Director Landline")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("vue-tel-input", {
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.bureauform.errors.has(
+                                          "director_landline"
+                                        )
+                                      },
+                                      attrs: { name: "director_landline" },
+                                      on: {
+                                        onInput: _vm.DirectorInputLandline
+                                      },
+                                      model: {
+                                        value: _vm.bureauform.director_landline,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "director_landline",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "bureauform.director_landline"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "director_landline"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _vm.bureauform.director_landline
+                                      ? _c(
+                                          "div",
+                                          { staticStyle: { color: "#e83e8c" } },
+                                          [
+                                            _c("span", [
+                                              _vm._v("Is valid: "),
+                                              _c("strong", [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.director_landline1
+                                                      .isValid
+                                                  )
+                                                )
+                                              ]),
+                                              _vm._v(", ")
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("span", [
+                                              _vm._v("Country: "),
+                                              _c("strong", [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.director_landline1
+                                                      .country
+                                                  )
+                                                )
+                                              ])
+                                            ])
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: " row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "col-form-label",
+                                        attrs: { for: "director_id_no" }
+                                      },
+                                      [_vm._v("Director ID no.")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.bureauform.director_id_no,
+                                          expression:
+                                            "bureauform.director_id_no"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.bureauform.errors.has(
+                                          "director_id_no"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "text",
+                                        name: "director_id_no",
+                                        placeholder: "Director ID NO"
+                                      },
+                                      domProps: {
+                                        value: _vm.bureauform.director_id_no
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "director_id_no",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "director_id_no"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: { for: "director_address" }
+                                      },
+                                      [_vm._v("Director Address")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.bureauform.director_address,
+                                          expression:
+                                            "bureauform.director_address"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "is-invalid": _vm.bureauform.errors.has(
+                                          "director_address"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "text",
+                                        name: "Address",
+                                        placeholder: "Director Address"
+                                      },
+                                      domProps: {
+                                        value: _vm.bureauform.director_address
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "director_address",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "director_address"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: " row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-3" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "director_country_id" } },
+                                      [_vm._v("Select Country")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.bureauform
+                                                .director_country_id,
+                                            expression:
+                                              "bureauform.director_country_id"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        class: {
+                                          "is-invalid": _vm.bureauform.errors.has(
+                                            "director_country_id"
+                                          )
+                                        },
+                                        on: {
+                                          change: [
+                                            function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.$set(
+                                                _vm.bureauform,
+                                                "director_country_id",
+                                                $event.target.multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              )
+                                            },
+                                            function($event) {
+                                              return _vm.DirectorcountryCounties(
+                                                _vm.bureauform
+                                                  .director_country_id
+                                              )
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: { disabled: "", value: "" }
+                                          },
+                                          [_vm._v("Select Country")]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.Countries, function(
+                                          country
+                                        ) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: country.id,
+                                              domProps: { value: country.id }
+                                            },
+                                            [_vm._v(_vm._s(country.name))]
+                                          )
+                                        })
+                                      ],
+                                      2
+                                    ),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "director_country_id"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-3" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: { for: "director_county_id" }
+                                      },
+                                      [_vm._v("County")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.bureauform.director_county_id,
+                                            expression:
+                                              "bureauform.director_county_id"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        class: {
+                                          "is-invalid": _vm.bureauform.errors.has(
+                                            "director_county_id"
+                                          )
+                                        },
+                                        on: {
+                                          change: [
+                                            function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.$set(
+                                                _vm.bureauform,
+                                                "director_county_id",
+                                                $event.target.multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              )
+                                            },
+                                            function($event) {
+                                              return _vm.DirectorcountyConstituencies(
+                                                _vm.bureauform
+                                                  .director_county_id
+                                              )
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: { disabled: "", value: "" }
+                                          },
+                                          [_vm._v("Select County")]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.Counties, function(county) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: county.id,
+                                              domProps: { value: county.id }
+                                            },
+                                            [_vm._v(_vm._s(county.name))]
+                                          )
+                                        })
+                                      ],
+                                      2
+                                    ),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "director_county_id"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-3" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: {
+                                          for: "director_constituency_id"
+                                        }
+                                      },
+                                      [_vm._v("Constituency")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.bureauform
+                                                .director_constituency_id,
+                                            expression:
+                                              "bureauform.director_constituency_id"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        class: {
+                                          "is-invalid": _vm.bureauform.errors.has(
+                                            "director_constituency_id"
+                                          )
+                                        },
+                                        on: {
+                                          change: [
+                                            function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.$set(
+                                                _vm.bureauform,
+                                                "director_constituency_id",
+                                                $event.target.multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              )
+                                            },
+                                            function($event) {
+                                              return _vm.DirectorconstituencyWards(
+                                                _vm.bureauform
+                                                  .director_constituency_id
+                                              )
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: { disabled: "", value: "" }
+                                          },
+                                          [_vm._v("Select County")]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.Constituencies, function(
+                                          constituency
+                                        ) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: constituency.id,
+                                              domProps: {
+                                                value: constituency.id
+                                              }
+                                            },
+                                            [_vm._v(_vm._s(constituency.name))]
+                                          )
+                                        })
+                                      ],
+                                      2
+                                    ),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "director_constituency_id"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-3" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "col-form-label",
+                                        attrs: { for: "director_ward_id" }
+                                      },
+                                      [_vm._v(" Ward ")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.bureauform.director_ward_id,
+                                            expression:
+                                              "bureauform.director_ward_id"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        class: {
+                                          "is-invalid": _vm.bureauform.errors.has(
+                                            "director_ward_id"
+                                          )
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.$set(
+                                              _vm.bureauform,
+                                              "director_ward_id",
+                                              $event.target.multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: { disabled: "", value: "" }
+                                          },
+                                          [_vm._v("Select Ward")]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.Wards, function(ward) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: ward.id,
+                                              domProps: { value: ward.id }
+                                            },
+                                            [_vm._v(_vm._s(ward.name))]
+                                          )
+                                        })
+                                      ],
+                                      2
+                                    ),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "director_ward_id"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: " row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: {
+                                          for: "director_passport_image"
+                                        }
+                                      },
+                                      [_vm._v("Director PassPort Image")]
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      class: {
+                                        "is-invalid": _vm.bureauform.errors.has(
+                                          "director_passport_image"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "file",
+                                        name: "director_passport_image"
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.bureauChangeDirectorPImage(
+                                            $event
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: _vm.editmodeBureau,
+                                          expression: "editmodeBureau"
+                                        }
+                                      ],
+                                      attrs: {
+                                        src: _vm.updateBureauDirectorPImage(
+                                          _vm.bureauform.director_passport_image
+                                        ),
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: !_vm.editmodeBureau,
+                                          expression: "!editmodeBureau"
+                                        }
+                                      ],
+                                      attrs: {
+                                        src:
+                                          _vm.bureauform
+                                            .director_passport_image,
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "director_passport_image"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: {
+                                          for: "frontside_director_id_photo"
+                                        }
+                                      },
+                                      [_vm._v("Director FrontSide ID Photo")]
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      class: {
+                                        "is-invalid": _vm.bureauform.errors.has(
+                                          "frontside_director_id_photo"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "file",
+                                        name: "frontside_director_id_photo"
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.bureauChangeDirectorFIDPhoto(
+                                            $event
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: _vm.editmodeBureau,
+                                          expression: "editmodeBureau"
+                                        }
+                                      ],
+                                      attrs: {
+                                        src: _vm.updateBureauDirectorFIDPhoto(
+                                          _vm.bureauform
+                                            .frontside_director_id_photo
+                                        ),
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: !_vm.editmodeBureau,
+                                          expression: "!editmodeBureau"
+                                        }
+                                      ],
+                                      attrs: {
+                                        src:
+                                          _vm.bureauform
+                                            .frontside_director_id_photo,
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "frontside_director_id_photo"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-md-4" },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: " col-form-label",
+                                        attrs: {
+                                          for: "backside_director_i_photod"
+                                        }
+                                      },
+                                      [_vm._v("Director BackSide ID Photo")]
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      class: {
+                                        "is-invalid": _vm.bureauform.errors.has(
+                                          "backside_director_id"
+                                        )
+                                      },
+                                      attrs: {
+                                        type: "file",
+                                        name: "backside_director_id_photo"
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.bureauChangeDirectorBIDPhoto(
+                                            $event
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: _vm.editmodeBureau,
+                                          expression: "editmodeBureau"
+                                        }
+                                      ],
+                                      attrs: {
+                                        src: _vm.updateBureauDirectorBIDPhoto(
+                                          _vm.bureauform
+                                            .backside_director_id_photo
+                                        ),
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value: !_vm.editmodeBureau,
+                                          expression: "!editmodeBureau"
+                                        }
+                                      ],
+                                      attrs: {
+                                        src:
+                                          _vm.bureauform
+                                            .backside_director_id_photo,
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("has-error", {
+                                      staticStyle: { color: "#e83e8c" },
+                                      attrs: {
+                                        form: _vm.bureauform,
+                                        field: "backside_director_id_photo"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ])
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("tab-content", { attrs: { title: "Last step" } }, [
+                        _vm._v(
+                          "\n                              Bureau Information\n\n                              "
+                        ),
+                        _c("div", { staticClass: " row" }, [
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-form-label",
+                                attrs: { for: "name" }
+                              },
+                              [_vm._v(" Bureau Name")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.bureauform.name,
+                                  expression: "bureauform.name"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { readonly: true },
+                              domProps: { value: _vm.bureauform.name },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.bureauform,
+                                    "name",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "bureau_email" }
+                              },
+                              [_vm._v("Email ")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.bureauform.bureau_email,
+                                  expression: "bureauform.bureau_email"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { readonly: true },
+                              domProps: { value: _vm.bureauform.bureau_email },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.bureauform,
+                                    "bureau_email",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-form-label",
+                                attrs: { for: "phone" }
+                              },
+                              [_vm._v(" Bureau Phone")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              [
+                                _c("vue-tel-input", {
+                                  staticClass: "form-control",
+                                  attrs: { readonly: true },
+                                  model: {
+                                    value: _vm.bureauform.phone,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.bureauform, "phone", $$v)
+                                    },
+                                    expression: "bureauform.phone"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.bureauform.phone
+                              ? _c(
+                                  "div",
+                                  { staticStyle: { color: "#e83e8c" } },
+                                  [
+                                    _c("span", [
+                                      _vm._v("Is valid: "),
+                                      _c("strong", [
+                                        _vm._v(_vm._s(_vm.phone1.isValid))
+                                      ]),
+                                      _vm._v(", ")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("span", [
+                                      _vm._v("Country: "),
+                                      _c("strong", [
+                                        _vm._v(_vm._s(_vm.phone1.country))
+                                      ])
+                                    ])
+                                  ]
+                                )
+                              : _vm._e()
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: " row" }, [
+                          _c(
+                            "div",
+                            { staticClass: "form-group col-md-4" },
+                            [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: " col-form-label",
+                                  attrs: { for: "landline" }
+                                },
+                                [_vm._v("Landline")]
+                              ),
+                              _vm._v(" "),
+                              _c("vue-tel-input", {
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                model: {
+                                  value: _vm.bureauform.landline,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.bureauform, "landline", $$v)
+                                  },
+                                  expression: "bureauform.landline"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.bureauform.landline
+                                ? _c(
+                                    "div",
+                                    { staticStyle: { color: "#e83e8c" } },
+                                    [
+                                      _c("span", [
+                                        _vm._v("Is valid: "),
+                                        _c("strong", [
+                                          _vm._v(_vm._s(_vm.landline1.isValid))
+                                        ]),
+                                        _vm._v(", ")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("span", [
+                                        _vm._v("Country: "),
+                                        _c("strong", [
+                                          _vm._v(_vm._s(_vm.landline1.country))
+                                        ])
+                                      ])
+                                    ]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-form-label",
+                                attrs: { for: "website" }
+                              },
+                              [_vm._v("Website")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.bureauform.website,
+                                  expression: "bureauform.website"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { readonly: true },
+                              domProps: { value: _vm.bureauform.website },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.bureauform,
+                                    "website",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-4" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "address" }
+                              },
+                              [_vm._v("address")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.bureauform.address,
+                                  expression: "bureauform.address"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { readonly: true },
+                              domProps: { value: _vm.bureauform.address },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.bureauform,
+                                    "address",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: " row" }, [
+                          _c("div", { staticClass: "form-group col-md-3" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "country_id" }
+                              },
+                              [_vm._v("Country")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.bureauform.country_id,
+                                    expression: "bureauform.country_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.bureauform,
+                                      "country_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.Countries, function(country) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: country.id,
+                                    domProps: { value: country.id }
+                                  },
+                                  [_vm._v(_vm._s(country.name))]
+                                )
+                              }),
+                              0
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-3" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "county_id" }
+                              },
+                              [_vm._v("County")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.bureauform.county_id,
+                                    expression: "bureauform.county_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.bureauform,
+                                      "county_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.Counties, function(county) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: county.id,
+                                    domProps: { value: county.id }
+                                  },
+                                  [_vm._v(_vm._s(county.name))]
+                                )
+                              }),
+                              0
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-3" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: " col-form-label",
+                                attrs: { for: "constituency_id" }
+                              },
+                              [_vm._v("Constituency")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.bureauform.constituency_id,
+                                    expression: "bureauform.constituency_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.bureauform,
+                                      "constituency_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.Constituencies, function(
+                                constituency
+                              ) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: constituency.id,
+                                    domProps: { value: constituency.id }
+                                  },
+                                  [_vm._v(_vm._s(constituency.name))]
+                                )
+                              }),
+                              0
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-3" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "col-form-label",
+                                attrs: { for: "ward_id" }
+                              },
+                              [_vm._v(" Ward ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.bureauform.ward_id,
+                                    expression: "bureauform.ward_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { readonly: true },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.bureauform,
+                                      "ward_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.Wards, function(ward) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: ward.id,
+                                    domProps: { value: ward.id }
+                                  },
+                                  [_vm._v(_vm._s(ward.name))]
+                                )
+                              }),
+                              0
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: " row" }, [
+                          _c(
+                            "div",
+                            { staticClass: "form-group col-md-6" },
+                            [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: " col-form-label",
+                                  attrs: { for: "logo" }
+                                },
+                                [_vm._v("Bureau Logo")]
+                              ),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("input", {
+                                attrs: {
+                                  type: "file",
+                                  name: "logo",
+                                  readonly: true
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("img", {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.editmodeBureau,
+                                    expression: "editmodeBureau"
+                                  }
+                                ],
+                                attrs: {
+                                  src: _vm.updateBureauLogo(
+                                    _vm.bureauform.logo
+                                  ),
+                                  alt: "",
+                                  width: "100%"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("img", {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: !_vm.editmodeBureau,
+                                    expression: "!editmodeBureau"
+                                  }
+                                ],
+                                attrs: {
+                                  src: _vm.bureauform.logo,
+                                  alt: "",
+                                  width: "100%"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("has-error", {
+                                staticStyle: { color: "#e83e8c" },
+                                attrs: { form: _vm.bureauform, field: "logo" }
+                              })
+                            ],
+                            1
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.newBureauDirector,
+                                expression: "newBureauDirector"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              "\n                              Director Info\n                              "
+                            ),
+                            _c("div", { staticClass: "row" }, [
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "col-form-label",
+                                      attrs: { for: "director_first_name" }
+                                    },
+                                    [_vm._v(" Director First Name")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.bureauform.director_first_name,
+                                        expression:
+                                          "bureauform.director_first_name"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { readonly: true },
+                                    domProps: {
+                                      value: _vm.bureauform.director_first_name
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.bureauform,
+                                          "director_first_name",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "director_last_name" }
+                                    },
+                                    [_vm._v("director_Last Name ")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.bureauform.director_last_name,
+                                        expression:
+                                          "bureauform.director_last_name"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { readonly: true },
+                                    domProps: {
+                                      value: _vm.bureauform.director_last_name
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.bureauform,
+                                          "director_last_name",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "email" }
+                                    },
+                                    [_vm._v("Email ")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.bureauform.email,
+                                        expression: "bureauform.email"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { readonly: true },
+                                    domProps: { value: _vm.bureauform.email },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.bureauform,
+                                          "email",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: " row" }, [
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.bureauform.director_password,
+                                        expression:
+                                          "bureauform.director_password"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { type: "password", readonly: true },
+                                    domProps: {
+                                      value: _vm.bureauform.director_password
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.bureauform,
+                                          "director_password",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "col-form-label",
+                                      attrs: { for: "director_phone" }
+                                    },
+                                    [_vm._v(" Director Phone")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    [
+                                      _c("vue-tel-input", {
+                                        staticClass: "form-control",
+                                        attrs: { readonly: true },
+                                        model: {
+                                          value: _vm.bureauform.director_phone,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.bureauform,
+                                              "director_phone",
+                                              $$v
+                                            )
+                                          },
+                                          expression:
+                                            "bureauform.director_phone"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _vm.bureauform.director_phone
+                                    ? _c(
+                                        "div",
+                                        { staticStyle: { color: "#e83e8c" } },
+                                        [
+                                          _c("span", [
+                                            _vm._v("Is valid: "),
+                                            _c("strong", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.director_phone1.isValid
+                                                )
+                                              )
+                                            ]),
+                                            _vm._v(", ")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v("Country: "),
+                                            _c("strong", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.director_phone1.country
+                                                )
+                                              )
+                                            ])
+                                          ])
+                                        ]
+                                      )
+                                    : _vm._e()
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "director_landline" }
+                                    },
+                                    [_vm._v("Director Landline")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("vue-tel-input", {
+                                    staticClass: "form-control",
+                                    attrs: { readonly: true },
+                                    model: {
+                                      value: _vm.bureauform.director_landline,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.bureauform,
+                                          "director_landline",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "bureauform.director_landline"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _vm.bureauform.director_landline
+                                    ? _c(
+                                        "div",
+                                        { staticStyle: { color: "#e83e8c" } },
+                                        [
+                                          _c("span", [
+                                            _vm._v("Is valid: "),
+                                            _c("strong", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.director_landline1.isValid
+                                                )
+                                              )
+                                            ]),
+                                            _vm._v(", ")
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v("Country: "),
+                                            _c("strong", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.director_landline1.country
+                                                )
+                                              )
+                                            ])
+                                          ])
+                                        ]
+                                      )
+                                    : _vm._e()
+                                ],
+                                1
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: " row" }, [
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "col-form-label",
+                                      attrs: { for: "director_id_no" }
+                                    },
+                                    [_vm._v("Director ID no.")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.bureauform.director_id_no,
+                                        expression: "bureauform.director_id_no"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { readonly: true },
+                                    domProps: {
+                                      value: _vm.bureauform.director_id_no
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.bureauform,
+                                          "director_id_no",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "director_address" }
+                                    },
+                                    [_vm._v("Director Address")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.bureauform.director_address,
+                                        expression:
+                                          "bureauform.director_address"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { readonly: true },
+                                    domProps: {
+                                      value: _vm.bureauform.director_address
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.bureauform,
+                                          "director_address",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: " row" }, [
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-3" },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "director_country_id" } },
+                                    [_vm._v("Select Country")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.bureauform.director_country_id,
+                                          expression:
+                                            "bureauform.director_country_id"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "director_country_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        }
+                                      }
+                                    },
+                                    _vm._l(_vm.Countries, function(country) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: country.id,
+                                          domProps: { value: country.id }
+                                        },
+                                        [_vm._v(_vm._s(country.name))]
+                                      )
+                                    }),
+                                    0
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-3" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "director_county_id" }
+                                    },
+                                    [_vm._v("County")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.bureauform.director_county_id,
+                                          expression:
+                                            "bureauform.director_county_id"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: { readonly: true },
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "director_county_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        }
+                                      }
+                                    },
+                                    _vm._l(_vm.Counties, function(county) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: county.id,
+                                          domProps: { value: county.id }
+                                        },
+                                        [_vm._v(_vm._s(county.name))]
+                                      )
+                                    }),
+                                    0
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-3" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "director_constituency_id" }
+                                    },
+                                    [_vm._v("Constituency")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.bureauform
+                                              .director_constituency_id,
+                                          expression:
+                                            "bureauform.director_constituency_id"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: { readonly: true },
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "director_constituency_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        }
+                                      }
+                                    },
+                                    _vm._l(_vm.Constituencies, function(
+                                      constituency
+                                    ) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: constituency.id,
+                                          domProps: { value: constituency.id }
+                                        },
+                                        [_vm._v(_vm._s(constituency.name))]
+                                      )
+                                    }),
+                                    0
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-3" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "col-form-label",
+                                      attrs: { for: "director_ward_id" }
+                                    },
+                                    [_vm._v(" Ward ")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.bureauform.director_ward_id,
+                                          expression:
+                                            "bureauform.director_ward_id"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: { readonly: true },
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.bureauform,
+                                            "director_ward_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        }
+                                      }
+                                    },
+                                    _vm._l(_vm.Wards, function(ward) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: ward.id,
+                                          domProps: { value: ward.id }
+                                        },
+                                        [_vm._v(_vm._s(ward.name))]
+                                      )
+                                    }),
+                                    0
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: " row" }, [
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: { for: "director_passport_image" }
+                                    },
+                                    [_vm._v("Director PassPort Image")]
+                                  ),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    attrs: { type: "file", readonly: true }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.editmodeBureau,
+                                        expression: "editmodeBureau"
+                                      }
+                                    ],
+                                    attrs: {
+                                      src: _vm.updateBureauDirectorPImage(
+                                        _vm.bureauform.director_passport_image
+                                      ),
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.editmodeBureau,
+                                        expression: "!editmodeBureau"
+                                      }
+                                    ],
+                                    attrs: {
+                                      src:
+                                        _vm.bureauform.director_passport_image,
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: {
+                                        for: "frontside_director_id_photo"
+                                      }
+                                    },
+                                    [_vm._v("Director FrontSide ID Photo")]
+                                  ),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    attrs: { type: "file", readonly: true }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.editmodeBureau,
+                                        expression: "editmodeBureau"
+                                      }
+                                    ],
+                                    attrs: {
+                                      src: _vm.updateBureauDirectorFIDPhoto(
+                                        _vm.bureauform
+                                          .frontside_director_id_photo
+                                      ),
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.editmodeBureau,
+                                        expression: "!editmodeBureau"
+                                      }
+                                    ],
+                                    attrs: {
+                                      src:
+                                        _vm.bureauform
+                                          .frontside_director_id_photo,
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group col-md-4" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: " col-form-label",
+                                      attrs: {
+                                        for: "backside_director_i_photo"
+                                      }
+                                    },
+                                    [_vm._v("Director BackSide ID Photo")]
+                                  ),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    attrs: { type: "file", readonly: true }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.editmodeBureau,
+                                        expression: "editmodeBureau"
+                                      }
+                                    ],
+                                    attrs: {
+                                      src: _vm.updateBureauDirectorBIDPhoto(
+                                        _vm.bureauform
+                                          .backside_director_id_photo
+                                      ),
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.editmodeBureau,
+                                        expression: "!editmodeBureau"
+                                      }
+                                    ],
+                                    attrs: {
+                                      src:
+                                        _vm.bureauform
+                                          .backside_director_id_photo,
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  })
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade ",
+        attrs: {
+          id: "DirectorModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "DirectorModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered modal-lg",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  attrs: { role: "form" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      _vm.editmodeDirector
+                        ? _vm.updateDirector(_vm.directorform.id)
+                        : _vm.addDirector(_vm.directorform.organisation_id)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c(
+                      "h5",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.editmodeDirector,
+                            expression: "editmodeDirector"
+                          }
+                        ],
+                        staticClass: "modal-title",
+                        attrs: { id: "DirectorModalLabel" }
+                      },
+                      [_vm._v("Update Director")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h5",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.editmodeDirector,
+                            expression: "!editmodeDirector"
+                          }
+                        ],
+                        staticClass: "modal-title",
+                        attrs: { id: "DirectorModalLabel" }
+                      },
+                      [_vm._v("Add New Director")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "first_name" }
+                            },
+                            [_vm._v(" Director First Name")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.directorform.first_name,
+                                expression: "directorform.first_name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has(
+                                "first_name"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "first_name",
+                              placeholder: "Director First Name"
+                            },
+                            domProps: { value: _vm.directorform.first_name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.directorform,
+                                  "first_name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.directorform,
+                              field: "first_name"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "last_name" }
+                            },
+                            [_vm._v("director_Last Name ")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.directorform.last_name,
+                                expression: "directorform.last_name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has(
+                                "last_name"
+                              )
+                            },
+                            attrs: {
+                              type: "director_last_name",
+                              name: "last_name",
+                              placeholder: "Director Last Name"
+                            },
+                            domProps: { value: _vm.directorform.last_name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.directorform,
+                                  "last_name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.directorform,
+                              field: "last_name"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "email" }
+                            },
+                            [_vm._v("Email ")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.directorform.email,
+                                expression: "directorform.email"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has("email")
+                            },
+                            attrs: {
+                              type: "email",
+                              name: "email",
+                              placeholder: "Email Address"
+                            },
+                            domProps: { value: _vm.directorform.email },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.directorform,
+                                  "email",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.directorform, field: "email" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.directorform.password,
+                                expression: "directorform.password"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has(
+                                "password"
+                              )
+                            },
+                            attrs: {
+                              type: "password",
+                              id: "password",
+                              placeholder: "Password"
+                            },
+                            domProps: { value: _vm.directorform.password },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.directorform,
+                                  "password",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.directorform, field: "password" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-4" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-form-label",
+                            attrs: { for: "phone" }
+                          },
+                          [_vm._v(" Director Phone")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          [
+                            _c("vue-tel-input", {
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.directorform.errors.has(
+                                  "phone"
+                                )
+                              },
+                              attrs: { name: "phone" },
+                              on: { onInput: _vm.InputPhone },
+                              model: {
+                                value: _vm.directorform.phone,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.directorform, "phone", $$v)
+                                },
+                                expression: "directorform.phone"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              staticStyle: { color: "#e83e8c" },
+                              attrs: { form: _vm.directorform, field: "phone" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _vm.directorform.phone
+                          ? _c("div", { staticStyle: { color: "#e83e8c" } }, [
+                              _c("span", [
+                                _vm._v("Is valid: "),
+                                _c("strong", [
+                                  _vm._v(_vm._s(_vm.phone.isValid))
+                                ]),
+                                _vm._v(", ")
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v("Country: "),
+                                _c("strong", [
+                                  _vm._v(_vm._s(_vm.phone.country))
+                                ])
+                              ])
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "landline" }
+                            },
+                            [_vm._v("Landline")]
+                          ),
+                          _vm._v(" "),
+                          _c("vue-tel-input", {
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has(
+                                "landline"
+                              )
+                            },
+                            attrs: { name: "landline" },
+                            on: { onInput: _vm.InputLandline },
+                            model: {
+                              value: _vm.directorform.landline,
+                              callback: function($$v) {
+                                _vm.$set(_vm.directorform, "landline", $$v)
+                              },
+                              expression: "directorform.landline"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.directorform, field: "landline" }
+                          }),
+                          _vm._v(" "),
+                          _vm.directorform.landline
+                            ? _c("div", { staticStyle: { color: "#e83e8c" } }, [
+                                _c("span", [
+                                  _vm._v("Is valid: "),
+                                  _c("strong", [
+                                    _vm._v(_vm._s(_vm.landline.isValid))
+                                  ]),
+                                  _vm._v(", ")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", [
+                                  _vm._v("Country: "),
+                                  _c("strong", [
+                                    _vm._v(_vm._s(_vm.landline.country))
+                                  ])
+                                ])
+                              ])
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "id_no" }
+                            },
+                            [_vm._v("ID no.")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.directorform.id_no,
+                                expression: "directorform.id_no"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has("id_no")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "id_no",
+                              placeholder: "ID NO"
+                            },
+                            domProps: { value: _vm.directorform.id_no },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.directorform,
+                                  "id_no",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.directorform, field: "id_no" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "address" }
+                            },
+                            [_vm._v("Address")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.directorform.address,
+                                expression: "directorform.address"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has(
+                                "address"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "Address",
+                              placeholder: "Address"
+                            },
+                            domProps: { value: _vm.directorform.address },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.directorform,
+                                  "address",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.directorform, field: "address" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c("label", { attrs: { for: "country_id" } }, [
+                            _vm._v("Select Country")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.directorform.country_id,
+                                  expression: "directorform.country_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.directorform.errors.has(
+                                  "country_id"
+                                )
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.directorform,
+                                      "country_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.countryCounties(
+                                      _vm.directorform.country_id
+                                    )
+                                  }
+                                ]
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select Country")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Countries, function(country) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: country.id,
+                                    domProps: { value: country.id }
+                                  },
+                                  [_vm._v(_vm._s(country.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.directorform,
+                              field: "country_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "county_id" }
+                            },
+                            [_vm._v("County")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.directorform.county_id,
+                                  expression: "directorform.county_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.directorform.errors.has(
+                                  "county_id"
+                                )
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.directorform,
+                                      "county_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.countyConstituencies(
+                                      _vm.directorform.county_id
+                                    )
+                                  }
+                                ]
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select County")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Counties, function(county) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: county.id,
+                                    domProps: { value: county.id }
+                                  },
+                                  [_vm._v(_vm._s(county.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.directorform,
+                              field: "county_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "constituency_id" }
+                            },
+                            [_vm._v("Constituency")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.directorform.constituency_id,
+                                  expression: "directorform.constituency_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.directorform.errors.has(
+                                  "constituency_id"
+                                )
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.directorform,
+                                      "constituency_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.constituencyWards(
+                                      _vm.directorform.constituency_id
+                                    )
+                                  }
+                                ]
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select County")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Constituencies, function(
+                                constituency
+                              ) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: constituency.id,
+                                    domProps: { value: constituency.id }
+                                  },
+                                  [_vm._v(_vm._s(constituency.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.directorform,
+                              field: "constituency_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "ward_id" }
+                            },
+                            [_vm._v(" Ward ")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.directorform.ward_id,
+                                  expression: "directorform.ward_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.directorform.errors.has(
+                                  "ward_id"
+                                )
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.directorform,
+                                    "ward_id",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select Ward")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Wards, function(ward) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: ward.id,
+                                    domProps: { value: ward.id }
+                                  },
+                                  [_vm._v(_vm._s(ward.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.directorform, field: "ward_id" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "photo" }
+                            },
+                            [_vm._v("Director PassPort Image")]
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has("photo")
+                            },
+                            attrs: { type: "file", name: "photo" },
+                            on: {
+                              change: function($event) {
+                                return _vm.directorChangePassPhoto($event)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeDirector,
+                                expression: "editmodeDirector"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateDirectorPassPhoto(
+                                _vm.directorform.photo
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeDirector,
+                                expression: "!editmodeDirector"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.directorform.photo,
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.directorform, field: "photo" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "id_photo_front" }
+                            },
+                            [_vm._v("Director FrontSide ID Photo")]
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has(
+                                "id_photo_front"
+                              )
+                            },
+                            attrs: { type: "file", name: "id_photo_front" },
+                            on: {
+                              change: function($event) {
+                                return _vm.directorChangeIDFrontPhoto($event)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeDirector,
+                                expression: "editmodeDirector"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateDirectorIDFrontPhoto(
+                                _vm.directorform.id_photo_front
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeDirector,
+                                expression: "!editmodeDirector"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.directorform.id_photo_front,
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.directorform,
+                              field: "id_photo_front"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "backside_i_photod" }
+                            },
+                            [_vm._v("BackSide ID Photo")]
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has(
+                                "backside_id"
+                              )
+                            },
+                            attrs: { type: "file", name: "id_photo_back" },
+                            on: {
+                              change: function($event) {
+                                return _vm.directorChangeIDBackPhoto($event)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeDirector,
+                                expression: "editmodeDirector"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateDirectorIDBackPhoto(
+                                _vm.directorform.id_photo_back
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeDirector,
+                                expression: "!editmodeDirector"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.directorform.id_photo_back,
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.directorform,
+                              field: "id_photo_back"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.editmodeDirector,
+                            expression: "editmodeDirector"
+                          }
+                        ],
+                        staticClass: "btn btn-success",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Update")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.editmodeDirector,
+                            expression: "!editmodeDirector"
+                          }
+                        ],
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Create")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("S1")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Bureau Details")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Roles")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Permissions")]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { "padding-left": "14px" } }, [
+          _vm._v("Actions")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/admin/BureauAdmins.vue?vue&type=template&id=326fbd5a&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admins/organisation/admin/BureauAdmins.vue?vue&type=template&id=326fbd5a& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container-fluid mt-5" }, [
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "row justify-content-around" }, [
+        _c("div", { staticClass: "col-md" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _c("h3", { staticClass: "card-title" }, [
+                _vm._v("Bureauadmins Table")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-tools" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.newBureauadminModal()
+                      }
+                    }
+                  },
+                  [
+                    _vm._v("Add New Bureauadmin\n                       "),
+                    _c("i", { staticClass: "fas fa-plus fw" })
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "table",
+                {
+                  staticClass: "table table-bordered table-hover",
+                  attrs: { id: "example2" }
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.Bureauadmins, function(bureauadmin, index) {
+                      return _c("tr", { key: bureauadmin.id }, [
+                        _c("td", [_vm._v(_vm._s(index + 1))]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          _vm._l(bureauadmin.bureauemployees, function(bureau) {
+                            return _c(
+                              "div",
+                              { key: bureau.id, staticClass: "row" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "col",
+                                    staticStyle: { padding: "3px" }
+                                  },
+                                  [
+                                    _c("img", {
+                                      staticClass: "card-img-top",
+                                      staticStyle: { width: "100%" },
+                                      attrs: {
+                                        src: _vm.bureauadminLoadPassPhoto(
+                                          bureau.pivot.photo
+                                        ),
+                                        alt: "Card image cap"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "col",
+                                    staticStyle: { padding: "3px" }
+                                  },
+                                  [
+                                    _c("img", {
+                                      staticClass: "card-img-top",
+                                      staticStyle: { width: "100%" },
+                                      attrs: {
+                                        src: _vm.bureauadminLoadIDFrontPhoto(
+                                          bureau.pivot.id_photo_front
+                                        ),
+                                        alt: "Card image cap"
+                                      }
+                                    }),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      staticClass: "card-img-top",
+                                      staticStyle: { width: "100%" },
+                                      attrs: {
+                                        src: _vm.bureauadminLoadIDBackPhoto(
+                                          bureau.pivot.id_photo_back
+                                        ),
+                                        alt: "Card image cap"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticStyle: {
+                                      "font-weight": "bold",
+                                      "font-size": "0.7em",
+                                      "min-width": "210px",
+                                      "max-width": "400px",
+                                      "margin-top": "4px",
+                                      "padding-top": "4px",
+                                      "font-style": "italic"
+                                    }
+                                  },
+                                  [
+                                    _c("div", [
+                                      _vm._v(
+                                        _vm._s(bureauadmin.full_name) + ","
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(bureauadmin.positions, function(
+                                      position
+                                    ) {
+                                      return _c("div", { key: position.id }, [
+                                        _vm._v(
+                                          "\n                                  " +
+                                            _vm._s(position.name) +
+                                            ",\n                                  "
+                                        ),
+                                        _c(
+                                          "span",
+                                          { staticStyle: { color: "#9a009a" } },
+                                          [
+                                            _vm._v(
+                                              "\n                                      " +
+                                                _vm._s(bureau.name) +
+                                                ",\n                                  "
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    }),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v(" ID: ,"),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [_vm._v(_vm._s(bureau.pivot.id_no))]
+                                      ),
+                                      _vm._v(
+                                        ",\n                                  Phone: "
+                                      ),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [
+                                          _vm._v(
+                                            _vm._s(bureau.pivot.phone) + ","
+                                          )
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v(
+                                        "\n                                   Mail: "
+                                      ),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [
+                                          _vm._v(
+                                            _vm._s(bureauadmin.email) + ","
+                                          )
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v("P. O. Box , "),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [_vm._v(_vm._s(bureau.pivot.address))]
+                                      ),
+                                      _vm._v(
+                                        ",\n                                  "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(bureauadmin.wards, function(ward) {
+                                      return _c(
+                                        "div",
+                                        { key: ward.id },
+                                        [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticStyle: { color: "#9a009a" }
+                                            },
+                                            [_vm._v(_vm._s(ward.name))]
+                                          ),
+                                          _vm._v(
+                                            " ward,\n                                  "
+                                          ),
+                                          _vm._l(
+                                            bureauadmin.constituencies,
+                                            function(constituency) {
+                                              return _c(
+                                                "span",
+                                                {
+                                                  key: constituency.id,
+                                                  staticStyle: {
+                                                    color: "#9a009a"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                      " +
+                                                      _vm._s(constituency.name)
+                                                  )
+                                                ]
+                                              )
+                                            }
+                                          ),
+                                          _vm._v(
+                                            " constituency,\n                              "
+                                          )
+                                        ],
+                                        2
+                                      )
+                                    }),
+                                    _vm._v(" "),
+                                    _vm._l(bureauadmin.counties, function(
+                                      county
+                                    ) {
+                                      return _c(
+                                        "div",
+                                        { key: county.id },
+                                        [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticStyle: { color: "#9a009a" }
+                                            },
+                                            [_vm._v(_vm._s(county.name))]
+                                          ),
+                                          _vm._v(
+                                            " county,\n                                  "
+                                          ),
+                                          _vm._l(
+                                            bureauadmin.countries,
+                                            function(country) {
+                                              return _c(
+                                                "span",
+                                                {
+                                                  key: country.id,
+                                                  staticStyle: {
+                                                    color: "#9a009a"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                      " +
+                                                      _vm._s(country.name) +
+                                                      ",\n                                  "
+                                                  )
+                                                ]
+                                              )
+                                            }
+                                          )
+                                        ],
+                                        2
+                                      )
+                                    })
+                                  ],
+                                  2
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { staticStyle: { padding: "3px" } },
+                          _vm._l(bureauadmin.roles, function(role) {
+                            return _c(
+                              "span",
+                              { key: role.id, staticClass: "pl-2" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "btn btn-primary btn-sm ml-1 mb-2 "
+                                  },
+                                  [_vm._v(_vm._s(role.name) + " ")]
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { staticStyle: { padding: "3px" } },
+                          _vm._l(bureauadmin.permissions, function(permission) {
+                            return _c(
+                              "span",
+                              { key: permission.id, staticClass: "pl-2" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "btn btn-primary btn-sm ml-1 mb-2 "
+                                  },
+                                  [_vm._v(_vm._s(permission.name) + " ")]
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { padding: "3px" } }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "clearfix",
+                              staticStyle: {
+                                "font-weight": "bold",
+                                "font-size": "0.7em"
+                              }
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "float-left",
+                                  staticStyle: { "margin-bottom": "-0.5em" }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticStyle: { "margin-bottom": "0.25em" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        " Updated at:\n                                  "
+                                      ),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("dateformat")(
+                                                bureauadmin.created_at
+                                              )
+                                            ) + " "
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "float-right" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.editBureauadminModal(
+                                          bureauadmin.id
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fa fa-edit blue" })]
+                                ),
+                                _vm._v(
+                                  "\n                              /\n                              "
+                                ),
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.deleteBureauadmin(
+                                          bureauadmin.id
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fa fa-trash red" })]
+                                )
+                              ])
+                            ]
+                          )
+                        ])
+                      ])
+                    }),
+                    0
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade ",
+        attrs: {
+          id: "BureauadminModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "BureauadminModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered modal-lg",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  attrs: { role: "form" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      _vm.editmodeBureauadmin
+                        ? _vm.updateBureauadmin(_vm.bureauadminform.id)
+                        : _vm.addBureauadmin(_vm.bureauadminform.bureau_id)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c(
+                      "h5",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.editmodeBureauadmin,
+                            expression: "editmodeBureauadmin"
+                          }
+                        ],
+                        staticClass: "modal-title",
+                        attrs: { id: "BureauadminModalLabel" }
+                      },
+                      [_vm._v("Update Bureauadmin")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h5",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.editmodeBureauadmin,
+                            expression: "!editmodeBureauadmin"
+                          }
+                        ],
+                        staticClass: "modal-title",
+                        attrs: { id: "BureauadminModalLabel" }
+                      },
+                      [_vm._v("Add New Bureauadmin")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "first_name" }
+                            },
+                            [_vm._v(" Bureauadmin First Name")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.bureauadminform.first_name,
+                                expression: "bureauadminform.first_name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.bureauadminform.errors.has(
+                                "first_name"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "first_name",
+                              placeholder: "Bureauadmin First Name"
+                            },
+                            domProps: { value: _vm.bureauadminform.first_name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.bureauadminform,
+                                  "first_name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.bureauadminform,
+                              field: "first_name"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "last_name" }
+                            },
+                            [_vm._v("bureauadmin_Last Name ")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.bureauadminform.last_name,
+                                expression: "bureauadminform.last_name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.bureauadminform.errors.has(
+                                "last_name"
+                              )
+                            },
+                            attrs: {
+                              type: "bureauadmin_last_name",
+                              name: "last_name",
+                              placeholder: "Bureauadmin Last Name"
+                            },
+                            domProps: { value: _vm.bureauadminform.last_name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.bureauadminform,
+                                  "last_name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.bureauadminform,
+                              field: "last_name"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "email" }
+                            },
+                            [_vm._v("Email ")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.bureauadminform.email,
+                                expression: "bureauadminform.email"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.bureauadminform.errors.has(
+                                "email"
+                              )
+                            },
+                            attrs: {
+                              type: "email",
+                              name: "email",
+                              placeholder: "Email Address"
+                            },
+                            domProps: { value: _vm.bureauadminform.email },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.bureauadminform,
+                                  "email",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.bureauadminform, field: "email" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.bureauadminform.password,
+                                expression: "bureauadminform.password"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.bureauadminform.errors.has(
+                                "password"
+                              )
+                            },
+                            attrs: {
+                              type: "password",
+                              id: "password",
+                              placeholder: "Password"
+                            },
+                            domProps: { value: _vm.bureauadminform.password },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.bureauadminform,
+                                  "password",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.bureauadminform,
+                              field: "password"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-4" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-form-label",
+                            attrs: { for: "phone" }
+                          },
+                          [_vm._v(" Bureauadmin Phone")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          [
+                            _c("vue-tel-input", {
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.bureauadminform.errors.has(
+                                  "phone"
+                                )
+                              },
+                              attrs: { name: "phone" },
+                              on: { onInput: _vm.InputPhone },
+                              model: {
+                                value: _vm.bureauadminform.phone,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.bureauadminform, "phone", $$v)
+                                },
+                                expression: "bureauadminform.phone"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              staticStyle: { color: "#e83e8c" },
+                              attrs: {
+                                form: _vm.bureauadminform,
+                                field: "phone"
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _vm.bureauadminform.phone
+                          ? _c("div", { staticStyle: { color: "#e83e8c" } }, [
+                              _c("span", [
+                                _vm._v("Is valid: "),
+                                _c("strong", [
+                                  _vm._v(_vm._s(_vm.phone.isValid))
+                                ]),
+                                _vm._v(", ")
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v("Country: "),
+                                _c("strong", [
+                                  _vm._v(_vm._s(_vm.phone.country))
+                                ])
+                              ])
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "landline" }
+                            },
+                            [_vm._v("Landline")]
+                          ),
+                          _vm._v(" "),
+                          _c("vue-tel-input", {
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.bureauadminform.errors.has(
+                                "landline"
+                              )
+                            },
+                            attrs: { name: "landline" },
+                            on: { onInput: _vm.InputLandline },
+                            model: {
+                              value: _vm.bureauadminform.landline,
+                              callback: function($$v) {
+                                _vm.$set(_vm.bureauadminform, "landline", $$v)
+                              },
+                              expression: "bureauadminform.landline"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.bureauadminform,
+                              field: "landline"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.bureauadminform.landline
+                            ? _c("div", { staticStyle: { color: "#e83e8c" } }, [
+                                _c("span", [
+                                  _vm._v("Is valid: "),
+                                  _c("strong", [
+                                    _vm._v(_vm._s(_vm.landline.isValid))
+                                  ]),
+                                  _vm._v(", ")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", [
+                                  _vm._v("Country: "),
+                                  _c("strong", [
+                                    _vm._v(_vm._s(_vm.landline.country))
+                                  ])
+                                ])
+                              ])
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "id_no" }
+                            },
+                            [_vm._v("ID no.")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.bureauadminform.id_no,
+                                expression: "bureauadminform.id_no"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.bureauadminform.errors.has(
+                                "id_no"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "id_no",
+                              placeholder: "ID NO"
+                            },
+                            domProps: { value: _vm.bureauadminform.id_no },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.bureauadminform,
+                                  "id_no",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.bureauadminform, field: "id_no" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "address" }
+                            },
+                            [_vm._v("Address")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.bureauadminform.address,
+                                expression: "bureauadminform.address"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.bureauadminform.errors.has(
+                                "address"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "Address",
+                              placeholder: "Address"
+                            },
+                            domProps: { value: _vm.bureauadminform.address },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.bureauadminform,
+                                  "address",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.bureauadminform,
+                              field: "address"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c("label", { attrs: { for: "country_id" } }, [
+                            _vm._v("Select Country")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.bureauadminform.country_id,
+                                  expression: "bureauadminform.country_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.bureauadminform.errors.has(
+                                  "country_id"
+                                )
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.bureauadminform,
+                                      "country_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.countryCounties(
+                                      _vm.bureauadminform.country_id
+                                    )
+                                  }
+                                ]
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select Country")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Countries, function(country) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: country.id,
+                                    domProps: { value: country.id }
+                                  },
+                                  [_vm._v(_vm._s(country.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.bureauadminform,
+                              field: "country_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "county_id" }
+                            },
+                            [_vm._v("County")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.bureauadminform.county_id,
+                                  expression: "bureauadminform.county_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.bureauadminform.errors.has(
+                                  "county_id"
+                                )
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.bureauadminform,
+                                      "county_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.countyConstituencies(
+                                      _vm.bureauadminform.county_id
+                                    )
+                                  }
+                                ]
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select County")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Counties, function(county) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: county.id,
+                                    domProps: { value: county.id }
+                                  },
+                                  [_vm._v(_vm._s(county.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.bureauadminform,
+                              field: "county_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "constituency_id" }
+                            },
+                            [_vm._v("Constituency")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.bureauadminform.constituency_id,
+                                  expression: "bureauadminform.constituency_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.bureauadminform.errors.has(
+                                  "constituency_id"
+                                )
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.bureauadminform,
+                                      "constituency_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.constituencyWards(
+                                      _vm.bureauadminform.constituency_id
+                                    )
+                                  }
+                                ]
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select County")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Constituencies, function(
+                                constituency
+                              ) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: constituency.id,
+                                    domProps: { value: constituency.id }
+                                  },
+                                  [_vm._v(_vm._s(constituency.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.bureauadminform,
+                              field: "constituency_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "ward_id" }
+                            },
+                            [_vm._v(" Ward ")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.bureauadminform.ward_id,
+                                  expression: "bureauadminform.ward_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.bureauadminform.errors.has(
+                                  "ward_id"
+                                )
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.bureauadminform,
+                                    "ward_id",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select Ward")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Wards, function(ward) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: ward.id,
+                                    domProps: { value: ward.id }
+                                  },
+                                  [_vm._v(_vm._s(ward.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.bureauadminform,
+                              field: "ward_id"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "photo" }
+                            },
+                            [_vm._v("Bureauadmin PassPort Image")]
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: {
+                              "is-invalid": _vm.bureauadminform.errors.has(
+                                "photo"
+                              )
+                            },
+                            attrs: { type: "file", name: "photo" },
+                            on: {
+                              change: function($event) {
+                                return _vm.bureauadminChangePassPhoto($event)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeBureauadmin,
+                                expression: "editmodeBureauadmin"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateBureauadminPassPhoto(
+                                _vm.bureauadminform.photo
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeBureauadmin,
+                                expression: "!editmodeBureauadmin"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.bureauadminform.photo,
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.bureauadminform, field: "photo" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "id_photo_front" }
+                            },
+                            [_vm._v("Bureauadmin FrontSide ID Photo")]
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: {
+                              "is-invalid": _vm.bureauadminform.errors.has(
+                                "id_photo_front"
+                              )
+                            },
+                            attrs: { type: "file", name: "id_photo_front" },
+                            on: {
+                              change: function($event) {
+                                return _vm.bureauadminChangeIDFrontPhoto($event)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeBureauadmin,
+                                expression: "editmodeBureauadmin"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateBureauadminIDFrontPhoto(
+                                _vm.bureauadminform.id_photo_front
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeBureauadmin,
+                                expression: "!editmodeBureauadmin"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.bureauadminform.id_photo_front,
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.bureauadminform,
+                              field: "id_photo_front"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "backside_i_photod" }
+                            },
+                            [_vm._v("BackSide ID Photo")]
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: {
+                              "is-invalid": _vm.bureauadminform.errors.has(
+                                "backside_id"
+                              )
+                            },
+                            attrs: { type: "file", name: "id_photo_back" },
+                            on: {
+                              change: function($event) {
+                                return _vm.bureauadminChangeIDBackPhoto($event)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeBureauadmin,
+                                expression: "editmodeBureauadmin"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateBureauadminIDBackPhoto(
+                                _vm.bureauadminform.id_photo_back
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeBureauadmin,
+                                expression: "!editmodeBureauadmin"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.bureauadminform.id_photo_back,
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.bureauadminform,
+                              field: "id_photo_back"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.editmodeBureauadmin,
+                            expression: "editmodeBureauadmin"
+                          }
+                        ],
+                        staticClass: "btn btn-success",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Update")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.editmodeBureauadmin,
+                            expression: "!editmodeBureauadmin"
+                          }
+                        ],
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Create")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("S1")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Bureauadmin Details")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Roles")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Permissions")]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { "padding-left": "14px" } }, [
+          _vm._v("Actions")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/superadmin/Employees/Employees.vue?vue&type=template&id=739d2d96&":
 /*!*****************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admins/organisation/superadmin/Employees/Employees.vue?vue&type=template&id=739d2d96& ***!
@@ -76122,7 +85851,7 @@ var render = function() {
         _c("div", { staticClass: "col-md" }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-header" }, [
-              _c("h3", { staticClass: "card-title" }, [_vm._v("Users Table")]),
+              _c("h3", { staticClass: "card-title" }, [_vm._v("Admins Table")]),
               _vm._v(" "),
               _c("div", { staticClass: "card-tools" }, [
                 _c(
@@ -76132,12 +85861,12 @@ var render = function() {
                     on: {
                       click: function($event) {
                         $event.preventDefault()
-                        return _vm.newUserModal()
+                        return _vm.newAdminModal()
                       }
                     }
                   },
                   [
-                    _vm._v("Add New User\n                       "),
+                    _vm._v("Add New Admin\n                       "),
                     _c("i", { staticClass: "fas fa-plus fw" })
                   ]
                 )
@@ -76156,15 +85885,257 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "tbody",
-                    _vm._l(_vm.Users, function(user, index) {
-                      return _c("tr", { key: user.id }, [
+                    _vm._l(_vm.Admins, function(admin, index) {
+                      return _c("tr", { key: admin.id }, [
                         _c("td", [_vm._v(_vm._s(index + 1))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(user.full_name))]),
                         _vm._v(" "),
                         _c(
                           "td",
-                          _vm._l(user.roles, function(role) {
+                          _vm._l(admin.organisationemployees, function(
+                            organisation
+                          ) {
+                            return _c(
+                              "div",
+                              { key: organisation.id, staticClass: "row" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "col",
+                                    staticStyle: { padding: "3px" }
+                                  },
+                                  [
+                                    _c("img", {
+                                      staticClass: "card-img-top",
+                                      staticStyle: { width: "100%" },
+                                      attrs: {
+                                        src: _vm.adminLoadPassPhoto(
+                                          organisation.pivot.photo
+                                        ),
+                                        alt: "Card image cap"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "col",
+                                    staticStyle: { padding: "3px" }
+                                  },
+                                  [
+                                    _c("img", {
+                                      staticClass: "card-img-top",
+                                      staticStyle: { width: "100%" },
+                                      attrs: {
+                                        src: _vm.adminLoadIDFrontPhoto(
+                                          organisation.pivot.id_photo_front
+                                        ),
+                                        alt: "Card image cap"
+                                      }
+                                    }),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      staticClass: "card-img-top",
+                                      staticStyle: { width: "100%" },
+                                      attrs: {
+                                        src: _vm.adminLoadIDBackPhoto(
+                                          organisation.pivot.id_photo_back
+                                        ),
+                                        alt: "Card image cap"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticStyle: {
+                                      "font-weight": "bold",
+                                      "font-size": "0.7em",
+                                      "min-width": "210px",
+                                      "max-width": "400px",
+                                      "margin-top": "4px",
+                                      "padding-top": "4px",
+                                      "font-style": "italic"
+                                    }
+                                  },
+                                  [
+                                    _c("div", [
+                                      _vm._v(_vm._s(admin.full_name) + ",")
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(admin.positions, function(position) {
+                                      return _c("div", { key: position.id }, [
+                                        _vm._v(
+                                          "\n                                  " +
+                                            _vm._s(position.name) +
+                                            ",\n                                  "
+                                        ),
+                                        _c(
+                                          "span",
+                                          { staticStyle: { color: "#9a009a" } },
+                                          [
+                                            _vm._v(
+                                              "\n                                      " +
+                                                _vm._s(organisation.name) +
+                                                ",\n                                  "
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    }),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v(" ID: ,"),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [
+                                          _vm._v(
+                                            _vm._s(organisation.pivot.id_no)
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(
+                                        ",\n                                  Phone: "
+                                      ),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [
+                                          _vm._v(
+                                            _vm._s(organisation.pivot.phone) +
+                                              ","
+                                          )
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v(
+                                        "\n                                   Mail: "
+                                      ),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [_vm._v(_vm._s(admin.email) + ",")]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v("P. O. Box , "),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [
+                                          _vm._v(
+                                            _vm._s(organisation.pivot.address)
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(
+                                        ",\n                                  "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(admin.wards, function(ward) {
+                                      return _c(
+                                        "div",
+                                        { key: ward.id },
+                                        [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticStyle: { color: "#9a009a" }
+                                            },
+                                            [_vm._v(_vm._s(ward.name))]
+                                          ),
+                                          _vm._v(
+                                            " ward,\n                                  "
+                                          ),
+                                          _vm._l(admin.constituencies, function(
+                                            constituency
+                                          ) {
+                                            return _c(
+                                              "span",
+                                              {
+                                                key: constituency.id,
+                                                staticStyle: {
+                                                  color: "#9a009a"
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                      " +
+                                                    _vm._s(constituency.name)
+                                                )
+                                              ]
+                                            )
+                                          }),
+                                          _vm._v(
+                                            " constituency,\n                              "
+                                          )
+                                        ],
+                                        2
+                                      )
+                                    }),
+                                    _vm._v(" "),
+                                    _vm._l(admin.counties, function(county) {
+                                      return _c(
+                                        "div",
+                                        { key: county.id },
+                                        [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticStyle: { color: "#9a009a" }
+                                            },
+                                            [_vm._v(_vm._s(county.name))]
+                                          ),
+                                          _vm._v(
+                                            " county,\n                                  "
+                                          ),
+                                          _vm._l(admin.countries, function(
+                                            country
+                                          ) {
+                                            return _c(
+                                              "span",
+                                              {
+                                                key: country.id,
+                                                staticStyle: {
+                                                  color: "#9a009a"
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                      " +
+                                                    _vm._s(country.name) +
+                                                    ",\n                                  "
+                                                )
+                                              ]
+                                            )
+                                          })
+                                        ],
+                                        2
+                                      )
+                                    })
+                                  ],
+                                  2
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { staticStyle: { padding: "3px" } },
+                          _vm._l(admin.roles, function(role) {
                             return _c(
                               "span",
                               { key: role.id, staticClass: "pl-2" },
@@ -76185,7 +86156,8 @@ var render = function() {
                         _vm._v(" "),
                         _c(
                           "td",
-                          _vm._l(user.permissions, function(permission) {
+                          { staticStyle: { padding: "3px" } },
+                          _vm._l(admin.permissions, function(permission) {
                             return _c(
                               "span",
                               { key: permission.id, staticClass: "pl-2" },
@@ -76204,41 +86176,83 @@ var render = function() {
                           0
                         ),
                         _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            _vm._s(_vm._f("dateformat")(user.created_at)) + " "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
+                        _c("td", { staticStyle: { padding: "3px" } }, [
                           _c(
-                            "a",
+                            "div",
                             {
-                              attrs: { href: "" },
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                  return _vm.editUserModal(user.id)
-                                }
+                              staticClass: "clearfix",
+                              staticStyle: {
+                                "font-weight": "bold",
+                                "font-size": "0.7em"
                               }
                             },
-                            [_c("i", { staticClass: "fa fa-edit blue" })]
-                          ),
-                          _vm._v(
-                            "\n                       /\n                       "
-                          ),
-                          _c(
-                            "a",
-                            {
-                              attrs: { href: "" },
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                  return _vm.deleteUser(user.id)
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "fa fa-trash red" })]
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "float-left",
+                                  staticStyle: { "margin-bottom": "-0.5em" }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticStyle: { "margin-bottom": "0.25em" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        " Updated at:\n                                  "
+                                      ),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("dateformat")(
+                                                admin.created_at
+                                              )
+                                            ) + " "
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "float-right" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.editAdminModal(admin.id)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fa fa-edit blue" })]
+                                ),
+                                _vm._v(
+                                  "\n                              /\n                              "
+                                ),
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.deleteAdmin(admin.id)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fa fa-trash red" })]
+                                )
+                              ])
+                            ]
                           )
                         ])
                       ])
@@ -76256,12 +86270,12 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "modal fade",
+        staticClass: "modal fade ",
         attrs: {
-          id: "UserModal",
+          id: "AdminModal",
           tabindex: "-1",
           role: "dialog",
-          "aria-labelledby": "UserModalLabel",
+          "aria-labelledby": "AdminModalLabel",
           "aria-hidden": "true"
         }
       },
@@ -76269,48 +86283,12 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "modal-dialog modal-dialog-centered",
+            staticClass: "modal-dialog modal-dialog-centered modal-lg",
             attrs: { role: "document" }
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.editmodeUser,
-                        expression: "editmodeUser"
-                      }
-                    ],
-                    staticClass: "modal-title",
-                    attrs: { id: "UserModalLabel" }
-                  },
-                  [_vm._v("Update Organisation User")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "h5",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: !_vm.editmodeUser,
-                        expression: "!editmodeUser"
-                      }
-                    ],
-                    staticClass: "modal-title",
-                    attrs: { id: "UserModalLabel" }
-                  },
-                  [_vm._v("Add New Organisation User")]
-                ),
-                _vm._v(" "),
-                _vm._m(1)
-              ]),
+              _vm._m(1),
               _vm._v(" "),
               _c(
                 "form",
@@ -76319,18 +86297,52 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      _vm.editmodeUser
-                        ? _vm.updateUser(_vm.userform.id)
-                        : _vm.addUser()
+                      _vm.editmodeAdmin
+                        ? _vm.updateAdmin(_vm.adminform.id)
+                        : _vm.addAdmin(_vm.adminform.organisation_id)
                     }
                   }
                 },
                 [
                   _c("div", { staticClass: "modal-body" }, [
-                    _c("div", { staticClass: " row" }, [
+                    _c(
+                      "h5",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.editmodeAdmin,
+                            expression: "editmodeAdmin"
+                          }
+                        ],
+                        staticClass: "modal-title",
+                        attrs: { id: "AdminModalLabel" }
+                      },
+                      [_vm._v("Update Admin")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h5",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.editmodeAdmin,
+                            expression: "!editmodeAdmin"
+                          }
+                        ],
+                        staticClass: "modal-title",
+                        attrs: { id: "AdminModalLabel" }
+                      },
+                      [_vm._v("Add New Admin")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
                       _c(
                         "div",
-                        { staticClass: "form-group col-md-6" },
+                        { staticClass: "form-group col-md-4" },
                         [
                           _c(
                             "label",
@@ -76338,7 +86350,7 @@ var render = function() {
                               staticClass: "col-form-label",
                               attrs: { for: "first_name" }
                             },
-                            [_vm._v(" First Name")]
+                            [_vm._v(" Admin First Name")]
                           ),
                           _vm._v(" "),
                           _c("input", {
@@ -76346,29 +86358,29 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.userform.first_name,
-                                expression: "userform.first_name"
+                                value: _vm.adminform.first_name,
+                                expression: "adminform.first_name"
                               }
                             ],
                             staticClass: "form-control",
                             class: {
-                              "is-invalid": _vm.userform.errors.has(
+                              "is-invalid": _vm.adminform.errors.has(
                                 "first_name"
                               )
                             },
                             attrs: {
                               type: "text",
                               name: "first_name",
-                              placeholder: "First Name"
+                              placeholder: "Admin First Name"
                             },
-                            domProps: { value: _vm.userform.first_name },
+                            domProps: { value: _vm.adminform.first_name },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
                                   return
                                 }
                                 _vm.$set(
-                                  _vm.userform,
+                                  _vm.adminform,
                                   "first_name",
                                   $event.target.value
                                 )
@@ -76377,7 +86389,8 @@ var render = function() {
                           }),
                           _vm._v(" "),
                           _c("has-error", {
-                            attrs: { form: _vm.userform, field: "first_name" }
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.adminform, field: "first_name" }
                           })
                         ],
                         1
@@ -76385,7 +86398,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "form-group col-md-6" },
+                        { staticClass: "form-group col-md-4" },
                         [
                           _c(
                             "label",
@@ -76393,7 +86406,7 @@ var render = function() {
                               staticClass: " col-form-label",
                               attrs: { for: "last_name" }
                             },
-                            [_vm._v("Last Name")]
+                            [_vm._v("admin_Last Name ")]
                           ),
                           _vm._v(" "),
                           _c("input", {
@@ -76401,27 +86414,29 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.userform.last_name,
-                                expression: "userform.last_name"
+                                value: _vm.adminform.last_name,
+                                expression: "adminform.last_name"
                               }
                             ],
                             staticClass: "form-control",
                             class: {
-                              "is-invalid": _vm.userform.errors.has("last_name")
+                              "is-invalid": _vm.adminform.errors.has(
+                                "last_name"
+                              )
                             },
                             attrs: {
-                              type: "text",
+                              type: "admin_last_name",
                               name: "last_name",
-                              placeholder: "Last Name"
+                              placeholder: "Admin Last Name"
                             },
-                            domProps: { value: _vm.userform.last_name },
+                            domProps: { value: _vm.adminform.last_name },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
                                   return
                                 }
                                 _vm.$set(
-                                  _vm.userform,
+                                  _vm.adminform,
                                   "last_name",
                                   $event.target.value
                                 )
@@ -76430,25 +86445,24 @@ var render = function() {
                           }),
                           _vm._v(" "),
                           _c("has-error", {
-                            attrs: { form: _vm.userform, field: "last_name" }
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.adminform, field: "last_name" }
                           })
                         ],
                         1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: " row" }, [
+                      ),
+                      _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "form-group col-md-12" },
+                        { staticClass: "form-group col-md-4" },
                         [
                           _c(
                             "label",
                             {
-                              staticClass: "col-form-label",
+                              staticClass: " col-form-label",
                               attrs: { for: "email" }
                             },
-                            [_vm._v("E-Mail Address")]
+                            [_vm._v("Email ")]
                           ),
                           _vm._v(" "),
                           _c("input", {
@@ -76456,27 +86470,27 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.userform.email,
-                                expression: "userform.email"
+                                value: _vm.adminform.email,
+                                expression: "adminform.email"
                               }
                             ],
                             staticClass: "form-control",
                             class: {
-                              "is-invalid": _vm.userform.errors.has("email")
+                              "is-invalid": _vm.adminform.errors.has("email")
                             },
                             attrs: {
                               type: "email",
                               name: "email",
-                              placeholder: "E-Mail Address"
+                              placeholder: "Email Address"
                             },
-                            domProps: { value: _vm.userform.email },
+                            domProps: { value: _vm.adminform.email },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
                                   return
                                 }
                                 _vm.$set(
-                                  _vm.userform,
+                                  _vm.adminform,
                                   "email",
                                   $event.target.value
                                 )
@@ -76485,7 +86499,8 @@ var render = function() {
                           }),
                           _vm._v(" "),
                           _c("has-error", {
-                            attrs: { form: _vm.userform, field: "email" }
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.adminform, field: "email" }
                           })
                         ],
                         1
@@ -76495,8 +86510,281 @@ var render = function() {
                     _c("div", { staticClass: " row" }, [
                       _c(
                         "div",
-                        { staticClass: "form-group col-md-6" },
+                        { staticClass: "form-group col-md-4" },
                         [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.adminform.password,
+                                expression: "adminform.password"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.adminform.errors.has("password")
+                            },
+                            attrs: {
+                              type: "password",
+                              id: "password",
+                              placeholder: "Password"
+                            },
+                            domProps: { value: _vm.adminform.password },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.adminform,
+                                  "password",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.adminform, field: "password" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-4" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-form-label",
+                            attrs: { for: "phone" }
+                          },
+                          [_vm._v(" Admin Phone")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          [
+                            _c("vue-tel-input", {
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.adminform.errors.has("phone")
+                              },
+                              attrs: { name: "phone" },
+                              on: { onInput: _vm.InputPhone },
+                              model: {
+                                value: _vm.adminform.phone,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.adminform, "phone", $$v)
+                                },
+                                expression: "adminform.phone"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              staticStyle: { color: "#e83e8c" },
+                              attrs: { form: _vm.adminform, field: "phone" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _vm.adminform.phone
+                          ? _c("div", { staticStyle: { color: "#e83e8c" } }, [
+                              _c("span", [
+                                _vm._v("Is valid: "),
+                                _c("strong", [
+                                  _vm._v(_vm._s(_vm.phone.isValid))
+                                ]),
+                                _vm._v(", ")
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v("Country: "),
+                                _c("strong", [
+                                  _vm._v(_vm._s(_vm.phone.country))
+                                ])
+                              ])
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "landline" }
+                            },
+                            [_vm._v("Landline")]
+                          ),
+                          _vm._v(" "),
+                          _c("vue-tel-input", {
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.adminform.errors.has("landline")
+                            },
+                            attrs: { name: "landline" },
+                            on: { onInput: _vm.InputLandline },
+                            model: {
+                              value: _vm.adminform.landline,
+                              callback: function($$v) {
+                                _vm.$set(_vm.adminform, "landline", $$v)
+                              },
+                              expression: "adminform.landline"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.adminform, field: "landline" }
+                          }),
+                          _vm._v(" "),
+                          _vm.adminform.landline
+                            ? _c("div", { staticStyle: { color: "#e83e8c" } }, [
+                                _c("span", [
+                                  _vm._v("Is valid: "),
+                                  _c("strong", [
+                                    _vm._v(_vm._s(_vm.landline.isValid))
+                                  ]),
+                                  _vm._v(", ")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", [
+                                  _vm._v("Country: "),
+                                  _c("strong", [
+                                    _vm._v(_vm._s(_vm.landline.country))
+                                  ])
+                                ])
+                              ])
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "id_no" }
+                            },
+                            [_vm._v("ID no.")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.adminform.id_no,
+                                expression: "adminform.id_no"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.adminform.errors.has("id_no")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "id_no",
+                              placeholder: "ID NO"
+                            },
+                            domProps: { value: _vm.adminform.id_no },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.adminform,
+                                  "id_no",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.adminform, field: "id_no" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "address" }
+                            },
+                            [_vm._v("Address")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.adminform.address,
+                                expression: "adminform.address"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.adminform.errors.has("address")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "Address",
+                              placeholder: "Address"
+                            },
+                            domProps: { value: _vm.adminform.address },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.adminform,
+                                  "address",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.adminform, field: "address" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c("label", { attrs: { for: "country_id" } }, [
+                            _vm._v("Select Country")
+                          ]),
+                          _vm._v(" "),
                           _c(
                             "select",
                             {
@@ -76504,17 +86792,282 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.userform.user_type,
-                                  expression: "userform.user_type"
+                                  value: _vm.adminform.country_id,
+                                  expression: "adminform.country_id"
                                 }
                               ],
                               staticClass: "form-control",
                               class: {
-                                "is-invalid": _vm.userform.errors.has(
-                                  "user_type"
+                                "is-invalid": _vm.adminform.errors.has(
+                                  "country_id"
                                 )
                               },
-                              attrs: { name: "user_type", id: "user_type" },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.adminform,
+                                      "country_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.countryCounties(
+                                      _vm.adminform.country_id
+                                    )
+                                  }
+                                ]
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select Country")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Countries, function(country) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: country.id,
+                                    domProps: { value: country.id }
+                                  },
+                                  [_vm._v(_vm._s(country.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.adminform, field: "country_id" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "county_id" }
+                            },
+                            [_vm._v("County")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.adminform.county_id,
+                                  expression: "adminform.county_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.adminform.errors.has(
+                                  "county_id"
+                                )
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.adminform,
+                                      "county_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.countyConstituencies(
+                                      _vm.adminform.county_id
+                                    )
+                                  }
+                                ]
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select County")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Counties, function(county) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: county.id,
+                                    domProps: { value: county.id }
+                                  },
+                                  [_vm._v(_vm._s(county.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.adminform, field: "county_id" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "constituency_id" }
+                            },
+                            [_vm._v("Constituency")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.adminform.constituency_id,
+                                  expression: "adminform.constituency_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.adminform.errors.has(
+                                  "constituency_id"
+                                )
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.adminform,
+                                      "constituency_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.constituencyWards(
+                                      _vm.adminform.constituency_id
+                                    )
+                                  }
+                                ]
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select County")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Constituencies, function(
+                                constituency
+                              ) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: constituency.id,
+                                    domProps: { value: constituency.id }
+                                  },
+                                  [_vm._v(_vm._s(constituency.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.adminform,
+                              field: "constituency_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "ward_id" }
+                            },
+                            [_vm._v(" Ward ")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.adminform.ward_id,
+                                  expression: "adminform.ward_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.adminform.errors.has(
+                                  "ward_id"
+                                )
+                              },
                               on: {
                                 change: function($event) {
                                   var $$selectedVal = Array.prototype.filter
@@ -76527,8 +87080,8 @@ var render = function() {
                                       return val
                                     })
                                   _vm.$set(
-                                    _vm.userform,
-                                    "user_type",
+                                    _vm.adminform,
+                                    "ward_id",
                                     $event.target.multiple
                                       ? $$selectedVal
                                       : $$selectedVal[0]
@@ -76537,26 +87090,99 @@ var render = function() {
                               }
                             },
                             [
-                              _c("option", { attrs: { value: "" } }, [
-                                _vm._v("Select User Role")
-                              ]),
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select Ward")]
+                              ),
                               _vm._v(" "),
-                              _c("option", { attrs: { value: "Director" } }, [
-                                _vm._v("Director")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "Admin" } }, [
-                                _vm._v(" Admin")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "Accounts" } }, [
-                                _vm._v(" Accounts")
-                              ])
-                            ]
+                              _vm._l(_vm.Wards, function(ward) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: ward.id,
+                                    domProps: { value: ward.id }
+                                  },
+                                  [_vm._v(_vm._s(ward.name))]
+                                )
+                              })
+                            ],
+                            2
                           ),
                           _vm._v(" "),
                           _c("has-error", {
-                            attrs: { form: _vm.userform, field: "user_type" }
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.adminform, field: "ward_id" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "photo" }
+                            },
+                            [_vm._v("Admin PassPort Image")]
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: {
+                              "is-invalid": _vm.adminform.errors.has("photo")
+                            },
+                            attrs: { type: "file", name: "photo" },
+                            on: {
+                              change: function($event) {
+                                return _vm.adminChangePassPhoto($event)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeAdmin,
+                                expression: "editmodeAdmin"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateAdminPassPhoto(
+                                _vm.adminform.photo
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeAdmin,
+                                expression: "!editmodeAdmin"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.adminform.photo,
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.adminform, field: "photo" }
                           })
                         ],
                         1
@@ -76564,200 +87190,150 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "form-group col-md-6" },
+                        { staticClass: "form-group col-md-4" },
                         [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "id_photo_front" }
+                            },
+                            [_vm._v("Admin FrontSide ID Photo")]
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
                           _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.userform.password,
-                                expression: "userform.password"
-                              }
-                            ],
-                            staticClass: "form-control",
                             class: {
-                              "is-invalid": _vm.userform.errors.has("password")
+                              "is-invalid": _vm.adminform.errors.has(
+                                "id_photo_front"
+                              )
                             },
-                            attrs: {
-                              type: "password",
-                              id: "password",
-                              placeholder: "Password"
-                            },
-                            domProps: { value: _vm.userform.password },
+                            attrs: { type: "file", name: "id_photo_front" },
                             on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.userform,
-                                  "password",
-                                  $event.target.value
-                                )
+                              change: function($event) {
+                                return _vm.adminChangeIDFrontPhoto($event)
                               }
                             }
                           }),
                           _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeAdmin,
+                                expression: "editmodeAdmin"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateAdminIDFrontPhoto(
+                                _vm.adminform.id_photo_front
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeAdmin,
+                                expression: "!editmodeAdmin"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.adminform.id_photo_front,
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
                           _c("has-error", {
-                            attrs: { form: _vm.userform, field: "password" }
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.adminform,
+                              field: "id_photo_front"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "backside_i_photod" }
+                            },
+                            [_vm._v("BackSide ID Photo")]
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: {
+                              "is-invalid": _vm.adminform.errors.has(
+                                "backside_id"
+                              )
+                            },
+                            attrs: { type: "file", name: "id_photo_back" },
+                            on: {
+                              change: function($event) {
+                                return _vm.adminChangeIDBackPhoto($event)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeAdmin,
+                                expression: "editmodeAdmin"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateAdminIDBackPhoto(
+                                _vm.adminform.id_photo_back
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeAdmin,
+                                expression: "!editmodeAdmin"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.adminform.id_photo_back,
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.adminform,
+                              field: "id_photo_back"
+                            }
                           })
                         ],
                         1
                       )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", [_vm._v("Select Roles")]),
-                        _vm._v(" "),
-                        _vm._l(_vm.Roles, function(role) {
-                          return _c("div", { key: role.id }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.userform.roles,
-                                  expression: "userform.roles"
-                                }
-                              ],
-                              attrs: { type: "checkbox" },
-                              domProps: {
-                                value: role.name,
-                                checked: Array.isArray(_vm.userform.roles)
-                                  ? _vm._i(_vm.userform.roles, role.name) > -1
-                                  : _vm.userform.roles
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a = _vm.userform.roles,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = role.name,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        _vm.$set(
-                                          _vm.userform,
-                                          "roles",
-                                          $$a.concat([$$v])
-                                        )
-                                    } else {
-                                      $$i > -1 &&
-                                        _vm.$set(
-                                          _vm.userform,
-                                          "roles",
-                                          $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1))
-                                        )
-                                    }
-                                  } else {
-                                    _vm.$set(_vm.userform, "roles", $$c)
-                                  }
-                                }
-                              }
-                            }),
-                            _vm._v(
-                              _vm._s(role.name) + "\n                          "
-                            )
-                          ])
-                        }),
-                        _vm._v(" "),
-                        _c("hr"),
-                        _vm._v(" "),
-                        _c("div", [
-                          _c(
-                            "span",
-                            { staticClass: "btn btn-info btn-sm ml-2 mb-2" },
-                            [_vm._v(_vm._s(_vm.userform.roles))]
-                          )
-                        ])
-                      ],
-                      2
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", [_vm._v("Select Permissions")]),
-                        _vm._v(" "),
-                        _vm._l(_vm.Permissions, function(permission) {
-                          return _c("div", { key: permission.id }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.userform.permissions,
-                                  expression: "userform.permissions"
-                                }
-                              ],
-                              attrs: { type: "checkbox" },
-                              domProps: {
-                                value: permission.name,
-                                checked: Array.isArray(_vm.userform.permissions)
-                                  ? _vm._i(
-                                      _vm.userform.permissions,
-                                      permission.name
-                                    ) > -1
-                                  : _vm.userform.permissions
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a = _vm.userform.permissions,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = permission.name,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        _vm.$set(
-                                          _vm.userform,
-                                          "permissions",
-                                          $$a.concat([$$v])
-                                        )
-                                    } else {
-                                      $$i > -1 &&
-                                        _vm.$set(
-                                          _vm.userform,
-                                          "permissions",
-                                          $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1))
-                                        )
-                                    }
-                                  } else {
-                                    _vm.$set(_vm.userform, "permissions", $$c)
-                                  }
-                                }
-                              }
-                            }),
-                            _vm._v(
-                              _vm._s(permission.name) +
-                                "\n                          "
-                            )
-                          ])
-                        }),
-                        _vm._v(" "),
-                        _c("hr"),
-                        _vm._v(" "),
-                        _c("div", [
-                          _c(
-                            "span",
-                            { staticClass: "btn btn-info btn-sm ml-2 mb-2" },
-                            [_vm._v(_vm._s(_vm.userform.permissions))]
-                          )
-                        ])
-                      ],
-                      2
-                    )
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-footer" }, [
@@ -76777,8 +87353,8 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: _vm.editmodeUser,
-                            expression: "editmodeUser"
+                            value: _vm.editmodeAdmin,
+                            expression: "editmodeAdmin"
                           }
                         ],
                         staticClass: "btn btn-success",
@@ -76794,8 +87370,8 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: !_vm.editmodeUser,
-                            expression: "!editmodeUser"
+                            value: !_vm.editmodeAdmin,
+                            expression: "!editmodeAdmin"
                           }
                         ],
                         staticClass: "btn btn-primary",
@@ -76822,15 +87398,15 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("S1")]),
         _vm._v(" "),
-        _c("th", [_vm._v("users")]),
+        _c("th", [_vm._v("Admin Details")]),
         _vm._v(" "),
         _c("th", [_vm._v("Roles")]),
         _vm._v(" "),
         _c("th", [_vm._v("Permissions")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Date")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Actions")])
+        _c("th", { staticStyle: { "padding-left": "14px" } }, [
+          _vm._v("Actions")
+        ])
       ])
     ])
   },
@@ -76838,18 +87414,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "modal",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -76903,298 +87481,400 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "card-body" },
-              [
-                _c(
-                  "table",
-                  {
-                    staticClass: "table table-bordered table-hover",
-                    attrs: { id: "example2" }
-                  },
-                  [
-                    _vm._m(0),
-                    _vm._v(" "),
-                    _c(
-                      "tbody",
-                      _vm._l(_vm.Directors, function(director, index) {
-                        return _c("tr", { key: director.id }, [
-                          _c("td", [_vm._v(_vm._s(index + 1))]),
-                          _vm._v(" "),
-                          _vm._m(1, true),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c(
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "table",
+                {
+                  staticClass: "table table-bordered table-hover",
+                  attrs: { id: "example2" }
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.Directors, function(director, index) {
+                      return _c("tr", { key: director.id }, [
+                        _c("td", [_vm._v(_vm._s(index + 1))]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          _vm._l(director.organisationdirectors, function(
+                            organisation
+                          ) {
+                            return _c(
                               "div",
-                              {},
+                              { key: organisation.id, staticClass: "row" },
                               [
-                                _c("p", [_vm._v(_vm._s(director.full_name))]),
-                                _vm._v(" "),
-                                _vm._l(director.organisationdirectors, function(
-                                  directorpivot
-                                ) {
-                                  return _c(
-                                    "span",
-                                    { key: directorpivot.id },
-                                    [
-                                      _c("p", [
-                                        _vm._v(
-                                          _vm._s(directorpivot.pivot.id_no)
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("p", [
-                                        _vm._v(
-                                          _vm._s(directorpivot.pivot.phone) +
-                                            ", "
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "col",
+                                    staticStyle: { padding: "3px" }
+                                  },
+                                  [
+                                    _c("img", {
+                                      staticClass: "card-img-top",
+                                      staticStyle: { width: "100%" },
+                                      attrs: {
+                                        src: _vm.directorLoadPassPhoto(
+                                          organisation.pivot.photo
                                         ),
-                                        _c("span", [
-                                          _vm._v(
-                                            _vm._s(
-                                              directorpivot.pivot.landline
-                                            ) + " "
-                                          )
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("p", [
+                                        alt: "Card image cap"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "col",
+                                    staticStyle: { padding: "3px" }
+                                  },
+                                  [
+                                    _c("img", {
+                                      staticClass: "card-img-top",
+                                      staticStyle: { width: "100%" },
+                                      attrs: {
+                                        src: _vm.directorLoadIDFrontPhoto(
+                                          organisation.pivot.id_photo_front
+                                        ),
+                                        alt: "Card image cap"
+                                      }
+                                    }),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      staticClass: "card-img-top",
+                                      staticStyle: { width: "100%" },
+                                      attrs: {
+                                        src: _vm.directorLoadIDBackPhoto(
+                                          organisation.pivot.id_photo_back
+                                        ),
+                                        alt: "Card image cap"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticStyle: {
+                                      "font-weight": "bold",
+                                      "font-size": "0.7em",
+                                      "min-width": "210px",
+                                      "max-width": "400px",
+                                      "margin-top": "4px",
+                                      "padding-top": "4px",
+                                      "font-style": "italic"
+                                    }
+                                  },
+                                  [
+                                    _c("div", [
+                                      _vm._v(_vm._s(director.full_name) + ",")
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(director.positions, function(
+                                      position
+                                    ) {
+                                      return _c("div", { key: position.id }, [
                                         _vm._v(
-                                          _vm._s(directorpivot.pivot.address)
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _vm._l(
-                                        director.organisationdirectors,
-                                        function(directorpivot) {
-                                          return _c(
-                                            "p",
-                                            { key: directorpivot.id },
-                                            [
-                                              _vm._v(
-                                                "\n                              " +
-                                                  _vm._s(directorpivot)
-                                              )
-                                            ]
-                                          )
-                                        }
-                                      ),
-                                      _vm._v(" "),
-                                      _c("p", [
-                                        _vm._v(
-                                          _vm._s(directorpivot.pivot.genders)
+                                          "\n                                  " +
+                                            _vm._s(position.name) +
+                                            ",\n                                  "
+                                        ),
+                                        _c(
+                                          "span",
+                                          { staticStyle: { color: "#9a009a" } },
+                                          [
+                                            _vm._v(
+                                              "\n                                      " +
+                                                _vm._s(organisation.name) +
+                                                ",\n                                  "
+                                            )
+                                          ]
                                         )
                                       ])
-                                    ],
-                                    2
-                                  )
-                                })
-                              ],
-                              2
+                                    }),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v(" ID: ,"),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [
+                                          _vm._v(
+                                            _vm._s(organisation.pivot.id_no)
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(
+                                        ",\n                                  Phone: "
+                                      ),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [
+                                          _vm._v(
+                                            _vm._s(organisation.pivot.phone) +
+                                              ","
+                                          )
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v(
+                                        "\n                                   Mail: "
+                                      ),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [_vm._v(_vm._s(director.email) + ",")]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v("P. O. Box , "),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [
+                                          _vm._v(
+                                            _vm._s(organisation.pivot.address)
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(
+                                        ",\n                                  "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(director.wards, function(ward) {
+                                      return _c(
+                                        "div",
+                                        { key: ward.id },
+                                        [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticStyle: { color: "#9a009a" }
+                                            },
+                                            [_vm._v(_vm._s(ward.name))]
+                                          ),
+                                          _vm._v(
+                                            " ward,\n                                  "
+                                          ),
+                                          _vm._l(
+                                            director.constituencies,
+                                            function(constituency) {
+                                              return _c(
+                                                "span",
+                                                {
+                                                  key: constituency.id,
+                                                  staticStyle: {
+                                                    color: "#9a009a"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                      " +
+                                                      _vm._s(constituency.name)
+                                                  )
+                                                ]
+                                              )
+                                            }
+                                          ),
+                                          _vm._v(
+                                            " constituency,\n                              "
+                                          )
+                                        ],
+                                        2
+                                      )
+                                    }),
+                                    _vm._v(" "),
+                                    _vm._l(director.counties, function(county) {
+                                      return _c(
+                                        "div",
+                                        { key: county.id },
+                                        [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticStyle: { color: "#9a009a" }
+                                            },
+                                            [_vm._v(_vm._s(county.name))]
+                                          ),
+                                          _vm._v(
+                                            " county,\n                                  "
+                                          ),
+                                          _vm._l(director.countries, function(
+                                            country
+                                          ) {
+                                            return _c(
+                                              "span",
+                                              {
+                                                key: country.id,
+                                                staticStyle: {
+                                                  color: "#9a009a"
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                      " +
+                                                    _vm._s(country.name) +
+                                                    ",\n                                  "
+                                                )
+                                              ]
+                                            )
+                                          })
+                                        ],
+                                        2
+                                      )
+                                    })
+                                  ],
+                                  2
+                                )
+                              ]
                             )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            _vm._l(director.roles, function(role) {
-                              return _c(
-                                "span",
-                                { key: role.id, staticClass: "pl-2" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "btn btn-primary btn-sm ml-1 mb-2 "
-                                    },
-                                    [_vm._v(_vm._s(role.name) + " ")]
-                                  )
-                                ]
-                              )
-                            }),
-                            0
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            _vm._l(director.permissions, function(permission) {
-                              return _c(
-                                "span",
-                                { key: permission.id, staticClass: "pl-2" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "btn btn-primary btn-sm ml-1 mb-2 "
-                                    },
-                                    [_vm._v(_vm._s(permission.name) + " ")]
-                                  )
-                                ]
-                              )
-                            }),
-                            0
-                          ),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              _vm._s(
-                                _vm._f("dateformat")(director.created_at)
-                              ) + " "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c(
-                              "a",
-                              {
-                                attrs: { href: "" },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.editDirectorModal(director.id)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fa fa-edit blue" })]
-                            ),
-                            _vm._v(
-                              "\n                       /\n                       "
-                            ),
-                            _c(
-                              "a",
-                              {
-                                attrs: { href: "" },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.deleteDirector(director.id)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fa fa-trash red" })]
-                            )
-                          ])
-                        ])
-                      }),
-                      0
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.Directors, function(director) {
-                  return _c(
-                    "div",
-                    { key: director.id, staticClass: "card-group row" },
-                    [
-                      _c("div", { staticClass: "card col-md-4" }, [
-                        _c("img", {
-                          staticClass: "card-img-top",
-                          attrs: {
-                            src:
-                              "http://hs-vuejs.test/assets/admin/default/logo.png",
-                            alt: "Card image cap"
-                          }
-                        }),
+                          }),
+                          0
+                        ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "card-body" }, [
-                          _c("h5", { staticClass: "card-title" }, [
-                            _vm._v(_vm._s(director.full_name))
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "p",
-                            _vm._l(director.roles, function(role) {
-                              return _c(
-                                "span",
-                                { key: role.id, staticClass: "pl-2" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "btn btn-primary btn-sm ml-1 mb-2 "
-                                    },
-                                    [_vm._v(_vm._s(role.name) + " ")]
-                                  )
-                                ]
-                              )
-                            }),
-                            0
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "p",
-                            { staticClass: "card-text" },
-                            _vm._l(director.permissions, function(permission) {
-                              return _c(
-                                "span",
-                                { key: permission.id, staticClass: "pl-2" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "btn btn-primary btn-sm ml-1 mb-2 "
-                                    },
-                                    [_vm._v(_vm._s(permission.name) + " ")]
-                                  )
-                                ]
-                              )
-                            }),
-                            0
-                          ),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "card-text" }, [
-                            _c("small", { staticClass: "text-muted" }, [
-                              _vm._v(
-                                "Last updated " +
-                                  _vm._s(
-                                    _vm._f("dateformat")(director.created_at)
-                                  )
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "float-right" }, [
-                            _c(
-                              "a",
-                              {
-                                attrs: { href: "" },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.editDirectorModal(director.id)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fa fa-edit blue" })]
-                            ),
-                            _vm._v(
-                              "\n                          /\n                          "
-                            ),
-                            _c(
-                              "a",
-                              {
-                                attrs: { href: "" },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.deleteDirector(director.id)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fa fa-trash red" })]
+                        _c(
+                          "td",
+                          { staticStyle: { padding: "3px" } },
+                          _vm._l(director.roles, function(role) {
+                            return _c(
+                              "span",
+                              { key: role.id, staticClass: "pl-2" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "btn btn-primary btn-sm ml-1 mb-2 "
+                                  },
+                                  [_vm._v(_vm._s(role.name) + " ")]
+                                )
+                              ]
                             )
-                          ])
+                          }),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { staticStyle: { padding: "3px" } },
+                          _vm._l(director.permissions, function(permission) {
+                            return _c(
+                              "span",
+                              { key: permission.id, staticClass: "pl-2" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "btn btn-primary btn-sm ml-1 mb-2 "
+                                  },
+                                  [_vm._v(_vm._s(permission.name) + " ")]
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { padding: "3px" } }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "clearfix",
+                              staticStyle: {
+                                "font-weight": "bold",
+                                "font-size": "0.7em"
+                              }
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "float-left",
+                                  staticStyle: { "margin-bottom": "-0.5em" }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticStyle: { "margin-bottom": "0.25em" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        " Updated at:\n                                  "
+                                      ),
+                                      _c(
+                                        "span",
+                                        { staticStyle: { color: "#9a009a" } },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("dateformat")(
+                                                director.created_at
+                                              )
+                                            ) + " "
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "float-right" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.editDirectorModal(
+                                          director.id
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fa fa-edit blue" })]
+                                ),
+                                _vm._v(
+                                  "\n                              /\n                              "
+                                ),
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.deleteDirector(director.id)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fa fa-trash red" })]
+                                )
+                              ])
+                            ]
+                          )
                         ])
                       ])
-                    ]
+                    }),
+                    0
                   )
-                })
-              ],
-              2
-            )
+                ]
+              )
+            ])
           ])
         ])
       ])
@@ -77203,7 +87883,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "modal fade",
+        staticClass: "modal fade ",
         attrs: {
           id: "DirectorModal",
           tabindex: "-1",
@@ -77216,48 +87896,12 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "modal-dialog modal-dialog-centered",
+            staticClass: "modal-dialog modal-dialog-centered modal-lg",
             attrs: { role: "document" }
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.editmodeDirector,
-                        expression: "editmodeDirector"
-                      }
-                    ],
-                    staticClass: "modal-title",
-                    attrs: { id: "DirectorModalLabel" }
-                  },
-                  [_vm._v("Update Organisation Director")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "h5",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: !_vm.editmodeDirector,
-                        expression: "!editmodeDirector"
-                      }
-                    ],
-                    staticClass: "modal-title",
-                    attrs: { id: "DirectorModalLabel" }
-                  },
-                  [_vm._v("Add New Organisation Director")]
-                ),
-                _vm._v(" "),
-                _vm._m(2)
-              ]),
+              _vm._m(1),
               _vm._v(" "),
               _c(
                 "form",
@@ -77268,16 +87912,50 @@ var render = function() {
                       $event.preventDefault()
                       _vm.editmodeDirector
                         ? _vm.updateDirector(_vm.directorform.id)
-                        : _vm.addDirector()
+                        : _vm.addDirector(_vm.directorform.organisation_id)
                     }
                   }
                 },
                 [
                   _c("div", { staticClass: "modal-body" }, [
-                    _c("div", { staticClass: " row" }, [
+                    _c(
+                      "h5",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.editmodeDirector,
+                            expression: "editmodeDirector"
+                          }
+                        ],
+                        staticClass: "modal-title",
+                        attrs: { id: "DirectorModalLabel" }
+                      },
+                      [_vm._v("Update Director")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h5",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.editmodeDirector,
+                            expression: "!editmodeDirector"
+                          }
+                        ],
+                        staticClass: "modal-title",
+                        attrs: { id: "DirectorModalLabel" }
+                      },
+                      [_vm._v("Add New Director")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
                       _c(
                         "div",
-                        { staticClass: "form-group col-md-6" },
+                        { staticClass: "form-group col-md-4" },
                         [
                           _c(
                             "label",
@@ -77285,7 +87963,7 @@ var render = function() {
                               staticClass: "col-form-label",
                               attrs: { for: "first_name" }
                             },
-                            [_vm._v(" First Name")]
+                            [_vm._v(" Director First Name")]
                           ),
                           _vm._v(" "),
                           _c("input", {
@@ -77306,7 +87984,7 @@ var render = function() {
                             attrs: {
                               type: "text",
                               name: "first_name",
-                              placeholder: "First Name"
+                              placeholder: "Director First Name"
                             },
                             domProps: { value: _vm.directorform.first_name },
                             on: {
@@ -77324,6 +88002,7 @@ var render = function() {
                           }),
                           _vm._v(" "),
                           _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
                             attrs: {
                               form: _vm.directorform,
                               field: "first_name"
@@ -77335,7 +88014,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "form-group col-md-6" },
+                        { staticClass: "form-group col-md-4" },
                         [
                           _c(
                             "label",
@@ -77343,7 +88022,7 @@ var render = function() {
                               staticClass: " col-form-label",
                               attrs: { for: "last_name" }
                             },
-                            [_vm._v("Last Name")]
+                            [_vm._v("director_Last Name ")]
                           ),
                           _vm._v(" "),
                           _c("input", {
@@ -77362,9 +88041,9 @@ var render = function() {
                               )
                             },
                             attrs: {
-                              type: "text",
+                              type: "director_last_name",
                               name: "last_name",
-                              placeholder: "Last Name"
+                              placeholder: "Director Last Name"
                             },
                             domProps: { value: _vm.directorform.last_name },
                             on: {
@@ -77382,6 +88061,7 @@ var render = function() {
                           }),
                           _vm._v(" "),
                           _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
                             attrs: {
                               form: _vm.directorform,
                               field: "last_name"
@@ -77389,21 +88069,19 @@ var render = function() {
                           })
                         ],
                         1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: " row" }, [
+                      ),
+                      _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "form-group col-md-12" },
+                        { staticClass: "form-group col-md-4" },
                         [
                           _c(
                             "label",
                             {
-                              staticClass: "col-form-label",
+                              staticClass: " col-form-label",
                               attrs: { for: "email" }
                             },
-                            [_vm._v("E-Mail Address")]
+                            [_vm._v("Email ")]
                           ),
                           _vm._v(" "),
                           _c("input", {
@@ -77422,7 +88100,7 @@ var render = function() {
                             attrs: {
                               type: "email",
                               name: "email",
-                              placeholder: "E-Mail Address"
+                              placeholder: "Email Address"
                             },
                             domProps: { value: _vm.directorform.email },
                             on: {
@@ -77440,6 +88118,7 @@ var render = function() {
                           }),
                           _vm._v(" "),
                           _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
                             attrs: { form: _vm.directorform, field: "email" }
                           })
                         ],
@@ -77450,82 +88129,7 @@ var render = function() {
                     _c("div", { staticClass: " row" }, [
                       _c(
                         "div",
-                        { staticClass: "form-group col-md-6" },
-                        [
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.directorform.director_type,
-                                  expression: "directorform.director_type"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                "is-invalid": _vm.directorform.errors.has(
-                                  "director_type"
-                                )
-                              },
-                              attrs: {
-                                name: "director_type",
-                                id: "director_type"
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.directorform,
-                                    "director_type",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _c("option", { attrs: { value: "" } }, [
-                                _vm._v("Select Director Role")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "Director" } }, [
-                                _vm._v("Director")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "Admin" } }, [
-                                _vm._v(" Admin")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "Accounts" } }, [
-                                _vm._v(" Accounts")
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            attrs: {
-                              form: _vm.directorform,
-                              field: "director_type"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group col-md-6" },
+                        { staticClass: "form-group col-md-4" },
                         [
                           _c("input", {
                             directives: [
@@ -77567,167 +88171,802 @@ var render = function() {
                           })
                         ],
                         1
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-4" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-form-label",
+                            attrs: { for: "phone" }
+                          },
+                          [_vm._v(" Director Phone")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          [
+                            _c("vue-tel-input", {
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.directorform.errors.has(
+                                  "phone"
+                                )
+                              },
+                              attrs: { name: "phone" },
+                              on: { onInput: _vm.InputPhone },
+                              model: {
+                                value: _vm.directorform.phone,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.directorform, "phone", $$v)
+                                },
+                                expression: "directorform.phone"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              staticStyle: { color: "#e83e8c" },
+                              attrs: { form: _vm.directorform, field: "phone" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _vm.directorform.phone
+                          ? _c("div", { staticStyle: { color: "#e83e8c" } }, [
+                              _c("span", [
+                                _vm._v("Is valid: "),
+                                _c("strong", [
+                                  _vm._v(_vm._s(_vm.phone.isValid))
+                                ]),
+                                _vm._v(", ")
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v("Country: "),
+                                _c("strong", [
+                                  _vm._v(_vm._s(_vm.phone.country))
+                                ])
+                              ])
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "landline" }
+                            },
+                            [_vm._v("Landline")]
+                          ),
+                          _vm._v(" "),
+                          _c("vue-tel-input", {
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has(
+                                "landline"
+                              )
+                            },
+                            attrs: { name: "landline" },
+                            on: { onInput: _vm.InputLandline },
+                            model: {
+                              value: _vm.directorform.landline,
+                              callback: function($$v) {
+                                _vm.$set(_vm.directorform, "landline", $$v)
+                              },
+                              expression: "directorform.landline"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.directorform, field: "landline" }
+                          }),
+                          _vm._v(" "),
+                          _vm.directorform.landline
+                            ? _c("div", { staticStyle: { color: "#e83e8c" } }, [
+                                _c("span", [
+                                  _vm._v("Is valid: "),
+                                  _c("strong", [
+                                    _vm._v(_vm._s(_vm.landline.isValid))
+                                  ]),
+                                  _vm._v(", ")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", [
+                                  _vm._v("Country: "),
+                                  _c("strong", [
+                                    _vm._v(_vm._s(_vm.landline.country))
+                                  ])
+                                ])
+                              ])
+                            : _vm._e()
+                        ],
+                        1
                       )
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", [_vm._v("Select Roles")]),
-                        _vm._v(" "),
-                        _vm._l(_vm.Roles, function(role) {
-                          return _c("div", { key: role.id }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.directorform.roles,
-                                  expression: "directorform.roles"
-                                }
-                              ],
-                              attrs: { type: "checkbox" },
-                              domProps: {
-                                value: role.name,
-                                checked: Array.isArray(_vm.directorform.roles)
-                                  ? _vm._i(_vm.directorform.roles, role.name) >
-                                    -1
-                                  : _vm.directorform.roles
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a = _vm.directorform.roles,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = role.name,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        _vm.$set(
-                                          _vm.directorform,
-                                          "roles",
-                                          $$a.concat([$$v])
-                                        )
-                                    } else {
-                                      $$i > -1 &&
-                                        _vm.$set(
-                                          _vm.directorform,
-                                          "roles",
-                                          $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1))
-                                        )
-                                    }
-                                  } else {
-                                    _vm.$set(_vm.directorform, "roles", $$c)
-                                  }
-                                }
-                              }
-                            }),
-                            _vm._v(
-                              _vm._s(role.name) + "\n                          "
-                            )
-                          ])
-                        }),
-                        _vm._v(" "),
-                        _c("hr"),
-                        _vm._v(" "),
-                        _c("div", [
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
                           _c(
-                            "span",
-                            { staticClass: "btn btn-info btn-sm ml-2 mb-2" },
-                            [_vm._v(_vm._s(_vm.directorform.roles))]
-                          )
-                        ])
-                      ],
-                      2
-                    ),
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "id_no" }
+                            },
+                            [_vm._v("ID no.")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.directorform.id_no,
+                                expression: "directorform.id_no"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has("id_no")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "id_no",
+                              placeholder: "ID NO"
+                            },
+                            domProps: { value: _vm.directorform.id_no },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.directorform,
+                                  "id_no",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.directorform, field: "id_no" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "address" }
+                            },
+                            [_vm._v("Address")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.directorform.address,
+                                expression: "directorform.address"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has(
+                                "address"
+                              )
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "Address",
+                              placeholder: "Address"
+                            },
+                            domProps: { value: _vm.directorform.address },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.directorform,
+                                  "address",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.directorform, field: "address" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", [_vm._v("Select Permissions")]),
-                        _vm._v(" "),
-                        _vm._l(_vm.Permissions, function(permission) {
-                          return _c("div", { key: permission.id }, [
-                            _c("input", {
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c("label", { attrs: { for: "country_id" } }, [
+                            _vm._v("Select Country")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
                               directives: [
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.directorform.permissions,
-                                  expression: "directorform.permissions"
+                                  value: _vm.directorform.country_id,
+                                  expression: "directorform.country_id"
                                 }
                               ],
-                              attrs: { type: "checkbox" },
-                              domProps: {
-                                value: permission.name,
-                                checked: Array.isArray(
-                                  _vm.directorform.permissions
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.directorform.errors.has(
+                                  "country_id"
                                 )
-                                  ? _vm._i(
-                                      _vm.directorform.permissions,
-                                      permission.name
-                                    ) > -1
-                                  : _vm.directorform.permissions
                               },
                               on: {
-                                change: function($event) {
-                                  var $$a = _vm.directorform.permissions,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = permission.name,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        _vm.$set(
-                                          _vm.directorform,
-                                          "permissions",
-                                          $$a.concat([$$v])
-                                        )
-                                    } else {
-                                      $$i > -1 &&
-                                        _vm.$set(
-                                          _vm.directorform,
-                                          "permissions",
-                                          $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1))
-                                        )
-                                    }
-                                  } else {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
                                     _vm.$set(
                                       _vm.directorform,
-                                      "permissions",
-                                      $$c
+                                      "country_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.countryCounties(
+                                      _vm.directorform.country_id
                                     )
                                   }
+                                ]
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select Country")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Countries, function(country) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: country.id,
+                                    domProps: { value: country.id }
+                                  },
+                                  [_vm._v(_vm._s(country.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.directorform,
+                              field: "country_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "county_id" }
+                            },
+                            [_vm._v("County")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.directorform.county_id,
+                                  expression: "directorform.county_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.directorform.errors.has(
+                                  "county_id"
+                                )
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.directorform,
+                                      "county_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.countyConstituencies(
+                                      _vm.directorform.county_id
+                                    )
+                                  }
+                                ]
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select County")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Counties, function(county) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: county.id,
+                                    domProps: { value: county.id }
+                                  },
+                                  [_vm._v(_vm._s(county.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.directorform,
+                              field: "county_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "constituency_id" }
+                            },
+                            [_vm._v("Constituency")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.directorform.constituency_id,
+                                  expression: "directorform.constituency_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.directorform.errors.has(
+                                  "constituency_id"
+                                )
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.directorform,
+                                      "constituency_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.constituencyWards(
+                                      _vm.directorform.constituency_id
+                                    )
+                                  }
+                                ]
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select County")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Constituencies, function(
+                                constituency
+                              ) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: constituency.id,
+                                    domProps: { value: constituency.id }
+                                  },
+                                  [_vm._v(_vm._s(constituency.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.directorform,
+                              field: "constituency_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-3" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "ward_id" }
+                            },
+                            [_vm._v(" Ward ")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.directorform.ward_id,
+                                  expression: "directorform.ward_id"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.directorform.errors.has(
+                                  "ward_id"
+                                )
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.directorform,
+                                    "ward_id",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
                                 }
                               }
-                            }),
-                            _vm._v(
-                              _vm._s(permission.name) +
-                                "\n                          "
-                            )
-                          ])
-                        }),
-                        _vm._v(" "),
-                        _c("hr"),
-                        _vm._v(" "),
-                        _c("div", [
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "" } },
+                                [_vm._v("Select Ward")]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.Wards, function(ward) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: ward.id,
+                                    domProps: { value: ward.id }
+                                  },
+                                  [_vm._v(_vm._s(ward.name))]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.directorform, field: "ward_id" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
                           _c(
-                            "span",
-                            { staticClass: "btn btn-info btn-sm ml-2 mb-2" },
-                            [_vm._v(_vm._s(_vm.directorform.permissions))]
-                          )
-                        ])
-                      ],
-                      2
-                    )
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "photo" }
+                            },
+                            [_vm._v("Director PassPort Image")]
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has("photo")
+                            },
+                            attrs: { type: "file", name: "photo" },
+                            on: {
+                              change: function($event) {
+                                return _vm.directorChangePassPhoto($event)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeDirector,
+                                expression: "editmodeDirector"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateDirectorPassPhoto(
+                                _vm.directorform.photo
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeDirector,
+                                expression: "!editmodeDirector"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.directorform.photo,
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: { form: _vm.directorform, field: "photo" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "id_photo_front" }
+                            },
+                            [_vm._v("Director FrontSide ID Photo")]
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has(
+                                "id_photo_front"
+                              )
+                            },
+                            attrs: { type: "file", name: "id_photo_front" },
+                            on: {
+                              change: function($event) {
+                                return _vm.directorChangeIDFrontPhoto($event)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeDirector,
+                                expression: "editmodeDirector"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateDirectorIDFrontPhoto(
+                                _vm.directorform.id_photo_front
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeDirector,
+                                expression: "!editmodeDirector"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.directorform.id_photo_front,
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.directorform,
+                              field: "id_photo_front"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group col-md-4" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: " col-form-label",
+                              attrs: { for: "backside_i_photod" }
+                            },
+                            [_vm._v("BackSide ID Photo")]
+                          ),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: {
+                              "is-invalid": _vm.directorform.errors.has(
+                                "backside_id"
+                              )
+                            },
+                            attrs: { type: "file", name: "id_photo_back" },
+                            on: {
+                              change: function($event) {
+                                return _vm.directorChangeIDBackPhoto($event)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editmodeDirector,
+                                expression: "editmodeDirector"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.updateDirectorIDBackPhoto(
+                                _vm.directorform.id_photo_back
+                              ),
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: !_vm.editmodeDirector,
+                                expression: "!editmodeDirector"
+                              }
+                            ],
+                            attrs: {
+                              src: _vm.directorform.id_photo_back,
+                              alt: "",
+                              width: "100%"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            staticStyle: { color: "#e83e8c" },
+                            attrs: {
+                              form: _vm.directorform,
+                              field: "id_photo_back"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-footer" }, [
@@ -77792,17 +89031,15 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("S1")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Passport")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("directors")]),
+        _c("th", [_vm._v("Director Details")]),
         _vm._v(" "),
         _c("th", [_vm._v("Roles")]),
         _vm._v(" "),
         _c("th", [_vm._v("Permissions")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Date")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Actions")])
+        _c("th", { staticStyle: { "padding-left": "14px" } }, [
+          _vm._v("Actions")
+        ])
       ])
     ])
   },
@@ -77810,33 +89047,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("img", {
-        staticClass: "card-img-top",
-        staticStyle: { width: "150px" },
-        attrs: {
-          src: "http://hs-vuejs.test/assets/admin/default/logo.png",
-          alt: "Card image cap"
-        }
-      })
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "modal",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
   }
 ]
 render._withStripped = true
@@ -95800,6 +107024,144 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/admins/organisation/admin/Bureau.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/admins/organisation/admin/Bureau.vue ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Bureau_vue_vue_type_template_id_f93a8522___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Bureau.vue?vue&type=template&id=f93a8522& */ "./resources/js/components/admins/organisation/admin/Bureau.vue?vue&type=template&id=f93a8522&");
+/* harmony import */ var _Bureau_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Bureau.vue?vue&type=script&lang=js& */ "./resources/js/components/admins/organisation/admin/Bureau.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Bureau_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Bureau_vue_vue_type_template_id_f93a8522___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Bureau_vue_vue_type_template_id_f93a8522___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/admins/organisation/admin/Bureau.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/admins/organisation/admin/Bureau.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/admins/organisation/admin/Bureau.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Bureau_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Bureau.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/admin/Bureau.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Bureau_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/admins/organisation/admin/Bureau.vue?vue&type=template&id=f93a8522&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/admins/organisation/admin/Bureau.vue?vue&type=template&id=f93a8522& ***!
+  \*****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Bureau_vue_vue_type_template_id_f93a8522___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Bureau.vue?vue&type=template&id=f93a8522& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/admin/Bureau.vue?vue&type=template&id=f93a8522&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Bureau_vue_vue_type_template_id_f93a8522___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Bureau_vue_vue_type_template_id_f93a8522___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/admins/organisation/admin/BureauAdmins.vue":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/admins/organisation/admin/BureauAdmins.vue ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BureauAdmins_vue_vue_type_template_id_326fbd5a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BureauAdmins.vue?vue&type=template&id=326fbd5a& */ "./resources/js/components/admins/organisation/admin/BureauAdmins.vue?vue&type=template&id=326fbd5a&");
+/* harmony import */ var _BureauAdmins_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BureauAdmins.vue?vue&type=script&lang=js& */ "./resources/js/components/admins/organisation/admin/BureauAdmins.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _BureauAdmins_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _BureauAdmins_vue_vue_type_template_id_326fbd5a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _BureauAdmins_vue_vue_type_template_id_326fbd5a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/admins/organisation/admin/BureauAdmins.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/admins/organisation/admin/BureauAdmins.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/admins/organisation/admin/BureauAdmins.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BureauAdmins_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./BureauAdmins.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/admin/BureauAdmins.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BureauAdmins_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/admins/organisation/admin/BureauAdmins.vue?vue&type=template&id=326fbd5a&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/admins/organisation/admin/BureauAdmins.vue?vue&type=template&id=326fbd5a& ***!
+  \***********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BureauAdmins_vue_vue_type_template_id_326fbd5a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./BureauAdmins.vue?vue&type=template&id=326fbd5a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admins/organisation/admin/BureauAdmins.vue?vue&type=template&id=326fbd5a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BureauAdmins_vue_vue_type_template_id_326fbd5a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BureauAdmins_vue_vue_type_template_id_326fbd5a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/admins/organisation/superadmin/Employees/Employees.vue":
 /*!****************************************************************************************!*\
   !*** ./resources/js/components/admins/organisation/superadmin/Employees/Employees.vue ***!
@@ -96264,6 +107626,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_admins_organisation_SingleService_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/admins/organisation/SingleService.vue */ "./resources/js/components/admins/organisation/SingleService.vue");
 /* harmony import */ var _components_admins_organisation_SingleExtraService_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/admins/organisation/SingleExtraService.vue */ "./resources/js/components/admins/organisation/SingleExtraService.vue");
 /* harmony import */ var _components_admins_organisation_SingleServiceFilter_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/admins/organisation/SingleServiceFilter.vue */ "./resources/js/components/admins/organisation/SingleServiceFilter.vue");
+/* harmony import */ var _components_admins_organisation_admin_Bureau_vue__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/admins/organisation/admin/Bureau.vue */ "./resources/js/components/admins/organisation/admin/Bureau.vue");
+/* harmony import */ var _components_admins_organisation_admin_BureauAdmins_vue__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/admins/organisation/admin/BureauAdmins.vue */ "./resources/js/components/admins/organisation/admin/BureauAdmins.vue");
  //org superadmin
 //org Directors
 
@@ -96289,14 +107653,10 @@ __webpack_require__.r(__webpack_exports__);
 
  //Single Service Filter read more
 
- // // //course
-// // import CourseList  from './components/admin/course/List.vue'
-// // import AddCourse  from './components/admin/course/New.vue'
-// // import EditCourse  from './components/admin/course/Edit.vue'
-// // //FrontEnd Comonent
-// // import PublicHome from './components/public/PublicHome.vue'
-// // import BlogCourse from './components/public/blog/BlogCourse.vue'
-// // import SingleCourse from './components/public/blog/SingleBlog.vue'
+ // Bureeau
+
+ //org Admins
+
 
 var routes = [{
   path: '/home',
@@ -96350,6 +107710,13 @@ var routes = [{
 {
   path: '/servicefilter/:id',
   component: _components_admins_organisation_SingleServiceFilter_vue__WEBPACK_IMPORTED_MODULE_12__["default"]
+}, //   //Bureau
+{
+  path: '/bureaudirectors',
+  component: _components_admins_organisation_admin_Bureau_vue__WEBPACK_IMPORTED_MODULE_13__["default"]
+}, {
+  path: '/bureauadmins',
+  component: _components_admins_organisation_admin_BureauAdmins_vue__WEBPACK_IMPORTED_MODULE_14__["default"]
 }];
 
 /***/ }),
@@ -96369,19 +107736,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_organisation_superadmin_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/organisation/superadmin/user */ "./resources/js/store/modules/organisation/superadmin/user.js");
 /* harmony import */ var _modules_organisation_superadmin_director__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/organisation/superadmin/director */ "./resources/js/store/modules/organisation/superadmin/director.js");
 /* harmony import */ var _modules_organisation_superadmin_admin__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/organisation/superadmin/admin */ "./resources/js/store/modules/organisation/superadmin/admin.js");
-/* harmony import */ var _modules_organisation_superadmin_admin__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_modules_organisation_superadmin_admin__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _modules_organisation_admin_employee__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/organisation/admin/employee */ "./resources/js/store/modules/organisation/admin/employee.js");
 /* harmony import */ var _modules_organisation_admin_employee__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_modules_organisation_admin_employee__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _modules_standard_countries__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/standard/countries */ "./resources/js/store/modules/standard/countries.js");
-/* harmony import */ var _modules_standard_counties__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/standard/counties */ "./resources/js/store/modules/standard/counties.js");
-/* harmony import */ var _modules_standard_constituencies__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/standard/constituencies */ "./resources/js/store/modules/standard/constituencies.js");
-/* harmony import */ var _modules_standard_wards__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/standard/wards */ "./resources/js/store/modules/standard/wards.js");
-/* harmony import */ var _modules_webpages_about__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/webpages/about */ "./resources/js/store/modules/webpages/about.js");
-/* harmony import */ var _modules_webpages_aboutpic__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/webpages/aboutpic */ "./resources/js/store/modules/webpages/aboutpic.js");
-/* harmony import */ var _modules_webpages_advert__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modules/webpages/advert */ "./resources/js/store/modules/webpages/advert.js");
-/* harmony import */ var _modules_webpages_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./modules/webpages/service */ "./resources/js/store/modules/webpages/service.js");
-/* harmony import */ var _modules_webpages_extraservice__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./modules/webpages/extraservice */ "./resources/js/store/modules/webpages/extraservice.js");
-/* harmony import */ var _modules_webpages_servicefilter__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./modules/webpages/servicefilter */ "./resources/js/store/modules/webpages/servicefilter.js");
+/* harmony import */ var _modules_organisation_admin_bureau__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/organisation/admin/bureau */ "./resources/js/store/modules/organisation/admin/bureau.js");
+/* harmony import */ var _modules_organisation_admin_director__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/organisation/admin/director */ "./resources/js/store/modules/organisation/admin/director.js");
+/* harmony import */ var _modules_organisation_admin_admin__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/organisation/admin/admin */ "./resources/js/store/modules/organisation/admin/admin.js");
+/* harmony import */ var _modules_standard_countries__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/standard/countries */ "./resources/js/store/modules/standard/countries.js");
+/* harmony import */ var _modules_standard_counties__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/standard/counties */ "./resources/js/store/modules/standard/counties.js");
+/* harmony import */ var _modules_standard_constituencies__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/standard/constituencies */ "./resources/js/store/modules/standard/constituencies.js");
+/* harmony import */ var _modules_standard_wards__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modules/standard/wards */ "./resources/js/store/modules/standard/wards.js");
+/* harmony import */ var _modules_webpages_about__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./modules/webpages/about */ "./resources/js/store/modules/webpages/about.js");
+/* harmony import */ var _modules_webpages_aboutpic__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./modules/webpages/aboutpic */ "./resources/js/store/modules/webpages/aboutpic.js");
+/* harmony import */ var _modules_webpages_advert__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./modules/webpages/advert */ "./resources/js/store/modules/webpages/advert.js");
+/* harmony import */ var _modules_webpages_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./modules/webpages/service */ "./resources/js/store/modules/webpages/service.js");
+/* harmony import */ var _modules_webpages_extraservice__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./modules/webpages/extraservice */ "./resources/js/store/modules/webpages/extraservice.js");
+/* harmony import */ var _modules_webpages_servicefilter__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./modules/webpages/servicefilter */ "./resources/js/store/modules/webpages/servicefilter.js");
 // organisation
  // under org superadmin
 
@@ -96392,6 +107761,12 @@ __webpack_require__.r(__webpack_exports__);
  //org Admin
 
  //under org Admin
+
+ // bureau
+
+ //bureau Director
+
+ //bureau Admin
 
  //standard
 
@@ -96411,16 +107786,16 @@ __webpack_require__.r(__webpack_exports__);
     //organisation
     organisation: _modules_organisation_organisation__WEBPACK_IMPORTED_MODULE_0__["default"],
     orgdirector: _modules_organisation_superadmin_director__WEBPACK_IMPORTED_MODULE_4__["default"],
-    orgadmin: _modules_organisation_superadmin_admin__WEBPACK_IMPORTED_MODULE_5___default.a,
+    orgadmin: _modules_organisation_superadmin_admin__WEBPACK_IMPORTED_MODULE_5__["default"],
     orgemployee: _modules_organisation_admin_employee__WEBPACK_IMPORTED_MODULE_6___default.a,
     // orghoushelp, //get all househelps
     user: _modules_organisation_superadmin_user__WEBPACK_IMPORTED_MODULE_3__["default"],
     permission: _modules_organisation_superadmin_permission__WEBPACK_IMPORTED_MODULE_1__["default"],
     role: _modules_organisation_superadmin_role__WEBPACK_IMPORTED_MODULE_2__["default"],
     //bureau
-    // bureau,
-    // bureaudirector,
-    // bureauadmin,
+    bureau: _modules_organisation_admin_bureau__WEBPACK_IMPORTED_MODULE_7__["default"],
+    bureaudirector: _modules_organisation_admin_director__WEBPACK_IMPORTED_MODULE_8__["default"],
+    bureauadmin: _modules_organisation_admin_admin__WEBPACK_IMPORTED_MODULE_9__["default"],
     // bureauemployee,
     // bureauhousehelp,
     //househelp
@@ -96428,18 +107803,156 @@ __webpack_require__.r(__webpack_exports__);
     //client
     // client,
     //standard
-    countries: _modules_standard_countries__WEBPACK_IMPORTED_MODULE_7__["default"],
-    counties: _modules_standard_counties__WEBPACK_IMPORTED_MODULE_8__["default"],
-    constituencies: _modules_standard_constituencies__WEBPACK_IMPORTED_MODULE_9__["default"],
-    wards: _modules_standard_wards__WEBPACK_IMPORTED_MODULE_10__["default"],
+    countries: _modules_standard_countries__WEBPACK_IMPORTED_MODULE_10__["default"],
+    counties: _modules_standard_counties__WEBPACK_IMPORTED_MODULE_11__["default"],
+    constituencies: _modules_standard_constituencies__WEBPACK_IMPORTED_MODULE_12__["default"],
+    wards: _modules_standard_wards__WEBPACK_IMPORTED_MODULE_13__["default"],
     //universal
-    about: _modules_webpages_about__WEBPACK_IMPORTED_MODULE_11__["default"],
-    aboutpic: _modules_webpages_aboutpic__WEBPACK_IMPORTED_MODULE_12__["default"],
-    advert: _modules_webpages_advert__WEBPACK_IMPORTED_MODULE_13__["default"],
-    service: _modules_webpages_service__WEBPACK_IMPORTED_MODULE_14__["default"],
-    extraservice: _modules_webpages_extraservice__WEBPACK_IMPORTED_MODULE_15__["default"],
-    servicefilter: _modules_webpages_servicefilter__WEBPACK_IMPORTED_MODULE_16__["default"]
+    about: _modules_webpages_about__WEBPACK_IMPORTED_MODULE_14__["default"],
+    aboutpic: _modules_webpages_aboutpic__WEBPACK_IMPORTED_MODULE_15__["default"],
+    advert: _modules_webpages_advert__WEBPACK_IMPORTED_MODULE_16__["default"],
+    service: _modules_webpages_service__WEBPACK_IMPORTED_MODULE_17__["default"],
+    extraservice: _modules_webpages_extraservice__WEBPACK_IMPORTED_MODULE_18__["default"],
+    servicefilter: _modules_webpages_servicefilter__WEBPACK_IMPORTED_MODULE_19__["default"]
   }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/organisation/admin/admin.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/store/modules/organisation/admin/admin.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//bureauadmin module
+var state = {
+  bureauadmins: []
+};
+var getters = {
+  Bureauadmins: function Bureauadmins(state) {
+    return state.bureauadmins;
+  }
+};
+var actions = {
+  bureauadmins: function bureauadmins(context) {
+    //permission.index route laravel
+    axios.get('/bureauadmin/get').then(function (response) {
+      // console.log(response.data.bureauadmins)
+      context.commit('bureauadmins', response.data.bureauadmins);
+    });
+  }
+};
+var mutations = {
+  bureauadmins: function bureauadmins(state, data) {
+    return state.bureauadmins = data;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/organisation/admin/bureau.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/store/modules/organisation/admin/bureau.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//permission
+var state = {
+  bureau: [],
+  bureaus: []
+},
+    getters = {
+  Bureau: function Bureau(state) {
+    return state.bureau;
+  },
+  Bureaus: function Bureaus(state) {
+    return state.bureaus;
+  }
+};
+var actions = {
+  bureau: function bureau(context) {
+    axios.get('/bureau/get').then(function (response) {
+      //   console.log(response.data.bureau);
+      context.commit('bureau', response.data.bureau);
+    });
+  },
+  bureaus: function bureaus(context) {
+    axios.get('/bureaus/get/list').then(function (response) {
+      console.log(response.data);
+      context.commit('bureaus', response.data.bureaus);
+    });
+  }
+};
+var mutations = {
+  bureau: function bureau(state, data) {
+    return state.bureau = data;
+  },
+  bureaus: function bureaus(state, data) {
+    return state.bureaus = data;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/organisation/admin/director.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/store/modules/organisation/admin/director.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//bureaudirector module
+var state = {
+  bureaudirectors: []
+};
+var getters = {
+  Bureaudirectors: function Bureaudirectors(state) {
+    return state.bureaudirectors;
+  }
+};
+var actions = {
+  bureaudirectors: function bureaudirectors(context) {
+    //permission.index route laravel
+    axios.get('/bureaudirector/get').then(function (response) {
+      console.log(response.data);
+      context.commit('bureaudirectors', response.data.bureaudirectors);
+    });
+  }
+};
+var mutations = {
+  bureaudirectors: function bureaudirectors(state, data) {
+    return state.bureaudirectors = data;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
 });
 
 /***/ }),
@@ -96542,39 +108055,41 @@ var mutations = {
 /*!*********************************************************************!*\
   !*** ./resources/js/store/modules/organisation/superadmin/admin.js ***!
   \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// //director module
-// const state = {
-//     directors:[],
-//   };
-// const getters = {
-//     Directors(state){
-//       return state.directors;
-//     }
-//   };
-// const actions = {
-//     directors(context){//permission.index route laravel
-//       axios.get('/director/get')
-//       .then((response)=>{
-//         // console.log(response.data.directors)
-//         context.commit('directors', response.data.directors);
-//       });
-//     }
-//   }
-// const mutations = {
-//     directors(state, data){
-//       return state.directors = data;
-//     }
-//   };
-// export default {
-//   // namespaced: true,
-//   state,
-//   getters,
-//   actions,
-//   mutations
-// };
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//admin module
+var state = {
+  admins: []
+};
+var getters = {
+  Admins: function Admins(state) {
+    return state.admins;
+  }
+};
+var actions = {
+  admins: function admins(context) {
+    //permission.index route laravel
+    axios.get('/orgadmin/get').then(function (response) {
+      // console.log(response.data.admins)
+      context.commit('admins', response.data.admins);
+    });
+  }
+};
+var mutations = {
+  admins: function admins(state, data) {
+    return state.admins = data;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
 
 /***/ }),
 
