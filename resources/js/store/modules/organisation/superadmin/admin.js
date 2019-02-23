@@ -13,7 +13,7 @@ const actions = {
     admins(context){//permission.index route laravel
       axios.get('/orgadmin/get')
       .then((response)=>{
-        // console.log(response.data.admins)
+        console.log(response.data)
         context.commit('admins', response.data.admins);
       });
     }

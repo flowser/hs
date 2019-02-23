@@ -108,6 +108,9 @@ class OrganisationController extends Controller
         $user->user_type      = 'Organisation Director';
         $user->password   = Hash::make($request->director_password);
 
+        $user->assignRole('Organisation Director');
+        $user ->givePermissionTo('View Backend', 'View All');
+
         if($user){
             //adding organisation new
 
@@ -362,7 +365,7 @@ class OrganisationController extends Controller
 
             //processing logo nme and size
             if($request->logo != $currentLogo){
-                $Path = public_path()."/assets/organisation/img/logo";
+                $Path = public_path()."/assets/organisation/img/logo/";
 
                 $S_currentLogo = $Path. $currentLogo;
                 //deleting if exists
@@ -612,19 +615,19 @@ class OrganisationController extends Controller
          foreach($organisationdirectors as $organisationdirector){
             $user = $organisationdirector->user()->first();
             //curent passport of director
-            $ps_Path = public_path()."/assets/organisation/img/directors/passports";
+            $ps_Path = public_path()."/assets/organisation/img/directors/passports/";
                 $ps_currentpassport = $ps_Path. $organisationdirector->director_passport_image;
             if(file_exists($ps_currentpassport)){
                 @unlink($ps_currentpassport);
             }
             //current id front of director
-            $fr_id_Path = public_path()."/assets/organisation/img/directors/IDs/front";
+            $fr_id_Path = public_path()."/assets/organisation/img/directors/IDs/front/";
             $fr_id_currentdIDPhoto = $fr_id_Path. $organisationdirector->frontside_director_id_photo;
             if(file_exists($fr_id_currentdIDPhoto)){
                 @unlink($fr_id_currentdIDPhoto);
             }
             //current id back of director
-            $bs_id_Path = public_path()."/assets/organisation/img/directors/IDs/back";
+            $bs_id_Path = public_path()."/assets/organisation/img/directors/IDs/back/";
             $bs_id_currentdIDPhoto = $bs_id_Path. $organisationdirector->backside_director_id_photo;
 
             if(file_exists($bs_id_currentdIDPhoto)){
@@ -634,7 +637,7 @@ class OrganisationController extends Controller
          }
 
         //image inline with this organisation
-        $Path = public_path()."/assets/organisation/img/logo";
+        $Path = public_path()."/assets/organisation/img/logo/";
 
         $S_image = $Path. $organisation->logo;
 

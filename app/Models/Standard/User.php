@@ -351,7 +351,27 @@ class User extends Authenticatable
                     ->withTimestamps();
     }
 
-
+    public function bureaudirectors()
+    {
+        return $this->belongsToMany(Bureau::class,'bureau_director')
+                    // ->using(BureauDirector::class)
+                    ->withPivot(
+                        'photo',
+                        'active',
+                        'id_no',
+                        'id_photo_front',
+                        'id_photo_back',
+                        'about_me',
+                        'phone',
+                        'landline',
+                        'address',
+                        'country_id',
+                        'county_id',
+                        'constituency_id',
+                        'ward_id'
+                    )
+                    ->withTimestamps();
+    }
 
       public function bureau()
     {

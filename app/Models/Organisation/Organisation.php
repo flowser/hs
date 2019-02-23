@@ -78,7 +78,13 @@ class Organisation extends Model
                         'about_me',
                         'phone',
                         'landline',
-                        'address'
+                        'address',
+                        'gender_id',
+                        'position_id',
+                        'country_id',
+                        'county_id',
+                        'constituency_id',
+                        'ward_id'
                     )
                     ->withTimestamps();
     }
@@ -128,109 +134,23 @@ class Organisation extends Model
 
     public function orgemployeepositions()
     {
-        return $this->belongsToMany(Position::class,'organisation_employee')
-                    ->using(OrganisationEmployee::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(Position::class,'organisation_employee');
     }
     public function orgemployeecountries()
     {
-        return $this->belongsToMany(Country::class,'organisation_employee')
-                    ->using(OrganisationEmployee::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id',
-                        'country_id',
-                        'county_id',
-                        'constituency_id',
-                        'ward_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(Country::class,'organisation_employee');
     }
     public function orgemployeecounties()
     {
-        return $this->belongsToMany(County::class,'organisation_employee')
-                    ->using(OrganisationEmployee::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id',
-                        'country_id',
-                        'county_id',
-                        'constituency_id',
-                        'ward_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(County::class,'organisation_employee');
     }
     public function orgemployeeconstituencies()
     {
-        return $this->belongsToMany(Constituency::class,'organisation_employee')
-                    ->using(OrganisationEmployee::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id',
-                        'country_id',
-                        'county_id',
-                        'constituency_id',
-                        'ward_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(Constituency::class,'organisation_employee');
     }
     public function orgemployeewards()
     {
-        return $this->belongsToMany(Ward::class,'organisation_employee')
-                    ->using(OrganisationEmployee::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id',
-                        'country_id',
-                        'county_id',
-                        'constituency_id',
-                        'ward_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(Ward::class,'organisation_employee');
     }
 
 

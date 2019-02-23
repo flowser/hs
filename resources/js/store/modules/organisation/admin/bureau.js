@@ -2,39 +2,39 @@
 //permission
 
 const state = {
-    bureau:[],
     bureaus:[],
+    allbureaus:[],
   },
   getters = {
-    Bureau(state){
-      return state.bureau;
-    },
     Bureaus(state){
       return state.bureaus;
+    },
+    AllBureaus(state){
+      return state.allbureaus;
     }
   }
 const actions = {
-    bureau(context){
+    bureaus(context){
         axios.get('/bureau/get')
         .then((response)=>{
         //   console.log(response.data.bureau);
-          context.commit('bureau', response.data.bureau);
+          context.commit('bureaus', response.data.bureaus);
         })
     },
-    bureaus(context){
+    allbureaus(context){
         axios.get('/bureaus/get/list')
         .then((response)=>{
           console.log(response.data);
-          context.commit('bureaus', response.data.bureaus);
+          context.commit('allbureaus', response.data.allbureaus);
         })
     }
   }
 const mutations = {
-    bureau(state, data){
-      return state.bureau = data;
-    },
     bureaus(state, data){
       return state.bureaus = data;
+    },
+    allbureaus(state, data){
+      return state.allbureaus = data;
     }
   }
 

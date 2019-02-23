@@ -77,9 +77,11 @@ class Bureau extends Model
     //has many
     public function bureaudirectors()
     {
-        return $this->belongsToMany(user::class,'bureau_director')
-                    // ->using(BureauDirector::class)
+        return $this->belongsToMany(User::class,'bureau_director')
+                    ->using(BureauDirector::class)
                     ->withPivot(
+                        'bureau_id',
+                        'user_id',
                         'photo',
                         'active',
                         'id_no',
@@ -88,7 +90,11 @@ class Bureau extends Model
                         'about_me',
                         'phone',
                         'landline',
-                        'address'
+                        'address',
+                        'country_id',
+                        'county_id',
+                        'constituency_id',
+                        'ward_id'
                     )
                     ->withTimestamps();
     }
@@ -138,109 +144,23 @@ class Bureau extends Model
 
     public function bureauemployeepositions()
     {
-        return $this->belongsToMany(Position::class,'bureau_employee')
-                    ->using(BureauEmployee::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(Position::class,'bureau_employee');
     }
     public function bureauemployeecountries()
     {
-        return $this->belongsToMany(Country::class,'bureau_employee')
-                    ->using(BureauEmployee::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id',
-                        'country_id',
-                        'county_id',
-                        'constituency_id',
-                        'ward_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(Country::class,'bureau_employee');
     }
     public function bureauemployeecounties()
     {
-        return $this->belongsToMany(County::class,'bureau_employee')
-                    ->using(BureauEmployee::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id',
-                        'country_id',
-                        'county_id',
-                        'constituency_id',
-                        'ward_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(County::class,'bureau_employee');
     }
     public function bureauemployeeconstituencies()
     {
-        return $this->belongsToMany(Constituency::class,'bureau_employee')
-                    ->using(BureauEmployee::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id',
-                        'country_id',
-                        'county_id',
-                        'constituency_id',
-                        'ward_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(Constituency::class,'bureau_employee');
     }
     public function bureauemployeewards()
     {
-        return $this->belongsToMany(Ward::class,'bureau_employee')
-                    ->using(BureauEmployee::class)
-                    ->withPivot(
-                        'photo',
-                        'active',
-                        'id_no',
-                        'id_photo_front',
-                        'id_photo_back',
-                        'about_me',
-                        'phone',
-                        'landline',
-                        'address',
-                        'position_id',
-                        'country_id',
-                        'county_id',
-                        'constituency_id',
-                        'ward_id'
-                    )
-                    ->withTimestamps();
+        return $this->belongsToMany(Ward::class,'bureau_employee');
     }
 
 

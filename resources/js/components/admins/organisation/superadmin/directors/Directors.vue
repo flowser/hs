@@ -181,10 +181,10 @@
                                             <has-error style="color: #e83e8c" :form="directorform" field="id_no"></has-error>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="address" class=" col-form-label">Address</label>
-                                            <input v-model="directorform.address" type="text" name="Address" placeholder="Address"
+                                            <label for="address" class=" col-form-label">Addresdddds</label>
+                                            <input v-model="directorform.address" type="text" name="address" placeholder="Address"
                                                 class="form-control" :class="{ 'is-invalid': directorform.errors.has('address') }" >
-                                            <has-error style="color: #e83e8c" :form="directorform" field="address"></has-error>
+                                            <has-error style="color: #e83e8c" :form="directorform" field="country_id"></has-error>
                                         </div>
                                     </div>
                                     <div class=" row">
@@ -192,7 +192,7 @@
                                             <label for="country_id">Select Country</label>
                                             <select class="form-control" @change="countryCounties(directorform.country_id)"
                                             v-model="directorform.country_id" :class="{ 'is-invalid': directorform.errors.has('country_id') }">
-                                                    <option disabled value="">Select Country</option>
+                                                    <option disabled value="">Select Country</option>{{directorform.country_id}}
                                                     <option v-for="country in Countries" :value="country.id" :key="country.id">{{country.name}}</option>
                                             </select>
                                                 <has-error style="color: #e83e8c" :form="directorform" field="country_id"></has-error>
@@ -395,27 +395,22 @@
             },
             //director
             InputPhone({ number, isValid, country }) {
-            console.log(number, isValid, country);
             this.directorform.phone = number;
             this.phone.isValid = isValid;
             this.phone.country = country && country.name;
             },
             InputLandline({ number, isValid, country }) {
-            console.log(number, isValid, country);
             this.directorform.landline = number;
             this.landline.isValid = isValid;
             this.landline.country = country && country.name;
             },
             countryCounties(country_id){
-                console.log(country_id);
                 this.$store.dispatch('countrycounties', country_id);
             },
             countyConstituencies(county_id){
-                console.log(county_id);
                 this.$store.dispatch('countyconstituencies', county_id);
             },
             constituencyWards(constituency_id){
-                console.log(constituency_id);
                 this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
             },
             loadCountries(){
@@ -442,7 +437,6 @@
                 return this.$store.dispatch( "roles")//get all from roles.index
             },
             newDirectorModal(){
-                console.log('new director modal')
                  this.editmodeDirector= false;
                  this.directorform.reset()
                      $('#DirectorModal').modal('show')
@@ -518,17 +512,15 @@
                 }
             },
             updateDirectorIDFrontPhoto(directorform_id_photo_front){
-                // console.log(directorform.id_photo_front)
                 let img = this.directorform.id_photo_front;
                       if(img ==null){
                           return "/assets/organisation/img/website/empty.png";
-                        //  console.log('its reall null')
                       }else{
                           if(img.length>100){
                             return this.directorform.id_photo_front;
                         }else{
                             if(directorform_id_photo_front){
-                                return "assets/organisation/img/directors/passports/"+directorform_id_photo_front;
+                                return "assets/organisation/img/directors/IDs/front/"+directorform_id_photo_front;
                             }else{
                                 return "/assets/organisation/img/website/empty.png";
                             }
@@ -556,23 +548,20 @@
                     let reader = new FileReader();
                         reader.onload = event=> {
                             this.directorform.id_photo_back =event.target.result
-                                // console.log(event.target.result)
                             };
                         reader.readAsDataURL(file);
                 }
             },
             updateDirectorIDBackPhoto(directorform_id_photo_back){
-                // console.log(directorform.id_photo_back)
                 let img = this.directorform.id_photo_back;
                       if(img ==null){
                           return "/assets/organisation/img/website/empty.png";
-                        //  console.log('its reall null')
                       }else{
                           if(img.length>100){
                             return this.directorform.id_photo_back;
                         }else{
                             if(directorform_id_photo_back){
-                                return "assets/organisation/img/directors/IDs/front/"+directorform_id_photo_back;
+                                return "assets/organisation/img/directors/IDs/back/"+directorform_id_photo_back;
                             }else{
                                 return "/assets/organisation/img/website/empty.png";
                             }
@@ -592,9 +581,30 @@
                             type: 'success',
                             title: 'Fetched the Director data successfully'
                             })
-                            console.log(response.data)
                             this.directorform.fill(response.data.director)
-                               this.$Progress.finish();
+                            this.directorform.user_id = response.data.director.organisationdirectors[0].pivot.user_id
+                            this.directorform.organisation_id = response.data.director.organisationdirectors[0].pivot.organisation_id
+                            this.directorform.position_id = response.data.director.organisationdirectors[0].pivot.position_id
+                            this.directorform.photo = response.data.director.organisationdirectors[0].pivot.photo
+                            this.directorform.id_no = response.data.director.organisationdirectors[0].pivot.id_no
+                            this.directorform.id_photo_front = response.data.director.organisationdirectors[0].pivot.id_photo_front
+                            this.directorform.id_photo_back = response.data.director.organisationdirectors[0].pivot.id_photo_back
+                            this.directorform.phone = response.data.director.organisationdirectors[0].pivot.phone
+                            this.directorform.landline = response.data.director.organisationdirectors[0].pivot.landline
+                            this.directorform.address = response.data.director.organisationdirectors[0].pivot.address
+
+                           //get country id
+                            this.directorform.country_id = response.data.director.countries[0].id
+                            //get county id using the country id
+                            this.directorform.county_id = response.data.director.counties[0].id
+                            this.$store.dispatch('countrycounties', response.data.director.countries[0].id);
+                            //get contituency using county id
+                            this.directorform.constituency_id = response.data.director.constituencies[0].id
+                            this.$store.dispatch('countyconstituencies', response.data.director.counties[0].id);
+                            //get ward usng constituency id
+                            this.directorform.ward_id = response.data.director.wards[0].id
+                            this.$store.dispatch('constituencywards', response.data.director.constituencies[0].id);
+                            this.$Progress.finish();
                         })
                         .catch(()=>{
                             this.$Progress.fail();

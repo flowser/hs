@@ -6968,7 +6968,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         permissions: [],
         roles: [],
         user_id: '',
-        organisation_id: '',
+        bureau_id: '',
         position_id: '',
         photo: '',
         active: '',
@@ -7048,8 +7048,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     validateDirector: function validateDirector() {
       var _this2 = this;
 
-      this.$Progress.start();
-      this.bureauOutput = this.bureauform; //append form data
+      console.log('dddddd');
+      this.$Progress.start(); // this.bureauOutput = this.bureauform;  //append form data
 
       return this.bureauform.post('/bureau/verify/director').then(function (response) {
         return true;
@@ -7195,9 +7195,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     loadBureaus: function loadBureaus() {
       return this.$store.dispatch("bureaus"); //get all from bureau. bureau linked to user
     },
+    loadBureaudirectors: function loadBureaudirectors() {
+      return this.$store.dispatch("bureausdirectors"); //get all from bureau. bureau linked to user
+    },
     //Bureau
     newBureauModal: function newBureauModal() {
-      this.editmodeBureau = false;
+      this.newBureauDirector = true; //  this.editmodeBureau= false;
+
       this.bureauform.reset();
       $('#BureauModal').modal('show');
     },
@@ -7446,9 +7450,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     }
-  }), _defineProperty(_methods, "newDirectorModal", function newDirectorModal() {
-    console.log('new director modal');
+  }), _defineProperty(_methods, "newDirectorModal", function newDirectorModal(bureau_id) {
+    var _this11 = this;
+
+    console.log(bureau_id);
     this.editmodeDirector = false;
+    axios.get('/bureaudirector/view/' + bureau_id).then(function (response) {
+      $('#DirectorModal').modal('show');
+      toast({
+        type: 'success',
+        title: 'Fetched the Bureau data successfully'
+      });
+      _this11.directorform.bureau_id = response.data.director.pivot.bureau_id;
+
+      _this11.$Progress.finish();
+    }).catch(function () {
+      _this11.$Progress.fail(); //errors
+
+
+      $('#DirectorModal').modal('show');
+      toast({
+        type: 'error',
+        title: 'There was something Wrong'
+      });
+    }); //  this.directorform.user_id = response.data.director.bureaudirectors[0].pivot.user_id
+    //  console.log(this.directorform.fill(bureau_id))
+
     this.directorform.reset();
     $('#DirectorModal').modal('show');
   }), _defineProperty(_methods, "directorLoadPassPhoto", function directorLoadPassPhoto(directorpivot_photo) {
@@ -7458,7 +7485,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return "/assets/bureau/img/empty.png";
     }
   }), _defineProperty(_methods, "directorChangePassPhoto", function directorChangePassPhoto(event) {
-    var _this11 = this;
+    var _this12 = this;
 
     var file = event.target.files[0];
 
@@ -7473,7 +7500,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var reader = new FileReader();
 
       reader.onload = function (event) {
-        _this11.directorform.photo = event.target.result; // console.log(event.target.result)
+        _this12.directorform.photo = event.target.result; // console.log(event.target.result)
       };
 
       reader.readAsDataURL(file);
@@ -7502,7 +7529,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return "/assets/bureau/img/empty.png";
     }
   }), _defineProperty(_methods, "directorChangeIDFrontPhoto", function directorChangeIDFrontPhoto(event) {
-    var _this12 = this;
+    var _this13 = this;
 
     var file = event.target.files[0];
 
@@ -7517,7 +7544,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var reader = new FileReader();
 
       reader.onload = function (event) {
-        _this12.directorform.id_photo_front = event.target.result; // console.log(event.target.result)
+        _this13.directorform.id_photo_front = event.target.result; // console.log(event.target.result)
       };
 
       reader.readAsDataURL(file);
@@ -7546,7 +7573,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return "/assets/bureau/img/empty.png";
     }
   }), _defineProperty(_methods, "directorChangeIDBackPhoto", function directorChangeIDBackPhoto(event) {
-    var _this13 = this;
+    var _this14 = this;
 
     var file = event.target.files[0];
 
@@ -7561,7 +7588,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var reader = new FileReader();
 
       reader.onload = function (event) {
-        _this13.directorform.id_photo_back = event.target.result; // console.log(event.target.result)
+        _this14.directorform.id_photo_back = event.target.result; // console.log(event.target.result)
       };
 
       reader.readAsDataURL(file);
@@ -7584,7 +7611,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     }
   }), _defineProperty(_methods, "addBureau", function addBureau() {
-    var _this14 = this;
+    var _this15 = this;
 
     console.log('add Bureau new');
     this.$Progress.start();
@@ -7594,15 +7621,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         title: 'Bureau Created successfully'
       });
 
-      _this14.$store.dispatch("bureau");
+      _this15.$store.dispatch("bureaus");
 
       $('#BureauModal').modal('hide');
 
-      _this14.bureauform.reset();
+      _this15.bureauform.reset();
 
-      _this14.$Progress.finish();
+      _this15.$Progress.finish();
     }).catch(function () {
-      _this14.$Progress.fail(); //errors
+      _this15.$Progress.fail(); //errors
 
 
       $('#BureauModal').modal('show');
@@ -7612,12 +7639,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     });
   }), _defineProperty(_methods, "updateBureau", function updateBureau(id) {
-    var _this15 = this;
+    var _this16 = this;
 
     console.log('update organisaton');
     this.$Progress.start();
     this.bureauform.patch('/bureau/update/' + id).then(function () {
-      _this15.$store.dispatch("bureau");
+      _this16.$store.dispatch("bureau");
 
       $('#BureauModal').modal('hide');
       toast({
@@ -7625,9 +7652,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         title: 'User Created successfully'
       });
 
-      _this15.$Progress.finish();
+      _this16.$Progress.finish();
     }).catch(function () {
-      _this15.$Progress.fail();
+      _this16.$Progress.fail();
 
       $('#BureauModal').modal('show');
       toast({
@@ -7636,7 +7663,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     });
   }), _defineProperty(_methods, "deleteBureau", function deleteBureau(id) {
-    var _this16 = this;
+    var _this17 = this;
 
     Swal({
       title: 'Are you sure?',
@@ -7649,19 +7676,160 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }).then(function (result) {
       if (result.value) {
         //  console.log('delete user', id)
-        _this16.$Progress.start();
+        _this17.$Progress.start();
 
-        _this16.bureauform.get('/bureau/delete/' + id).then(function () {
+        _this17.bureauform.get('/bureau/delete/' + id).then(function () {
           toast({
             type: 'success',
             title: 'Bureau Deleted successfully'
           });
 
-          _this16.$store.dispatch("bureau");
+          _this17.$store.dispatch("bureau");
 
-          _this16.$Progress.finish();
+          _this17.$Progress.finish();
         }).catch(function () {
-          _this16.$Progress.fail();
+          _this17.$Progress.fail();
+
+          toast({
+            type: 'error',
+            title: 'There was something wrong'
+          });
+        });
+      }
+    });
+  }), _defineProperty(_methods, "editDirectorModal", function editDirectorModal(id) {
+    var _this18 = this;
+
+    this.editmodeDirector = true;
+    this.directorform.reset();
+    this.$Progress.start();
+    axios.get('/bureaudirector/edit/' + id).then(function (response) {
+      $('#DirectorModal').modal('show');
+      toast({
+        type: 'success',
+        title: 'Fetched the Director data successfully'
+      });
+
+      _this18.directorform.fill(response.data.director);
+
+      _this18.directorform.user_id = response.data.director.bureaudirectors[0].pivot.user_id;
+      _this18.directorform.bureau_id = response.data.director.bureaudirectors[0].pivot.bureau_id;
+      _this18.directorform.position_id = response.data.director.bureaudirectors[0].pivot.position_id;
+      _this18.directorform.photo = response.data.director.bureaudirectors[0].pivot.photo;
+      _this18.directorform.id_no = response.data.director.bureaudirectors[0].pivot.id_no;
+      _this18.directorform.id_photo_front = response.data.director.bureaudirectors[0].pivot.id_photo_front;
+      _this18.directorform.id_photo_back = response.data.director.bureaudirectors[0].pivot.id_photo_back;
+      _this18.directorform.phone = response.data.director.bureaudirectors[0].pivot.phone;
+      _this18.directorform.landline = response.data.director.bureaudirectors[0].pivot.landline;
+      _this18.directorform.address = response.data.director.bureaudirectors[0].pivot.address; //get country id
+
+      _this18.directorform.country_id = response.data.director.countries[0].id; //get county id using the country id
+
+      _this18.directorform.county_id = response.data.director.counties[0].id;
+
+      _this18.$store.dispatch('countrycounties', response.data.director.countries[0].id); //get contituency using county id
+
+
+      _this18.directorform.constituency_id = response.data.director.constituencies[0].id;
+
+      _this18.$store.dispatch('countyconstituencies', response.data.director.counties[0].id); //get ward usng constituency id
+
+
+      _this18.directorform.ward_id = response.data.director.wards[0].id;
+
+      _this18.$store.dispatch('constituencywards', response.data.director.constituencies[0].id);
+
+      _this18.$Progress.finish();
+    }).catch(function () {
+      _this18.$Progress.fail(); //errors
+
+
+      $('#DirectorModal').modal('show');
+      toast({
+        type: 'error',
+        title: 'There was something Wrong'
+      });
+    });
+  }), _defineProperty(_methods, "addDirector", function addDirector(bureau_id) {
+    var _this19 = this;
+
+    // let bureau_id = this.bureauform.id;
+    console.log(bureau_id);
+    this.$Progress.start();
+    this.directorform.patch('/bureaudirector/' + bureau_id).then(function (response) {
+      //  console.log(response.data)
+      toast({
+        type: 'success',
+        title: 'Director Created successfully'
+      });
+
+      _this19.$store.dispatch("bureaudirectors");
+
+      _this19.directorform.reset();
+
+      $('#DirectorModal').modal('hide');
+
+      _this19.$Progress.finish();
+    }).catch(function () {
+      _this19.$Progress.fail(); //errors
+
+
+      $('#DirectorModal').modal('show');
+      toast({
+        type: 'error',
+        title: 'There was something wrong.'
+      });
+    });
+  }), _defineProperty(_methods, "updateDirector", function updateDirector(id) {
+    var _this20 = this;
+
+    console.log('update director');
+    this.$Progress.start();
+    this.directorform.patch('/bureaudirector/update/' + id).then(function () {
+      _this20.$store.dispatch("directors");
+
+      $('#DirectorModal').modal('hide');
+      toast({
+        type: 'success',
+        title: 'Director Created successfully'
+      });
+
+      _this20.$Progress.finish();
+    }).catch(function () {
+      _this20.$Progress.fail();
+
+      toast({
+        type: 'error',
+        title: 'There was something wrong'
+      });
+    });
+  }), _defineProperty(_methods, "deleteDirector", function deleteDirector(id) {
+    var _this21 = this;
+
+    Swal({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+      if (result.value) {
+        //  console.log('delete director', id)
+        _this21.$Progress.start();
+
+        _this21.directorform.get('/bureaudirector/delete/' + id).then(function () {
+          toast({
+            type: 'success',
+            title: 'Director Deleted successfully'
+          });
+
+          _this21.$store.dispatch("directors");
+
+          _this21.$Progress.finish();
+        }).catch(function () {
+          _this21.$Progress.fail();
 
           toast({
             type: 'error',
@@ -9179,7 +9347,6 @@ __webpack_require__.r(__webpack_exports__);
       var number = _ref.number,
           isValid = _ref.isValid,
           country = _ref.country;
-      console.log(number, isValid, country);
       this.adminform.phone = number;
       this.phone.isValid = isValid;
       this.phone.country = country && country.name;
@@ -9188,21 +9355,17 @@ __webpack_require__.r(__webpack_exports__);
       var number = _ref2.number,
           isValid = _ref2.isValid,
           country = _ref2.country;
-      console.log(number, isValid, country);
       this.adminform.landline = number;
       this.landline.isValid = isValid;
       this.landline.country = country && country.name;
     },
     countryCounties: function countryCounties(country_id) {
-      console.log(country_id);
       this.$store.dispatch('countrycounties', country_id);
     },
     countyConstituencies: function countyConstituencies(county_id) {
-      console.log(county_id);
       this.$store.dispatch('countyconstituencies', county_id);
     },
     constituencyWards: function constituencyWards(constituency_id) {
-      console.log(constituency_id);
       this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
     },
     loadCountries: function loadCountries() {
@@ -9229,7 +9392,6 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.dispatch("roles"); //get all from roles.index
     },
     newAdminModal: function newAdminModal() {
-      console.log('new admin modal');
       this.editmodeAdmin = false;
       this.adminform.reset();
       $('#AdminModal').modal('show');
@@ -9312,17 +9474,16 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     updateAdminIDFrontPhoto: function updateAdminIDFrontPhoto(adminform_id_photo_front) {
-      // console.log(adminform.id_photo_front)
       var img = this.adminform.id_photo_front;
 
       if (img == null) {
-        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
+        return "/assets/organisation/img/website/empty.png";
       } else {
         if (img.length > 100) {
           return this.adminform.id_photo_front;
         } else {
           if (adminform_id_photo_front) {
-            return "assets/organisation/img/admins/passports/" + adminform_id_photo_front;
+            return "assets/organisation/img/admins/IDs/front/" + adminform_id_photo_front;
           } else {
             return "/assets/organisation/img/website/empty.png";
           }
@@ -9352,24 +9513,23 @@ __webpack_require__.r(__webpack_exports__);
         var reader = new FileReader();
 
         reader.onload = function (event) {
-          _this5.adminform.id_photo_back = event.target.result; // console.log(event.target.result)
+          _this5.adminform.id_photo_back = event.target.result;
         };
 
         reader.readAsDataURL(file);
       }
     },
     updateAdminIDBackPhoto: function updateAdminIDBackPhoto(adminform_id_photo_back) {
-      // console.log(adminform.id_photo_back)
       var img = this.adminform.id_photo_back;
 
       if (img == null) {
-        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
+        return "/assets/organisation/img/website/empty.png";
       } else {
         if (img.length > 100) {
           return this.adminform.id_photo_back;
         } else {
           if (adminform_id_photo_back) {
-            return "assets/organisation/img/admins/IDs/front/" + adminform_id_photo_back;
+            return "assets/organisation/img/admins/IDs/back/" + adminform_id_photo_back;
           } else {
             return "/assets/organisation/img/website/empty.png";
           }
@@ -9381,7 +9541,6 @@ __webpack_require__.r(__webpack_exports__);
 
       this.editmodeAdmin = true;
       this.adminform.reset();
-      console.log('edit admin', id);
       this.$Progress.start();
       axios.get('/orgadmin/edit/' + id).then(function (response) {
         $('#AdminModal').modal('show');
@@ -9389,8 +9548,39 @@ __webpack_require__.r(__webpack_exports__);
           type: 'success',
           title: 'Fetched the Admin data successfully'
         });
+        console.log(response.data.admin.orgemployeecountries[0].name);
+        console.log(response.data.admin.orgemployeecounties[0].name);
+        console.log(response.data.admin.orgemployeeconstituencies[0].name);
+        console.log(response.data.admin.orgemployeewards[0].name);
 
         _this6.adminform.fill(response.data.admin);
+
+        _this6.adminform.user_id = response.data.admin.organisationemployees[0].pivot.user_id;
+        _this6.adminform.organisation_id = response.data.admin.organisationemployees[0].pivot.organisation_id;
+        _this6.adminform.position_id = response.data.admin.organisationemployees[0].pivot.position_id;
+        _this6.adminform.photo = response.data.admin.organisationemployees[0].pivot.photo;
+        _this6.adminform.id_no = response.data.admin.organisationemployees[0].pivot.id_no;
+        _this6.adminform.id_photo_front = response.data.admin.organisationemployees[0].pivot.id_photo_front;
+        _this6.adminform.id_photo_back = response.data.admin.organisationemployees[0].pivot.id_photo_back;
+        _this6.adminform.phone = response.data.admin.organisationemployees[0].pivot.phone;
+        _this6.adminform.landline = response.data.admin.organisationemployees[0].pivot.landline;
+        _this6.adminform.address = response.data.admin.organisationemployees[0].pivot.address; //    get country id
+
+        _this6.adminform.country_id = response.data.admin.orgemployeecountries[0].id; //get county id using the country id
+
+        _this6.adminform.county_id = response.data.admin.orgemployeecounties[0].id;
+
+        _this6.$store.dispatch('countrycounties', response.data.admin.orgemployeecountries[0].id); //get contituency using county id
+
+
+        _this6.adminform.constituency_id = response.data.admin.orgemployeeconstituencies[0].id;
+
+        _this6.$store.dispatch('countyconstituencies', response.data.admin.orgemployeecounties[0].id); //get ward usng constituency id
+
+
+        _this6.adminform.ward_id = response.data.admin.orgemployeewards[0].id;
+
+        _this6.$store.dispatch('constituencywards', response.data.admin.orgemployeeconstituencies[0].id);
 
         _this6.$Progress.finish();
       }).catch(function () {
@@ -9913,7 +10103,6 @@ __webpack_require__.r(__webpack_exports__);
       var number = _ref.number,
           isValid = _ref.isValid,
           country = _ref.country;
-      console.log(number, isValid, country);
       this.directorform.phone = number;
       this.phone.isValid = isValid;
       this.phone.country = country && country.name;
@@ -9922,21 +10111,17 @@ __webpack_require__.r(__webpack_exports__);
       var number = _ref2.number,
           isValid = _ref2.isValid,
           country = _ref2.country;
-      console.log(number, isValid, country);
       this.directorform.landline = number;
       this.landline.isValid = isValid;
       this.landline.country = country && country.name;
     },
     countryCounties: function countryCounties(country_id) {
-      console.log(country_id);
       this.$store.dispatch('countrycounties', country_id);
     },
     countyConstituencies: function countyConstituencies(county_id) {
-      console.log(county_id);
       this.$store.dispatch('countyconstituencies', county_id);
     },
     constituencyWards: function constituencyWards(constituency_id) {
-      console.log(constituency_id);
       this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
     },
     loadCountries: function loadCountries() {
@@ -9963,7 +10148,6 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.dispatch("roles"); //get all from roles.index
     },
     newDirectorModal: function newDirectorModal() {
-      console.log('new director modal');
       this.editmodeDirector = false;
       this.directorform.reset();
       $('#DirectorModal').modal('show');
@@ -10046,17 +10230,16 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     updateDirectorIDFrontPhoto: function updateDirectorIDFrontPhoto(directorform_id_photo_front) {
-      // console.log(directorform.id_photo_front)
       var img = this.directorform.id_photo_front;
 
       if (img == null) {
-        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
+        return "/assets/organisation/img/website/empty.png";
       } else {
         if (img.length > 100) {
           return this.directorform.id_photo_front;
         } else {
           if (directorform_id_photo_front) {
-            return "assets/organisation/img/directors/passports/" + directorform_id_photo_front;
+            return "assets/organisation/img/directors/IDs/front/" + directorform_id_photo_front;
           } else {
             return "/assets/organisation/img/website/empty.png";
           }
@@ -10086,24 +10269,23 @@ __webpack_require__.r(__webpack_exports__);
         var reader = new FileReader();
 
         reader.onload = function (event) {
-          _this5.directorform.id_photo_back = event.target.result; // console.log(event.target.result)
+          _this5.directorform.id_photo_back = event.target.result;
         };
 
         reader.readAsDataURL(file);
       }
     },
     updateDirectorIDBackPhoto: function updateDirectorIDBackPhoto(directorform_id_photo_back) {
-      // console.log(directorform.id_photo_back)
       var img = this.directorform.id_photo_back;
 
       if (img == null) {
-        return "/assets/organisation/img/website/empty.png"; //  console.log('its reall null')
+        return "/assets/organisation/img/website/empty.png";
       } else {
         if (img.length > 100) {
           return this.directorform.id_photo_back;
         } else {
           if (directorform_id_photo_back) {
-            return "assets/organisation/img/directors/IDs/front/" + directorform_id_photo_back;
+            return "assets/organisation/img/directors/IDs/back/" + directorform_id_photo_back;
           } else {
             return "/assets/organisation/img/website/empty.png";
           }
@@ -10122,9 +10304,35 @@ __webpack_require__.r(__webpack_exports__);
           type: 'success',
           title: 'Fetched the Director data successfully'
         });
-        console.log(response.data);
 
         _this6.directorform.fill(response.data.director);
+
+        _this6.directorform.user_id = response.data.director.organisationdirectors[0].pivot.user_id;
+        _this6.directorform.organisation_id = response.data.director.organisationdirectors[0].pivot.organisation_id;
+        _this6.directorform.position_id = response.data.director.organisationdirectors[0].pivot.position_id;
+        _this6.directorform.photo = response.data.director.organisationdirectors[0].pivot.photo;
+        _this6.directorform.id_no = response.data.director.organisationdirectors[0].pivot.id_no;
+        _this6.directorform.id_photo_front = response.data.director.organisationdirectors[0].pivot.id_photo_front;
+        _this6.directorform.id_photo_back = response.data.director.organisationdirectors[0].pivot.id_photo_back;
+        _this6.directorform.phone = response.data.director.organisationdirectors[0].pivot.phone;
+        _this6.directorform.landline = response.data.director.organisationdirectors[0].pivot.landline;
+        _this6.directorform.address = response.data.director.organisationdirectors[0].pivot.address; //get country id
+
+        _this6.directorform.country_id = response.data.director.countries[0].id; //get county id using the country id
+
+        _this6.directorform.county_id = response.data.director.counties[0].id;
+
+        _this6.$store.dispatch('countrycounties', response.data.director.countries[0].id); //get contituency using county id
+
+
+        _this6.directorform.constituency_id = response.data.director.constituencies[0].id;
+
+        _this6.$store.dispatch('countyconstituencies', response.data.director.counties[0].id); //get ward usng constituency id
+
+
+        _this6.directorform.ward_id = response.data.director.wards[0].id;
+
+        _this6.$store.dispatch('constituencywards', response.data.director.constituencies[0].id);
 
         _this6.$Progress.finish();
       }).catch(function () {
@@ -79566,8 +79774,8 @@ var render = function() {
                           attrs: {
                             title: "Bureau Director Info",
                             "before-change": _vm.newBureauDirector
-                              ? _vm.validateDirectorUpdate
-                              : _vm.validateDirector
+                              ? _vm.validateDirector
+                              : _vm.validateDirectorUpdate
                           }
                         },
                         [
@@ -82243,7 +82451,7 @@ var render = function() {
                       $event.preventDefault()
                       _vm.editmodeDirector
                         ? _vm.updateDirector(_vm.directorform.id)
-                        : _vm.addDirector(_vm.directorform.organisation_id)
+                        : _vm.addDirector(_vm.directorform.bureau_id)
                     }
                   }
                 },
@@ -85968,7 +86176,9 @@ var render = function() {
                                       _vm._v(_vm._s(admin.full_name) + ",")
                                     ]),
                                     _vm._v(" "),
-                                    _vm._l(admin.positions, function(position) {
+                                    _vm._l(admin.orgemployeepositions, function(
+                                      position
+                                    ) {
                                       return _c("div", { key: position.id }, [
                                         _vm._v(
                                           "\n                                  " +
@@ -86042,7 +86252,9 @@ var render = function() {
                                       )
                                     ]),
                                     _vm._v(" "),
-                                    _vm._l(admin.wards, function(ward) {
+                                    _vm._l(admin.orgemployeewards, function(
+                                      ward
+                                    ) {
                                       return _c(
                                         "div",
                                         { key: ward.id },
@@ -86057,25 +86269,26 @@ var render = function() {
                                           _vm._v(
                                             " ward,\n                                  "
                                           ),
-                                          _vm._l(admin.constituencies, function(
-                                            constituency
-                                          ) {
-                                            return _c(
-                                              "span",
-                                              {
-                                                key: constituency.id,
-                                                staticStyle: {
-                                                  color: "#9a009a"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                      " +
-                                                    _vm._s(constituency.name)
-                                                )
-                                              ]
-                                            )
-                                          }),
+                                          _vm._l(
+                                            admin.orgemployeeconstituencies,
+                                            function(constituency) {
+                                              return _c(
+                                                "span",
+                                                {
+                                                  key: constituency.id,
+                                                  staticStyle: {
+                                                    color: "#9a009a"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                      " +
+                                                      _vm._s(constituency.name)
+                                                  )
+                                                ]
+                                              )
+                                            }
+                                          ),
                                           _vm._v(
                                             " constituency,\n                              "
                                           )
@@ -86084,7 +86297,9 @@ var render = function() {
                                       )
                                     }),
                                     _vm._v(" "),
-                                    _vm._l(admin.counties, function(county) {
+                                    _vm._l(admin.orgemployeecounties, function(
+                                      county
+                                    ) {
                                       return _c(
                                         "div",
                                         { key: county.id },
@@ -86099,26 +86314,27 @@ var render = function() {
                                           _vm._v(
                                             " county,\n                                  "
                                           ),
-                                          _vm._l(admin.countries, function(
-                                            country
-                                          ) {
-                                            return _c(
-                                              "span",
-                                              {
-                                                key: country.id,
-                                                staticStyle: {
-                                                  color: "#9a009a"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                      " +
-                                                    _vm._s(country.name) +
-                                                    ",\n                                  "
-                                                )
-                                              ]
-                                            )
-                                          })
+                                          _vm._l(
+                                            admin.orgemployeecountries,
+                                            function(country) {
+                                              return _c(
+                                                "span",
+                                                {
+                                                  key: country.id,
+                                                  staticStyle: {
+                                                    color: "#9a009a"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                      " +
+                                                      _vm._s(country.name) +
+                                                      ",\n                                  "
+                                                  )
+                                                ]
+                                              )
+                                            }
+                                          )
                                         ],
                                         2
                                       )
@@ -86749,7 +86965,7 @@ var render = function() {
                             },
                             attrs: {
                               type: "text",
-                              name: "Address",
+                              name: "address",
                               placeholder: "Address"
                             },
                             domProps: { value: _vm.adminform.address },
@@ -86769,7 +86985,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("has-error", {
                             staticStyle: { color: "#e83e8c" },
-                            attrs: { form: _vm.adminform, field: "address" }
+                            attrs: { form: _vm.adminform, field: "country_id" }
                           })
                         ],
                         1
@@ -86836,7 +87052,10 @@ var render = function() {
                                 { attrs: { disabled: "", value: "" } },
                                 [_vm._v("Select Country")]
                               ),
-                              _vm._v(" "),
+                              _vm._v(
+                                _vm._s(_vm.adminform.country_id) +
+                                  "\n                                                  "
+                              ),
                               _vm._l(_vm.Countries, function(country) {
                                 return _c(
                                   "option",
@@ -87095,7 +87314,10 @@ var render = function() {
                                 { attrs: { disabled: "", value: "" } },
                                 [_vm._v("Select Ward")]
                               ),
-                              _vm._v(" "),
+                              _vm._v(
+                                _vm._s(_vm.adminform.ward_id) +
+                                  "\n                                                  "
+                              ),
                               _vm._l(_vm.Wards, function(ward) {
                                 return _c(
                                   "option",
@@ -88356,7 +88578,7 @@ var render = function() {
                               staticClass: " col-form-label",
                               attrs: { for: "address" }
                             },
-                            [_vm._v("Address")]
+                            [_vm._v("Addresdddds")]
                           ),
                           _vm._v(" "),
                           _c("input", {
@@ -88376,7 +88598,7 @@ var render = function() {
                             },
                             attrs: {
                               type: "text",
-                              name: "Address",
+                              name: "address",
                               placeholder: "Address"
                             },
                             domProps: { value: _vm.directorform.address },
@@ -88396,7 +88618,10 @@ var render = function() {
                           _vm._v(" "),
                           _c("has-error", {
                             staticStyle: { color: "#e83e8c" },
-                            attrs: { form: _vm.directorform, field: "address" }
+                            attrs: {
+                              form: _vm.directorform,
+                              field: "country_id"
+                            }
                           })
                         ],
                         1
@@ -88463,7 +88688,10 @@ var render = function() {
                                 { attrs: { disabled: "", value: "" } },
                                 [_vm._v("Select Country")]
                               ),
-                              _vm._v(" "),
+                              _vm._v(
+                                _vm._s(_vm.directorform.country_id) +
+                                  "\n                                                  "
+                              ),
                               _vm._l(_vm.Countries, function(country) {
                                 return _c(
                                   "option",
@@ -107872,37 +108100,37 @@ var mutations = {
 __webpack_require__.r(__webpack_exports__);
 //permission
 var state = {
-  bureau: [],
-  bureaus: []
+  bureaus: [],
+  allbureaus: []
 },
     getters = {
-  Bureau: function Bureau(state) {
-    return state.bureau;
-  },
   Bureaus: function Bureaus(state) {
     return state.bureaus;
+  },
+  AllBureaus: function AllBureaus(state) {
+    return state.allbureaus;
   }
 };
 var actions = {
-  bureau: function bureau(context) {
+  bureaus: function bureaus(context) {
     axios.get('/bureau/get').then(function (response) {
       //   console.log(response.data.bureau);
-      context.commit('bureau', response.data.bureau);
+      context.commit('bureaus', response.data.bureaus);
     });
   },
-  bureaus: function bureaus(context) {
+  allbureaus: function allbureaus(context) {
     axios.get('/bureaus/get/list').then(function (response) {
       console.log(response.data);
-      context.commit('bureaus', response.data.bureaus);
+      context.commit('allbureaus', response.data.allbureaus);
     });
   }
 };
 var mutations = {
-  bureau: function bureau(state, data) {
-    return state.bureau = data;
-  },
   bureaus: function bureaus(state, data) {
     return state.bureaus = data;
+  },
+  allbureaus: function allbureaus(state, data) {
+    return state.allbureaus = data;
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -108073,7 +108301,7 @@ var actions = {
   admins: function admins(context) {
     //permission.index route laravel
     axios.get('/orgadmin/get').then(function (response) {
-      // console.log(response.data.admins)
+      console.log(response.data);
       context.commit('admins', response.data.admins);
     });
   }

@@ -236,7 +236,7 @@
                                 </div>
                             </tab-content>
 
-                            <tab-content title="Bureau Director Info" :before-change="newBureauDirector ? validateDirectorUpdate : validateDirector">
+                            <tab-content title="Bureau Director Info" :before-change="newBureauDirector ? validateDirector : validateDirectorUpdate ">
                                 <div v-show="newBureauDirector">
                                     <div class="row">
                                         <div class="form-group col-md-4">
@@ -562,7 +562,7 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form role="form" @submit.prevent="editmodeDirector ? updateDirector(directorform.id) : addDirector(directorform.organisation_id)" >
+                    <form role="form" @submit.prevent="editmodeDirector ? updateDirector(directorform.id) : addDirector(directorform.bureau_id)" >
                         <div class="modal-body">
                             <h5 class="modal-title" v-show="editmodeDirector" id="DirectorModalLabel">Update Director</h5>
                             <h5 class="modal-title" v-show="!editmodeDirector" id="DirectorModalLabel">Add New Director</h5>
@@ -779,7 +779,7 @@
                         permissions:[],
                         roles:[],
                         user_id:'',
-                        organisation_id:'',
+                        bureau_id:'',
                         position_id:'',
                         photo:'',
                         active:'',
@@ -853,8 +853,9 @@
             },
             //Director info verification
             validateDirector() {
+                console.log('dddddd')
                 this.$Progress.start()
-                this.bureauOutput = this.bureauform;  //append form data
+                // this.bureauOutput = this.bureauform;  //append form data
                 return this.bureauform.post('/bureau/verify/director')
                     .then((response)=>{
                         return true;
@@ -983,10 +984,14 @@
             loadBureaus(){
                 return this.$store.dispatch( "bureaus")//get all from bureau. bureau linked to user
             },
+            loadBureaudirectors(){
+                return this.$store.dispatch( "bureausdirectors")//get all from bureau. bureau linked to user
+            },
 
             //Bureau
             newBureauModal(){
-                 this.editmodeBureau= false;
+                 this.newBureauDirector = true;
+                //  this.editmodeBureau= false;
                  this.bureauform.reset()
                      $('#BureauModal').modal('show')
             },
@@ -1228,9 +1233,31 @@
             },
 
             //SINGLE DIRECTOR
-            newDirectorModal(){
-                console.log('new director modal')
+            newDirectorModal(bureau_id){
+                console.log(bureau_id)
                  this.editmodeDirector= false;
+                axios.get('/bureaudirector/view/'+bureau_id)
+                .then((response)=>{
+                           $('#DirectorModal').modal('show')
+                           toast({
+                            type: 'success',
+                            title: 'Fetched the Bureau data successfully'
+                            })
+                            this.directorform.bureau_id = response.data.director.pivot.bureau_id
+                               this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                            //errors
+                            $('#DirectorModal').modal('show');
+                            toast({
+                            type: 'error',
+                            title: 'There was something Wrong'
+                            })
+                        })
+
+                //  this.directorform.user_id = response.data.director.bureaudirectors[0].pivot.user_id
+                //  console.log(this.directorform.fill(bureau_id))
                  this.directorform.reset()
                      $('#DirectorModal').modal('show')
             },
@@ -1378,7 +1405,7 @@
                             type: 'success',
                             title: 'Bureau Created successfully'
                             })
-                            this.$store.dispatch( "bureau")
+                            this.$store.dispatch( "bureaus")
                             $('#BureauModal').modal('hide')
                             this.bureauform.reset()
                               this.$Progress.finish()
@@ -1448,6 +1475,132 @@
                      }
                 })
             },
+            editDirectorModal(id){
+                 this.editmodeDirector = true;
+                 this.directorform.reset()
+                    this.$Progress.start();
+                      axios.get('/bureaudirector/edit/'+id)
+                        .then((response)=>{
+                           $('#DirectorModal').modal('show')
+                           toast({
+                            type: 'success',
+                            title: 'Fetched the Director data successfully'
+                            })
+                            this.directorform.fill(response.data.director)
+                            this.directorform.user_id = response.data.director.bureaudirectors[0].pivot.user_id
+                            this.directorform.bureau_id = response.data.director.bureaudirectors[0].pivot.bureau_id
+                            this.directorform.position_id = response.data.director.bureaudirectors[0].pivot.position_id
+                            this.directorform.photo = response.data.director.bureaudirectors[0].pivot.photo
+                            this.directorform.id_no = response.data.director.bureaudirectors[0].pivot.id_no
+                            this.directorform.id_photo_front = response.data.director.bureaudirectors[0].pivot.id_photo_front
+                            this.directorform.id_photo_back = response.data.director.bureaudirectors[0].pivot.id_photo_back
+                            this.directorform.phone = response.data.director.bureaudirectors[0].pivot.phone
+                            this.directorform.landline = response.data.director.bureaudirectors[0].pivot.landline
+                            this.directorform.address = response.data.director.bureaudirectors[0].pivot.address
+
+                           //get country id
+                            this.directorform.country_id = response.data.director.countries[0].id
+                            //get county id using the country id
+                            this.directorform.county_id = response.data.director.counties[0].id
+                            this.$store.dispatch('countrycounties', response.data.director.countries[0].id);
+                            //get contituency using county id
+                            this.directorform.constituency_id = response.data.director.constituencies[0].id
+                            this.$store.dispatch('countyconstituencies', response.data.director.counties[0].id);
+                            //get ward usng constituency id
+                            this.directorform.ward_id = response.data.director.wards[0].id
+                            this.$store.dispatch('constituencywards', response.data.director.constituencies[0].id);
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                            //errors
+                            $('#DirectorModal').modal('show');
+                            toast({
+                            type: 'error',
+                            title: 'There was something Wrong'
+                            })
+                        })
+             },
+            addDirector(bureau_id) {
+                // let bureau_id = this.bureauform.id;
+                 console.log(bureau_id)
+                this.$Progress.start();
+                this.directorform.patch('/bureaudirector/'+bureau_id)
+                    .then((response)=>{
+                        //  console.log(response.data)
+                         toast({
+                            type: 'success',
+                            title: 'Director Created successfully'
+                            })
+                            this.$store.dispatch( "bureaudirectors")
+                            this.directorform.reset()
+                            $('#DirectorModal').modal('hide')
+                              this.$Progress.finish()
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        //errors
+                            $('#DirectorModal').modal('show');
+                            toast({
+                                type: 'error',
+                                title: 'There was something wrong.'
+                                })
+                    })
+            },
+            updateDirector(id){
+                  console.log('update director')
+                  this.$Progress.start();
+                     this.directorform.patch('/bureaudirector/update/'+id)
+                        .then(()=>{
+                            this.$store.dispatch( "directors")
+                         $('#DirectorModal').modal('hide')
+                         toast({
+                            type: 'success',
+                            title: 'Director Created successfully'
+                            })
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                            toast({
+                            type: 'error',
+                            title: 'There was something wrong'
+                            })
+                        })
+            },
+            deleteDirector(id){
+                Swal({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                })
+                .then((result) => {
+                    if (result.value) {
+                    //  console.log('delete director', id)
+                        this.$Progress.start();
+                        this.directorform.get('/bureaudirector/delete/'+id)
+                            .then(()=>{
+                            toast({
+                            type: 'success',
+                            title: 'Director Deleted successfully'
+                            })
+                            this.$store.dispatch( "directors")
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                            toast({
+                            type: 'error',
+                            title: 'There was something wrong'
+                            })
+                        })
+                     }
+                })
+             }
         },
 
     }

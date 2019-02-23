@@ -20,7 +20,7 @@ class CreateBureausTable extends Migration
             $table->string('logo')->nullable();
             $table->longText('about_us')->nullable();
             $table->longText('what_we_do')->nullable();
-            $table->string('email')->nullable();
+            $table->string('bureau_email')->nullable();
             $table->string('phone')->nullable();
             $table->string('landline')->nullable();
             $table->string('website')->nullable();

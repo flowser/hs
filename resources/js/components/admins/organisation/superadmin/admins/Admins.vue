@@ -39,7 +39,7 @@
                             </div>
                             <div style="font-weight:bold;font-size:0.7em;min-width:210px;max-width:400px;margin-top:4px;padding-top:4px;font-style: italic ">
                                 <div>{{admin.full_name}},</div>
-                                <div v-for="position in admin.positions" :key="position.id">
+                                <div v-for="position in admin.orgemployeepositions" :key="position.id">
                                     {{position.name}},
                                     <span style="color:#9a009a;">
                                         {{organisation.name}},
@@ -53,14 +53,14 @@
                                 </div>
                                     <div>P. O. Box , <span style="color:#9a009a;">{{organisation.pivot.address}}</span>,
                                     </div>
-                                <div v-for="ward in admin.wards" :key="ward.id">
+                                <div v-for="ward in admin.orgemployeewards" :key="ward.id">
                                     <span style="color:#9a009a;">{{ward.name}}</span> ward,
-                                    <span v-for="constituency in admin.constituencies" :key="constituency.id" style="color:#9a009a;">
+                                    <span v-for="constituency in admin.orgemployeeconstituencies" :key="constituency.id" style="color:#9a009a;">
                                         {{constituency.name}}</span> constituency,
                                 </div>
-                                <div v-for="county in admin.counties" :key="county.id" >
+                                <div v-for="county in admin.orgemployeecounties" :key="county.id" >
                                     <span style="color:#9a009a;">{{county.name}}</span> county,
-                                    <span v-for="country in admin.countries" :key="country.id" style="color:#9a009a;">
+                                    <span v-for="country in admin.orgemployeecountries" :key="country.id" style="color:#9a009a;">
                                         {{country.name}},
                                     </span>
                                 </div>
@@ -182,9 +182,9 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="address" class=" col-form-label">Address</label>
-                                            <input v-model="adminform.address" type="text" name="Address" placeholder="Address"
+                                            <input v-model="adminform.address" type="text" name="address" placeholder="Address"
                                                 class="form-control" :class="{ 'is-invalid': adminform.errors.has('address') }" >
-                                            <has-error style="color: #e83e8c" :form="adminform" field="address"></has-error>
+                                            <has-error style="color: #e83e8c" :form="adminform" field="country_id"></has-error>
                                         </div>
                                     </div>
                                     <div class=" row">
@@ -192,7 +192,7 @@
                                             <label for="country_id">Select Country</label>
                                             <select class="form-control" @change="countryCounties(adminform.country_id)"
                                             v-model="adminform.country_id" :class="{ 'is-invalid': adminform.errors.has('country_id') }">
-                                                    <option disabled value="">Select Country</option>
+                                                    <option disabled value="">Select Country</option>{{adminform.country_id}}
                                                     <option v-for="country in Countries" :value="country.id" :key="country.id">{{country.name}}</option>
                                             </select>
                                                 <has-error style="color: #e83e8c" :form="adminform" field="country_id"></has-error>
@@ -219,7 +219,7 @@
                                             <label for="ward_id" class="col-form-label"> Ward </label>
                                             <select class="form-control"
                                             v-model="adminform.ward_id" :class="{ 'is-invalid': adminform.errors.has('ward_id') }">
-                                                    <option disabled value="">Select Ward</option>
+                                                    <option disabled value="">Select Ward</option>{{adminform.ward_id}}
                                                     <option v-for="ward in Wards" :value="ward.id" :key="ward.id">{{ward.name}}</option>
                                             </select>
                                             <has-error style="color: #e83e8c" :form="adminform" field="ward_id"></has-error>
@@ -395,27 +395,22 @@
             },
             //admin
             InputPhone({ number, isValid, country }) {
-            console.log(number, isValid, country);
             this.adminform.phone = number;
             this.phone.isValid = isValid;
             this.phone.country = country && country.name;
             },
             InputLandline({ number, isValid, country }) {
-            console.log(number, isValid, country);
             this.adminform.landline = number;
             this.landline.isValid = isValid;
             this.landline.country = country && country.name;
             },
             countryCounties(country_id){
-                console.log(country_id);
                 this.$store.dispatch('countrycounties', country_id);
             },
             countyConstituencies(county_id){
-                console.log(county_id);
                 this.$store.dispatch('countyconstituencies', county_id);
             },
             constituencyWards(constituency_id){
-                console.log(constituency_id);
                 this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
             },
             loadCountries(){
@@ -442,7 +437,6 @@
                 return this.$store.dispatch( "roles")//get all from roles.index
             },
             newAdminModal(){
-                console.log('new admin modal')
                  this.editmodeAdmin= false;
                  this.adminform.reset()
                      $('#AdminModal').modal('show')
@@ -518,17 +512,15 @@
                 }
             },
             updateAdminIDFrontPhoto(adminform_id_photo_front){
-                // console.log(adminform.id_photo_front)
                 let img = this.adminform.id_photo_front;
                       if(img ==null){
                           return "/assets/organisation/img/website/empty.png";
-                        //  console.log('its reall null')
                       }else{
                           if(img.length>100){
                             return this.adminform.id_photo_front;
                         }else{
                             if(adminform_id_photo_front){
-                                return "assets/organisation/img/admins/passports/"+adminform_id_photo_front;
+                                return "assets/organisation/img/admins/IDs/front/"+adminform_id_photo_front;
                             }else{
                                 return "/assets/organisation/img/website/empty.png";
                             }
@@ -556,23 +548,20 @@
                     let reader = new FileReader();
                         reader.onload = event=> {
                             this.adminform.id_photo_back =event.target.result
-                                // console.log(event.target.result)
                             };
                         reader.readAsDataURL(file);
                 }
             },
             updateAdminIDBackPhoto(adminform_id_photo_back){
-                // console.log(adminform.id_photo_back)
                 let img = this.adminform.id_photo_back;
                       if(img ==null){
                           return "/assets/organisation/img/website/empty.png";
-                        //  console.log('its reall null')
                       }else{
                           if(img.length>100){
                             return this.adminform.id_photo_back;
                         }else{
                             if(adminform_id_photo_back){
-                                return "assets/organisation/img/admins/IDs/front/"+adminform_id_photo_back;
+                                return "assets/organisation/img/admins/IDs/back/"+adminform_id_photo_back;
                             }else{
                                 return "/assets/organisation/img/website/empty.png";
                             }
@@ -584,7 +573,6 @@
              editAdminModal(id){
                  this.editmodeAdmin = true;
                  this.adminform.reset()
-                   console.log('edit admin', id)
                     this.$Progress.start();
                       axios.get('/orgadmin/edit/'+id)
                         .then((response)=>{
@@ -593,8 +581,34 @@
                             type: 'success',
                             title: 'Fetched the Admin data successfully'
                             })
+                            console.log(response.data.admin.orgemployeecountries[0].name)
+                            console.log(response.data.admin.orgemployeecounties[0].name)
+                            console.log(response.data.admin.orgemployeeconstituencies[0].name)
+                            console.log(response.data.admin.orgemployeewards[0].name)
                             this.adminform.fill(response.data.admin)
-                               this.$Progress.finish();
+                            this.adminform.user_id = response.data.admin.organisationemployees[0].pivot.user_id
+                            this.adminform.organisation_id = response.data.admin.organisationemployees[0].pivot.organisation_id
+                            this.adminform.position_id = response.data.admin.organisationemployees[0].pivot.position_id
+                            this.adminform.photo = response.data.admin.organisationemployees[0].pivot.photo
+                            this.adminform.id_no = response.data.admin.organisationemployees[0].pivot.id_no
+                            this.adminform.id_photo_front = response.data.admin.organisationemployees[0].pivot.id_photo_front
+                            this.adminform.id_photo_back = response.data.admin.organisationemployees[0].pivot.id_photo_back
+                            this.adminform.phone = response.data.admin.organisationemployees[0].pivot.phone
+                            this.adminform.landline = response.data.admin.organisationemployees[0].pivot.landline
+                            this.adminform.address = response.data.admin.organisationemployees[0].pivot.address
+
+                        //    get country id
+                            this.adminform.country_id = response.data.admin.orgemployeecountries[0].id
+                            //get county id using the country id
+                            this.adminform.county_id = response.data.admin.orgemployeecounties[0].id
+                            this.$store.dispatch('countrycounties', response.data.admin.orgemployeecountries[0].id);
+                            //get contituency using county id
+                            this.adminform.constituency_id = response.data.admin.orgemployeeconstituencies[0].id
+                            this.$store.dispatch('countyconstituencies', response.data.admin.orgemployeecounties[0].id);
+                            //get ward usng constituency id
+                            this.adminform.ward_id = response.data.admin.orgemployeewards[0].id
+                            this.$store.dispatch('constituencywards', response.data.admin.orgemployeeconstituencies[0].id);
+                            this.$Progress.finish();
                         })
                         .catch(()=>{
                             this.$Progress.fail();
