@@ -20,81 +20,50 @@
                   <tr>
                     <th>S1</th>
                     <th>Bureau Details</th>
-                    <th>Roles</th>
-                    <th>Permissions</th>
                     <th style="padding-left: 14px">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="(bureau, index) in Bureaus" :key="bureau.id">
                     <td >{{index+1}}</td>
-
                     <td >
-
-                        <div class="row" v-for="bureau in bureau.bureaudirectors" :key="bureau.id">
-                            <div class="col" style="padding: 3px;">
-                                 <img class="card-img-top" :src="directorLoadPassPhoto(bureau.pivot.photo)" style="width:100%" alt="Card image cap">
-                                <div >
-                                {{bureau.name}}
-                                </div>
+                        <div class="row">
+                            <div style="padding: 3px;max-width:250px">
+                                 <img class="card-img-top" :src="bureauLoadLogo(bureau.logo)" style="width:170px" alt="Card image cap">
                             </div>
-                            <div class="col" style="padding: 3px;">
-                                <img class="card-img-top" :src="directorLoadIDFrontPhoto(bureau.pivot.id_photo_front)" style="width:100%" alt="Card image cap"><br>
-                                <img class="card-img-top" :src="directorLoadIDBackPhoto(bureau.pivot.id_photo_back)" style="width:100%" alt="Card image cap">
-                            </div>
-                            <div style="font-weight:bold;font-size:0.7em;min-width:210px;max-width:400px;margin-top:4px;padding-top:4px;font-style: italic ">
-                                <div>{{bureau.full_name}},</div>
-                                <div v-for="position in bureau.positions" :key="position.id">
-                                    {{position.name}},
-                                    <span style="color:#9a009a;">
-                                        {{bureau.name}},
-                                    </span>
-                                </div>
-                                <div> ID: ,<span style="color:#9a009a;">{{bureau.pivot.id_no}}</span>,
-                                    Phone: <span style="color:#9a009a;">{{bureau.pivot.phone}},</span>
+                            <div style="font-weight:bold;font-size:0.7em;min-width:210px;max-width:400px;margin-top:4px;padding-top:4px;padding-left: 10px;
+                                        font-style: italic ">
+                                <div>{{bureau.name}},</div>
+                                <div> Phone: ,<span style="color:#9a009a;">{{bureau.phone}}</span>,
+                                    Landline: <span style="color:#9a009a;">{{bureau.landline}},</span>
                                 </div>
                                 <div>
-                                     Mail: <span style="color:#9a009a;">{{bureau.email}},</span>
+                                     Mail: <span style="color:#9a009a;">{{bureau.bureau_email}},</span>
                                 </div>
-                                    <div>P. O. Box , <span style="color:#9a009a;">{{bureau.pivot.address}}</span>,
+                                    <div>P. O. Box , <span style="color:#9a009a;">{{bureau.address}}</span>,
                                     </div>
-                                <div v-for="ward in bureau.wards" :key="ward.id">
-                                    <span style="color:#9a009a;">{{ward.name}}</span> ward,
-                                    <span v-for="constituency in bureau.constituencies" :key="constituency.id" style="color:#9a009a;">
-                                        {{constituency.name}}</span> constituency,
+                                <div>
+                                    <span style="color:#9a009a;">{{bureau.ward.name}}</span> ward,
+                                    <span style="color:#9a009a;">{{bureau.constituency.name}}</span> constituency,
                                 </div>
-                                <div v-for="county in bureau.counties" :key="county.id" >
-                                    <span style="color:#9a009a;">{{county.name}}</span> county,
-                                    <span v-for="country in bureau.countries" :key="country.id" style="color:#9a009a;">
-                                        {{country.name}},
-                                    </span>
+                                <div>
+                                    <span style="color:#9a009a;">{{bureau.county.name}}</span> county,
+                                    <span style="color:#9a009a;">{{bureau.country.name}}, </span>
                                 </div>
                             </div>
                         </div>
                     </td>
-                    <td style="padding: 3px;">
-                        <span v-for="role in bureau.roles" :key="role.id" class="pl-2">
-                            <div class="btn btn-primary btn-sm ml-1 mb-2 " >{{role.name}} </div>
-                        </span>
-                    </td>
-                    <td style="padding: 3px;">
-                        <span v-for="permission in bureau.permissions" :key="permission.id" class="pl-2">
-                            <div class="btn btn-primary btn-sm ml-1 mb-2 ">{{permission.name}} </div>
-                        </span>
-                    </td>
                     <td style="padding: 3px;" >
                         <div class="clearfix" style="font-weight:bold;font-size:0.7em;">
                             <span class="float-left" style="margin-bottom:-0.5em" >
-                                <div class="card-tools">
-                                        <button class="btn btn-success"  @click.prevent="newDirectorModal(bureau.id)">Add Director
-                                            <i class="fas fa-plus fw"></i>
-                                        </button>
-                                </div>
                                 <div style="margin-bottom:0.25em"> Updated at:
                                     <span style="color:#9a009a;">{{bureau.created_at | dateformat}} </span>
                                 </div>
                             </span>
                             <span class="float-right">
+                                <router-link  :to="`/bureau/${bureau.id}`">
+                                        <i class="fa fa-eye "></i>
+                                </router-link>
                                 <a href=""  @click.prevent="editBureauModal(bureau.id)">
                                     <i class="fa fa-edit blue"></i>
                                 </a>

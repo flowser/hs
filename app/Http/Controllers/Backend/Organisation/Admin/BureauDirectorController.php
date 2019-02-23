@@ -190,7 +190,7 @@ class BureauDirectorController extends Controller
     public function view($id)
     {
         $director = Bureau:: with(
-         'positions', 'countries', 'counties', 'constituencies', 'wards')
+         'position', 'countries', 'counties', 'constituencies', 'wards')
          ->find($id)->bureaudirectors()->first();
         return response()-> json([
             'director'=>$director,
@@ -209,14 +209,20 @@ class BureauDirectorController extends Controller
      */
     public function edit($id)
     {
-        // return 'ssssss';
-        // $bureau = Auth::user()->bureauemployees()->first();
-        $director = User::
-                        with('roles','permissions','bureaudirectors', 'positions', 'countries', 'counties', 'constituencies', 'wards')
-                        ->find($id);
+
+        $director = User::with('roles','permissions','bureaudirectors')
+                            ->find($id);
         return response()-> json([
             'director'=>$director,
         ], 200);
+
+
+        // $director = User::
+        //                 with('roles','permissions','bureaudirectors')
+        //                 ->find($id);
+        // return response()-> json([
+        //     'director'=>$director,
+        // ], 200);
     }
 
     /**

@@ -19,8 +19,7 @@ class BureauController extends Controller
     public function index()
     {
         $organisation = Auth::user()->organisationemployees()->first();
-        $bureaus = Bureau:: with('country', 'county', 'constituency', 'ward','bureaudirectors','positions', 'countries',
-                                'counties','constituencies','wards'
+        $bureaus = Bureau:: with('country', 'county', 'constituency', 'ward'
                             )
                             ->where('organisation_id', $organisation->id)
                         ->get();
@@ -41,8 +40,7 @@ class BureauController extends Controller
     public function BureauList()
     {
         $allbureaus = Bureau:: with('country', 'county', 'constituency', 'ward'
-                                    ,'bureaudirectors','positions', 'countries',
-                                'counties','constituencies','wards'
+                                    ,'bureaudirectors'
                             )
                         ->get();
         return response()-> json([
@@ -224,7 +222,15 @@ class BureauController extends Controller
      */
     public function show($id)
     {
-        //
+        $bureau = Bureau::with('country', 'county', 'constituency', 'ward', 'bureaudirectors',
+                            'bureauadmins')->find($id);
+
+    //    $position = $bureau->position;
+
+        // return $position;
+        return response()-> json([
+            'bureau' => $bureau,
+        ], 200);
     }
 
     /**
@@ -600,6 +606,49 @@ class BureauController extends Controller
             }
         $bureau->save();
         }
+    }
+    public function singleupdate(Request $request, $id)
+    {
+        $bureau = Bureau::find($id);
+
+            $bureau->name = $request ->name;
+            $bureau->bureau_email = $request ->bureau_email;
+            $bureau->phone = PhoneNumber::make($request->phone);
+            $bureau->landline = PhoneNumber::make($request->landline);
+            $bureau->website = $request ->website;
+            $bureau->address = $request ->address;
+            $bureau->country_id = $request ->country_id;
+            $bureau->county_id = $request ->county_id;
+            $bureau->constituency_id = $request ->constituency_id;
+            $bureau->ward_id = $request ->ward_id;
+
+            // $bureau->logo = $request ->logo;
+            //getting previous logo
+            $currentLogo =  $bureau->logo;
+
+            //processing logo nme and size
+            if($request->logo != $currentLogo){
+                $Path = public_path()."/assets/bureau/img/logo/";
+
+                $S_currentLogo = $Path. $currentLogo;
+                //deleting if exists
+                    if(file_exists($S_currentLogo)){
+                        @unlink($S_currentLogo);
+                    }
+                    $strpos = strpos($request->logo, ';'); //positionof image name semicolon
+                    $sub = substr($request->logo, 0, $strpos);
+                    $ex = explode('/', $sub)[1];
+                    $name = time().".".$ex;
+
+                $img = Image::make($request->logo);
+                        $img ->save($Path.'/'.$name);
+                    //end processing logo and size
+
+            }else{//$request->logo = $currentLogo
+                $name = $bureau->logo;
+            }
+            $bureau->logo = $name;
+        $bureau->save();
     }
 
     /**

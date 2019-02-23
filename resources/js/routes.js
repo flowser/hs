@@ -34,9 +34,11 @@ import SingleServiceFilter from './components/admins/organisation/SingleServiceF
 
 
 // Bureeau
-import BureauDirectorList from './components/admins/organisation/admin/Bureau.vue';
+import BureauList from './components/admins/organisation/admin/Bureau.vue';
+// single Bureeau
+import SingleBureau from './components/admins/organisation/admin/SingleBureau.vue';
 //org Admins
-import BureauAdminList from './components/admins/organisation/admin/BureauAdmins.vue';
+import BureauAdminList from './components/admins/organisation/admin/SingleBureau.vue';
 
 
 
@@ -114,8 +116,12 @@ export const routes = [
     },
 //   //Bureau
     {
-      path: '/bureaudirectors',
-      component: BureauDirectorList
+      path: '/bureaus',
+      component: BureauList
+    },
+    {
+      path: '/bureau/:id',
+      component: SingleBureau
     },
     {
       path: '/bureauadmins',

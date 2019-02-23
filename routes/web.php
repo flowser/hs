@@ -362,6 +362,7 @@ Route::get('/home', 'HomeController@index')->name('home');
         Route::patch('bureau/updateverify/info/{bureau}', [BureauController::class, 'updateverifyBureauInfo'])->name('bureau.updateverify');
         Route::patch('bureau/updateverify/director/{bureau}', [BureauController::class, 'updateverifyDirectorInfo'])->name('bureau.updateverifydirector');
         Route::patch('bureau/update/{bureau}', [BureauController::class, 'update'])->name('bureau.update');
+        Route::patch('singlebureau/update/{bureau}', [BureauController::class, 'singleupdate'])->name('bureau.update');
         Route::get('bureau/delete/{bureau}', [BureauController::class, 'destroy'])->name('bureau.destroy');
 
         // bureaudirector

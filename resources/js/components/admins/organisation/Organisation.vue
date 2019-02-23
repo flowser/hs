@@ -5,7 +5,7 @@
                 <!-- Widget: user widget style 1 -->
                 <div v-if="Organisation.length <1" class="card-tools">
                 <!-- <div  class="card-tools"> -->
-                    <button class="btn btn-success" @click.prevent="newOrganisationModal()" >Add Organisat''ion
+                    <button class="btn btn-success" @click.prevent="newOrganisationModal()" >Add Organisation
                         <i class="fas fa-plus fw"></i>
                     </button>
                 </div>

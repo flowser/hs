@@ -109,7 +109,7 @@
     </section>
 
     <!-- Role Modal -->
-    <div class="modal fade " id="DirectorModal" tabindex="-1" role="dialog" aria-labelledby="DirectorModalLabel" aria-hidden="true">
+        <div class="modal fade " id="DirectorModal" tabindex="-1" role="dialog" aria-labelledby="DirectorModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -570,7 +570,7 @@
 
             },
 
-             editDirectorModal(id){
+            editDirectorModal(id){
                  this.editmodeDirector = true;
                  this.directorform.reset()
                     this.$Progress.start();
@@ -615,7 +615,7 @@
                             title: 'There was something Wrong'
                             })
                         })
-             },
+            },
             addDirector(directorform_organisation_id) {
                 console.log(directorform_organisation_id)
                 this.$Progress.start();

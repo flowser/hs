@@ -181,27 +181,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </router-link>
                 </li>
                 {{--  view by organisation admin  --}}
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link ">
-                        <i class="nav-icon  yellow fas fa-cog"></i>
-                        <p>Bureaus
-                            <i class="right fa fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <router-link to="/bureaudirectors" class="nav-link">
-                                <i class="fa fa-users purple  nav-icon"></i>
-                                <p>Bureau & Directors</p>
-                            </router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link to="/bureauadmins" class="nav-link">
-                                <i class="fa fa-users blue nav-icon"></i>
-                                <p>Bureau Admins</p>
-                            </router-link>
-                        </li>
-                    </ul>
+                <li class="nav-item">
+                    <router-link to="/bureaus" class="nav-link">
+                        <i class="fa fa-users purple  nav-icon"></i>
+                        <p>Bureaus</p>
+                    </router-link>
                 </li>
 {{-- organisation view by Super Admin --}}
                 <li class="nav-item has-treeview">

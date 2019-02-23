@@ -4,6 +4,7 @@
 const state = {
     bureaus:[],
     allbureaus:[],
+    bureau:[],
   },
   getters = {
     Bureaus(state){
@@ -11,6 +12,9 @@ const state = {
     },
     AllBureaus(state){
       return state.allbureaus;
+    },
+    Bureau(state){
+      return state.bureau;
     }
   }
 const actions = {
@@ -27,7 +31,14 @@ const actions = {
           console.log(response.data);
           context.commit('allbureaus', response.data.allbureaus);
         })
-    }
+    },
+    BureauById(context, payload){
+        axios.get('/bureau/show/'+payload)
+              .then((response)=>{
+                  console.log(response.data);
+                  context.commit('bureau', response.data.bureau);
+              });
+    },
   }
 const mutations = {
     bureaus(state, data){
@@ -35,7 +46,10 @@ const mutations = {
     },
     allbureaus(state, data){
       return state.allbureaus = data;
-    }
+    },
+    bureau(state, data){
+      return state.bureau = data;
+    },
   }
 
 export default {
