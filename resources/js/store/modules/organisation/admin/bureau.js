@@ -35,7 +35,7 @@ const actions = {
     BureauById(context, payload){
         axios.get('/bureau/show/'+payload)
               .then((response)=>{
-                  console.log(response.data);
+                  console.log(response.data.bureauadmins);
                   context.commit('bureau', response.data.bureau);
               });
     },

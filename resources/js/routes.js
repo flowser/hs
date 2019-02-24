@@ -1,12 +1,4 @@
-import AdminHome from './components/admins/AdminHome.vue';
-
-//org superadmin
-//org Directors
-import DirectorList from './components/admins/organisation/superadmin/directors/Directors.vue';
-//org Admins
-import AdminList from './components/admins/organisation/superadmin/admins/Admins.vue';
-//org Employees
-import EmployeeList from './components/admins/organisation/superadmin/Employees/Employees.vue';
+//standard
 
 //Permission
 import PermissionList from './components/admins/organisation/superadmin/permission/List.vue';
@@ -33,12 +25,27 @@ import SingleExtraService from './components/admins/organisation/SingleExtraServ
 import SingleServiceFilter from './components/admins/organisation/SingleServiceFilter.vue';
 
 
+import AdminHome from './components/admins/AdminHome.vue';
+// under organisation
+//org Directors
+import DirectorList from './components/admins/organisation/superadmin/directors/Directors.vue';
+//org Admins
+import AdminList from './components/admins/organisation/superadmin/admins/Admins.vue';
+//org Employees
+import EmployeeList from './components/admins/organisation/superadmin/Employees/Employees.vue';
+
 // Bureeau
 import BureauList from './components/admins/organisation/admin/Bureau.vue';
 // single Bureeau
 import SingleBureau from './components/admins/organisation/admin/SingleBureau.vue';
-//org Admins
+//bureau Admins
 import BureauAdminList from './components/admins/organisation/admin/SingleBureau.vue';
+
+
+
+
+//under Bureeau with everything in one
+import Bureau from './components/admins/bureau/admin/Bureau.vue';
 
 
 
@@ -128,6 +135,11 @@ export const routes = [
       component: BureauAdminList
     },
 
+//bureau itself individuay
+    {
+    path: '/bureau',
+    component: Bureau
+    },
 
 // //Front End
 //   {

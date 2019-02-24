@@ -241,19 +241,8 @@ class BureauController extends Controller
      */
     public function edit($id)
     {
-        $bureau = Bureau::with('country', 'county', 'constituency', 'ward', 'bureaudirectors', 'positions','countries','counties', 'constituencies','wards')
-
-                                        ->with(array('bureauemployees' => function($query)
-                                                {
-                                                $query ->where('user_id', Auth::id());
-                                                }
-                                            ))
-                                        ->with(array('bureaudirectors' => function($query)
-                                                {
-                                                $query ->where('user_id', Auth::id());
-                                                }
-                                            ))
-                                    ->find($id);
+        $bureau = Bureau::with('country', 'county', 'constituency', 'ward', 'bureaudirectors')
+                              ->find($id);
         return response()-> json([
             'bureau' => $bureau,
         ], 200);
@@ -281,9 +270,10 @@ class BureauController extends Controller
                    ]);
 
         }else{
+            // return 'mememe';
             $this->validate($request,[
                             'name'    => 'sometimes|required|min:2|max:50',
-                            'bureau_email' => 'required|email|max:191|unique:bureaus,bureau_email,'.$bureau->id,
+                            'bureau_email' => 'sometimes|required|email|max:191|',
                             'phone' => 'phone:AUTO,MOBILE',
                             'landline'=> 'phone:AUTO,MOBILE', //FIXED_LINE
                             'website'=> 'sometimes|required|min:2|max:50',
@@ -483,126 +473,7 @@ class BureauController extends Controller
                         }
                         $bureaudirector->save();
                     }
-                    // return "mix me down ";
-
                 }
-
-                // else{//not null
-                //     // $bureaudirector :
-                //     $update = $bureau->bureaudirectors()
-                //             ->updateExistingPivot($bureau->id, [
-                //                 'hiringstatus'=> 0,
-                //                 'releasestatus'=> 1
-                //             ]);
-                //     return $update;
-                //    $user_id = $bureaudirector->id;
-                //     $user = User::find($user_id);
-                //     //update
-                //     $user->first_name = $request->director_first_name;
-                //     $user->last_name  = $request->director_last_name;
-                //     $user->email      = $request->email;
-                //     $user->active     = true;
-                //     $user->confirmed  = true;
-                //     $user->confirmation_code = md5(uniqid(mt_rand(), true));
-                //     $user->user_type      = 'Bureau Director';
-                //     $user->password   = Hash::make($request->director_password);
-
-                //     $user->assignRole('Bureau Director');
-                //     $user ->givePermissionTo('View Backend', 'View All');
-                //     // return $user;
-
-                //     if($user){
-                //         // $currentuser_id = $user->id;
-                //         $bureau_id = $bureau->id;
-                //         $position_id = Position::find(1);
-
-                //         $bureaudirector->user_id                = $user_id;
-                //         $bureaudirector->bureau_id        = $bureau_id;
-                //         $bureaudirector->position_id            = 1;
-                //         $bureaudirector->gender_id              = 1;
-
-                //         $bureaudirector->active                 = true;
-                //         $bureaudirector->phone         = $request ->director_phone;
-                //         $bureaudirector->landline      = $request ->director_landline;
-                //         $bureaudirector->id_no         = $request ->director_id_no;
-                //         $bureaudirector->address        = $request ->director_address;
-
-                //         $bureaudirector->country_id    = $request ->director_country_id;
-                //         $bureaudirector->county_id     = $request ->director_county_id;
-                //         $bureaudirector->constituency_id  = $request ->director_constituency_id;
-                //         $bureaudirector->ward_id  = $request ->director_ward_id;
-
-                //         //pass port
-                //         $passport = $request->passport_image;
-                //         if($passport){
-                //             //deleteing the previous passsport if it exists
-                //             $ps_Path = public_path()."/assets/bureau/img/directors/passports";
-
-                //                 $ps_currentpassport = $ps_Path. $bureaudirector->photo;
-
-                //                 if(file_exists($ps_currentpassport)){
-                //                     @unlink($ps_currentpassport);
-                //                 }
-                //             //processing passport name
-                //             $ps_strpos = strpos($passport, ';'); //positionof image name semicolon
-                //             $ps_sub = substr($passport, 0, $ps_strpos);
-                //             $ps_ex = explode('/', $ps_sub)[1];
-                //             $ps_name = time().".".$ps_ex;
-
-                //                 $ps_img = Image::make($passport);
-                //                 $ps_img ->save($ps_Path.'/'.$ps_name);
-                //             //end processing
-                //             $bureaudirector->photo = $ps_name;
-                //         }
-                //         //director Front side id image
-                //         $frontside_id = $request->frontside_director_id_photo;
-                //         if($frontside_id){
-                //             //deleteing the previous front id photo if it exists
-                //             $fr_id_Path = public_path()."/assets/bureau/img/directors/IDs/front";
-
-                //                 $fr_id_currentdIDPhoto = $fr_id_Path. $bureaudirector->id_photo_front;
-
-                //                 if(file_exists($fr_id_currentdIDPhoto)){
-                //                     @unlink($fr_id_currentdIDPhoto);
-                //                 }
-                //             //processing front side id imagee
-                //             $fr_id_strpos = strpos($frontside_id, ';');
-                //             $fr_id_sub = substr($frontside_id, 0, $fr_id_strpos);
-                //             $fr_id_ex = explode('/', $fr_id_sub)[1];
-                //             $fr_id_name = time().".".$fr_id_ex;
-
-                //                 $fr_id_img = Image::make($frontside_id);
-                //                 $fr_id_img ->save($fr_id_Path.'/'.$fr_id_name);
-                //             //end processing
-                //             $bureaudirector->id_photo_front = $fr_id_name;
-                //         }
-                //         //director Front side id image
-                //         $backside_id = $request->backside_director_id_photo;
-                //         if($backside_id){
-                //             //deleteing the previous front id photo if it exists
-                //             $bs_id_Path = public_path()."/assets/bureau/img/directors/IDs/back";
-
-                //                 $bs_id_currentdIDPhoto = $bs_id_Path. $bureaudirector->id_photo_back;
-
-                //                 if(file_exists($bs_id_currentdIDPhoto)){
-                //                     @unlink($bs_id_currentdIDPhoto);
-                //                 }
-                //             //processing front side id imagee
-                //             $bs_id_strpos = strpos($backside_id, ';');
-                //             $bs_id_sub = substr($backside_id, 0, $bs_id_strpos);
-                //             $bs_id_ex = explode('/', $bs_id_sub)[1];
-                //             $bs_id_name = time().".".$bs_id_ex;
-
-                //             $bs_id_Path = public_path()."/assets/bureau/img/directors/IDs/back";
-                //                 $bs_id_img = Image::make($backside_id);
-                //                 $bs_id_img ->save($bs_id_Path.'/'.$bs_id_name);
-                //             //end processing
-                //             $bureaudirector->id_photo_back = $bs_id_name;
-                //         }
-                //         $bureaudirector->save();
-                //     }
-                //     $user->save();
-                // }
             }
         $bureau->save();
         }

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+
+use App\Models\Standard\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -67,7 +68,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        $user = User::create([            
+        $user = User::create([
             'first_name'        => $data['first_name'],
             'last_name'         => $data['last_name'],
             'email'             => $data['email'],
@@ -92,8 +93,8 @@ class RegisterController extends Controller
             // Add selected roles/permissions
             // $user->syncRoles($data['roles']);
             // $user->syncPermissions($data['permissions']);
-            $user->assignRole('Superadmin');
-            $user ->givePermissionTo('view backend');
+            $user->assignRole('Organisation Superadmin');
+            $user ->givePermissionTo('View Backend');
 
             //Send confirmation email if requested and account approval is off
             // if (isset($data['confirmation_email']) && $user->confirmed == 0 && ! config('access.users.requires_approval')) {

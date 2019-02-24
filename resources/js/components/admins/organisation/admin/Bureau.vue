@@ -206,7 +206,6 @@
                             </tab-content>
 
                             <tab-content title="Bureau Director Info" :before-change="newBureauDirector ? validateDirector : validateDirectorUpdate ">
-                                <div v-show="newBureauDirector">
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label for="director_first_name" class="col-form-label"> Director First Name</label>
@@ -315,31 +314,30 @@
                                     </div>
                                     <div class=" row">
                                         <div class="form-group col-md-4">
-                                            <label for="director_passport_image" class=" col-form-label">Director PassPort Image</label><br>
-                                                <input @change="bureauChangeDirectorPImage($event)" type="file" name="director_passport_image"
-                                                    :class="{ 'is-invalid': bureauform.errors.has('director_passport_image') }">
-                                                    <img v-show="editmodeBureau" :src="updateBureauDirectorPImage(bureauform.director_passport_image)" alt="" width="100%" >
-                                                    <img  v-show="!editmodeBureau" :src="bureauform.director_passport_image" alt="" width="100%" >
-                                                <has-error style="color: #e83e8c" :form="bureauform" field="director_passport_image"></has-error>
+                                            <label for="director_photo" class=" col-form-label">Director PassPort Image</label><br>
+                                                <input @change="directorChangePassPhoto($event)" type="file" name="director_photo"
+                                                    :class="{ 'is-invalid': bureauform.errors.has('director_photo') }">
+                                                    <img v-show="editmodeBureau" :src="updateDirectorPassPhoto(bureauform.director_photo)" alt="" width="100%" >
+                                                    <img  v-show="!editmodeBureau" :src="bureauform.director_photo" alt="" width="100%" >
+                                                <has-error style="color: #e83e8c" :form="bureauform" field="director_photo"></has-error>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="frontside_director_id_photo" class=" col-form-label">Director FrontSide ID Photo</label><br>
-                                                <input @change="bureauChangeDirectorFIDPhoto($event)" type="file" name="frontside_director_id_photo"
-                                                    :class="{ 'is-invalid': bureauform.errors.has('frontside_director_id_photo') }">
-                                                    <img v-show="editmodeBureau" :src="updateBureauDirectorFIDPhoto(bureauform.frontside_director_id_photo)" alt="" width="100%" >
-                                                    <img  v-show="!editmodeBureau" :src="bureauform.frontside_director_id_photo" alt="" width="100%" >
-                                                <has-error style="color: #e83e8c" :form="bureauform" field="frontside_director_id_photo"></has-error>
+                                            <label for="director_id_photo_front" class=" col-form-label">Director FrontSide ID Photo</label><br>
+                                                <input @change="directorChangeIDFrontPhoto($event)" type="file" name="director_id_photo_front"
+                                                    :class="{ 'is-invalid': bureauform.errors.has('director_id_photo_front') }">
+                                                    <img v-show="editmodeBureau" :src="updateDirectorIDFrontPhoto(bureauform.director_id_photo_front)" alt="" width="100%" >
+                                                    <img  v-show="!editmodeBureau" :src="bureauform.director_id_photo_front" alt="" width="100%" >
+                                                <has-error style="color: #e83e8c" :form="bureauform" field="director_id_photo_front"></has-error>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="backside_director_i_photod" class=" col-form-label">Director BackSide ID Photo</label><br>
-                                                <input @change="bureauChangeDirectorBIDPhoto($event)" type="file" name="backside_director_id_photo"
+                                                <input @change="directorChangeIDBackPhoto($event)" type="file" name="director_id_photo_back"
                                                     :class="{ 'is-invalid': bureauform.errors.has('backside_director_id') }">
-                                                    <img v-show="editmodeBureau" :src="updateBureauDirectorBIDPhoto(bureauform.backside_director_id_photo)" alt="" width="100%" >
-                                                    <img  v-show="!editmodeBureau" :src="bureauform.backside_director_id_photo" alt="" width="100%" >
-                                                <has-error style="color: #e83e8c" :form="bureauform" field="backside_director_id_photo"></has-error>
+                                                    <img v-show="editmodeBureau" :src="updateDirectorIDBackPhoto(bureauform.director_id_photo_back)" alt="" width="100%" >
+                                                    <img  v-show="!editmodeBureau" :src="bureauform.director_id_photo_back" alt="" width="100%" >
+                                                <has-error style="color: #e83e8c" :form="bureauform" field="director_id_photo_back"></has-error>
                                         </div>
                                     </div>
-                                </div>
                             </tab-content>
                             <tab-content title="Last step">
                                 Bureau Information
@@ -419,7 +417,6 @@
                                             <has-error style="color: #e83e8c" :form="bureauform" field="logo"></has-error>
                                     </div>
                                 </div>
-                            <div v-show="newBureauDirector">
                                 Director Info
                                 <div class="row">
                                     <div class="form-group col-md-4">
@@ -498,25 +495,24 @@
                                 </div>
                                 <div class=" row">
                                     <div class="form-group col-md-4">
-                                        <label for="director_passport_image" class=" col-form-label">Director PassPort Image</label><br>
+                                        <label for="director_photo" class=" col-form-label">Director PassPort Image</label><br>
                                             <input type="file" :readonly="true">
-                                                <img v-show="editmodeBureau" :src="updateBureauDirectorPImage(bureauform.director_passport_image)" alt="" width="100%" >
-                                                <img  v-show="!editmodeBureau" :src="bureauform.director_passport_image" alt="" width="100%" >
+                                                <img v-show="editmodeBureau" :src="updateDirectorPassPhoto(bureauform.director_photo)" alt="" width="100%" >
+                                                <img  v-show="!editmodeBureau" :src="bureauform.director_photo" alt="" width="100%" >
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="frontside_director_id_photo" class=" col-form-label">Director FrontSide ID Photo</label><br>
+                                        <label for="director_id_photo_front" class=" col-form-label">Director FrontSide ID Photo</label><br>
                                             <input  type="file" :readonly="true">
-                                                <img v-show="editmodeBureau" :src="updateBureauDirectorFIDPhoto(bureauform.frontside_director_id_photo)" alt="" width="100%" >
-                                                <img  v-show="!editmodeBureau" :src="bureauform.frontside_director_id_photo" alt="" width="100%" >
+                                                <img v-show="editmodeBureau" :src="updateDirectorIDFrontPhoto(bureauform.director_id_photo_front)" alt="" width="100%" >
+                                                <img  v-show="!editmodeBureau" :src="bureauform.director_id_photo_front" alt="" width="100%" >
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="backside_director_i_photo" class=" col-form-label">Director BackSide ID Photo</label><br>
                                             <input type="file" :readonly="true">
-                                                <img v-show="editmodeBureau" :src="updateBureauDirectorBIDPhoto(bureauform.backside_director_id_photo)" alt="" width="100%" >
-                                                <img  v-show="!editmodeBureau" :src="bureauform.backside_director_id_photo" alt="" width="100%" >
+                                                <img v-show="editmodeBureau" :src="updateDirectorIDBackPhoto(bureauform.director_id_photo_back)" alt="" width="100%" >
+                                                <img  v-show="!editmodeBureau" :src="bureauform.director_id_photo_back" alt="" width="100%" >
                                     </div>
                                 </div>
-                             </div>
                             </tab-content>
                         </form-wizard>
                     </div>
@@ -702,10 +698,17 @@
                         ward_id:'',
                         logo:'',
                         //director
+                        director_user_id:'',
+                        director_bureau_id:'',
                         director_first_name:'',
                         director_last_name:'',
                         email:'',
                         director_password:'',
+                        director_id_no:'',
+                        director_photo:'',
+                        director_id_photo_front:'',
+                        director_id_photo_back:'',
+                        director_about_me:'',
                         director_phone:'',
                         director_landline:'',
                         director_id_no:'',
@@ -714,9 +717,6 @@
                         director_county_id:'',
                         director_constituency_id:'',
                         director_ward_id:'',
-                        director_passport_image:'',
-                        frontside_director_id_photo:'',
-                        backside_director_id_photo:'',
                 }),
                 //bureau
                 phone1:{
@@ -965,7 +965,7 @@
                      $('#BureauModal').modal('show')
             },
             editBureauModal(id){
-
+                console.log(id)
                  this.editmodeBureau = true;
                  this.bureauform.reset()
                    console.log('edit organisaton', id)
@@ -977,15 +977,65 @@
                             type: 'success',
                             title: 'Fetched the Bureau data successfully'
                             })
+                            // console.log(response.data.bureau)/
+
                             let directors = response.data.bureau.bureaudirectors.length;
+                             this.bureauform.fill(response.data.bureau)
+                                //get country id
+                                this.bureauform.country_id = response.data.bureau.country_id
+                                //get county id using the country id
+                                this.bureauform.county_id = response.data.bureau.county_id
+                                this.$store.dispatch('countrycounties', response.data.bureau.country_id);
+                                //get contituency using county id
+                                this.bureauform.constituency_id = response.data.bureau.constituency_id
+                                this.$store.dispatch('countyconstituencies', response.data.bureau.county_id);
+                                // //get ward usng constituency id
+                                this.bureauform.ward_id = response.data.bureau.ward_id
+                                this.$store.dispatch('constituencywards', response.data.bureau.constituency_id);
 
                             if(directors == 0){
-                                 this.newBureauDirector = true;
-                                  this.bureauform.fill(response.data.bureau)
-                               this.$Progress.finish();
-                            }else{
+                                this.newBureauDirector = true;
+                                this.$Progress.finish();
+                            }
+                            else{
                                  this.newBureauDirector = false;
-                                  this.bureauform.fill(response.data.bureau)
+                                  console.log(response.data.bureau.bureaudirectors[0].ward_id)
+                                  console.log(response.data.bureau.ward_id)
+
+                                //bureau data
+
+
+                                //director data
+                                this.bureauform.director_first_name = response.data.bureau.bureaudirectors[0].first_name
+                                this.bureauform.director_last_name = response.data.bureau.bureaudirectors[0].last_name
+                                this.bureauform.email = response.data.bureau.bureaudirectors[0].email
+                                this.bureauform.director_user_id = response.data.bureau.bureaudirectors[0].pivot.user_id
+                                this.bureauform.director_bureau_id = response.data.bureau.bureaudirectors[0].pivot.bureau_id
+                                this.bureauform.director_photo = response.data.bureau.bureaudirectors[0].pivot.photo
+                                this.bureauform.director_id_no = response.data.bureau.bureaudirectors[0].pivot.id_no
+                                this.bureauform.director_id_photo_front = response.data.bureau.bureaudirectors[0].pivot.id_photo_front
+                                this.bureauform.director_id_photo_back = response.data.bureau.bureaudirectors[0].pivot.id_photo_back
+                                this.bureauform.director_phone = response.data.bureau.bureaudirectors[0].pivot.phone
+                                this.bureauform.director_landline = response.data.bureau.bureaudirectors[0].pivot.landline
+                                this.bureauform.director_address = response.data.bureau.bureaudirectors[0].pivot.address
+
+
+                                this.bureauform.director_country_id = response.data.bureau.bureaudirectors[0].country_id
+                                //get county id using the country id
+                                this.bureauform.director_county_id = response.data.bureau.bureaudirectors[0].county_id
+                                // this.DirectorcountryCounties(response.data.bureau.bureaudirectors[0].country_id);
+
+                                // this.$store.dispatch('countrycounties', response.data.bureau.bureaudirectors[0].country_id);
+                                //get contituency using county id
+                                this.bureauform.director_constituency_id = response.data.bureau.bureaudirectors[0].constituency_id
+                                // this.DirectorcountyConstituencies(response.data.bureau.bureaudirectors[0].constituency_id);
+                                // this.$store.dispatch('countyconstituencies', response.data.bureau.bureaudirectors[0].county_id);
+                                // //get ward usng constituency id
+                                this.bureauform.director_ward_id = response.data.bureau.bureaudirectors[0].ward_id
+                                // console.log(this.bureauform.director_ward_id)
+                                // this.DirectorconstituencyWards(response.data.bureau.bureaudirectors[0].ward_id);
+                                this.$store.dispatch('constituencywards', response.data.bureau.bureaudirectors[0].constituency_id);
+
                                this.$Progress.finish();
                             }
                         })
@@ -1022,14 +1072,14 @@
                  if(logo_id){
                     return "assets/bureau/img/logo/"+logo_id;
                 }else{
-                    return "/assets/bureau/img/empty.png";
+                    return "/assets/bureau/img/website/empty.png";
                 }
             },
             updateBureauLogo(bureauformlogo){
                 console.log(bureauformlogo)
                 let img = this.bureauform.logo;
                       if(img ==null){
-                          return "/assets/bureau/img/empty.png";
+                          return "/assets/bureau/img/website/empty.png";
                         //  console.log('its reall null')
                       }else{
                           if(img.length>100){
@@ -1038,7 +1088,7 @@
                             if(bureauformlogo){
                                 return "assets/bureau/img/logo/"+bureauformlogo;
                             }else{
-                                return "/assets/bureau/img/empty.png";
+                                return "/assets/bureau/img/website/empty.png";
                             }
                         }
                       }
@@ -1067,14 +1117,14 @@
                  if(logo_id){
                     return "assets/bureau/img/logo/"+logo_id;
                 }else{
-                    return "/assets/bureau/img/empty.png";
+                    return "/assets/bureau/img/website/empty.png";
                 }
             },
             updateBureauLogo(bureauformlogo){
                 console.log(bureauformlogo)
                 let img = this.bureauform.logo;
                       if(img ==null){
-                          return "/assets/bureau/img/empty.png";
+                          return "/assets/bureau/img/website/empty.png";
                         //  console.log('its reall null')
                       }else{
                           if(img.length>100){
@@ -1083,14 +1133,14 @@
                             if(bureauformlogo){
                                 return "assets/bureau/img/logo/"+bureauformlogo;
                             }else{
-                                return "/assets/bureau/img/empty.png";
+                                return "/assets/bureau/img/website/empty.png";
                             }
                         }
                       }
 
             },
             //bureau director passposrt image
-            bureauChangeDirectorPImage(event){
+            directorChangePassPhoto(event){
              let file = event.target.files[0];
                 if(file.size>1048576){
                     Swal.fire({
@@ -1102,32 +1152,32 @@
                 }else{
                     let reader = new FileReader();
                         reader.onload = event=> {
-                            this.bureauform.director_passport_image =event.target.result
+                            this.bureauform.director_photo =event.target.result
                                 // console.log(event.target.result)
                             };
                         reader.readAsDataURL(file);
                 }
             },
-            updateBureauDirectorPImage(bureauformdirector_passport_image){
-                console.log(bureauformdirector_passport_image)
-                let img = this.bureauform.director_passport_image;
+            updateDirectorPassPhoto(bureauformdirector_photo){
+                console.log(bureauformdirector_photo)
+                let img = this.bureauform.director_photo;
                       if(img ==null){
-                          return "/assets/bureau/img/empty.png";
+                          return "/assets/bureau/img/website/empty.png";
                       }else{
                         if(img.length>100){
-                            return this.bureauform.director_passport_image;
+                            return this.bureauform.director_photo;
                         }else{
-                            if(bureauformdirector_passport_image){
-                                return "assets/bureau/img/directors/passports/"+bureauform.director_passport_image;
+                            if(bureauformdirector_photo){
+                                return "assets/bureau/img/directors/passports/"+bureauform.director_photo;
                             }else{
-                                return "/assets/bureau/img/empty.png";
+                                return "/assets/bureau/img/website/empty.png";
                             }
                         }
                       }
 
             },
             //director Front side ID image
-            bureauChangeDirectorFIDPhoto(event){
+            directorChangeIDFrontPhoto(event){
              let file = event.target.files[0];
                 if(file.size>1048576){
                     Swal.fire({
@@ -1139,32 +1189,32 @@
                 }else{
                     let reader = new FileReader();
                         reader.onload = event=> {
-                            this.bureauform.frontside_director_id_photo =event.target.result
+                            this.bureauform.director_id_photo_front =event.target.result
                                 // console.log(event.target.result)
                             };
                         reader.readAsDataURL(file);
                 }
             },
-            updateBureauDirectorFIDPhoto(bureauformfrontside_director_id_photo){
-                console.log(bureauformfrontside_director_id_photo)
-                let img = this.bureauform.frontside_director_id_photo;
+            updateDirectorIDFrontPhoto(bureauformdirector_id_photo_front){
+                console.log(bureauformdirector_id_photo_front)
+                let img = this.bureauform.director_id_photo_front;
                       if(img ==null){
-                          return "/assets/bureau/img/empty.png";
+                          return "/assets/bureau/img/website/empty.png";
                       }else{
                           if(img.length>100){
-                            return this.bureauform.frontside_director_id_photo;
+                            return this.bureauform.director_id_photo_front;
                         }else{
-                            if(bureauformfrontside_director_id_photo){
-                                return "assets/bureau/img/directors/IDs/"+bureauformfrontside_director_id_photo;
+                            if(bureauformdirector_id_photo_front){
+                                return "assets/bureau/img/directors/IDs/"+bureauformdirector_id_photo_front;
                             }else{
-                                return "/assets/bureau/img/empty.png";
+                                return "/assets/bureau/img/website/empty.png";
                             }
                         }
                       }
 
             },
             //director Backside ID image
-            bureauChangeDirectorBIDPhoto(event){
+            directorChangeIDBackPhoto(event){
              let file = event.target.files[0];
                 if(file.size>1048576){
                     Swal.fire({
@@ -1176,26 +1226,26 @@
                 }else{
                     let reader = new FileReader();
                         reader.onload = event=> {
-                            this.bureauform.backside_director_id_photo =event.target.result
+                            this.bureauform.director_id_photo_back =event.target.result
                                 // console.log(event.target.result)
                             };
                         reader.readAsDataURL(file);
                 }
             },
-            updateBureauDirectorBIDPhoto(bureauformbackside_director_id_photo){
-                console.log(bureauformbackside_director_id_photo)
-                let img = this.bureauform.backside_director_id_photo;
+            updateDirectorIDBackPhoto(bureauformdirector_id_photo_back){
+                console.log(bureauformdirector_id_photo_back)
+                let img = this.bureauform.director_id_photo_back;
                       if(img ==null){
-                          return "/assets/bureau/img/empty.png";
+                          return "/assets/bureau/img/website/empty.png";
 
                       }else{
                           if(img.length>100){
-                            return this.bureauform.backside_director_id_photo;
+                            return this.bureauform.director_id_photo_back;
                         }else{
-                            if(bureauformbackside_director_id_photo){
-                                return "assets/bureau/img/directors/IDs/"+bureauformbackside_director_id_photo;
+                            if(bureauformdirector_id_photo_back){
+                                return "assets/bureau/img/directors/IDs/"+bureauformdirector_id_photo_back;
                             }else{
-                                return "/assets/bureau/img/empty.png";
+                                return "/assets/bureau/img/website/empty.png";
                             }
                         }
                       }
@@ -1235,7 +1285,7 @@
                 if(directorpivot_photo){
                     return "/assets/bureau/img/directors/passports/"+directorpivot_photo;
                 }else{
-                    return "/assets/bureau/img/empty.png";
+                    return "/assets/bureau/img/website/empty.png";
                 }
             },
             //director passport photo
@@ -1261,7 +1311,7 @@
                 // console.log(directorform_organisationdirector_photo)
                 let img = this.directorform.photo;
                       if(img ==null){
-                          return "/assets/bureau/img/empty.png";
+                          return "/assets/bureau/img/website/empty.png";
                         //  console.log('its reall null')
                       }else{
                           if(img.length>100){
@@ -1270,7 +1320,7 @@
                             if(directorform_organisationdirector_photo){
                                 return "assets/bureau/img/directors/passports/"+directorform_organisationdirector_photo;
                             }else{
-                                return "/assets/bureau/img/empty.png";
+                                return "/assets/bureau/img/website/empty.png";
                             }
                         }
                       }
@@ -1280,7 +1330,7 @@
                 if(directorpivot_id_photo_front){
                     return "/assets/bureau/img/directors/IDs/front/"+directorpivot_id_photo_front;
                 }else{
-                    return "/assets/bureau/img/empty.png";
+                    return "/assets/bureau/img/website/empty.png";
                 }
             },
             directorChangeIDFrontPhoto(event){
@@ -1305,7 +1355,7 @@
                 // console.log(directorform.id_photo_front)
                 let img = this.directorform.id_photo_front;
                       if(img ==null){
-                          return "/assets/bureau/img/empty.png";
+                          return "/assets/bureau/img/website/empty.png";
                         //  console.log('its reall null')
                       }else{
                           if(img.length>100){
@@ -1314,7 +1364,7 @@
                             if(directorform_id_photo_front){
                                 return "assets/bureau/img/directors/passports/"+directorform_id_photo_front;
                             }else{
-                                return "/assets/bureau/img/empty.png";
+                                return "/assets/bureau/img/website/empty.png";
                             }
                         }
                       }
@@ -1324,7 +1374,7 @@
                 if(directorform_id_photo_back){
                     return "/assets/bureau/img/directors/IDs/back/"+directorform_id_photo_back;
                 }else{
-                    return "/assets/bureau/img/empty.png";
+                    return "/assets/bureau/img/website/empty.png";
                 }
             },
             directorChangeIDBackPhoto(event){
@@ -1349,7 +1399,7 @@
                 // console.log(directorform.id_photo_back)
                 let img = this.directorform.id_photo_back;
                       if(img ==null){
-                          return "/assets/bureau/img/empty.png";
+                          return "/assets/bureau/img/website/empty.png";
                         //  console.log('its reall null')
                       }else{
                           if(img.length>100){
@@ -1358,7 +1408,7 @@
                             if(directorform_id_photo_back){
                                 return "assets/bureau/img/directors/IDs/front/"+directorform_id_photo_back;
                             }else{
-                                return "/assets/bureau/img/empty.png";
+                                return "/assets/bureau/img/website/empty.png";
                             }
                         }
                       }
@@ -1394,7 +1444,7 @@
                   this.$Progress.start();
                      this.bureauform.patch('/bureau/update/'+id)
                         .then(()=>{
-                            this.$store.dispatch( "bureau")
+                             this.$store.dispatch( "bureaus")
                          $('#BureauModal').modal('hide')
                          toast({
                             type: 'success',

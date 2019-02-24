@@ -42,6 +42,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $this->validate($request, [
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
@@ -51,20 +52,33 @@ class UserController extends Controller
             'permissions'=>'required',
             'roles'=>'required',
         ]);
+        $user = new User();
+            $user->first_name = $request->first_name;
+            $user->last_name  = $request->last_name;
+            $user->email      = $request->email;
+            $user->active     = true;
+            $user->confirmed  = true;
+            $user->confirmation_code = md5(uniqid(mt_rand(), true));
+            $user->user_type      = $request->user_type;
+            $user->password   = Hash::make($request->password);
 
-        $user= User::create([
-            'first_name'       => $request ['first_name'],
-            'last_name'        => $request ['last_name'],
-            'email'           => $request ['email'],
-            'password'        => Hash::make($request ['password']),
-            'user_type'        => $request ['user_type'],
-            'active'           => true,
-            'confirmed'        => true,
-            'confirmation_code' => md5(uniqid(mt_rand(), true)),
-        ]);
+            $user->assignRole($request->roles);
+            $user ->givePermissionTo($request->permissions);
+            $user->save();
 
-        $user->assignRole($request ['roles']);
-        $user->syncPermissions($request ['permissions']);
+        // $user= User::create([
+        //     'first_name'       => $request ['first_name'],
+        //     'last_name'        => $request ['last_name'],
+        //     'email'           => $request ['email'],
+        //     'password'        => Hash::make($request ['password']),
+        //     'user_type'        => $request ['user_type'],
+        //     'active'           => true,
+        //     'confirmed'        => true,
+        //     'confirmation_code' => md5(uniqid(mt_rand(), true)),
+        // ]);
+
+        // $user->assignRole($request ['roles']);
+        // $user->syncPermissions($request ['permissions']);
 
         return ['message' => 'User Created successfully'];
 
@@ -111,6 +125,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return $request;
         $user = User::findOrFail($id);
         $this->validate($request,[
             'first_name'=>'required|string|max:191',
@@ -121,7 +136,19 @@ class UserController extends Controller
             'permissions'=>'sometimes|required',
             'roles'=>'sometimes|required',
         ]);
-        $user->update($request->all());
+        // $user->update($request->all());
+        $user->first_name = $request->first_name;
+            $user->last_name  = $request->last_name;
+            $user->email      = $request->email;
+            $user->active     = true;
+            $user->confirmed  = true;
+            $user->confirmation_code = md5(uniqid(mt_rand(), true));
+            $user->user_type      = $request->user_type;
+            $user->password   = Hash::make($request->password);
+
+            // $user->assignRole($request ['roles']);
+            // $user->syncPermissions($request ['permissions']);
+            $user->save();
         return ['message', 'update the user info'];
     }
 

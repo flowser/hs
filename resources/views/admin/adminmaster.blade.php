@@ -180,7 +180,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                              <p> Dashboard </p>
                     </router-link>
                 </li>
-                {{--  view by organisation admin  --}}
+                {{--  view by bureau admin  --}}
+                <li class="nav-item">
+                    <router-link to="/bureau" class="nav-link">
+                        <i class="fa fa-users purple  nav-icon"></i>
+                        <p>Bureaus</p>
+                    </router-link>
+                </li>
                 <li class="nav-item">
                     <router-link to="/bureaus" class="nav-link">
                         <i class="fa fa-users purple  nav-icon"></i>

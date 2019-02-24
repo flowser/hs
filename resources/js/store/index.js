@@ -19,6 +19,18 @@
              //bureau Admin
              import bureauadmin from './modules/organisation/admin/admin';
 
+             //under bureau admnin
+             //bureau itself
+             import specificbureau from './modules/bureau/bureau';
+              //bureau directors
+             import specificbureaudirector from './modules/bureau/admin/director';
+               //admin
+             import specificbureauadmin from './modules/bureau/admin/admin';
+             //Househelp
+             import bureauhousehelp from './modules/bureau/admin/househelp';
+             //bureau clients
+             import bureauclient from './modules/bureau/admin/clients';
+
 
 
 
@@ -47,12 +59,18 @@
                 user,
                 permission,
                 role,
-            //bureau
+
                 bureau,
                 bureaudirector,
                 bureauadmin,
                 // bureauemployee,
-                // bureauhousehelp,
+
+              //under Bureau
+                specificbureau,
+                specificbureaudirector,
+                specificbureauadmin,
+                bureauhousehelp,
+                bureauclient,
             //househelp
                 // househelp,
 

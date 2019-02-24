@@ -7,6 +7,7 @@ use App\Models\Bureau\Bureau;
 use App\Models\Standard\User;
 use App\Models\Standard\Gender;
 use App\Models\Standard\Position;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -198,7 +199,11 @@ class BureauDirectorController extends Controller
     }
     public function show($id)
     {
-        //
+        $bureaudirector = User::with('roles','permissions','bureaudirectors')
+                            ->find($id);
+        return response()-> json([
+            'bureaudirector'=>$bureaudirector,
+        ], 200);
     }
 
     /**
@@ -249,12 +254,13 @@ class BureauDirectorController extends Controller
             'county_id'  =>  'required',
             'constituency_id'  =>  'required',
             'ward_id'  =>  'required',
-            'photo'  =>  'sometimes|required',
-            'id_photo_front'  =>  'sometimes|required',
-            'id_photo_back'  =>  'sometimes|required',
+            // 'photo'  =>  'sometimes|required',
+            // 'id_photo_front'  =>  'sometimes|required',
+            // 'id_photo_back'  =>  'sometimes|required',
        ]);
 
         //geting organistion id
+        // return $id;
 
             $user = User::find($id);
             $user->first_name = $request->first_name;
@@ -265,6 +271,7 @@ class BureauDirectorController extends Controller
             $user->confirmation_code = md5(uniqid(mt_rand(), true));
             $user->user_type      = 'Bureau Director';
             $user->password   = Hash::make($request->director_password);
+            // $user->save();
 
             $user->assignRole('Bureau Director');
             $user ->givePermissionTo('View Backend', 'View All');
@@ -351,28 +358,41 @@ class BureauDirectorController extends Controller
                     $id_photo_back = $user->bureaudirectors()->first()->pivot->id_photo_back;
                 }
 
+
+            if($user){
                 $position_id = Position::find(1)->id;
                 $gender_id = Gender::find(1)->id;
 
-                $bureau= User::find($id)->bureaudirectors()->first();
+                $id_no = $request-> id_no;
+                $about_me = $request-> about_me;
+                $phone = $request-> phone;
+                $landline = $request-> landline;
+                $address = $request-> address;
+                $country_id = $request-> country_id;
+                $county_id = $request-> county_id;
+                $constituency_id = $request-> constituency_id;
+                $ward_id = $request-> ward_id;
 
-            if($user){
-                $bureau ->bureaudirectors()->updateExistingPivot($user->id, [
+                $position_id = Position::find(1)->id;
+                $gender_id = Gender::find(1)->id;
+
+                DB::table('bureau_director')->where('user_id', $user->id)
+                ->update([
                     'position_id'      => $position_id,
                     'gender_id'        => $gender_id,
                     'active'           => true,
-                    'id_no'            => $request-> id_no,
+                    'id_no'            => $id_no,
                     'photo'            => $photo,
                     'id_photo_front'   => $id_photo_front,
                     'id_photo_back'    => $id_photo_back,
-                    'about_me'         => $request-> about_me,
-                    'phone'            => $request-> phone,
-                    'landline'         => $request-> landline,
-                    'address'          => $request-> address,
-                    'country_id'       => $request-> country_id,
-                    'county_id'        => $request-> county_id,
-                    'constituency_id'  => $request-> constituency_id,
-                    'ward_id'          => $request-> ward_id,
+                    'about_me'         => $about_me,
+                    'phone'            => $phone,
+                    'landline'         => $landline,
+                    'address'          => $address,
+                    'country_id'       => $country_id,
+                    'county_id'        => $county_id,
+                    'constituency_id'  => $constituency_id,
+                    'ward_id'          => $ward_id,
                 ]);
             }
             $user->save();

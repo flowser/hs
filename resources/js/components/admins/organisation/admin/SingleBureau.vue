@@ -2,13 +2,6 @@
   <div class="container-fluid mt-5">
       <!-- Main content -->
         <div class="col-md-12">
-                <!-- Widget: user widget style 1 -->
-                <!-- <div v-if="Bureau.length <1" class="card-tools"> -->
-                <!-- <div  class="card-tools"> -->
-                    <!-- <button class="btn btn-success" @click.prevent="newBureauModal()" >Add Bureau -->
-                        <!-- <i class="fas fa-plus fw"></i> -->
-                    <!-- </button> -->
-                <!-- </div> -->
                 <div class="card card-widget widget-user" >
                    <!-- Add the bg color to the header using any of the bg-* classes -->
                     <div class="widget-user-header text-white" style="background: url('assets/bureau/img/background/background-1.jpg')
@@ -109,11 +102,11 @@
                             <div class="card-body">
                                  <div class="row" v-for="director in Bureau.bureaudirectors" :key="director.id">
                                     <div class="col" style="padding: 3px;">
-                                        <img class="card-img-top" :src="directorLoadPassPhoto(director.pivot.photo)" style="width:100%" alt="Card image cap">
+                                        <img class="card-img-top" :src="directorLoadPassPhoto(director.pivot.photo)" style="width:100%; height:130px" alt="Card image cap">
                                     </div>
                                     <div class="col" style="padding: 3px;">
-                                        <img class="card-img-top" :src="directorLoadIDFrontPhoto(director.pivot.id_photo_front)" style="width:100%" alt="Card image cap"><br>
-                                        <img class="card-img-top" :src="directorLoadIDBackPhoto(director.pivot.id_photo_back)" style="width:100%" alt="Card image cap">
+                                        <img class="card-img-top" :src="directorLoadIDFrontPhoto(director.pivot.id_photo_front)" style="width:100%;height:65px" alt="Card image cap"><br>
+                                        <img class="card-img-top" :src="directorLoadIDBackPhoto(director.pivot.id_photo_back)" style="width:100%;height:65px" alt="Card image cap">
                                     </div>
                                     <div style="font-weight:bold;font-size:0.7em;min-width:210px;max-width:400px;margin-top:4px;padding-top:4px;font-style: italic ">
                                         <div>{{director.full_name}},</div>
@@ -146,6 +139,9 @@
                                                 </div>
                                             </span>
                                             <span class="float-right">
+                                                <a href=""  @click.prevent="viewDirectorModal(director.user_id)">
+                                                    <i class="fa fa-eye purple"></i>
+                                                </a>
                                                 <a href=""  @click.prevent="editDirectorModal(director.user_id)">
                                                     <i class="fa fa-edit blue"></i>
                                                 </a>
@@ -161,54 +157,64 @@
                         </div>
                         <div class="card col-md">
                             <div class="card-header">
-                                <h3 class="card-title">Bureau Admins Table</h3>
+                               <h3 class="card-title">Bureau Admins Table</h3>
                                 <div class="card-tools">
-                                        <button class="btn btn-success"  @click.prevent="newAdminModal()">Add New Admin
+                                        <button class="btn btn-success"  @click.prevent="newAdminModal(Bureau.id)">Add New Admin
                                             <i class="fas fa-plus fw"></i>
                                         </button>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div :v-if="Bureau.bureauadmins.length = null">
-                                     <div>
-                                         <span style="color:#9a009a;"> Currently there no Adminstration Users added
-                                              to this Bureau, kindly add if they exist</span>
-                                     </div>
-
-                                </div>
-                                <div :v-if="Bureau.bureauadmins.length != null">
-                                    <div class="row" v-for="admin in Bureau.bureauadmins" :key="admin.id">
-                                        <div class="col" style="padding: 3px;">
-                                            <img class="card-img-top" :src="adminLoadPassPhoto(admin.pivot.photo)" style="width:100%" alt="Card image cap">
+                                 <div class="row" v-for="admin in Bureau.bureauadmins" :key="admin.id">
+                                    <div class="col" style="padding: 3px;">
+                                        <img class="card-img-top" :src="adminLoadPassPhoto(admin.pivot.photo)" style="width:100%; height:130px" alt="Card image cap">
+                                    </div>
+                                    <div class="col" style="padding: 3px;">
+                                        <img class="card-img-top" :src="adminLoadIDFrontPhoto(admin.pivot.id_photo_front)" style="width:100%;height:65px" alt="Card image cap"><br>
+                                        <img class="card-img-top" :src="adminLoadIDBackPhoto(admin.pivot.id_photo_back)" style="width:100%;height:65px" alt="Card image cap">
+                                    </div>
+                                    <div style="font-weight:bold;font-size:0.7em;min-width:210px;max-width:400px;margin-top:4px;padding-top:4px;font-style: italic ">
+                                        <div>{{admin.full_name}},</div>
+                                        <div>
+                                            {{admin.position_name}},
+                                            <span style="color:#9a009a;">
+                                                {{Bureau.name}},
+                                            </span>
                                         </div>
-                                        <div class="col" style="padding: 3px;">
-                                            <img class="card-img-top" :src="adminLoadIDFrontPhoto(admin.pivot.id_photo_front)" style="width:100%" alt="Card image cap"><br>
-                                            <img class="card-img-top" :src="adminLoadIDBackPhoto(admin.pivot.id_photo_back)" style="width:100%" alt="Card image cap">
+                                        <div> ID: ,<span style="color:#9a009a;">{{admin.pivot.id_no}}</span>,
+                                            Phone: <span style="color:#9a009a;">{{admin.pivot.phone}},</span>
                                         </div>
-                                        <div style="font-weight:bold;font-size:0.7em;min-width:210px;max-width:400px;margin-top:4px;padding-top:4px;font-style: italic ">
-                                            <div>{{admin.full_name}},</div>
-                                            <div>
-                                                {{admin.position_name}},
-                                                <span style="color:#9a009a;">
-                                                    {{Bureau.name}},
-                                                </span>
+                                        <div>
+                                            Mail: <span style="color:#9a009a;">{{admin.email}},</span>
+                                        </div>
+                                            <div>P. O. Box , <span style="color:#9a009a;">{{admin.pivot.address}}</span>,
                                             </div>
-                                            <div> ID: ,<span style="color:#9a009a;">{{admin.pivot.id_no}}</span>,
-                                                Phone: <span style="color:#9a009a;">{{admin.pivot.phone}},</span>
-                                            </div>
-                                            <div>
-                                                Mail: <span style="color:#9a009a;">{{admin.email}},</span>
-                                            </div>
-                                                <div>P. O. Box , <span style="color:#9a009a;">{{admin.pivot.address}}</span>,
+                                        <div>
+                                            <span style="color:#9a009a;">{{admin.ward_name}}</span> ward,
+                                            <span style="color:#9a009a;">{{admin.constituency_name}}</span> constituency,
+                                        </div>
+                                        <div >
+                                            <span style="color:#9a009a;">{{admin.county_name}}</span> county,
+                                            <span style="color:#9a009a;">{{admin.country_name}},</span>
+                                        </div>
+                                         <div class="clearfix" style="font-weight:bold;font-size:0.9em;">
+                                            <span class="float-left" style="margin-bottom:-0.5em" >
+                                                <div style="margin-bottom:0.25em"> Updated at:
+                                                    <span style="color:#9a009a;">{{admin.created_at | dateformat}} </span>
                                                 </div>
-                                            <div>
-                                                <span style="color:#9a009a;">{{admin.ward_name}}</span> ward,
-                                                <span style="color:#9a009a;">{{admin.constituency_name}}</span> constituency,
-                                            </div>
-                                            <div >
-                                                <span style="color:#9a009a;">{{admin.county_name}}</span> county,
-                                                <span style="color:#9a009a;">{{admin.country_name}},</span>
-                                            </div>
+                                            </span>
+                                            <span class="float-right">
+                                                <a href=""  @click.prevent="viewAdminModal(admin.user_id)">
+                                                    <i class="fa fa-eye purple"></i>
+                                                </a>
+                                                <a href=""  @click.prevent="editAdminModal(admin.user_id)">
+                                                    <i class="fa fa-edit blue"></i>
+                                                </a>
+                                                /
+                                                <a href=""  @click.prevent="deleteAdmin(admin.user_id)">
+                                                    <i class="fa fa-trash red"></i>
+                                                </a>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -1054,9 +1060,9 @@
                 </div>
             </div>
         </div>
-        <!-- Diector modal -->
+        <!-- create & edit Director modal -->
         <div class="modal fade " id="DirectorModal" tabindex="-1" role="dialog" aria-labelledby="DirectorModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document" >
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1102,8 +1108,8 @@
                                                     <has-error style="color: #e83e8c" :form="directorform" field="phone"></has-error>
                                                 </div>
                                                 <div v-if="directorform.phone" style="color: #e83e8c">
-                                                    <span>Is valid: <strong>{{phone1.isValid}}</strong>,&nbsp;</span>
-                                                    <span>Country: <strong>{{phone1.country}}</strong></span>
+                                                    <span>Is valid: <strong>{{phone2.isValid}}</strong>,&nbsp;</span>
+                                                    <span>Country: <strong>{{phone2.country}}</strong></span>
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
@@ -1114,8 +1120,8 @@
                                                 <has-error style="color: #e83e8c" :form="directorform" field="landline"></has-error>
 
                                                 <div v-if="directorform.landline" style="color: #e83e8c">
-                                                    <span>Is valid: <strong>{{landline1.isValid}}</strong>,&nbsp;</span>
-                                                    <span>Country: <strong>{{landline1.country}}</strong></span>
+                                                    <span>Is valid: <strong>{{landline2.isValid}}</strong>,&nbsp;</span>
+                                                    <span>Country: <strong>{{landline2.country}}</strong></span>
                                             </div>
                                         </div>
                                     </div>
@@ -1208,16 +1214,161 @@
                 </div>
             </div>
         </div>
-        <!-- Admin Modal -->
-        <div class="modal fade " id="AdminModal" tabindex="-1" role="dialog" aria-labelledby="AdminModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <!-- view director -->
+        <div class="modal fade " id="ViewDirectorModal" tabindex="-1" role="dialog" aria-labelledby="ViewDirectorModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 80% !important; margin-left: 263px;">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form role="form" @submit.prevent="editmodeAdmin ? updateAdmin(adminform.id) : addAdmin(adminform.organisation_id)" >
+                    <div class="modal-body" v-for="director in Director.bureaudirectors" :key="director.id">
+                        <div class="card card-widget widget-user" >
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header text-white" style="background: url('assets/bureau/img/background/background-1.jpg')
+                                 center center;width:100%;height:300px">
+                                <div class="clearfix">
+                                    <span class="float-left">
+                                        <h3 class="widget-user-username">{{Director.full_name}}</h3>
+                                        <h5 class="widget-user-desc bg-green" style="margin-bottom:0">Phone: {{director.pivot.phone}} , <span>{{director.pivot.landline}}</span> </h5>
+                                        <h5 class="widget-user-desc" style="margin-bottom:0">P.O. Box {{director.pivot.address}},</h5>
+                                        <h5 class="widget-user-desc" style="margin-bottom:0" >{{director.ward_name}} Ward,
+                                            <span >{{director.constituency_name}} Constituency,</span>
+                                        </h5>
+                                        <h5 class="widget-user-desc" style="margin-bottom:0" >{{director.county_name}} County,
+                                            <span > {{director.country_name}}</span>
+                                        </h5>
+                                    </span>
+                                    <span class="float-right">
+                                        <h5 class="widget-user-desc" style="margin-bottom:0">{{Director.email}}</h5>
+                                        <p style="margin-bottom:0.25em">
+                                            <small class="text-muted">Last updated On: {director.updated_at | dateformat}}</small>
+                                        </p>
+                                    </span>
+                                </div>
+                                <div class="card-footer" style="padding-top:0px; margin-top: 60px;">
+                                        <div class="row">
+                                            <div class="col-sm-4 border-right">
+                                                <div class="description-block">
+                                                    <h5 class="description-header">3,200</h5>
+                                                    <span class="description-header green " >Twitter Followers</span>
+                                                    <div class="card-tools">
+                                                        <button class="btn btn-info" style="background-color: purple; color: #fff" >Follow us
+                                                            <i class="fas fa-plus fw"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 border-right">
+                                                <div class="description-block">
+                                                    <h5 class="description-header">13,000</h5>
+                                                    <span class="description-header green">Facebook Followers</span>
+                                                    <div class="card-tools">
+                                                        <button class="btn btn-info " style="background-color: purple; color: #fff">Follow us
+                                                            <i class="fas fa-plus fw"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4">
+                                                <div class="description-block">
+                                                    <h5 class="description-header">3544</h5>
+                                                    <span class="description-header green">Linkedin Followers</span>
+                                                    <div class="card-tools">
+                                                        <button class="btn btn-info" style="background-color: purple; color: #fff" >Follow us
+                                                            <i class="fas fa-plus fw"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        <!-- /.row -->
+                                </div>
+                            </div>
+                            <div class="widget-user-image" style="top:5px;">
+                                <img :src="directorLoadPassPhoto(director.pivot.photo)"  class="border-0"  style="width:160px;">
+                                <h3 class="card-title text-center text-white">{{Director.full_name}}</h3>
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="card col-md">
+                                    <div  class="card-header">
+                                        <h3 class="card-title">ID Front & Back Side</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col" style="padding: 3px;">
+                                                <img class="card-img-top" :src="directorLoadIDFrontPhoto(director.pivot.id_photo_front)" style="width:100%; height:150px" alt="Card image cap">
+                                            </div>
+                                            <div class="col" style="padding: 3px;">
+                                                <img class="card-img-top" :src="directorLoadIDBackPhoto(director.pivot.id_photo_back)" style="width:100%; height:150px" alt="Card image cap">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card col-md">
+                                   <div  class="card-header">
+                                       <h3 class="card-title">ID front Side</h3>
+                                   </div>
+                                   <div class="card-body">
+                                        <div class="col" style="padding: 3px;">
+                                            <div style="font-weight:bold;font-size:1.0em;min-width:210px;max-width:400px;margin-top:4px;padding-top:4px;font-style: italic ">
+                                                <div>{{Director.full_name}},</div>
+                                                <div>
+                                                    {{director.position_name}},
+                                                    <span style="color:#9a009a;">
+                                                        {{Bureau.name}},
+                                                    </span>
+                                                </div>
+                                                <div> ID: ,<span style="color:#9a009a;">{{director.pivot.id_no}}</span>,
+                                                    Phone: <span style="color:#9a009a;">{{director.pivot.phone}},</span>
+                                                </div>
+                                                <div>
+                                                    Mail: <span style="color:#9a009a;">{{Director.email}},</span>
+                                                </div>
+                                                    <div>P. O. Box , <span style="color:#9a009a;">{{director.pivot.address}}</span>,
+                                                    </div>
+                                                <div>
+                                                    <span style="color:#9a009a;">{{director.ward_name}}</span> ward,
+                                                    <span style="color:#9a009a;">{{director.constituency_name}}</span> constituency,
+                                                </div>
+                                                <div >
+                                                    <span style="color:#9a009a;">{{director.county_name}}</span> county,
+                                                    <span style="color:#9a009a;">{{director.country_name}},</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- create & edit Admin modal -->
+        <div class="modal fade " id="AdminModal" tabindex="-1" role="dialog" aria-labelledby="AdminModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document" >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form role="form" @submit.prevent="editmodeAdmin ? updateAdmin(adminform.id) : addAdmin(adminform.bureau_id)" >
                         <div class="modal-body">
                             <h5 class="modal-title" v-show="editmodeAdmin" id="AdminModalLabel">Update Admin</h5>
                             <h5 class="modal-title" v-show="!editmodeAdmin" id="AdminModalLabel">Add New Admin</h5>
@@ -1256,8 +1407,8 @@
                                                     <has-error style="color: #e83e8c" :form="adminform" field="phone"></has-error>
                                                 </div>
                                                 <div v-if="adminform.phone" style="color: #e83e8c">
-                                                    <span>Is valid: <strong>{{phone2.isValid}}</strong>,&nbsp;</span>
-                                                    <span>Country: <strong>{{phone2.country}}</strong></span>
+                                                    <span>Is valid: <strong>{{phone1.isValid}}</strong>,&nbsp;</span>
+                                                    <span>Country: <strong>{{phone1.country}}</strong></span>
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
@@ -1268,8 +1419,8 @@
                                                 <has-error style="color: #e83e8c" :form="adminform" field="landline"></has-error>
 
                                                 <div v-if="adminform.landline" style="color: #e83e8c">
-                                                    <span>Is valid: <strong>{{landline2.isValid}}</strong>,&nbsp;</span>
-                                                    <span>Country: <strong>{{landline2.country}}</strong></span>
+                                                    <span>Is valid: <strong>{{landline1.isValid}}</strong>,&nbsp;</span>
+                                                    <span>Country: <strong>{{landline1.country}}</strong></span>
                                             </div>
                                         </div>
                                     </div>
@@ -1281,7 +1432,7 @@
                                             <has-error style="color: #e83e8c" :form="adminform" field="id_no"></has-error>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="address" class=" col-form-label">Addresdddds</label>
+                                            <label for="address" class=" col-form-label">Address</label>
                                             <input v-model="adminform.address" type="text" name="address" placeholder="Address"
                                                 class="form-control" :class="{ 'is-invalid': adminform.errors.has('address') }" >
                                             <has-error style="color: #e83e8c" :form="adminform" field="country_id"></has-error>
@@ -1359,6 +1510,152 @@
                             <button v-show="!editmodeAdmin" type="submit" class="btn btn-primary">Create</button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- view admin -->
+        <div class="modal fade " id="ViewAdminModal" tabindex="-1" role="dialog" aria-labelledby="ViewAdminModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 80% !important; margin-left: 263px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" v-for="admin in Admin.bureauadmins" :key="admin.id">
+                        <div class="card card-widget widget-user" >
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header text-white" style="background: url('assets/bureau/img/background/background-1.jpg')
+                                 center center;width:100%;height:300px">
+                                <div class="clearfix">
+                                    <span class="float-left">
+                                        <h3 class="widget-user-username">{{Admin.full_name}}</h3>
+                                        <h5 class="widget-user-desc bg-green" style="margin-bottom:0">Phone: {{admin.pivot.phone}} , <span>{{admin.pivot.landline}}</span> </h5>
+                                        <h5 class="widget-user-desc" style="margin-bottom:0">P.O. Box {{admin.pivot.address}},</h5>
+                                        <h5 class="widget-user-desc" style="margin-bottom:0" >{{admin.ward_name}} Ward,
+                                            <span >{{admin.constituency_name}} Constituency,</span>
+                                        </h5>
+                                        <h5 class="widget-user-desc" style="margin-bottom:0" >{{admin.county_name}} County,
+                                            <span > {{admin.country_name}}</span>
+                                        </h5>
+                                    </span>
+                                    <span class="float-right">
+                                        <h5 class="widget-user-desc" style="margin-bottom:0">{{Admin.email}}</h5>
+                                        <p style="margin-bottom:0.25em">
+                                            <small class="text-muted">Last updated On: {admin.updated_at | dateformat}}</small>
+                                        </p>
+                                    </span>
+                                </div>
+                                <div class="card-footer" style="padding-top:0px; margin-top: 60px;">
+                                        <div class="row">
+                                            <div class="col-sm-4 border-right">
+                                                <div class="description-block">
+                                                    <h5 class="description-header">3,200</h5>
+                                                    <span class="description-header green " >Twitter Followers</span>
+                                                    <div class="card-tools">
+                                                        <button class="btn btn-info" style="background-color: purple; color: #fff" >Follow us
+                                                            <i class="fas fa-plus fw"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 border-right">
+                                                <div class="description-block">
+                                                    <h5 class="description-header">13,000</h5>
+                                                    <span class="description-header green">Facebook Followers</span>
+                                                    <div class="card-tools">
+                                                        <button class="btn btn-info " style="background-color: purple; color: #fff">Follow us
+                                                            <i class="fas fa-plus fw"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4">
+                                                <div class="description-block">
+                                                    <h5 class="description-header">3544</h5>
+                                                    <span class="description-header green">Linkedin Followers</span>
+                                                    <div class="card-tools">
+                                                        <button class="btn btn-info" style="background-color: purple; color: #fff" >Follow us
+                                                            <i class="fas fa-plus fw"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        <!-- /.row -->
+                                </div>
+                            </div>
+                            <div class="widget-user-image" style="top:5px;">
+                                <img :src="adminLoadPassPhoto(admin.pivot.photo)"  class="border-0"  style="width:160px;">
+                                <h3 class="card-title text-center text-white">{{Admin.full_name}}</h3>
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="card col-md">
+                                    <div  class="card-header">
+                                        <h3 class="card-title">ID Front & Back Side</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col" style="padding: 3px;">
+                                                <img class="card-img-top" :src="adminLoadIDFrontPhoto(admin.pivot.id_photo_front)" style="width:100%; height:150px" alt="Card image cap">
+                                            </div>
+                                            <div class="col" style="padding: 3px;">
+                                                <img class="card-img-top" :src="adminLoadIDBackPhoto(admin.pivot.id_photo_back)" style="width:100%; height:150px" alt="Card image cap">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card col-md">
+                                   <div  class="card-header">
+                                       <h3 class="card-title">ID front Side</h3>
+                                   </div>
+                                   <div class="card-body">
+                                        <div class="col" style="padding: 3px;">
+                                            <div style="font-weight:bold;font-size:1.0em;min-width:210px;max-width:400px;margin-top:4px;padding-top:4px;font-style: italic ">
+                                                <div>{{Admin.full_name}},</div>
+                                                <div>
+                                                    {{admin.position_name}},
+                                                    <span style="color:#9a009a;">
+                                                        {{Bureau.name}},
+                                                    </span>
+                                                </div>
+                                                <div> ID: ,<span style="color:#9a009a;">{{admin.pivot.id_no}}</span>,
+                                                    Phone: <span style="color:#9a009a;">{{admin.pivot.phone}},</span>
+                                                </div>
+                                                <div>
+                                                    Mail: <span style="color:#9a009a;">{{Admin.email}},</span>
+                                                </div>
+                                                    <div>P. O. Box , <span style="color:#9a009a;">{{admin.pivot.address}}</span>,
+                                                    </div>
+                                                <div>
+                                                    <span style="color:#9a009a;">{{admin.ward_name}}</span> ward,
+                                                    <span style="color:#9a009a;">{{admin.constituency_name}}</span> constituency,
+                                                </div>
+                                                <div >
+                                                    <span style="color:#9a009a;">{{admin.county_name}}</span> county,
+                                                    <span style="color:#9a009a;">{{admin.country_name}},</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1908,6 +2205,14 @@
                 console.log(this.$store.getters.Bureau)
                return this.$store.getters.Bureau//reminder to updater index
             },
+            Director(){
+                console.log(this.$store.getters.Bureaudirector)
+               return this.$store.getters.Bureaudirector//reminder to updater index
+            },
+            Admin(){
+                console.log(this.$store.getters.Bureauadmin)
+               return this.$store.getters.Bureauadmin//reminder to updater index
+            },
             About(){
                return this.$store.getters.About
             },
@@ -1932,143 +2237,8 @@
                         console.log(this.$route.params.id)
                         this.$store.dispatch('BureauById', this.$route.params.id);   //action from index.js
                     },
-            //Bureau verification
-            validateBureau() {
-                this.$Progress.start()
-                return this.bureauform.post('/bureau/verify/info')
-                    .then((response)=>{
-                        return true;
-                        toast({
-                            type: 'success',
-                            title: 'Bureau Info Verifed successfully'
-                        })
-                        this.$Progress.finish()
-                    })
-                    .catch(()=>{
-                        this.$Progress.fail()
-                        toast({
-                            type: 'error',
-                            title: 'The Bureau Info failed Verification.'
-                        })
-                    })
-            },
-            //Director info verification
-            validateDirector() {
-                this.$Progress.start()
-                this.bureauOutput = this.bureauform;  //append form data
-                return this.bureauform.post('/bureau/verify/director')
-                    .then((response)=>{
-                        return true;
-                        toast({
-                            type: 'success',
-                            title: 'Director Info Verifed successfully'
-                        })
-                        this.$Progress.finish()
-                    })
-                    .catch(()=>{
-                        this.$Progress.fail()
-                        toast({
-                            type: 'error',
-                            title: 'The Director Info failed Verification.'
-                        })
-                    })
-            },
-            //Bureau verification
-            validateBureauUpdate() {
-                let id = this.bureauform.id;
-                console.log('first',id);
-                this.$Progress.start()
-                return this.bureauform.patch('/bureau/updateverify/info/'+id)
-                    .then((response)=>{
-                        return true;
-                        toast({
-                            type: 'success',
-                            title: 'Bureau update Info Verifed successfully'
-                        })
-                        this.$Progress.finish()
-                    })
-                    .catch(()=>{
-                        this.$Progress.fail()
-                        toast({
-                            type: 'error',
-                            title: 'The Bureau update Info failed Verification.'
-                        })
-                    })
-            },
-            //Director info verification
-            validateDirectorUpdate() {
-                 let id = this.bureauform.id;
-                console.log('mix me down',id);
-                this.$Progress.start()
-                // console.log('mis me down')
-                // this.bureauOutput = this.bureauform;  //append form data
-                return this.bureauform.patch('/bureau/updateverify/director/'+id)
-                    .then((response)=>{
-                        return true;
-                        toast({
-                            type: 'success',
-                            title: 'Director Update Info Verifed successfully'
-                        })
-                        this.$Progress.finish()
-                    })
-                    .catch(()=>{
-                        this.$Progress.fail()
-                        toast({
-                            type: 'error',
-                            title: 'The Director update Info failed Verification.'
-                        })
-                    })
-            },
-            //Bureau
-            InputPhone({ number, isValid, country }) {
-            console.log(number, isValid, country);
-            this.bureauform.phone = number;
-            this.phone1.isValid = isValid;
-            this.phone1.country = country && country.name;
-            },
-            InputLandline({ number, isValid, country }) {
-            console.log(number, isValid, country);
-            this.bureauform.landline = number;
-            this.landline1.isValid = isValid;
-            this.landline1.country = country && country.name;
-            },
-            //Director
-            DirectorInputPhone({ number, isValid, country }) {
-            console.log(number, isValid, country);
-            this.bureauform.director_phone = number;
-            this.director_phone1.isValid = isValid;
-            this.director_phone1.country = country && country.name;
-            },
-            DirectorInputLandline({ number, isValid, country }) {
-            console.log(number, isValid, country);
-            this.bureauform.director_landline = number;
-            this.director_landline1.isValid = isValid;
-            this.director_landline1.country = country && country.name;
-            },
-            countryCounties(country_id){
-                console.log(country_id);
-                this.$store.dispatch('countrycounties', country_id);
-            },
-            countyConstituencies(county_id){
-                console.log(county_id);
-                this.$store.dispatch('countyconstituencies', county_id);
-            },
-            constituencyWards(constituency_id){
-                console.log(constituency_id);
-                this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
-            },
-            DirectorcountryCounties(country_id){
-                console.log(country_id);
-                this.$store.dispatch('countrycounties', country_id);
-            },
-            DirectorcountyConstituencies(county_id){
-                console.log(county_id);
-                this.$store.dispatch('countyconstituencies', county_id);
-            },
-            DirectorconstituencyWards(constituency_id){
-                console.log(constituency_id);
-                this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
-            },
+
+            //standad
             loadCountries(){
                 return this.$store.dispatch( "countries")//get all from roles.index
             },
@@ -2100,99 +2270,33 @@
                 return this.$store.dispatch( "servicefilter")
             },
 
-            // //Bureau
-            // newBureauModal(){
-            //      this.editmodeBureau= false;
-            //      this.bureauform.reset()
-            //          $('#BureauModal').modal('show')
-            // },
-            editBureauModal(id){
 
-                 this.editmodeBureau = true;
-                 this.bureauform.reset()
-                   console.log('edit bureauanisaton', id)
-                    this.$Progress.start();
-                      axios.get('/bureau/edit/'+id)
-                        .then((response)=>{
-                           $('#BureauModal').modal('show')
-                           toast({
-                            type: 'success',
-                            title: 'Fetched the Bureau data successfully'
-                            })
-                            this.bureauform.fill(response.data.bureau);
-                            //get country id
-                            this.bureauform.country_id = response.data.bureau.country.id;
-                            //get county id using the country id
-                            this.bureauform.county_id = response.data.bureau.county.id
-                            this.$store.dispatch('countrycounties', response.data.bureau.country.id);
-                            //get contituency using county id
-                            this.bureauform.constituency_id = response.data.bureau.constituency.id
-                            this.$store.dispatch('countyconstituencies', response.data.bureau.county.id);
-                            //get ward usng constituency id
-                            this.bureauform.ward_id = response.data.bureau.ward.id
-                            this.$store.dispatch('constituencywards', response.data.bureau.constituency.id);
 
-                            this.$Progress.finish();
-
-                        })
-                        .catch(()=>{
-                            this.$Progress.fail();
-                            //errors
-                            $('#BureauModal').modal('show');
-                            toast({
-                            type: 'error',
-                            title: 'There was something Wrong'
-                            })
-                        })
+            //Director
+            DirectorInputPhone({ number, isValid, country }) {
+            console.log(number, isValid, country);
+            this.directorform.director_phone = number;
+            this.director_phone2.isValid = isValid;
+            this.director_phone2.country = country && country.name;
             },
-            //bureau logo
-            bureauChangeLogo(event){
-             let file = event.target.files[0];
-                if(file.size>1048576){
-                    Swal.fire({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'The File you are uploading is larger than 2mbs!',
-                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
-                        })
-                }else{
-                    let reader = new FileReader();
-                        reader.onload = event=> {
-                            this.bureauform.logo =event.target.result
-                                // console.log(event.target.result)
-                            };
-                        reader.readAsDataURL(file);
-                }
+            DirectorInputLandline({ number, isValid, country }) {
+            console.log(number, isValid, country);
+            this.directorform.director_landline = number;
+            this.director_landline2.isValid = isValid;
+            this.director_landline2.country = country && country.name;
             },
-            bureauLoadLogo(logo_id){
-                 if(logo_id){
-                    return "assets/bureau/img/logo/"+logo_id;
-                }else{
-                    return "/assets/bureau/img/website/empty.png";
-                }
+            DirectorcountryCounties(country_id){
+                console.log(country_id);
+                this.$store.dispatch('countrycounties', country_id);
             },
-            updateBureauLogo(bureauformlogo){
-                console.log(bureauformlogo)
-                let img = this.bureauform.logo;
-                      if(img ==null){
-                          return "/assets/bureau/img/website/empty.png";
-                        //  console.log('its reall null')
-                      }else{
-                          if(img.length>100){
-                            return this.bureauform.logo;
-                        }else{
-                            if(bureauformlogo){
-                                return "assets/bureau/img/logo/"+bureauformlogo;
-                            }else{
-                                return "/assets/bureau/img/website/empty.png";
-                            }
-                        }
-                      }
-
+            DirectorcountyConstituencies(county_id){
+                console.log(county_id);
+                this.$store.dispatch('countyconstituencies', county_id);
             },
-
-
-            //director
+            DirectorconstituencyWards(constituency_id){
+                console.log(constituency_id);
+                this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
+            },
             newDirectorModal(bureau_id){
                 console.log(bureau_id)
                  this.editmodeDirector= false;
@@ -2329,15 +2433,188 @@
                       }
 
             },
+            viewDirectorModal(id){
+                console.log(id)
+                this.$Progress.start();
+                    //get bueau director by id
+                this.$store.dispatch('BureauDirectorById', id)  //action from index.js
+                    .then((response)=>{
+                       $('#ViewDirectorModal').modal('show')
+                       toast({
+                        type: 'success',
+                        title: 'Fetched the Bureau Director data successfully'
+                        })
+                        this.$Progress.finish();
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail();
+                        //errors
+                        $('#ViewDirectorModal').modal('show');
+                        toast({
+                        type: 'error',
+                        title: 'There was something Wrong Wheen feching data'
+                        })
+                    })
+            },
+            editDirectorModal(id){
+                console.log(id)
+                 this.editmodeDirector = true;
+                 this.directorform.reset()
+                    this.$Progress.start();
+                      axios.get('/bureaudirector/edit/'+id)
+                        .then((response)=>{
+                           $('#DirectorModal').modal('show')
+                           toast({
+                            type: 'success',
+                            title: 'Fetched the Director data successfully'
+                            })
+                            console.log(response.data)
+                            this.directorform.fill(response.data.director)
+                            this.directorform.user_id = response.data.director.bureaudirectors[0].pivot.user_id
+                            this.directorform.bureau_id = response.data.director.bureaudirectors[0].pivot.bureau_id
+                            // // this.directorform.position_id = response.data.director.bureaudirectors[0].pivot.position_id
+                            this.directorform.photo = response.data.director.bureaudirectors[0].pivot.photo
+                            this.directorform.id_no = response.data.director.bureaudirectors[0].pivot.id_no
+                            this.directorform.id_photo_front = response.data.director.bureaudirectors[0].pivot.id_photo_front
+                            this.directorform.id_photo_back = response.data.director.bureaudirectors[0].pivot.id_photo_back
+                            this.directorform.phone = response.data.director.bureaudirectors[0].pivot.phone
+                            this.directorform.landline = response.data.director.bureaudirectors[0].pivot.landline
+                            this.directorform.address = response.data.director.bureaudirectors[0].pivot.address
 
+                        // //    //get country id
+                            this.directorform.country_id = response.data.director.bureaudirectors[0].pivot.country_id
+                            //get county id using the country id
+                            this.directorform.county_id = response.data.director.bureaudirectors[0].pivot.county_id
+                            this.$store.dispatch('countrycounties', response.data.director.bureaudirectors[0].pivot.country_id);
+                            //get contituency using county id
+                            this.directorform.constituency_id = response.data.director.bureaudirectors[0].pivot.constituency_id
+                            this.$store.dispatch('countyconstituencies', response.data.director.bureaudirectors[0].pivot.county_id);
+                            // //get ward usng constituency id
+                            this.directorform.ward_id = response.data.director.bureaudirectors[0].pivot.ward_id
+                            this.$store.dispatch('constituencywards', response.data.director.bureaudirectors[0].pivot.constituency_id);
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                            //errors
+                            $('#DirectorModal').modal('show');
+                            toast({
+                            type: 'error',
+                            title: 'There was something Wrong'
+                            })
+                        })
+            },
+            addDirector() {
+                console.log(this.$route.params.id)
+                this.$Progress.start();
+                this.directorform.patch('/bureaudirector/'+this.$route.params.id)
+                    .then((response)=>{
+                        //  console.log(response.data)
+                         toast({
+                            type: 'success',
+                            title: 'Director Created successfully'
+                            })
+                             this.$store.dispatch('BureauById', this.$route.params.id);
+                            this.directorform.reset()
+                            $('#DirectorModal').modal('hide')
+                              this.$Progress.finish()
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        //errors
+                            $('#DirectorModal').modal('show');
+                            toast({
+                                type: 'error',
+                                title: 'There was something wrong.'
+                                })
+                    })
+            },
+            updateDirector(id){
+                  console.log(id)
+                  console.log(+this.$route.params.id)
+                  this.$Progress.start();
+                     this.directorform.patch('/bureaudirector/update/'+id)
+                        .then(()=>{
+                        this.$store.dispatch('BureauById', this.$route.params.id);
+                         $('#DirectorModal').modal('hide')
+                         toast({
+                            type: 'success',
+                            title: 'Director Created successfully'
+                            })
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                            toast({
+                            type: 'error',
+                            title: 'There was something wrong'
+                            })
+                        })
+            },
+            deleteDirector(id){
+                Swal({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                })
+                .then((result) => {
+                    if (result.value) {
+                    //  console.log('delete director', id)
+                        this.$Progress.start();
+                        this.directorform.get('/bureaudirector/delete/'+id)
+                            .then(()=>{
+                            toast({
+                            type: 'success',
+                            title: 'Director Deleted successfully'
+                            })
+                             this.$store.dispatch('BureauById', this.$route.params.id);
+                            this.$Progress.finish();
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                            toast({
+                            type: 'error',
+                            title: 'There was something wrong'
+                            })
+                        })
+                     }
+                })
+            },
 
-
-
-
-            //admin
-            newAdminModal(){
+            //Admin
+            AdminInputPhone({ number, isValid, country }) {
+            console.log(number, isValid, country);
+            this.adminform.admin_phone = number;
+            this.admin_phone2.isValid = isValid;
+            this.admin_phone2.country = country && country.name;
+            },
+            AdminInputLandline({ number, isValid, country }) {
+            console.log(number, isValid, country);
+            this.adminform.admin_landline = number;
+            this.admin_landline2.isValid = isValid;
+            this.admin_landline2.country = country && country.name;
+            },
+            AdmincountryCounties(country_id){
+                console.log(country_id);
+                this.$store.dispatch('countrycounties', country_id);
+            },
+            AdmincountyConstituencies(county_id){
+                console.log(county_id);
+                this.$store.dispatch('countyconstituencies', county_id);
+            },
+            AdminconstituencyWards(constituency_id){
+                console.log(constituency_id);
+                this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
+            },
+            newAdminModal(bureau_id){
+                console.log(bureau_id)
                  this.editmodeAdmin= false;
                  this.adminform.reset()
+                 this.adminform.bureau_id;
                      $('#AdminModal').modal('show')
             },
             //bureau admin passposrt image
@@ -2469,89 +2746,113 @@
                       }
 
             },
-            editDirectorModal(id){
+            viewAdminModal(id){
                 console.log(id)
-                 this.editmodeDirector = true;
-                 this.directorform.reset()
+                this.$Progress.start();
+                    //get bueau admin by id
+                this.$store.dispatch('BureauAdminById', id)  //action from index.js
+                    .then((response)=>{
+                       $('#ViewAdminModal').modal('show')
+                       toast({
+                        type: 'success',
+                        title: 'Fetched the Bureau Admin data successfully'
+                        })
+                        this.$Progress.finish();
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail();
+                        //errors
+                        $('#ViewAdminModal').modal('show');
+                        toast({
+                        type: 'error',
+                        title: 'There was something Wrong Wheen feching data'
+                        })
+                    })
+            },
+            editAdminModal(id){
+                console.log(id)
+                 this.editmodeAdmin = true;
+                 this.adminform.reset()
                     this.$Progress.start();
-                      axios.get('/bureaudirector/edit/'+id)
+                      axios.get('/bureauadmin/edit/'+id)
                         .then((response)=>{
-                           $('#DirectorModal').modal('show')
+                           $('#AdminModal').modal('show')
                            toast({
                             type: 'success',
-                            title: 'Fetched the Director data successfully'
+                            title: 'Fetched the Admin data successfully'
                             })
-                            console.log(response.data.director.bureaudirectors[0].pivot)
-                            this.directorform.fill(response.data.director)
-                            this.directorform.user_id = response.data.director.bureaudirectors[0].pivot.user_id
-                            this.directorform.bureau_id = response.data.director.bureaudirectors[0].pivot.bureau_id
-                            // // this.directorform.position_id = response.data.director.bureaudirectors[0].pivot.position_id
-                            this.directorform.photo = response.data.director.bureaudirectors[0].pivot.photo
-                            this.directorform.id_no = response.data.director.bureaudirectors[0].pivot.id_no
-                            this.directorform.id_photo_front = response.data.director.bureaudirectors[0].pivot.id_photo_front
-                            this.directorform.id_photo_back = response.data.director.bureaudirectors[0].pivot.id_photo_back
-                            this.directorform.phone = response.data.director.bureaudirectors[0].pivot.phone
-                            this.directorform.landline = response.data.director.bureaudirectors[0].pivot.landline
-                            this.directorform.address = response.data.director.bureaudirectors[0].pivot.address
+                            console.log(response.data)
+                            this.adminform.fill(response.data.admin)
+                            this.adminform.user_id = response.data.admin.bureauadmins[0].pivot.user_id
+                            this.adminform.bureau_id = response.data.admin.bureauadmins[0].pivot.bureau_id
+                            // // this.adminform.position_id = response.data.admin.bureauadmins[0].pivot.position_id
+                            this.adminform.photo = response.data.admin.bureauadmins[0].pivot.photo
+                            this.adminform.id_no = response.data.admin.bureauadmins[0].pivot.id_no
+                            this.adminform.id_photo_front = response.data.admin.bureauadmins[0].pivot.id_photo_front
+                            this.adminform.id_photo_back = response.data.admin.bureauadmins[0].pivot.id_photo_back
+                            this.adminform.phone = response.data.admin.bureauadmins[0].pivot.phone
+                            this.adminform.landline = response.data.admin.bureauadmins[0].pivot.landline
+                            this.adminform.address = response.data.admin.bureauadmins[0].pivot.address
 
                         // //    //get country id
-                            this.directorform.country_id = response.data.director.bureaudirectors[0].pivot.country_id
+                            this.adminform.country_id = response.data.admin.bureauadmins[0].pivot.country_id
                             //get county id using the country id
-                            this.directorform.county_id = response.data.director.bureaudirectors[0].pivot.county_id
-                            this.$store.dispatch('countrycounties', response.data.director.bureaudirectors[0].pivot.country_id);
+                            this.adminform.county_id = response.data.admin.bureauadmins[0].pivot.county_id
+                            this.$store.dispatch('countrycounties', response.data.admin.bureauadmins[0].pivot.country_id);
                             //get contituency using county id
-                            this.directorform.constituency_id = response.data.director.bureaudirectors[0].pivot.constituency_id
-                            this.$store.dispatch('countyconstituencies', response.data.director.bureaudirectors[0].pivot.county_id);
+                            this.adminform.constituency_id = response.data.admin.bureauadmins[0].pivot.constituency_id
+                            this.$store.dispatch('countyconstituencies', response.data.admin.bureauadmins[0].pivot.county_id);
                             // //get ward usng constituency id
-                            this.directorform.ward_id = response.data.director.bureaudirectors[0].pivot.ward_id
-                            this.$store.dispatch('constituencywards', response.data.director.bureaudirectors[0].pivot.constituency_id);
+                            this.adminform.ward_id = response.data.admin.bureauadmins[0].pivot.ward_id
+                            this.$store.dispatch('constituencywards', response.data.admin.bureauadmins[0].pivot.constituency_id);
                             this.$Progress.finish();
                         })
                         .catch(()=>{
                             this.$Progress.fail();
                             //errors
-                            $('#DirectorModal').modal('show');
+                            $('#AdminModal').modal('show');
                             toast({
                             type: 'error',
                             title: 'There was something Wrong'
                             })
                         })
             },
-            addDirector() {
+            addAdmin() {
                 console.log(this.$route.params.id)
                 this.$Progress.start();
-                this.directorform.patch('/bureaudirector/'+this.$route.params.id)
+                this.adminform.patch('/bureauadmin/'+this.$route.params.id)
                     .then((response)=>{
                         //  console.log(response.data)
                          toast({
                             type: 'success',
-                            title: 'Director Created successfully'
+                            title: 'Admin Created successfully'
                             })
                              this.$store.dispatch('BureauById', this.$route.params.id);
-                            this.directorform.reset()
-                            $('#DirectorModal').modal('hide')
+                            this.adminform.reset()
+                            $('#AdminModal').modal('hide')
                               this.$Progress.finish()
                     })
                     .catch(()=>{
                         this.$Progress.fail()
                         //errors
-                            $('#DirectorModal').modal('show');
+                            $('#AdminModal').modal('show');
                             toast({
                                 type: 'error',
                                 title: 'There was something wrong.'
                                 })
                     })
             },
-            updateDirector(id){
-                  console.log('update director')
+            updateAdmin(id){
+                  console.log(id)
+                  console.log(+this.$route.params.id)
                   this.$Progress.start();
-                     this.directorform.patch('/bureaudirector/update/'+id)
+                     this.adminform.patch('/bureauadmin/update/'+id)
                         .then(()=>{
                         this.$store.dispatch('BureauById', this.$route.params.id);
-                         $('#DirectorModal').modal('hide')
+                         $('#AdminModal').modal('hide')
                          toast({
                             type: 'success',
-                            title: 'Director Created successfully'
+                            title: 'Admin Created successfully'
                             })
                             this.$Progress.finish();
                         })
@@ -2563,7 +2864,7 @@
                             })
                         })
             },
-            deleteDirector(id){
+            deleteAdmin(id){
                 Swal({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -2575,13 +2876,13 @@
                 })
                 .then((result) => {
                     if (result.value) {
-                    //  console.log('delete director', id)
+                    //  console.log('delete admin', id)
                         this.$Progress.start();
-                        this.directorform.get('/bureaudirector/delete/'+id)
+                        this.adminform.get('/bureauadmin/delete/'+id)
                             .then(()=>{
                             toast({
                             type: 'success',
-                            title: 'Director Deleted successfully'
+                            title: 'Admin Deleted successfully'
                             })
                              this.$store.dispatch('BureauById', this.$route.params.id);
                             this.$Progress.finish();
@@ -2595,13 +2896,204 @@
                         })
                      }
                 })
-             },
+            },
 
 
+            //Bureau
+            validateBureau() {
+                this.$Progress.start()
+                return this.bureauform.post('/bureau/verify/info')
+                    .then((response)=>{
+                        return true;
+                        toast({
+                            type: 'success',
+                            title: 'Bureau Info Verifed successfully'
+                        })
+                        this.$Progress.finish()
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        toast({
+                            type: 'error',
+                            title: 'The Bureau Info failed Verification.'
+                        })
+                    })
+            },
+            //Director info verification
+            validateDirector() {
+                this.$Progress.start()
+                this.bureauOutput = this.bureauform;  //append form data
+                return this.bureauform.post('/bureau/verify/director')
+                    .then((response)=>{
+                        return true;
+                        toast({
+                            type: 'success',
+                            title: 'Director Info Verifed successfully'
+                        })
+                        this.$Progress.finish()
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        toast({
+                            type: 'error',
+                            title: 'The Director Info failed Verification.'
+                        })
+                    })
+            },
+            //Bureau verification
+            validateBureauUpdate() {
+                let id = this.bureauform.id;
+                console.log('first',id);
+                this.$Progress.start()
+                return this.bureauform.patch('/bureau/updateverify/info/'+id)
+                    .then((response)=>{
+                        return true;
+                        toast({
+                            type: 'success',
+                            title: 'Bureau update Info Verifed successfully'
+                        })
+                        this.$Progress.finish()
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        toast({
+                            type: 'error',
+                            title: 'The Bureau update Info failed Verification.'
+                        })
+                    })
+            },
+            //Director info verification
+            validateDirectorUpdate() {
+                 let id = this.bureauform.id;
+                console.log('mix me down',id);
+                this.$Progress.start()
+                // console.log('mis me down')
+                // this.bureauOutput = this.bureauform;  //append form data
+                return this.bureauform.patch('/bureau/updateverify/director/'+id)
+                    .then((response)=>{
+                        return true;
+                        toast({
+                            type: 'success',
+                            title: 'Director Update Info Verifed successfully'
+                        })
+                        this.$Progress.finish()
+                    })
+                    .catch(()=>{
+                        this.$Progress.fail()
+                        toast({
+                            type: 'error',
+                            title: 'The Director update Info failed Verification.'
+                        })
+                    })
+            },
 
+            InputPhone({ number, isValid, country }) {
+            console.log(number, isValid, country);
+            this.bureauform.phone = number;
+            this.phone3.isValid = isValid;
+            this.phone3.country = country && country.name;
+            },
+            InputLandline({ number, isValid, country }) {
+            console.log(number, isValid, country);
+            this.bureauform.landline = number;
+            this.landline3.isValid = isValid;
+            this.landline3.country = country && country.name;
+            },
+            countryCounties(country_id){
+                console.log(country_id);
+                this.$store.dispatch('countrycounties', country_id);
+            },
+            countyConstituencies(county_id){
+                console.log(county_id);
+                this.$store.dispatch('countyconstituencies', county_id);
+            },
+            constituencyWards(constituency_id){
+                console.log(constituency_id);
+                this.$store.dispatch('constituencywards', constituency_id); //send to store to the action with id
+            },
+            bureauChangeLogo(event){
+             let file = event.target.files[0];
+                if(file.size>1048576){
+                    Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'The File you are uploading is larger than 2mbs!',
+                            // footer: '<a href>Why do I have this issue? Reduce the Logo Size</a>'
+                        })
+                }else{
+                    let reader = new FileReader();
+                        reader.onload = event=> {
+                            this.bureauform.logo =event.target.result
+                                // console.log(event.target.result)
+                            };
+                        reader.readAsDataURL(file);
+                }
+            },
+            bureauLoadLogo(logo_id){
+                 if(logo_id){
+                    return "assets/bureau/img/logo/"+logo_id;
+                }else{
+                    return "/assets/bureau/img/website/empty.png";
+                }
+            },
+            updateBureauLogo(bureauformlogo){
+                console.log(bureauformlogo)
+                let img = this.bureauform.logo;
+                      if(img ==null){
+                          return "/assets/bureau/img/website/empty.png";
+                        //  console.log('its reall null')
+                      }else{
+                          if(img.length>100){
+                            return this.bureauform.logo;
+                        }else{
+                            if(bureauformlogo){
+                                return "assets/bureau/img/logo/"+bureauformlogo;
+                            }else{
+                                return "/assets/bureau/img/website/empty.png";
+                            }
+                        }
+                      }
 
+            },
+            editBureauModal(id){
 
+                 this.editmodeBureau = true;
+                 this.bureauform.reset()
+                   console.log('edit bureauanisaton', id)
+                    this.$Progress.start();
+                      axios.get('/bureau/edit/'+id)
+                        .then((response)=>{
+                           $('#BureauModal').modal('show')
+                           toast({
+                            type: 'success',
+                            title: 'Fetched the Bureau data successfully'
+                            })
+                            this.bureauform.fill(response.data.bureau);
+                            //get country id
+                            this.bureauform.country_id = response.data.bureau.country.id;
+                            //get county id using the country id
+                            this.bureauform.county_id = response.data.bureau.county.id
+                            this.$store.dispatch('countrycounties', response.data.bureau.country.id);
+                            //get contituency using county id
+                            this.bureauform.constituency_id = response.data.bureau.constituency.id
+                            this.$store.dispatch('countyconstituencies', response.data.bureau.county.id);
+                            //get ward usng constituency id
+                            this.bureauform.ward_id = response.data.bureau.ward.id
+                            this.$store.dispatch('constituencywards', response.data.bureau.constituency.id);
 
+                            this.$Progress.finish();
+
+                        })
+                        .catch(()=>{
+                            this.$Progress.fail();
+                            //errors
+                            $('#BureauModal').modal('show');
+                            toast({
+                            type: 'error',
+                            title: 'There was something Wrong'
+                            })
+                        })
+            },
             addBureau(){
                 console.log('add Bureau new')
                 this.$Progress.start();
@@ -2687,6 +3179,9 @@
                      }
                 })
             },
+
+
+
             //About
             newAboutModal(){
                 this.editmodeAbout = false;
@@ -3479,7 +3974,8 @@
         },
         watch:{
             $route(to, from){
-                this.singleabureau();//method
+                this.singlebureau();//method
+                this.viewDirectorModal();//method
            }
         }
 

@@ -3,10 +3,14 @@
 
 const state = {
     bureaudirectors:[],
+    bureaudirector:[],
   };
 const getters = {
     Bureaudirectors(state){
       return state.bureaudirectors;
+    },
+    Bureaudirector(state){
+      return state.bureaudirector;
     }
   };
 const actions = {
@@ -16,11 +20,21 @@ const actions = {
         console.log(response.data)
         context.commit('bureaudirectors', response.data.bureaudirectors);
       });
-    }
+    },
+    BureauDirectorById(context, payload){
+        axios.get('/bureaudirector/show/'+payload)
+              .then((response)=>{
+                  console.log(response.data);
+                  context.commit('bureaudirector', response.data.bureaudirector);
+              });
   }
+}
 const mutations = {
     bureaudirectors(state, data){
       return state.bureaudirectors = data;
+    },
+    bureaudirector(state, data){
+      return state.bureaudirector = data;
     }
   };
 
